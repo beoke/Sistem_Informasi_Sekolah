@@ -33,9 +33,8 @@
             dataGridView1 = new DataGridView();
             tabPage2 = new TabPage();
             panel2 = new Panel();
-            btn_BackforData = new Button();
+            button2 = new Button();
             label85 = new Label();
-            btn_NextSlide2 = new Button();
             tx_Jmlangkat = new TextBox();
             label11 = new Label();
             tx_Transportasi = new TextBox();
@@ -81,15 +80,13 @@
             label2 = new Label();
             tabPage3 = new TabPage();
             panel4 = new Panel();
+            button4 = new Button();
             dataGridView2 = new DataGridView();
-            btn_BackSlide1 = new Button();
             label49 = new Label();
             tx_IjazahNo = new TextBox();
             label48 = new Label();
             date_Tglmeninggalkan = new DateTimePicker();
             label46 = new Label();
-            btn_NextSlide3 = new Button();
-            tx_TamatBelajar = new TextBox();
             label31 = new Label();
             tx_Alasanmeninggalkan = new TextBox();
             label32 = new Label();
@@ -182,6 +179,7 @@
             tx_TempatAyah = new TextBox();
             label73 = new Label();
             panel6 = new Panel();
+            button1 = new Button();
             tx_MeninggalIbu = new TextBox();
             label42 = new Label();
             rb_MasihWali = new RadioButton();
@@ -192,13 +190,11 @@
             rb_WNIWali = new RadioButton();
             cb_AgamaWali = new ComboBox();
             textBox1 = new TextBox();
-            btn_BackSlide2 = new Button();
             tx_WorkIbu = new TextBox();
             tx_PendidikanIbu = new TextBox();
             label50 = new Label();
             date_LahirWali = new DateTimePicker();
             tx_pekerjaanWali = new TextBox();
-            btn_NextSlide4 = new Button();
             label101 = new Label();
             label91 = new Label();
             tx_PendidikanWali = new TextBox();
@@ -239,6 +235,7 @@
             textBox79 = new TextBox();
             label97 = new Label();
             label98 = new Label();
+            dtp_tamatbelajar = new DateTimePicker();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -309,9 +306,8 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveBorder;
-            panel2.Controls.Add(btn_BackforData);
+            panel2.Controls.Add(button2);
             panel2.Controls.Add(label85);
-            panel2.Controls.Add(btn_NextSlide2);
             panel2.Controls.Add(tx_Jmlangkat);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(tx_Transportasi);
@@ -335,15 +331,14 @@
             panel2.Size = new Size(514, 693);
             panel2.TabIndex = 2;
             // 
-            // btn_BackforData
+            // button2
             // 
-            btn_BackforData.Location = new Point(301, 407);
-            btn_BackforData.Name = "btn_BackforData";
-            btn_BackforData.Size = new Size(94, 29);
-            btn_BackforData.TabIndex = 22;
-            btn_BackforData.Text = "Back";
-            btn_BackforData.UseVisualStyleBackColor = true;
-            btn_BackforData.Click += btn_BackforData_Click;
+            button2.Location = new Point(401, 439);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 40;
+            button2.Text = "Save";
+            button2.UseVisualStyleBackColor = true;
             // 
             // label85
             // 
@@ -354,16 +349,6 @@
             label85.Size = new Size(211, 20);
             label85.TabIndex = 39;
             label85.Text = "Keterangan Tempat Tinggal :";
-            // 
-            // btn_NextSlide2
-            // 
-            btn_NextSlide2.Location = new Point(401, 407);
-            btn_NextSlide2.Name = "btn_NextSlide2";
-            btn_NextSlide2.Size = new Size(94, 29);
-            btn_NextSlide2.TabIndex = 23;
-            btn_NextSlide2.Text = "Next";
-            btn_NextSlide2.UseVisualStyleBackColor = true;
-            btn_NextSlide2.Click += btn_NextSlide2_Click;
             // 
             // tx_Jmlangkat
             // 
@@ -724,7 +709,7 @@
             // 
             // tx_NmPanggilan
             // 
-            tx_NmPanggilan.Location = new Point(219, 77);
+            tx_NmPanggilan.Location = new Point(219, 71);
             tx_NmPanggilan.Name = "tx_NmPanggilan";
             tx_NmPanggilan.Size = new Size(262, 27);
             tx_NmPanggilan.TabIndex = 2;
@@ -770,15 +755,14 @@
             // panel4
             // 
             panel4.BackColor = SystemColors.ActiveBorder;
+            panel4.Controls.Add(dtp_tamatbelajar);
+            panel4.Controls.Add(button4);
             panel4.Controls.Add(dataGridView2);
-            panel4.Controls.Add(btn_BackSlide1);
             panel4.Controls.Add(label49);
             panel4.Controls.Add(tx_IjazahNo);
             panel4.Controls.Add(label48);
             panel4.Controls.Add(date_Tglmeninggalkan);
             panel4.Controls.Add(label46);
-            panel4.Controls.Add(btn_NextSlide3);
-            panel4.Controls.Add(tx_TamatBelajar);
             panel4.Controls.Add(label31);
             panel4.Controls.Add(tx_Alasanmeninggalkan);
             panel4.Controls.Add(label32);
@@ -795,6 +779,15 @@
             panel4.Size = new Size(514, 693);
             panel4.TabIndex = 3;
             // 
+            // button4
+            // 
+            button4.Location = new Point(404, 544);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 71;
+            button4.Text = "Save";
+            button4.UseVisualStyleBackColor = true;
+            // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -804,16 +797,6 @@
             dataGridView2.RowTemplate.Height = 29;
             dataGridView2.Size = new Size(445, 127);
             dataGridView2.TabIndex = 70;
-            // 
-            // btn_BackSlide1
-            // 
-            btn_BackSlide1.Location = new Point(309, 550);
-            btn_BackSlide1.Name = "btn_BackSlide1";
-            btn_BackSlide1.Size = new Size(94, 29);
-            btn_BackSlide1.TabIndex = 21;
-            btn_BackSlide1.Text = "Back";
-            btn_BackSlide1.UseVisualStyleBackColor = true;
-            btn_BackSlide1.Click += btn_BackSlide1_Click;
             // 
             // label49
             // 
@@ -856,23 +839,6 @@
             label46.Size = new Size(174, 40);
             label46.TabIndex = 59;
             label46.Text = "a. Tanggal Meninggalkan\r\n     Sekolah :";
-            // 
-            // btn_NextSlide3
-            // 
-            btn_NextSlide3.Location = new Point(409, 550);
-            btn_NextSlide3.Name = "btn_NextSlide3";
-            btn_NextSlide3.Size = new Size(94, 29);
-            btn_NextSlide3.TabIndex = 22;
-            btn_NextSlide3.Text = "Next";
-            btn_NextSlide3.UseVisualStyleBackColor = true;
-            btn_NextSlide3.Click += btn_NextSlide3_Click;
-            // 
-            // tx_TamatBelajar
-            // 
-            tx_TamatBelajar.Location = new Point(178, 481);
-            tx_TamatBelajar.Name = "tx_TamatBelajar";
-            tx_TamatBelajar.Size = new Size(320, 27);
-            tx_TamatBelajar.TabIndex = 19;
             // 
             // label31
             // 
@@ -1742,6 +1708,7 @@
             // panel6
             // 
             panel6.BackColor = Color.DarkGray;
+            panel6.Controls.Add(button1);
             panel6.Controls.Add(tx_MeninggalIbu);
             panel6.Controls.Add(label42);
             panel6.Controls.Add(rb_MasihWali);
@@ -1752,13 +1719,11 @@
             panel6.Controls.Add(rb_WNIWali);
             panel6.Controls.Add(cb_AgamaWali);
             panel6.Controls.Add(textBox1);
-            panel6.Controls.Add(btn_BackSlide2);
             panel6.Controls.Add(tx_WorkIbu);
             panel6.Controls.Add(tx_PendidikanIbu);
             panel6.Controls.Add(label50);
             panel6.Controls.Add(date_LahirWali);
             panel6.Controls.Add(tx_pekerjaanWali);
-            panel6.Controls.Add(btn_NextSlide4);
             panel6.Controls.Add(label101);
             panel6.Controls.Add(label91);
             panel6.Controls.Add(tx_PendidikanWali);
@@ -1790,6 +1755,15 @@
             panel6.Size = new Size(514, 699);
             panel6.TabIndex = 53;
             panel6.Paint += panel6_Paint;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(393, 646);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 117;
+            button1.Text = "Save";
+            button1.UseVisualStyleBackColor = true;
             // 
             // tx_MeninggalIbu
             // 
@@ -1888,16 +1862,6 @@
             textBox1.Size = new Size(301, 27);
             textBox1.TabIndex = 26;
             // 
-            // btn_BackSlide2
-            // 
-            btn_BackSlide2.Location = new Point(297, 647);
-            btn_BackSlide2.Name = "btn_BackSlide2";
-            btn_BackSlide2.Size = new Size(94, 29);
-            btn_BackSlide2.TabIndex = 42;
-            btn_BackSlide2.Text = "Back";
-            btn_BackSlide2.UseVisualStyleBackColor = true;
-            btn_BackSlide2.Click += btn_BackSlide2_Click;
-            // 
             // tx_WorkIbu
             // 
             tx_WorkIbu.Location = new Point(186, 36);
@@ -1936,16 +1900,6 @@
             tx_pekerjaanWali.Name = "tx_pekerjaanWali";
             tx_pekerjaanWali.Size = new Size(301, 27);
             tx_pekerjaanWali.TabIndex = 36;
-            // 
-            // btn_NextSlide4
-            // 
-            btn_NextSlide4.Location = new Point(397, 647);
-            btn_NextSlide4.Name = "btn_NextSlide4";
-            btn_NextSlide4.Size = new Size(94, 29);
-            btn_NextSlide4.TabIndex = 43;
-            btn_NextSlide4.Text = "Next";
-            btn_NextSlide4.UseVisualStyleBackColor = true;
-            btn_NextSlide4.Click += btn_NextSlide4_Click;
             // 
             // label101
             // 
@@ -2301,6 +2255,15 @@
             label98.TabIndex = 39;
             label98.Text = "a. Tanggal Mulai kerja : ";
             // 
+            // dtp_tamatbelajar
+            // 
+            dtp_tamatbelajar.CustomFormat = "yyyy";
+            dtp_tamatbelajar.Format = DateTimePickerFormat.Custom;
+            dtp_tamatbelajar.Location = new Point(178, 481);
+            dtp_tamatbelajar.Name = "dtp_tamatbelajar";
+            dtp_tamatbelajar.Size = new Size(320, 27);
+            dtp_tamatbelajar.TabIndex = 72;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -2382,14 +2345,11 @@
         private Label label3;
         private Label label2;
         private Label label20;
-        private Button btn_NextSlide2;
         private RadioButton rb_perempuan;
         private RadioButton rb_laki;
         private Panel panel4;
-        private Button btn_NextSlide3;
         private TextBox tx_Kesenian;
         private Label label30;
-        private TextBox tx_TamatBelajar;
         private Label label31;
         private TextBox tx_Alasanmeninggalkan;
         private Label label32;
@@ -2499,7 +2459,6 @@
         private TextBox tx_GajiIbu;
         private Label label76;
         private Label label108;
-        private Button btn_NextSlide4;
         private DateTimePicker date_LahirWali;
         private TextBox tx_pekerjaanWali;
         private Label label91;
@@ -2514,10 +2473,7 @@
         private TextBox tx_WorkIbu;
         private Label label50;
         private Label label67;
-        private Button btn_BackforData;
-        private Button btn_BackSlide2;
         private Button btn_Save;
-        private Button btn_BackSlide1;
         private DateTimePicker date_LahirAyah;
         private NumericUpDown nu_BB;
         private NumericUpDown nu_TB;
@@ -2550,5 +2506,9 @@
         private TextBox tx_MeninggalIbu;
         private Label label42;
         private TextBox tx_MeninggalAyah;
+        private Button button2;
+        private Button button1;
+        private Button button4;
+        private DateTimePicker dtp_tamatbelajar;
     }
 }
