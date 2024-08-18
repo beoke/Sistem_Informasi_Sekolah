@@ -23,11 +23,13 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
         public string DiterimaTingkat { get; set; }
         public string KompKeahlian { get; set; }
         public DateTime TglDiterima { get; set; }
-        public string Kesenian { get; set; }
+
+/*        public string Kesenian { get; set; }
         public string Olahraga { get; set; }
         public string Organisasi { get; set; }
         public string Hobi { get; set; }
-        public string CitaCita { get; set; }
+        public string CitaCita { get; set; }*/
+
         public DateTime TglTinggalSekolah { get; set; }
         public string AlasanTinggal { get; set; }
         public DateTime AkhirTamatBljr { get; set; }
