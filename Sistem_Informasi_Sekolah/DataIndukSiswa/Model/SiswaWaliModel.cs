@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
 {
-    public class SiswaWaliModel
+    public  class SiswaWaliModel
     {
         public int SiswaId { get; set; }
         public string JenisWali { get; set; }

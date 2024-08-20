@@ -17,18 +17,18 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             const string sql = @"
                 INSERT INTO SiswaPrestasi(
-                    SiswaId, Olahraga, Seni, Kemasyarakatan, 
-                    BakatLainnya, CitaCita)
+                    SiswaId, Kesenian, Olahraga, Organisasi, 
+                    Hobi, CitaCita)
                 VALUES (
-                    @SiswaId, @Olahraga, @Seni, @Kemasyarakatan, 
-                    @BakatLainnya, @CitaCita)";
+                    @SiswaId, @Kesenian, @Olahraga, @Organisasi, 
+                    @Hobi, @CitaCita)";
 
             var dp = new DynamicParameters();
             dp.Add("@SiswaId", siswaPrestasi.SiswaId, DbType.Int32);
+            dp.Add("@Kesenian", siswaPrestasi.Kesenian, DbType.String);
             dp.Add("@Olahraga", siswaPrestasi.Olahraga, DbType.String);
-            dp.Add("@Seni", siswaPrestasi.Seni, DbType.String);
-            dp.Add("@Kemasyarakatan", siswaPrestasi.Kemasyarakatan, DbType.String);
-            dp.Add("@BakatLainnya", siswaPrestasi.BakatLainnya, DbType.String);
+            dp.Add("@Organisasi", siswaPrestasi.Organisasi, DbType.String);
+            dp.Add("@Hobi", siswaPrestasi.Hobi, DbType.String);
             dp.Add("@CitaCita", siswaPrestasi.CitaCita, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
@@ -41,21 +41,21 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 UPDATE SiswaPrestasi
                 SET
                     SiswaId = @SiswaId,
+                    Kesenian = @Kesenian,
                     Olahraga = @Olahraga,
-                    Seni = @Seni,
-                    Kemasyarakatan = @Kemasyarakatan,
-                    BakatLainnya = @BakatLainnya,
+                    Organisasi = @Organisasi,
+                    Hobi = @Hobi,
                     CitaCita = @CitaCita
                 WHERE
                     SiswaId = @SiswaId";
 
             var dp = new DynamicParameters();
             dp.Add("@SiswaId", siswaPrestasi.SiswaId, DbType.Int32);
+            dp.Add("@Kesenian", siswaPrestasi.Kesenian, DbType.String);
             dp.Add("@Olahraga", siswaPrestasi.Olahraga, DbType.String);
-            dp.Add("@Seni", siswaPrestasi.Seni, DbType.String);
-            dp.Add("@Kemasyarakatan", siswaPrestasi.Kemasyarakatan, DbType.String);
-            dp.Add("@BakatLainnya", siswaPrestasi.BakatLainnya, DbType.String);
-            dp.Add("@CitaCita", siswaPrestasi.CitaCita, DbType.String);
+            dp.Add("@Organisasi", siswaPrestasi.Organisasi, DbType.String);
+            dp.Add("@Hobi", siswaPrestasi.Hobi, DbType.String);
+            dp.Add("@CitaCita", siswaPrestasi.CitaCita, DbType.String); ;
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
@@ -79,8 +79,8 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             const string sql = @"
                 SELECT
-                    SiswaId, Olahraga, Seni, kemasyarakatan, 
-                    BakatLainnya, CitaCita
+                    SiswaId, Kesenian, Olahraga, Organisasi, 
+                    Hobi, CitaCita
                 FROM
                     SiswaPrestasi
                 WHERE
@@ -97,8 +97,8 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             const string sql = @"
                 SELECT
-                    SiswaId, Olahraga, Seni, kemasyarakatan, 
-                    BakatLainnya, CitaCita
+                    SiswaId, Kesenian, Olahraga, Organisasi, 
+                    Hobi, CitaCita
                 FROM
                     SiswaPrestasi ";
 
