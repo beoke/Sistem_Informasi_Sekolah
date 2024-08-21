@@ -22,6 +22,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     LulusanDr, TglIjazah, NoIjazah, LamaBljr,
                     PindahanDr, AlasanPindah,
                     DiterimaTingkat, KompKeahlian, TglDiterima, 
+                    Kesenian, Olahraga, Organisasi, Hobi, CitaCita,
                     TglTinggalSekolah, AlasanTinggal, AkhirTamatBljr, 
                     AKhirNoIjazah ) 
                 VALUES (
@@ -29,7 +30,8 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     @KelainanJasmani, @TinggiBdn, @BeratBdn, 
                     @LulusanDr, @TglIjazah, @NoIjazah, @LamaBljr,
                     @PindahanDr, @AlasanPindah,
-                    @DiterimaTingkat, @KompKeahlian, @TglDiterima, 
+                    @DiterimaTingkat, @KompKeahlian, @TglDiterima,
+                    @Kesenian, @Olahraga, @Organisasi, @Hobi, @CitaCita
                     @TglTinggalSekolah, @AlasanTinggal, @AkhirTamatBljr, 
                     @AKhirNoIjazah)";
 
@@ -49,13 +51,11 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@DiterimaTIngkat", siswaRiwayat.DiterimaTingkat, DbType.String);
             dp.Add("@KompKeahlian", siswaRiwayat.KompKeahlian, DbType.String);
             dp.Add("@TglDiterima", siswaRiwayat.TglDiterima, DbType.DateTime);
-
-           /* dp.Add("@Kesenian", siswaRiwayat.kesenian, DbType.String);
+            dp.Add("@Kesenian", siswaRiwayat.Kesenian, DbType.String);
             dp.Add("@Olahraga", siswaRiwayat.Olahraga, DbType.String);
             dp.Add("@Organisasi", siswaRiwayat.Organisasi, DbType.String);
             dp.Add("@Hobi", siswaRiwayat.Hobi, DbType.String);
-            dp.Add("@CitaCita", siswaRiwayat.CitaCita, DbType.String);*/
-
+            dp.Add("@CitaCita", siswaRiwayat.CitaCita, DbType.String);
             dp.Add("@TglTinggalSekolah", siswaRiwayat.TglTinggalSekolah, DbType.DateTime);
             dp.Add("@AlasanTInggal", siswaRiwayat.AlasanTinggal, DbType.String);
             dp.Add("@AkhirTamatBljr", siswaRiwayat.AkhirTamatBljr, DbType.DateTime);
@@ -85,13 +85,11 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     AlasanPindah = @AlasanPindah,
                     DiterimaTingkat = @DiterimaTingkat, 
                     KompKeahlian = @KompKeahlian, 
-
-                    /*  Kesenian = @Kesenian,
+                    Kesenian = @Kesenian,
                     Olahraga = @Olahraga,
                     Organisasi = @Organisasi,
                     Hobi = @Hobi,
-                    CitaCita = @CitaCita, */
-
+                    CitaCita = @CitaCita, 
                     TglTinggalSekolah = @TglTinggalSekolah,
                     AlasanTinggal = @AlasanTinggal,
                     AkhirTamatBljr = @AkhirTamatBljr,
@@ -116,13 +114,11 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@DiterimaTIngkat", siswaRiwayat.DiterimaTingkat, DbType.String);
             dp.Add("@KompKeahlian", siswaRiwayat.KompKeahlian, DbType.String);
             dp.Add("@TglDiterima", siswaRiwayat.TglDiterima, DbType.DateTime);
-
-            /* dp.Add("@Kesenian", siswaRiwayat.kesenian, DbType.String);
-             dp.Add("@Olahraga", siswaRiwayat.Olahraga, DbType.String);
-             dp.Add("@Organisasi", siswaRiwayat.Organisasi, DbType.String);
-             dp.Add("@Hobi", siswaRiwayat.Hobi, DbType.String);
-             dp.Add("@CitaCita", siswaRiwayat.CitaCita, DbType.String);*/
-
+            dp.Add("@Kesenian", siswaRiwayat.Kesenian, DbType.String);
+            dp.Add("@Olahraga", siswaRiwayat.Olahraga, DbType.String);
+            dp.Add("@Organisasi", siswaRiwayat.Organisasi, DbType.String);
+            dp.Add("@Hobi", siswaRiwayat.Hobi, DbType.String);
+            dp.Add("@CitaCita", siswaRiwayat.CitaCita, DbType.String);
             dp.Add("@TglTinggalSekolah", siswaRiwayat.TglTinggalSekolah, DbType.DateTime);
             dp.Add("@AlasanTInggal", siswaRiwayat.AlasanTinggal, DbType.String);
             dp.Add("@AkhirTamatBljr", siswaRiwayat.AkhirTamatBljr, DbType.DateTime);
@@ -149,11 +145,12 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             const string sql = @"
                 SELECT
-                  SiswaId, GolDarah, RiwayatPenyakit, 
+                   SiswaId, GolDarah, RiwayatPenyakit, 
                     KelainanJasmani, TinggiBdn, BeratBdn, 
                     LulusanDr, TglIjazah, NoIjazah, LamaBljr,
                     PindahanDr, AlasanPindah,
                     DiterimaTingkat, KompKeahlian, TglDiterima, 
+                    Kesenian, Olahraga, Organisasi, Hobi, CitaCita,
                     TglTinggalSekolah, AlasanTinggal, AkhirTamatBljr, 
                     AKhirNoIjazah 
                 FROM
@@ -177,8 +174,9 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     LulusanDr, TglIjazah, NoIjazah, LamaBljr,
                     PindahanDr, AlasanPindah,
                     DiterimaTingkat, KompKeahlian, TglDiterima, 
+                    Kesenian, Olahraga, Organisasi, Hobi, CitaCita,
                     TglTinggalSekolah, AlasanTinggal, AkhirTamatBljr, 
-                    AKhirNoIjazah 
+                    AKhirNoIjazah
                 FROM
                     SiswaRiwayat";
 

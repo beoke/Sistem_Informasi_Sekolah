@@ -33,6 +33,8 @@
             dataGridView1 = new DataGridView();
             tabPage2 = new TabPage();
             panel2 = new Panel();
+            cb_statustinggal = new ComboBox();
+            cb_Yatim = new ComboBox();
             button2 = new Button();
             label85 = new Label();
             tx_Jmlangkat = new TextBox();
@@ -98,6 +100,10 @@
             tx_Organisasi = new TextBox();
             label37 = new Label();
             panel3 = new Panel();
+            Golddar_O = new RadioButton();
+            Goldar_AB = new RadioButton();
+            Goldar_B = new RadioButton();
+            Goldar_A = new RadioButton();
             label66 = new Label();
             label64 = new Label();
             nu_BB = new NumericUpDown();
@@ -233,12 +239,6 @@
             textBox79 = new TextBox();
             label97 = new Label();
             label98 = new Label();
-            Goldar_A = new RadioButton();
-            Goldar_B = new RadioButton();
-            Goldar_AB = new RadioButton();
-            Golddar_O = new RadioButton();
-            cb_Yatim = new ComboBox();
-            cb_statustinggal = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -338,6 +338,22 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(450, 520);
             panel2.TabIndex = 2;
+            // 
+            // cb_statustinggal
+            // 
+            cb_statustinggal.FormattingEnabled = true;
+            cb_statustinggal.Location = new Point(203, 211);
+            cb_statustinggal.Name = "cb_statustinggal";
+            cb_statustinggal.Size = new Size(229, 23);
+            cb_statustinggal.TabIndex = 42;
+            // 
+            // cb_Yatim
+            // 
+            cb_Yatim.FormattingEnabled = true;
+            cb_Yatim.Location = new Point(203, 33);
+            cb_Yatim.Name = "cb_Yatim";
+            cb_Yatim.Size = new Size(229, 23);
+            cb_Yatim.TabIndex = 41;
             // 
             // button2
             // 
@@ -1014,7 +1030,50 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(450, 520);
             panel3.TabIndex = 2;
-            panel3.Paint += panel3_Paint;
+            // 
+            // Golddar_O
+            // 
+            Golddar_O.AutoSize = true;
+            Golddar_O.Location = new Point(300, 25);
+            Golddar_O.Name = "Golddar_O";
+            Golddar_O.Size = new Size(34, 19);
+            Golddar_O.TabIndex = 42;
+            Golddar_O.TabStop = true;
+            Golddar_O.Text = "O";
+            Golddar_O.UseVisualStyleBackColor = true;
+            // 
+            // Goldar_AB
+            // 
+            Goldar_AB.AutoSize = true;
+            Goldar_AB.Location = new Point(244, 24);
+            Goldar_AB.Name = "Goldar_AB";
+            Goldar_AB.Size = new Size(40, 19);
+            Goldar_AB.TabIndex = 41;
+            Goldar_AB.TabStop = true;
+            Goldar_AB.Text = "AB";
+            Goldar_AB.UseVisualStyleBackColor = true;
+            // 
+            // Goldar_B
+            // 
+            Goldar_B.AutoSize = true;
+            Goldar_B.Location = new Point(192, 24);
+            Goldar_B.Name = "Goldar_B";
+            Goldar_B.Size = new Size(32, 19);
+            Goldar_B.TabIndex = 40;
+            Goldar_B.TabStop = true;
+            Goldar_B.Text = "B";
+            Goldar_B.UseVisualStyleBackColor = true;
+            // 
+            // Goldar_A
+            // 
+            Goldar_A.AutoSize = true;
+            Goldar_A.Location = new Point(138, 22);
+            Goldar_A.Name = "Goldar_A";
+            Goldar_A.Size = new Size(33, 19);
+            Goldar_A.TabIndex = 39;
+            Goldar_A.TabStop = true;
+            Goldar_A.Text = "A";
+            Goldar_A.UseVisualStyleBackColor = true;
             // 
             // label66
             // 
@@ -1823,7 +1882,6 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(450, 524);
             panel6.TabIndex = 53;
-            panel6.Paint += panel6_Paint;
             // 
             // button1
             // 
@@ -2031,7 +2089,7 @@
             // label86
             // 
             label86.AutoSize = true;
-            label86.Location = new Point(38, 448);
+            label86.Location = new Point(30, 448);
             label86.Name = "label86";
             label86.Size = new Size(149, 15);
             label86.TabIndex = 106;
@@ -2354,66 +2412,6 @@
             label98.Size = new Size(130, 15);
             label98.TabIndex = 39;
             label98.Text = "a. Tanggal Mulai kerja : ";
-            // 
-            // Goldar_A
-            // 
-            Goldar_A.AutoSize = true;
-            Goldar_A.Location = new Point(138, 22);
-            Goldar_A.Name = "Goldar_A";
-            Goldar_A.Size = new Size(33, 19);
-            Goldar_A.TabIndex = 39;
-            Goldar_A.TabStop = true;
-            Goldar_A.Text = "A";
-            Goldar_A.UseVisualStyleBackColor = true;
-            // 
-            // Goldar_B
-            // 
-            Goldar_B.AutoSize = true;
-            Goldar_B.Location = new Point(192, 24);
-            Goldar_B.Name = "Goldar_B";
-            Goldar_B.Size = new Size(32, 19);
-            Goldar_B.TabIndex = 40;
-            Goldar_B.TabStop = true;
-            Goldar_B.Text = "B";
-            Goldar_B.UseVisualStyleBackColor = true;
-            // 
-            // Goldar_AB
-            // 
-            Goldar_AB.AutoSize = true;
-            Goldar_AB.Location = new Point(244, 24);
-            Goldar_AB.Name = "Goldar_AB";
-            Goldar_AB.Size = new Size(40, 19);
-            Goldar_AB.TabIndex = 41;
-            Goldar_AB.TabStop = true;
-            Goldar_AB.Text = "AB";
-            Goldar_AB.UseVisualStyleBackColor = true;
-            // 
-            // Golddar_O
-            // 
-            Golddar_O.AutoSize = true;
-            Golddar_O.Location = new Point(300, 25);
-            Golddar_O.Name = "Golddar_O";
-            Golddar_O.Size = new Size(34, 19);
-            Golddar_O.TabIndex = 42;
-            Golddar_O.TabStop = true;
-            Golddar_O.Text = "O";
-            Golddar_O.UseVisualStyleBackColor = true;
-            // 
-            // cb_Yatim
-            // 
-            cb_Yatim.FormattingEnabled = true;
-            cb_Yatim.Location = new Point(203, 33);
-            cb_Yatim.Name = "cb_Yatim";
-            cb_Yatim.Size = new Size(229, 23);
-            cb_Yatim.TabIndex = 41;
-            // 
-            // cb_statustinggal
-            // 
-            cb_statustinggal.FormattingEnabled = true;
-            cb_statustinggal.Location = new Point(203, 211);
-            cb_statustinggal.Name = "cb_statustinggal";
-            cb_statustinggal.Size = new Size(229, 23);
-            cb_statustinggal.TabIndex = 42;
             // 
             // Form1
             // 

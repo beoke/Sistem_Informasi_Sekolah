@@ -1,21 +1,25 @@
+using Sistem_Informasi_Sekolah.DataIndukSiswa.Dal;
+using System.Security.Permissions;
+
 namespace Sistem_Informasi_Sekolah
 {
     public partial class Form1 : Form
     {
+        private DbDal db;
+        private readonly SiswaDal siswaDal;
+        private readonly SiswaRiwayatDal siswaRiwayatDal;
+        private readonly SiswaWaliDal siswaWaliDal;
+        private readonly SiswaLulusDal siswaLulusDal;
+        private readonly SiswaBeasiswaDal siswaBeasiswaDal;
         public Form1()
         {
+            db = new DbDal();
             InitializeComponent();
+
             initCombo();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         public void initCombo()
         {
             //Agama
