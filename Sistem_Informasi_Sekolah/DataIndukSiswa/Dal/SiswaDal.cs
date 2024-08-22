@@ -118,7 +118,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
         }
-        public SiswaModel? GetData(int siswaId)
+        public IEnumerable<SiswaModel> ListData()
         {
             const string sql = @"
                 SELECT
@@ -132,10 +132,10 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     SiswaId = @SiswaId";
 
             var dp = new DynamicParameters();
-            dp.Add("@SiswaId", siswaId, DbType.Int16);
+            dp.Add("@SiswaId", ListData, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QueryFirstOrDefault<SiswaModel>(sql, dp);
+            return conn.Query<SiswaModel>(sql, dp);
         }
     }
 }

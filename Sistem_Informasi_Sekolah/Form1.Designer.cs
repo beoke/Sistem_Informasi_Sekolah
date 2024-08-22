@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
+            SiswaTabControl = new TabControl();
             tabPage1 = new TabPage();
-            dataGridView1 = new DataGridView();
-            tabPage2 = new TabPage();
+            NewButton = new Button();
+            RefreshButton = new Button();
+            ListSiswa_grid = new DataGridView();
+            PersonalTabPage = new TabPage();
+            label51 = new Label();
             panel2 = new Panel();
             jarakSklh_numeric = new NumericUpDown();
             jmlSauAngkat_numeric = new NumericUpDown();
@@ -82,7 +85,7 @@
             tabPage3 = new TabPage();
             panel4 = new Panel();
             dtp_tamatbelajar = new DateTimePicker();
-            dataGridView2 = new DataGridView();
+            dataGrid_beasiswa = new DataGridView();
             label49 = new Label();
             tx_IjazahNo = new TextBox();
             label48 = new Label();
@@ -244,11 +247,10 @@
             tx_melanjutkan = new TextBox();
             label97 = new Label();
             label98 = new Label();
-            label51 = new Label();
-            tabControl1.SuspendLayout();
+            SiswaTabControl.SuspendLayout();
             tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ListSiswa_grid).BeginInit();
+            PersonalTabPage.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)jarakSklh_numeric).BeginInit();
             ((System.ComponentModel.ISupportInitialize)jmlSauAngkat_numeric).BeginInit();
@@ -258,7 +260,7 @@
             ((System.ComponentModel.ISupportInitialize)anakke_numeric).BeginInit();
             tabPage3.SuspendLayout();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGrid_beasiswa).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nu_BB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nu_TB).BeginInit();
@@ -274,64 +276,96 @@
             ((System.ComponentModel.ISupportInitialize)nu_penghasilanLulus).BeginInit();
             SuspendLayout();
             // 
-            // tabControl1
+            // SiswaTabControl
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabPage4);
-            tabControl1.Controls.Add(tabPage5);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Font = new Font("Sylfaen", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(758, 572);
-            tabControl1.TabIndex = 0;
+            SiswaTabControl.Controls.Add(tabPage1);
+            SiswaTabControl.Controls.Add(PersonalTabPage);
+            SiswaTabControl.Controls.Add(tabPage3);
+            SiswaTabControl.Controls.Add(tabPage4);
+            SiswaTabControl.Controls.Add(tabPage5);
+            SiswaTabControl.Dock = DockStyle.Fill;
+            SiswaTabControl.Font = new Font("Sylfaen", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            SiswaTabControl.Location = new Point(0, 0);
+            SiswaTabControl.Margin = new Padding(3, 2, 3, 2);
+            SiswaTabControl.Name = "SiswaTabControl";
+            SiswaTabControl.SelectedIndex = 0;
+            SiswaTabControl.Size = new Size(754, 572);
+            SiswaTabControl.TabIndex = 0;
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Location = new Point(4, 24);
+            tabPage1.Controls.Add(NewButton);
+            tabPage1.Controls.Add(RefreshButton);
+            tabPage1.Controls.Add(ListSiswa_grid);
+            tabPage1.Location = new Point(4, 27);
             tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(750, 544);
+            tabPage1.Size = new Size(746, 541);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "List Data";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // NewButton
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Top;
-            dataGridView1.Location = new Point(3, 2);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(744, 412);
-            dataGridView1.TabIndex = 0;
+            NewButton.Location = new Point(663, 421);
+            NewButton.Name = "NewButton";
+            NewButton.Size = new Size(75, 23);
+            NewButton.TabIndex = 2;
+            NewButton.Text = "New";
+            NewButton.UseVisualStyleBackColor = true;
+            NewButton.Click += NewButton_Click;
             // 
-            // tabPage2
+            // RefreshButton
             // 
-            tabPage2.Controls.Add(label51);
-            tabPage2.Controls.Add(panel2);
-            tabPage2.Controls.Add(panel1);
-            tabPage2.Controls.Add(SiswaIDtxt);
-            tabPage2.Controls.Add(btn_SaveSiswa);
-            tabPage2.Controls.Add(label68);
-            tabPage2.Controls.Add(label20);
-            tabPage2.Font = new Font("Sylfaen", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            tabPage2.Location = new Point(4, 27);
-            tabPage2.Margin = new Padding(3, 2, 3, 2);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(750, 541);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Data Personal";
-            tabPage2.UseVisualStyleBackColor = true;
+            RefreshButton.Location = new Point(8, 421);
+            RefreshButton.Name = "RefreshButton";
+            RefreshButton.Size = new Size(75, 23);
+            RefreshButton.TabIndex = 1;
+            RefreshButton.Text = "Refresh";
+            RefreshButton.UseVisualStyleBackColor = true;
+            RefreshButton.Click += RefreshButton_Click;
+            // 
+            // ListSiswa_grid
+            // 
+            ListSiswa_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ListSiswa_grid.Dock = DockStyle.Top;
+            ListSiswa_grid.Location = new Point(3, 2);
+            ListSiswa_grid.Margin = new Padding(3, 2, 3, 2);
+            ListSiswa_grid.Name = "ListSiswa_grid";
+            ListSiswa_grid.RowHeadersWidth = 51;
+            ListSiswa_grid.RowTemplate.Height = 29;
+            ListSiswa_grid.Size = new Size(740, 412);
+            ListSiswa_grid.TabIndex = 0;
+            ListSiswa_grid.DoubleClick += ListSiswa_grid_DoubleClick_1;
+            // 
+            // PersonalTabPage
+            // 
+            PersonalTabPage.Controls.Add(label51);
+            PersonalTabPage.Controls.Add(panel2);
+            PersonalTabPage.Controls.Add(panel1);
+            PersonalTabPage.Controls.Add(SiswaIDtxt);
+            PersonalTabPage.Controls.Add(btn_SaveSiswa);
+            PersonalTabPage.Controls.Add(label68);
+            PersonalTabPage.Controls.Add(label20);
+            PersonalTabPage.Font = new Font("Sylfaen", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            PersonalTabPage.Location = new Point(4, 27);
+            PersonalTabPage.Margin = new Padding(3, 2, 3, 2);
+            PersonalTabPage.Name = "PersonalTabPage";
+            PersonalTabPage.Padding = new Padding(3, 2, 3, 2);
+            PersonalTabPage.Size = new Size(746, 541);
+            PersonalTabPage.TabIndex = 1;
+            PersonalTabPage.Text = "Data Personal";
+            PersonalTabPage.UseVisualStyleBackColor = true;
+            // 
+            // label51
+            // 
+            label51.AutoSize = true;
+            label51.Location = new Point(21, 4);
+            label51.Name = "label51";
+            label51.Size = new Size(56, 18);
+            label51.TabIndex = 45;
+            label51.Text = "Siawa ID";
             // 
             // panel2
             // 
@@ -805,7 +839,7 @@
             tabPage3.Location = new Point(4, 27);
             tabPage3.Margin = new Padding(3, 2, 3, 2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(750, 541);
+            tabPage3.Size = new Size(746, 541);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Kesehatan & Pendidikan";
             tabPage3.UseVisualStyleBackColor = true;
@@ -814,7 +848,7 @@
             // 
             panel4.BackColor = SystemColors.ActiveBorder;
             panel4.Controls.Add(dtp_tamatbelajar);
-            panel4.Controls.Add(dataGridView2);
+            panel4.Controls.Add(dataGrid_beasiswa);
             panel4.Controls.Add(label49);
             panel4.Controls.Add(tx_IjazahNo);
             panel4.Controls.Add(label48);
@@ -852,16 +886,16 @@
             dtp_tamatbelajar.Size = new Size(196, 25);
             dtp_tamatbelajar.TabIndex = 72;
             // 
-            // dataGridView2
+            // dataGrid_beasiswa
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(32, 205);
-            dataGridView2.Margin = new Padding(3, 2, 3, 2);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(310, 95);
-            dataGridView2.TabIndex = 70;
+            dataGrid_beasiswa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGrid_beasiswa.Location = new Point(32, 205);
+            dataGrid_beasiswa.Margin = new Padding(3, 2, 3, 2);
+            dataGrid_beasiswa.Name = "dataGrid_beasiswa";
+            dataGrid_beasiswa.RowHeadersWidth = 51;
+            dataGrid_beasiswa.RowTemplate.Height = 29;
+            dataGrid_beasiswa.Size = new Size(310, 95);
+            dataGrid_beasiswa.TabIndex = 70;
             // 
             // label49
             // 
@@ -1452,7 +1486,7 @@
             tabPage4.Location = new Point(4, 27);
             tabPage4.Margin = new Padding(3, 2, 3, 2);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(750, 541);
+            tabPage4.Size = new Size(746, 541);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Data wali / Ortu";
             tabPage4.UseVisualStyleBackColor = true;
@@ -2317,7 +2351,7 @@
             tabPage5.Location = new Point(4, 27);
             tabPage5.Margin = new Padding(3, 2, 3, 2);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(750, 541);
+            tabPage5.Size = new Size(746, 541);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Ket setelah lulus";
             tabPage5.UseVisualStyleBackColor = true;
@@ -2451,30 +2485,21 @@
             label98.TabIndex = 39;
             label98.Text = "a. Tanggal Mulai kerja : ";
             // 
-            // label51
-            // 
-            label51.AutoSize = true;
-            label51.Location = new Point(21, 4);
-            label51.Name = "label51";
-            label51.Size = new Size(56, 18);
-            label51.TabIndex = 45;
-            label51.Text = "Siawa ID";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(758, 572);
-            Controls.Add(tabControl1);
+            ClientSize = new Size(754, 572);
+            Controls.Add(SiswaTabControl);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            tabControl1.ResumeLayout(false);
+            SiswaTabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ListSiswa_grid).EndInit();
+            PersonalTabPage.ResumeLayout(false);
+            PersonalTabPage.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)jarakSklh_numeric).EndInit();
@@ -2488,7 +2513,7 @@
             tabPage3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGrid_beasiswa).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nu_BB).EndInit();
@@ -2513,10 +2538,10 @@
 
         #endregion
 
-        private TabControl tabControl1;
+        private TabControl SiswaTabControl;
         private TabPage tabPage1;
-        private DataGridView dataGridView1;
-        private TabPage tabPage2;
+        private DataGridView ListSiswa_grid;
+        private TabPage PersonalTabPage;
         private TabPage tabPage3;
         private TabPage tabPage4;
         private Panel panel2;
@@ -2696,7 +2721,7 @@
         private RadioButton rb_WNIIbu;
         private RadioButton rb_AsingWali;
         private RadioButton rb_WNIWali;
-        private DataGridView dataGridView2;
+        private DataGridView dataGrid_beasiswa;
         private Label label41;
         private TextBox tx_MeninggalIbu;
         private Label label42;
@@ -2734,5 +2759,7 @@
         private ComboBox cb_hidupIbu;
         private ComboBox cb_HidupAyah;
         private Label label51;
+        private Button NewButton;
+        private Button RefreshButton;
     }
 }

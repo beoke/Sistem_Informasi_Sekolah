@@ -1,9 +1,12 @@
+using Dapper;
 using Microsoft.VisualBasic.Devices;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Dal;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Helpers;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
 using System.Data.SqlClient;
 using System.Security.Permissions;
+using System.Security.Policy;
+using System.Windows.Forms;
 
 namespace Sistem_Informasi_Sekolah
 {
@@ -17,7 +20,7 @@ namespace Sistem_Informasi_Sekolah
         public Form1()
         {
             InitializeComponent();
-
+            LoadData();
             initCombo();
             siswaDal = new SiswaDal();
             siswaBeasiswaDal = new SiswaBeasiswaDal();
@@ -26,6 +29,32 @@ namespace Sistem_Informasi_Sekolah
             siswaLulusDal = new SiswaLulusDal();
 
         }
+        #region TAAMPIL DATA
+        public void LoadData()
+        {
+            const string sql = @"SELECT SiswaID,NamaLengkap,Alamat FROM Siswa";
+            var koneksi = new SqlConnection(ConnStringHelper.Get());
+            var load = koneksi.Query<ListDataModel>(sql);
+            ListSiswa_grid.DataSource = load;
+        }
+
+        public class ListDataModel
+        {
+            public int SiswaId { get; set; }
+            public string NamaLengkap { get; set; }
+            public string Alamat { get; set; }
+        }
+        private void ListSiswa_grid_DoubleClick_1(object sender, EventArgs e)
+        {
+            var siswaIdstr = ListSiswa_grid.CurrentRow.Cells["SiswaId"].Value.ToString();
+            if (siswaIdstr is null)
+                return;
+            var siswaId = Convert.ToInt32(siswaIdstr);
+            GetSiswa(siswaId);
+            SiswaTabControl.SelectedIndex = 1;
+        }
+
+        #endregion
 
         #region PRODUCE_ISI
         public void initCombo()
@@ -48,8 +77,8 @@ namespace Sistem_Informasi_Sekolah
             cb_statustinggal.SelectedIndex = 0;
 
             //Hidup meninggal
-            List<string>HIdup =new List<string>() { "HIDUP", "MENINGGAL"};
-            cb_hidupWali.DataSource =new List<string>(HIdup);
+            List<string> HIdup = new List<string>() { "HIDUP", "MENINGGAL" };
+            cb_hidupWali.DataSource = new List<string>(HIdup);
             cb_hidupIbu.DataSource = new List<string>(HIdup);
             cb_HidupAyah.DataSource = new List<string>(HIdup);
         }
@@ -227,26 +256,113 @@ namespace Sistem_Informasi_Sekolah
 
         #endregion
 
+        #region GET SISWA
+        private void GetSiswa(int siswaId)
+        {
+            ClearInput();
+            SiswaIDtxt.Text = siswaId.ToString();
+            GetSiswaPersonal(siswaId);
+            GetSiswaRiwayat(siswaId);
+            GetSiswaWali(siswaId);
+        }
+
+        private void GetSiswaPersonal(int siswaId)
+        {
+            // isi ini
+        }
+        private void GetSiswaRiwayat(int siswaId)
+        {
+            // isi ini
+        }
+        private void GetSiswaWali(int siswaId)
+        {
+            // isi ini
+        }
+        #endregion
+
+        #region HELPER
+        private void ClearInput()
+        {
+            //Personal
+
+            //Riwayat
+
+            //Wali
+
+            //lulus
+        }
+        private void RefreshListData()
+        {
+            var listData = siswaDal.ListData() ?? new List<SiswaModel>();
+            var dataSource = listData
+                .Select(x => new ListSiswaDto
+                {
+                    SiswaId = x.SiswaId,
+                    Nama = x.NamaLengkap,
+                    TglLahir = x.TglLahir,
+                    Gender = x.Gender == 0 ? "Pria" : "Wanita",
+                    Alamat = x.Alamat
+                })
+                .ToList();
+            ListSiswa_grid.DataSource = dataSource;
+            ListSiswa_grid.Refresh();
+        }
+        #endregion
+        #region BUTTON SAVE
         private void btn_SaveSiswa_Click(object sender, EventArgs e)
         {
             SaveSiswa();
+            RefreshListData();
         }
 
         private void btn_SaveSiswaRiwayat_Click(object sender, EventArgs e)
         {
             SaveSiswa();
+            RefreshListData();
         }
 
         private void btn_SaveSiswaWali_Click(object sender, EventArgs e)
         {
             SaveSiswa();
+            RefreshListData();
         }
 
         private void btn_SaveLulus_Click(object sender, EventArgs e)
         {
             SaveSiswa();
+            RefreshListData();
+        }
+        #endregion
+
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            RefreshListData();
+        }
+        public class ListSiswaDto
+        {
+            public int SiswaId { get; set; }
+            public string Nama { get; set; }
+            public DateTime TglLahir { get; set; }
+            public string Gender { get; set; }
+            public string Alamat { get; set; }
         }
 
+        private void NewButton_Click(object sender, EventArgs e)
+        {
+            //  jika masih ada data baru, konfirmasikan ke user
+            var siswaId = SiswaIDtxt.Text;
+            var siswaName = tx_Nmlengkap.Text;
+            if (siswaId == string.Empty && siswaName != string.Empty)
+            {
+                var result = MessageBox.Show("Buat data baru??", "Konfirmasi", MessageBoxButtons.YesNoCancel);
+                if (result != DialogResult.Yes)
+                    return;
+            }
 
+            ClearInput();
+            SiswaTabControl.SelectedTab = PersonalTabPage;
+            tx_Nmlengkap.Focus();
+        }
     }
 }   
