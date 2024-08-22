@@ -31,7 +31,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     @LulusanDr, @TglIjazah, @NoIjazah, @LamaBljr,
                     @PindahanDr, @AlasanPindah,
                     @DiterimaTingkat, @KompKeahlian, @TglDiterima,
-                    @Kesenian, @Olahraga, @Organisasi, @Hobi, @CitaCita
+                    @Kesenian, @Olahraga, @Organisasi, @Hobi, @CitaCita,
                     @TglTinggalSekolah, @AlasanTinggal, @AkhirTamatBljr, 
                     @AKhirNoIjazah)";
 
@@ -45,7 +45,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@LulusanDr", siswaRiwayat.LulusanDr, DbType.String);
             dp.Add("@TglIjazah", siswaRiwayat.TglIjazah, DbType.DateTime);
             dp.Add("@NoIjazah", siswaRiwayat.NoIjazah, DbType.String);
-            dp.Add("@LamBljr", siswaRiwayat.LamaBljr, DbType.String);
+            dp.Add("@LamaBljr", siswaRiwayat.LamaBljr, DbType.String);
             dp.Add("@PindahanDr", siswaRiwayat.PindahanDr, DbType.String);
             dp.Add("@AlasanPindah", siswaRiwayat.AlasanPindah, DbType.String);
             dp.Add("@DiterimaTIngkat", siswaRiwayat.DiterimaTingkat, DbType.String);
@@ -59,7 +59,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@TglTinggalSekolah", siswaRiwayat.TglTinggalSekolah, DbType.DateTime);
             dp.Add("@AlasanTInggal", siswaRiwayat.AlasanTinggal, DbType.String);
             dp.Add("@AkhirTamatBljr", siswaRiwayat.AkhirTamatBljr, DbType.DateTime);
-            dp.Add("@AkhirNoIjazah", siswaRiwayat.AkhirNoIjazah, DbType.DateTime);
+            dp.Add("@AkhirNoIjazah", siswaRiwayat.AkhirNoIjazah, DbType.String);
 
 
 
@@ -108,7 +108,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@LulusanDr", siswaRiwayat.LulusanDr, DbType.String);
             dp.Add("@TglIjazah", siswaRiwayat.TglIjazah, DbType.DateTime);
             dp.Add("@NoIjazah", siswaRiwayat.NoIjazah, DbType.String);
-            dp.Add("@LamBljr", siswaRiwayat.LamaBljr, DbType.String);
+            dp.Add("@LamaBljr", siswaRiwayat.LamaBljr, DbType.String);
             dp.Add("@PindahanDr", siswaRiwayat.PindahanDr, DbType.String);
             dp.Add("@AlasanPindah", siswaRiwayat.AlasanPindah, DbType.String);
             dp.Add("@DiterimaTIngkat", siswaRiwayat.DiterimaTingkat, DbType.String);
@@ -122,7 +122,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@TglTinggalSekolah", siswaRiwayat.TglTinggalSekolah, DbType.DateTime);
             dp.Add("@AlasanTInggal", siswaRiwayat.AlasanTinggal, DbType.String);
             dp.Add("@AkhirTamatBljr", siswaRiwayat.AkhirTamatBljr, DbType.DateTime);
-            dp.Add("@AkhirNoIjazah", siswaRiwayat.AkhirNoIjazah, DbType.DateTime);
+            dp.Add("@AkhirNoIjazah", siswaRiwayat.AkhirNoIjazah, DbType.String);
             var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
         }

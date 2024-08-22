@@ -13,11 +13,11 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 {
     public class SiswaWaliDal
     {
-        public void Insert(IEnumerable<SiswaWaliModel> listWali)
+        public int Insert(IEnumerable<SiswaWaliModel> listWali)
         {
             const string sql = @" 
             INSERT INTO SiswaWali(
-            SiswaId, JenisWali, Nama, TmptLahir,
+            SiswaId, JenisWali, Nama, TmpLahir,
             TglLahir, Agama, Kewarga, Pendidikan, 
             Pekerjaan, Penghasilan, Alamat, NoKK,
             NoTelp, StatusHidup, NIK)
@@ -27,6 +27,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             @Pekerjaan, @Penghasilan, @Alamat, @NoKK,
             @NoTelp, @StatusHidup, @NIK)";
 
+            int cek = 0;
             using var conn = new SqlConnection(ConnStringHelper.Get());
             foreach (var item in listWali)
             {
@@ -34,6 +35,8 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 dp.Add("@SiswaId", item.SiswaId,System.Data.DbType.Int32);
                 dp.Add("@JenisWali", item.JenisWali,System.Data.DbType.String);
                 dp.Add("@Nama", item.Nama,System.Data.DbType.String);
+                dp.Add("@TmpLahir", item.TmpLahir,System.Data.DbType.String);
+                dp.Add("@TglLahir", item.TglLahir,System.Data.DbType.DateTime);
                 dp.Add("@Agama", item.Agama,System.Data.DbType.String);
                 dp.Add("@Kewarga", item.Kewarga,System.Data.DbType.String);
                 dp.Add("@Pendidikan", item.Kewarga,System.Data.DbType.String);
@@ -44,8 +47,58 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 dp.Add("@NoTelp", item.NoTelp,System.Data.DbType.String);
                 dp.Add("@StatusHidup",item.StatusHidup,System.Data.DbType.String);
                 dp.Add("@NIK", item.NIK,System.Data.DbType.String);
-                conn.Execute(sql, dp);
+                var insert = conn.Execute(sql, dp);
+                if (insert > 0) cek++;
             }
+            return cek;
+        }
+
+        public int Update(IEnumerable<SiswaWaliModel> siswaWalis)
+        {
+
+            const string sql = @"
+                    UPDATE SiswaWali
+                    SET
+                        JenisWali = @JenisWali,
+                        Nama = @Nama,
+                        TmpLahir = @TmpLahir,
+                        TglLahir = @TglLahir,
+                        Agama = @Agama,
+                        Kewarga = @Kewarga,
+                        Pendidikan = @Pendidikan,
+                        Pekerjaan = @Pekerjaan,
+                        Penghasilan = @Penghasilan,
+                        Alamat = @Alamat,
+                        NoKK = @NoKK,
+                        NoTelp = @NoTelp,
+                        StatusHidup = @StatusHidup,
+                        NIK = @NIK
+                    WHERE SiswaId = @SiswaId";
+            int cek = 0;
+            using var koneksi = new SqlConnection(ConnStringHelper.Get());
+            foreach (var siswaWali in siswaWalis)
+            {
+                var dp = new DynamicParameters();
+                dp.Add("@SiswaId", siswaWali.SiswaId, DbType.Int32);
+                dp.Add("@JenisWali", siswaWali.JenisWali, DbType.String);
+                dp.Add("@Nama", siswaWali.Nama, DbType.String);
+                dp.Add("@TmpLahir", siswaWali.TmpLahir, DbType.String);
+                dp.Add("@TglLahir", siswaWali.TglLahir, DbType.Date);
+                dp.Add("@Agama", siswaWali.Agama, DbType.String);
+                dp.Add("@Kewarga", siswaWali.Kewarga, DbType.String);
+                dp.Add("@Pendidikan", siswaWali.Pendidikan, DbType.String);
+                dp.Add("@Pekerjaan", siswaWali.Pekerjaan, DbType.String);
+                dp.Add("@Penghasilan", siswaWali.Penghasilan, DbType.Decimal);
+                dp.Add("@Alamat", siswaWali.Alamat, DbType.String);
+                dp.Add("@NoKK", siswaWali.NoKK, DbType.String);
+                dp.Add("@NoTelp", siswaWali.NoTelp, DbType.String);
+                dp.Add("@StatusHidup", siswaWali.StatusHidup, DbType.String);
+                dp.Add("@NIK", siswaWali.NIK, DbType.String);
+
+                var update = koneksi.Execute(sql, dp);
+                if (update > 0) cek++;
+            }
+            return cek;
         }
         public void Delete(int siswaId)
         {
@@ -65,7 +118,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             const string sql = @"
                 SELECT 
-                   SiswaId, JenisWali, Nama, TmptLahir,
+                   SiswaId, JenisWali, Nama, TmpLahir,
                    TglLahir, Agama, Kewarga, Pendidikan, 
                    Pekerjaan, Penghasilan, Alamat, NoKK,
                    NoTelp, StatusHidup, NIK
@@ -80,5 +133,8 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             using var conn = new SqlConnection(ConnStringHelper.Get());
             return conn.Query<SiswaWaliModel>(sql, dp);
         }
+
+
+        
     }
 }
