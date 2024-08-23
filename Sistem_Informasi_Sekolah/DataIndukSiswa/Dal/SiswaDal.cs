@@ -78,9 +78,10 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                       JrkKeSekolah=@JrkKeSekolah,
                       TransportSekolah=@TransportSekolah
                   WHERE 
-                       SiswaId=@SiswaId";
+                       SiswaId = @SiswaId";
 
             var dp = new DynamicParameters();
+            dp.Add("@SiswaId", siswa.SiswaId, DbType.Int16);
             dp.Add("@NamaLengkap", siswa.NamaLengkap, DbType.String);
             dp.Add("@NamaPanggil", siswa.NamaPanggil, DbType.String);
             dp.Add("@Gender", siswa.Gender, DbType.Int16);
@@ -150,12 +151,9 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     YatimPiatu, Bahasa, Alamat,
                     NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah
                 FROM
-                    Siswa
-                WHERE
-                    SiswaId = @SiswaId";
+                    Siswa";
 
             var dp = new DynamicParameters();
-            dp.Add("@SiswaId", ListData, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             return conn.Query<SiswaModel>(sql, dp);

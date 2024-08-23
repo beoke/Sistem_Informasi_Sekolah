@@ -147,11 +147,8 @@
             label66 = new Label();
             tabPage4 = new TabPage();
             panel8 = new Panel();
-            tx_nikIbu = new TextBox();
             cb_hidupIbu = new ComboBox();
-            tx_noKKibu = new TextBox();
             label53 = new Label();
-            label77 = new Label();
             nu_gajiIbu = new NumericUpDown();
             tx_MeninggalIbu = new TextBox();
             rb_AsingIbu = new RadioButton();
@@ -291,7 +288,7 @@
             SiswaTabControl.Margin = new Padding(3, 2, 3, 2);
             SiswaTabControl.Name = "SiswaTabControl";
             SiswaTabControl.SelectedIndex = 0;
-            SiswaTabControl.Size = new Size(754, 572);
+            SiswaTabControl.Size = new Size(754, 588);
             SiswaTabControl.TabIndex = 0;
             // 
             // tabPage1
@@ -303,7 +300,7 @@
             tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(746, 541);
+            tabPage1.Size = new Size(746, 557);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "List Data";
             tabPage1.UseVisualStyleBackColor = true;
@@ -355,7 +352,7 @@
             PersonalTabPage.Margin = new Padding(3, 2, 3, 2);
             PersonalTabPage.Name = "PersonalTabPage";
             PersonalTabPage.Padding = new Padding(3, 2, 3, 2);
-            PersonalTabPage.Size = new Size(746, 541);
+            PersonalTabPage.Size = new Size(746, 557);
             PersonalTabPage.TabIndex = 1;
             PersonalTabPage.Text = "Data Personal";
             PersonalTabPage.UseVisualStyleBackColor = true;
@@ -394,7 +391,7 @@
             panel2.Location = new Point(347, 53);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(395, 444);
+            panel2.Size = new Size(393, 444);
             panel2.TabIndex = 2;
             // 
             // jarakSklh_numeric
@@ -583,16 +580,16 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(0, 53);
+            panel1.Location = new Point(8, 53);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(341, 444);
+            panel1.Size = new Size(333, 444);
             panel1.TabIndex = 1;
             // 
             // cb_warganegara
             // 
             cb_warganegara.FormattingEnabled = true;
-            cb_warganegara.Location = new Point(37, 260);
+            cb_warganegara.Location = new Point(37, 267);
             cb_warganegara.Name = "cb_warganegara";
             cb_warganegara.Size = new Size(230, 26);
             cb_warganegara.TabIndex = 43;
@@ -786,7 +783,7 @@
             // 
             // btn_SaveSiswa
             // 
-            btn_SaveSiswa.Location = new Point(667, 508);
+            btn_SaveSiswa.Location = new Point(663, 499);
             btn_SaveSiswa.Name = "btn_SaveSiswa";
             btn_SaveSiswa.Size = new Size(75, 23);
             btn_SaveSiswa.TabIndex = 43;
@@ -824,7 +821,7 @@
             tabPage3.Location = new Point(4, 27);
             tabPage3.Margin = new Padding(3, 2, 3, 2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(746, 541);
+            tabPage3.Size = new Size(746, 557);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Kesehatan & Pendidikan";
             tabPage3.UseVisualStyleBackColor = true;
@@ -1471,7 +1468,7 @@
             tabPage4.Location = new Point(4, 27);
             tabPage4.Margin = new Padding(3, 2, 3, 2);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(746, 541);
+            tabPage4.Size = new Size(746, 557);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Data wali / Ortu";
             tabPage4.UseVisualStyleBackColor = true;
@@ -1479,11 +1476,8 @@
             // panel8
             // 
             panel8.BackColor = Color.DarkGray;
-            panel8.Controls.Add(tx_nikIbu);
             panel8.Controls.Add(cb_hidupIbu);
-            panel8.Controls.Add(tx_noKKibu);
             panel8.Controls.Add(label53);
-            panel8.Controls.Add(label77);
             panel8.Controls.Add(nu_gajiIbu);
             panel8.Controls.Add(tx_MeninggalIbu);
             panel8.Controls.Add(rb_AsingIbu);
@@ -1509,33 +1503,17 @@
             panel8.Controls.Add(label69);
             panel8.Location = new Point(243, 2);
             panel8.Name = "panel8";
-            panel8.Size = new Size(247, 531);
+            panel8.Size = new Size(247, 506);
             panel8.TabIndex = 55;
-            // 
-            // tx_nikIbu
-            // 
-            tx_nikIbu.Location = new Point(15, 395);
-            tx_nikIbu.Margin = new Padding(3, 2, 3, 2);
-            tx_nikIbu.Name = "tx_nikIbu";
-            tx_nikIbu.Size = new Size(220, 25);
-            tx_nikIbu.TabIndex = 121;
             // 
             // cb_hidupIbu
             // 
             cb_hidupIbu.FormattingEnabled = true;
-            cb_hidupIbu.Location = new Point(88, 471);
+            cb_hidupIbu.Location = new Point(13, 414);
             cb_hidupIbu.Margin = new Padding(3, 2, 3, 2);
             cb_hidupIbu.Name = "cb_hidupIbu";
-            cb_hidupIbu.Size = new Size(149, 26);
+            cb_hidupIbu.Size = new Size(222, 26);
             cb_hidupIbu.TabIndex = 120;
-            // 
-            // tx_noKKibu
-            // 
-            tx_noKKibu.Location = new Point(15, 368);
-            tx_noKKibu.Margin = new Padding(3, 2, 3, 2);
-            tx_noKKibu.Name = "tx_noKKibu";
-            tx_noKKibu.Size = new Size(220, 25);
-            tx_noKKibu.TabIndex = 120;
             // 
             // label53
             // 
@@ -1547,15 +1525,6 @@
             label53.TabIndex = 51;
             label53.Text = "IBU :";
             // 
-            // label77
-            // 
-            label77.AutoSize = true;
-            label77.Location = new Point(10, 348);
-            label77.Name = "label77";
-            label77.Size = new Size(109, 18);
-            label77.TabIndex = 122;
-            label77.Text = "No KK - NIK Ibu :";
-            // 
             // nu_gajiIbu
             // 
             nu_gajiIbu.Location = new Point(12, 274);
@@ -1565,10 +1534,10 @@
             // 
             // tx_MeninggalIbu
             // 
-            tx_MeninggalIbu.Location = new Point(89, 498);
+            tx_MeninggalIbu.Location = new Point(12, 462);
             tx_MeninggalIbu.Margin = new Padding(3, 2, 3, 2);
             tx_MeninggalIbu.Name = "tx_MeninggalIbu";
-            tx_MeninggalIbu.Size = new Size(146, 25);
+            tx_MeninggalIbu.Size = new Size(223, 25);
             tx_MeninggalIbu.TabIndex = 115;
             // 
             // rb_AsingIbu
@@ -1607,7 +1576,7 @@
             // label42
             // 
             label42.AutoSize = true;
-            label42.Location = new Point(4, 498);
+            label42.Location = new Point(12, 442);
             label42.Name = "label42";
             label42.Size = new Size(82, 18);
             label42.TabIndex = 116;
@@ -1694,10 +1663,10 @@
             // 
             // tx_noHpIBu
             // 
-            tx_noHpIBu.Location = new Point(12, 442);
+            tx_noHpIBu.Location = new Point(15, 373);
             tx_noHpIBu.Margin = new Padding(3, 2, 3, 2);
             tx_noHpIBu.Name = "tx_noHpIBu";
-            tx_noHpIBu.Size = new Size(223, 25);
+            tx_noHpIBu.Size = new Size(220, 25);
             tx_noHpIBu.TabIndex = 26;
             // 
             // label50
@@ -1746,7 +1715,7 @@
             // label70
             // 
             label70.AutoSize = true;
-            label70.Location = new Point(10, 422);
+            label70.Location = new Point(13, 353);
             label70.Name = "label70";
             label70.Size = new Size(107, 18);
             label70.TabIndex = 78;
@@ -1755,7 +1724,7 @@
             // label69
             // 
             label69.AutoSize = true;
-            label69.Location = new Point(13, 479);
+            label69.Location = new Point(15, 400);
             label69.Name = "label69";
             label69.Size = new Size(51, 18);
             label69.TabIndex = 80;
@@ -1814,10 +1783,10 @@
             // cb_HidupAyah
             // 
             cb_HidupAyah.FormattingEnabled = true;
-            cb_HidupAyah.Location = new Point(81, 471);
+            cb_HidupAyah.Location = new Point(89, 471);
             cb_HidupAyah.Margin = new Padding(3, 2, 3, 2);
             cb_HidupAyah.Name = "cb_HidupAyah";
-            cb_HidupAyah.Size = new Size(141, 26);
+            cb_HidupAyah.Size = new Size(133, 26);
             cb_HidupAyah.TabIndex = 119;
             // 
             // nu_gajiAyah
@@ -1829,16 +1798,16 @@
             // 
             // tx_MeninggalAyah
             // 
-            tx_MeninggalAyah.Location = new Point(81, 498);
+            tx_MeninggalAyah.Location = new Point(90, 498);
             tx_MeninggalAyah.Margin = new Padding(3, 2, 3, 2);
             tx_MeninggalAyah.Name = "tx_MeninggalAyah";
-            tx_MeninggalAyah.Size = new Size(140, 25);
+            tx_MeninggalAyah.Size = new Size(131, 25);
             tx_MeninggalAyah.TabIndex = 81;
             // 
             // label41
             // 
             label41.AutoSize = true;
-            label41.Location = new Point(6, 501);
+            label41.Location = new Point(5, 498);
             label41.Name = "label41";
             label41.Size = new Size(82, 18);
             label41.TabIndex = 80;
@@ -2080,7 +2049,7 @@
             // 
             label71.AutoSize = true;
             label71.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label71.Location = new Point(486, 521);
+            label71.Location = new Point(243, 526);
             label71.Name = "label71";
             label71.Size = new Size(85, 15);
             label71.TabIndex = 79;
@@ -2349,7 +2318,7 @@
             // 
             label108.AutoSize = true;
             label108.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label108.Location = new Point(486, 506);
+            label108.Location = new Point(243, 511);
             label108.Name = "label108";
             label108.Size = new Size(172, 15);
             label108.TabIndex = 69;
@@ -2361,7 +2330,7 @@
             tabPage5.Location = new Point(4, 27);
             tabPage5.Margin = new Padding(3, 2, 3, 2);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(746, 541);
+            tabPage5.Size = new Size(746, 557);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Ket setelah lulus";
             tabPage5.UseVisualStyleBackColor = true;
@@ -2499,7 +2468,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(754, 572);
+            ClientSize = new Size(754, 588);
             Controls.Add(SiswaTabControl);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
@@ -2691,7 +2660,6 @@
         private Label label90;
         private Label label106;
         private Label label69;
-        private Label label70;
         private TextBox tx_AlamatIbu;
         private Label label72;
         private Label label76;
@@ -2770,8 +2738,6 @@
         private Button NewButton;
         private Button RefreshButton;
         private ComboBox cb_warganegara;
-        private TextBox tx_nikIbu;
-        private TextBox tx_noKKibu;
-        private Label label77;
+        private Label label70;
     }
 }

@@ -22,7 +22,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             Pekerjaan, Penghasilan, Alamat, NoKK,
             NoTelp, StatusHidup, NIK)
             VALUES(
-            @SiswaId, @JenisWali, @Nama, @TmptLahir, 
+            @SiswaId, @JenisWali, @Nama, @TmpLahir, 
             @TglLahir, @Agama, @Kewarga, @Pendidikan,
             @Pekerjaan, @Penghasilan, @Alamat, @NoKK,
             @NoTelp, @StatusHidup, @NIK)";

@@ -3,6 +3,7 @@ using Microsoft.VisualBasic.Devices;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Dal;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Helpers;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Security.Permissions;
 using System.Security.Policy;
@@ -17,6 +18,9 @@ namespace Sistem_Informasi_Sekolah
         private readonly SiswaWaliDal siswaWaliDal;
         private readonly SiswaLulusDal siswaLulusDal;
         private readonly SiswaBeasiswaDal siswaBeasiswaDal;
+
+        private readonly BindingSource beasiswaBinding;
+        private readonly BindingList<BeasiswaDto> beasiswaList;
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +31,9 @@ namespace Sistem_Informasi_Sekolah
             siswaRiwayatDal = new SiswaRiwayatDal();
             siswaWaliDal = new SiswaWaliDal();
             siswaLulusDal = new SiswaLulusDal();
+
+            beasiswaList = new BindingList<BeasiswaDto>();
+            beasiswaBinding = new BindingSource();
 
         }
         #region TAAMPIL DATA
@@ -96,6 +103,7 @@ namespace Sistem_Informasi_Sekolah
             SaveSiswaRiwayat(siswaId);
             SaveSiswaWali(siswaId);
             SaveSiswalulus(siswaId);
+            SaveSiswaBeasiswa(siswaId);
         }
         private int SaveSiswaPerson()
         {
@@ -234,17 +242,43 @@ namespace Sistem_Informasi_Sekolah
                 Alamat = tx_AlamatWali.Text,
                 NoTelp = tx_NohpWali.Text
             };
-            var ListWali = new List<SiswaWaliModel>() { ayah, ibu, wali };
+            var ListWali = new List<SiswaWaliModel>() 
+            { 
+                ayah, ibu, wali 
+            };
 
-            var cekNengDb = siswaWaliDal.ListData(siswaId);
-            using var conn = new SqlConnection(ConnStringHelper.Get());
+            siswaWaliDal.Delete(siswaId);
+            siswaWaliDal.Insert(ListWali);
 
-            if (cekNengDb == null)
-                siswaWaliDal.Insert(ListWali);
-            else
-                siswaWaliDal.Update(ListWali);
+            /* var cekNengDb = siswaWaliDal.ListData(siswaId);
+             using var conn = new SqlConnection(ConnStringHelper.Get());
+
+             if (cekNengDb == null)
+                 siswaWaliDal.Insert(ListWali);
+             else
+                 siswaWaliDal.Update(ListWali);*/
         }
 
+        private void SaveSiswaBeasiswa(int siswaId)
+        {
+            var listBeasiswa = new List<SiswaBeasiswaModel>();
+            siswaBeasiswaDal.Delete(siswaId);
+            foreach (var item in beasiswaList)
+            {
+                var newItem = new SiswaBeasiswaModel
+                {
+                    SiswaId = siswaId,
+                    NoUrut = listBeasiswa.Count + 1,
+                    Kelas = item.Kelas,
+                    Tahun = item.Tahun,
+                    AsalBeasiswa = item.asalBeasiswa
+                };
+                if ($"{newItem.Kelas}{newItem.Tahun}" == string.Empty)
+                    continue;
+                listBeasiswa.Add(newItem);
+            }
+            siswaBeasiswaDal.Insert(listBeasiswa);
+        }
         private void SaveSiswalulus(int siswaId)
         {
             var siswalulus = new SiswaLulusModel
@@ -256,7 +290,7 @@ namespace Sistem_Informasi_Sekolah
                 Penghasilan = (int)nu_penghasilanLulus.Value,
             };
 
-
+            // belum di isikan
         }
 
         #endregion
@@ -269,6 +303,7 @@ namespace Sistem_Informasi_Sekolah
             GetSiswaPersonal(siswaId);
             GetSiswaRiwayat(siswaId);
             GetSiswaWali(siswaId);
+            GetSiswaBeasiswa(siswaId);
         }
 
         private void GetSiswaPersonal(int siswaId)
@@ -380,8 +415,8 @@ namespace Sistem_Informasi_Sekolah
                 tx_PendidikanIbu.Text = ibu.Pendidikan;
                 tx_WorkIbu.Text = ibu.Pekerjaan;
                 nu_gajiIbu.Value = ibu.Penghasilan;
-                tx_nikIbu.Text = ibu.NIK;
-                tx_noKKibu.Text = ibu.NoKK;
+               /* tx_nikIbu.Text = ibu.NIK;
+                tx_noKKibu.Text = ibu.NoKK;*/
             }
 
             var wali = listWali.FirstOrDefault(x => x.JenisWali == 1);
@@ -402,16 +437,103 @@ namespace Sistem_Informasi_Sekolah
             }
         
     }
+        
+        private void GetSiswaBeasiswa(int siswaId)
+        {
+            var listBea = siswaBeasiswaDal.ListData(siswaId)?.ToList();
+            if (listBea is null)
+                return;
+
+            beasiswaList.Clear();
+            listBea.ForEach(x => beasiswaList.Add(new BeasiswaDto
+            {
+                No = x.NoUrut,
+                Kelas = x.Kelas,
+                Tahun = x.Tahun,
+                asalBeasiswa = x.AsalBeasiswa
+            }));
+        }
         #endregion
 
         #region HELPER
         private void ClearInput()
         {
             //Personal
+            SiswaIDtxt.Clear();
+            tx_NIK.Clear();
+            tx_Nmlengkap.Clear();
+            tx_NmPanggilan.Clear();
+            tx_TmpatLahir.Clear();
+            date_TglLahir.Value = new DateTime(3000, 1, 1);
+            cb_Agama.SelectedIndex = 0;
+            cb_warganegara.SelectedIndex = 0;
+            anakke_numeric.Value = 0;
+            jmlsauKan_numeric.Value = 0;
+            jmlSauAngkat_numeric.Value = 0;
+            jmlSauTiri_numeric.Value = 0;
+            cb_Yatim.SelectedIndex = 0;
+            tx_Bahasa.Clear();
+            tx_Alamat.Clear();
+            tx_Notelp.Clear();
+            cb_statustinggal.SelectedIndex = 0;
+            jarakSklh_numeric.Value = 0;
+            tx_Transportasi.Clear();
 
             //Riwayat
+            tx_Penyakit.Clear();
+            tx_Kelainan.Clear();
+            nu_TB.Value = 0;
+            nu_BB.Value = 0;
+            tx_Lulusan.Clear();
+            date_Tglijazah.Value = new DateTime(3000, 1, 1);
+            tx_NoIjazah.Clear();
+            tx_LamaBelajar.Clear();
+            tx_DariSekolah.Clear();
+            tx_Alasan.Clear();
+            tx_diterimakelas.Clear();
+            tx_keahlian.Clear();
+            dtp_tglditerima.Value = new DateTime(3000, 1, 1);
+            tx_Kesenian.Clear();
+            tx_Olahraga.Clear();
+            tx_Organisasi.Clear();
+            tx_Hobi.Clear();
+            tx_CitaCita.Clear();
+
+            date_Tglmeninggalkan.Value = new DateTime(3000, 1, 1);
+            tx_Alasanmeninggalkan.Clear();
+            dtp_tamatbelajar.Value = new DateTime(3000, 1, 1);
+            tx_IjazahNo.Clear();
 
             //Wali
+            tx_NamaAyah.Clear();
+            tx_TempatAyah.Clear();
+            date_LahirAyah.Value = new DateTime(3000, 1, 1);
+            rb_WNIayah.Checked = true;
+            tx_PendidikanAyah.Clear();
+            tx_WorkAyah.Clear();
+            nu_gajiAyah.Value = 0;
+            tx_NIKAyah.Clear();
+            tx_NoKK.Clear();
+            //      ibu
+            tx_NamaIbu.Clear();
+            tx_TempatIbu.Clear();
+            date_LahirIbu.Value = new DateTime(3000, 1, 1);
+            rb_WNIIbu.Checked = true;
+            tx_PendidikanIbu.Clear();
+            tx_WorkIbu.Clear();
+            nu_gajiIbu.Value = 0;
+            /*tx_NIKIbu.Clear();
+            tx_kkIBu.Clear();*/
+            //      wali
+            tx_NamaWali.Clear();
+            tx_TempatWali.Clear();
+            date_LahirWali.Value = new DateTime(3000, 1, 1);
+            rb_WNIIbu.Checked = true;
+            tx_PendidikanWali.Clear();
+            tx_pekerjaanWali.Clear();
+            nu_gajiWali.Value = 0;
+            /*tx_nikwali.Clear();
+            tx_kkwali.Clear();*/
 
             //lulus
         }
@@ -456,22 +578,6 @@ namespace Sistem_Informasi_Sekolah
             SaveSiswa();
             RefreshListData();
         }
-        #endregion
-
-
-        private void RefreshButton_Click(object sender, EventArgs e)
-        {
-            RefreshListData();
-        }
-        public class ListSiswaDto
-        {
-            public int SiswaId { get; set; }
-            public string Nama { get; set; }
-            public DateTime TglLahir { get; set; }
-            public string Gender { get; set; }
-            public string Alamat { get; set; }
-        }
-
         private void NewButton_Click(object sender, EventArgs e)
         {
             //  jika masih ada data baru, konfirmasikan ke user
@@ -488,5 +594,29 @@ namespace Sistem_Informasi_Sekolah
             SiswaTabControl.SelectedTab = PersonalTabPage;
             tx_Nmlengkap.Focus();
         }
+        #endregion
+
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            RefreshListData();
+        }
+        public class ListSiswaDto
+        {
+            public int SiswaId { get; set; }
+            public string Nama { get; set; }
+            public DateTime TglLahir { get; set; }
+            public string Gender { get; set; }
+            public string Alamat { get; set; }
+        }
+
+        public class BeasiswaDto
+        {
+            public int No { get; set; }
+            public string Tahun { get; set; }
+            public string Kelas { get; set; }
+            public string asalBeasiswa { get; set; }
+        }
+
     }
 }   
