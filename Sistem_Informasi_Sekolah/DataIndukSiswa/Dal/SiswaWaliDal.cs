@@ -13,44 +13,43 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 {
     public class SiswaWaliDal
     {
-        public int Insert(IEnumerable<SiswaWaliModel> listWali)
+        public void Insert(SiswaWaliModel wali)
         {
             const string sql = @" 
             INSERT INTO SiswaWali(
             SiswaId, JenisWali, Nama, TmpLahir,
             TglLahir, Agama, Kewarga, Pendidikan, 
             Pekerjaan, Penghasilan, Alamat, NoKK,
-            NoTelp, StatusHidup, NIK)
+            NoTelp, StatusHidup, NIK, TahunMeninggall)
             VALUES(
             @SiswaId, @JenisWali, @Nama, @TmpLahir, 
             @TglLahir, @Agama, @Kewarga, @Pendidikan,
             @Pekerjaan, @Penghasilan, @Alamat, @NoKK,
-            @NoTelp, @StatusHidup, @NIK)";
-
-            int cek = 0;
-            using var conn = new SqlConnection(ConnStringHelper.Get());
-            foreach (var item in listWali)
+            @NoTelp, @StatusHidup, @NIK, @TahunMeningall)";
+            
             {
                 var dp = new DynamicParameters();
-                dp.Add("@SiswaId", item.SiswaId,System.Data.DbType.Int32);
-                dp.Add("@JenisWali", item.JenisWali,System.Data.DbType.Int16);
-                dp.Add("@Nama", item.Nama,System.Data.DbType.String);
-                dp.Add("@TmpLahir", item.TmpLahir,System.Data.DbType.String);
-                dp.Add("@TglLahir", item.TglLahir,System.Data.DbType.DateTime);
-                dp.Add("@Agama", item.Agama,System.Data.DbType.String);
-                dp.Add("@Kewarga", item.Kewarga,System.Data.DbType.String);
-                dp.Add("@Pendidikan", item.Pendidikan,System.Data.DbType.String);
-                dp.Add("@Pekerjaan", item.Pekerjaan, System.Data.DbType.String);
-                dp.Add("@Penghasilan", item.Penghasilan, System.Data.DbType.Decimal);
-                dp.Add("@Alamat", item.Alamat, System.Data.DbType.String);
-                dp.Add("@NoKK", item.NoKK, System.Data.DbType.String);
-                dp.Add("@NoTelp", item.NoTelp,System.Data.DbType.String);
-                dp.Add("@StatusHidup",item.StatusHidup,System.Data.DbType.String);
-                dp.Add("@NIK", item.NIK,System.Data.DbType.String);
-                var insert = conn.Execute(sql, dp);
-                if (insert > 0) cek++;
+                dp.Add("@SiswaId", wali.SiswaId,System.Data.DbType.Int32);
+                dp.Add("@JenisWali", wali.JenisWali,System.Data.DbType.Int16);
+                dp.Add("@Nama", wali.Nama,System.Data.DbType.String);
+                dp.Add("@TmpLahir", wali.TmpLahir,System.Data.DbType.String);
+                dp.Add("@TglLahir", wali.TglLahir,System.Data.DbType.DateTime);
+                dp.Add("@Agama", wali.Agama,System.Data.DbType.String);
+                dp.Add("@Kewarga", wali.Kewarga,System.Data.DbType.String);
+                dp.Add("@Pendidikan", wali.Pendidikan,System.Data.DbType.String);
+                dp.Add("@Pekerjaan", wali.Pekerjaan, System.Data.DbType.String);
+                dp.Add("@Penghasilan", wali.Penghasilan, System.Data.DbType.Decimal);
+                dp.Add("@Alamat", wali.Alamat, System.Data.DbType.String);
+                dp.Add("@NoKK", wali.NoKK, System.Data.DbType.String);
+                dp.Add("@NoTelp", wali.NoTelp,System.Data.DbType.String);
+                dp.Add("@StatusHidup",wali.StatusHidup,System.Data.DbType.String);
+                dp.Add("@NIK", wali.NIK,System.Data.DbType.String);
+                dp.Add("@TahunMeniggall", wali.TahunMeninggall, System.Data.DbType.String);
+
+                var conn = new SqlConnection(ConnStringHelper.Get());
+                conn.Execute(sql, dp);
             }
-            return cek;
+          
         }
 
         public int Update(IEnumerable<SiswaWaliModel> siswaWalis)
@@ -72,7 +71,9 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                         NoKK = @NoKK,
                         NoTelp = @NoTelp,
                         StatusHidup = @StatusHidup,
-                        NIK = @NIK
+                        NIK = @NIK,
+                        TahunMeninggall = @TahunMeninggall
+
                     WHERE SiswaId = @SiswaId";
             int cek = 0;
             using var koneksi = new SqlConnection(ConnStringHelper.Get());
@@ -94,6 +95,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 dp.Add("@NoTelp", siswaWali.NoTelp, DbType.String);
                 dp.Add("@StatusHidup", siswaWali.StatusHidup, DbType.String);
                 dp.Add("@NIK", siswaWali.NIK, DbType.String);
+                dp.Add("@TahunMeniggall", siswaWali.TahunMeninggall, DbType.String);
 
                 var update = koneksi.Execute(sql, dp);
                 if (update > 0) cek++;
@@ -121,7 +123,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                    SiswaId, JenisWali, Nama, TmpLahir,
                    TglLahir, Agama, Kewarga, Pendidikan, 
                    Pekerjaan, Penghasilan, Alamat, NoKK,
-                   NoTelp, StatusHidup, NIK
+                   NoTelp, StatusHidup, NIK, TahunMeninggal
                 FROM
                     SiswaWali
                 WHERE

@@ -23,5 +23,6 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
         public string NoTelp { get; set; }
         public string StatusHidup { get; set; }
         public string NIK { get; set; }
+        public string TahunMeninggall { get; set; }
     }
 }

@@ -2049,7 +2049,7 @@
             // 
             label71.AutoSize = true;
             label71.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label71.Location = new Point(243, 526);
+            label71.Location = new Point(421, 512);
             label71.Name = "label71";
             label71.Size = new Size(85, 15);
             label71.TabIndex = 79;
@@ -2150,7 +2150,7 @@
             // 
             // tx_pekerjaanWali
             // 
-            tx_pekerjaanWali.Location = new Point(12, 246);
+            tx_pekerjaanWali.Location = new Point(12, 256);
             tx_pekerjaanWali.Margin = new Padding(3, 2, 3, 2);
             tx_pekerjaanWali.Name = "tx_pekerjaanWali";
             tx_pekerjaanWali.Size = new Size(222, 25);
@@ -2159,7 +2159,7 @@
             // label91
             // 
             label91.AutoSize = true;
-            label91.Location = new Point(7, 224);
+            label91.Location = new Point(7, 230);
             label91.Name = "label91";
             label91.Size = new Size(68, 18);
             label91.TabIndex = 80;
@@ -2167,7 +2167,7 @@
             // 
             // tx_PendidikanWali
             // 
-            tx_PendidikanWali.Location = new Point(12, 199);
+            tx_PendidikanWali.Location = new Point(12, 204);
             tx_PendidikanWali.Margin = new Padding(3, 2, 3, 2);
             tx_PendidikanWali.Name = "tx_PendidikanWali";
             tx_PendidikanWali.Size = new Size(222, 25);
@@ -2202,7 +2202,7 @@
             // 
             // tx_NohpWali
             // 
-            tx_NohpWali.Location = new Point(15, 410);
+            tx_NohpWali.Location = new Point(15, 408);
             tx_NohpWali.Margin = new Padding(3, 2, 3, 2);
             tx_NohpWali.Name = "tx_NohpWali";
             tx_NohpWali.Size = new Size(219, 25);
@@ -2211,7 +2211,7 @@
             // label104
             // 
             label104.AutoSize = true;
-            label104.Location = new Point(7, 178);
+            label104.Location = new Point(7, 182);
             label104.Name = "label104";
             label104.Size = new Size(78, 18);
             label104.TabIndex = 73;
@@ -2220,7 +2220,7 @@
             // label87
             // 
             label87.AutoSize = true;
-            label87.Location = new Point(15, 393);
+            label87.Location = new Point(12, 388);
             label87.Name = "label87";
             label87.Size = new Size(116, 18);
             label87.TabIndex = 104;

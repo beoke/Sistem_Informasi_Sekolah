@@ -223,7 +223,7 @@ namespace Sistem_Informasi_Sekolah
             var wali = new SiswaWaliModel
             {
                 SiswaId = siswaId,
-                JenisWali = 2,
+                JenisWali = 1,
                 Nama = tx_NamaWali.Text,
                 TmpLahir = tx_TempatWali.Text,
                 TglLahir = date_LahirWali.Value,
@@ -240,8 +240,11 @@ namespace Sistem_Informasi_Sekolah
                 ayah, ibu, wali 
             };
 
-            siswaWaliDal.Delete(siswaId);
-            siswaWaliDal.Insert(ListWali);
+            var dataDiDb = siswaWaliDal.ListData(siswaId);
+            if (dataDiDb is null)
+                siswaWaliDal.Insert(wali);
+            else
+                siswaWaliDal.Update(ListWali);
 
         }
         private void SaveSiswaBeasiswa(int siswaId) 
@@ -381,7 +384,7 @@ namespace Sistem_Informasi_Sekolah
             dtp_tamatbelajar.Value = siswaRiwayat.AkhirTamatBljr;
             tx_IjazahNo.Text = siswaRiwayat.AkhirNoIjazah;
         }
-        private void GetSiswaWali(int siswaId) // kurang insert alamat, no hp ayah, tahun tiada ayah
+        private void GetSiswaWali(int siswaId) 
         {
             var listWali = siswaWaliDal.ListData(siswaId);
             if (listWali is null) return;
@@ -399,9 +402,12 @@ namespace Sistem_Informasi_Sekolah
                 tx_PendidikanAyah.Text = ayah.Pendidikan;
                 tx_WorkAyah.Text = ayah.Pekerjaan;
                 nu_gajiAyah.Value = ayah.Penghasilan;
+                tx_AlamatAyah.Text = ayah.Alamat;
                 tx_NIKAyah.Text = ayah.NIK;
                 tx_NoKK.Text = ayah.NoKK;
-                
+                tx_NohpAyah.Text = ayah.NoTelp;
+                cb_HidupAyah.Text = ayah.StatusHidup;
+                tx_MeninggalAyah.Text = ayah.TahunMeninggall;
             }
 
             var ibu = listWali.FirstOrDefault(x => x.JenisWali == 1);
@@ -417,6 +423,10 @@ namespace Sistem_Informasi_Sekolah
                 tx_PendidikanIbu.Text = ibu.Pendidikan;
                 tx_WorkIbu.Text = ibu.Pekerjaan;
                 nu_gajiIbu.Value = ibu.Penghasilan;
+                tx_AlamatIbu.Text = ibu.Alamat;
+                tx_noHpIBu.Text = ibu.NoTelp;
+                cb_hidupIbu.Text = ibu.StatusHidup;
+                tx_MeninggalIbu.Text = ibu.TahunMeninggall;
                /* tx_nikIbu.Text = ibu.NIK;
                 tx_noKKibu.Text = ibu.NoKK;*/
             }
@@ -434,6 +444,9 @@ namespace Sistem_Informasi_Sekolah
                 tx_PendidikanWali.Text = wali.Pendidikan;
                 tx_pekerjaanWali.Text = wali.Pekerjaan;
                 nu_gajiWali.Value = wali.Penghasilan;
+                tx_AlamatWali.Text = wali.Alamat;
+                tx_NohpWali.Text = wali.NoTelp;
+                cb_hidupWali.Text = wali.StatusHidup;
                 /*txNI.Text = wali.NIK;
                 NoKkWaliText.Text = wali.NoKK;*/
             }
