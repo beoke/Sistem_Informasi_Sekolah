@@ -259,7 +259,7 @@ namespace Sistem_Informasi_Sekolah
                  siswaWaliDal.Update(ListWali);*/
         }
 
-        private void SaveSiswaBeasiswa(int siswaId)
+        private void SaveSiswaBeasiswa(int siswaId) // bagian ini
         {
             var listBeasiswa = new List<SiswaBeasiswaModel>();
             siswaBeasiswaDal.Delete(siswaId);
