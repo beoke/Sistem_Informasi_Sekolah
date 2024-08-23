@@ -33,7 +33,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             {
                 var dp = new DynamicParameters();
                 dp.Add("@SiswaId", item.SiswaId,System.Data.DbType.Int32);
-                dp.Add("@JenisWali", item.JenisWali,System.Data.DbType.String);
+                dp.Add("@JenisWali", item.JenisWali,System.Data.DbType.Int16);
                 dp.Add("@Nama", item.Nama,System.Data.DbType.String);
                 dp.Add("@TmpLahir", item.TmpLahir,System.Data.DbType.String);
                 dp.Add("@TglLahir", item.TglLahir,System.Data.DbType.DateTime);
@@ -80,7 +80,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             {
                 var dp = new DynamicParameters();
                 dp.Add("@SiswaId", siswaWali.SiswaId, DbType.Int32);
-                dp.Add("@JenisWali", siswaWali.JenisWali, DbType.String);
+                dp.Add("@JenisWali", siswaWali.JenisWali, DbType.Int16);
                 dp.Add("@Nama", siswaWali.Nama, DbType.String);
                 dp.Add("@TmpLahir", siswaWali.TmpLahir, DbType.String);
                 dp.Add("@TglLahir", siswaWali.TglLahir, DbType.Date);

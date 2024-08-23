@@ -71,9 +71,10 @@ namespace Sistem_Informasi_Sekolah
             cb_Yatim.DataSource = Yatim;
 
             //Status Tinggal
-            cb_statustinggal.Items.Add("DENGAN ORTU");
-            cb_statustinggal.Items.Add("DENGAN SAUDARA");
-            cb_statustinggal.Items.Add("DI ASRAMA");
+            List<string> StatusTInggal = new List<string>() { "DENGAN ORTU", "DENGAN SAUDARA", "DI ASRAMA" };
+            cb_statustinggal.DataSource = new List<string>(StatusTInggal);
+            cb_statustinggal.DataSource = new List<string>(StatusTInggal);
+            cb_statustinggal.DataSource = new List<string>(StatusTInggal);
             cb_statustinggal.SelectedIndex = 0;
 
             //Hidup meninggal
@@ -81,6 +82,10 @@ namespace Sistem_Informasi_Sekolah
             cb_hidupWali.DataSource = new List<string>(HIdup);
             cb_hidupIbu.DataSource = new List<string>(HIdup);
             cb_HidupAyah.DataSource = new List<string>(HIdup);
+
+            //warga negara
+            cb_warganegara.Items.Add("WNI");
+            cb_warganegara.Items.Add("ASING");
         }
         #endregion
 
@@ -105,7 +110,7 @@ namespace Sistem_Informasi_Sekolah
                 TmpLahir = tx_TmpatLahir.Text,
                 TglLahir = date_TglLahir.Value,
                 Agama = cb_Agama.SelectedItem.ToString() ?? string.Empty,
-                Kewarganegaraan = rb_WNIsiswa.Checked ? "WNI" : "Asing",
+                Kewarganegaraan = cb_warganegara.SelectedItem.ToString() ?? string.Empty,
                 NIK = tx_NIK.Text,
                 AnakKe = (int)anakke_numeric.Value,
                 JmlhSdrKandung = (int)jmlsauKan_numeric.Value,
@@ -183,12 +188,12 @@ namespace Sistem_Informasi_Sekolah
             {
                 //Ayah
                 SiswaId = siswaId,
-                JenisWali = "Ayah",
+                JenisWali = 0,
                 Nama = tx_NamaAyah.Text,
                 TmpLahir = tx_TempatAyah.Text,
                 TglLahir = date_LahirAyah.Value,
                 Agama = cb_AgamaAyah.SelectedItem.ToString() ?? string.Empty,
-                Kewarga = (rb_Asingayah.Checked) ? "WNI" : "Asing",
+                Kewarga = rb_WNIayah.Checked ? 0 : 1,
                 Pendidikan = tx_PendidikanAyah.Text,
                 Pekerjaan = tx_WorkAyah.Text,
                 Penghasilan = (int)nu_gajiAyah.Value,
@@ -201,12 +206,12 @@ namespace Sistem_Informasi_Sekolah
             var ibu = new SiswaWaliModel
             {
                 SiswaId = siswaId,
-                JenisWali = "Ibu",
+                JenisWali = 1,
                 Nama = tx_NamaIbu.Text,
                 TmpLahir = tx_TempatIbu.Text,
                 TglLahir = date_LahirIbu.Value,
                 Agama = cb_AgamaIbu.SelectedItem.ToString() ?? string.Empty,
-                Kewarga = (rb_AsingIbu.Checked) ? "WNI" : "Asing",
+                Kewarga = rb_WNIIbu.Checked ? 0 : 1,
                 Pendidikan = tx_PendidikanIbu.Text,
                 Pekerjaan = tx_WorkIbu.Text,
                 Penghasilan = (int)nu_gajiIbu.Value,
@@ -217,12 +222,12 @@ namespace Sistem_Informasi_Sekolah
             var wali = new SiswaWaliModel
             {
                 SiswaId = siswaId,
-                JenisWali = "Wali",
+                JenisWali = 2,
                 Nama = tx_NamaWali.Text,
                 TmpLahir = tx_TempatWali.Text,
                 TglLahir = date_LahirWali.Value,
                 Agama = cb_AgamaWali.SelectedItem.ToString() ?? string.Empty,
-                Kewarga = (rb_WNIWali.Checked) ? "WNI" : "Asing",
+                Kewarga = rb_WNIWali.Checked ? 0 : 1,
                 Pendidikan = tx_PendidikanWali.Text,
                 Pekerjaan = tx_pekerjaanWali.Text,
                 Penghasilan = (int)nu_gajiWali.Value,
@@ -268,16 +273,135 @@ namespace Sistem_Informasi_Sekolah
 
         private void GetSiswaPersonal(int siswaId)
         {
-            // isi ini
+
+            var siswaPersonal = siswaDal.GetData(siswaId);
+            if (siswaPersonal is null)
+            {
+                MessageBox.Show("Data not found");
+                return;
+            }
+            tx_Nmlengkap.Text = siswaPersonal.NamaLengkap;
+            tx_NmPanggilan.Text = siswaPersonal.NamaPanggil;
+            tx_TmpatLahir.Text = siswaPersonal.TmpLahir;
+            date_TglLahir.Value = siswaPersonal.TglLahir;
+
+            if (siswaPersonal.Gender == 0)
+                rb_laki.Checked = true;
+            else
+                rb_perempuan.Checked = true;
+
+            foreach (var item in cb_Agama.Items)
+                if (item.ToString() == siswaPersonal.Agama)
+                    cb_Agama.SelectedItem = item;
+
+            foreach (var items in cb_warganegara.Items)
+                if (items.ToString() == siswaPersonal.Agama)
+                    cb_warganegara.SelectedItem = items;
+
+            anakke_numeric.Value = siswaPersonal.AnakKe;
+            jmlsauKan_numeric.Value = siswaPersonal.JmlhSdrKandung;
+            jmlSauAngkat_numeric.Value = siswaPersonal.JmlhSdrAngkat;
+            jmlSauTiri_numeric.Value = siswaPersonal.JmlhSdrTiri;
+
+            foreach (var item in cb_Yatim.Items)
+                if (item.ToString() == siswaPersonal.YatimPiatu)
+                    cb_Yatim.SelectedItem = item;
+
+            tx_Bahasa.Text = siswaPersonal.Bahasa;
+            tx_Alamat.Text = siswaPersonal.Alamat;
+            tx_Notelp.Text = siswaPersonal.NoTelp;
+
+            foreach (var item in cb_statustinggal.Items)
+                if (item.ToString() == siswaPersonal.TngglDengan)
+                    cb_statustinggal.SelectedItem = item;
+
+            jarakSklh_numeric.Value = siswaPersonal.JrkKeSekolah;
+            tx_Transportasi.Text = siswaPersonal.TransportSekolah;
         }
         private void GetSiswaRiwayat(int siswaId)
         {
-            // isi ini
+            var siswaRiwayat = siswaRiwayatDal.GetData(siswaId);
+            if (siswaRiwayat is null)
+                return;
+
+            if (siswaRiwayat.GolDarah == "A") Goldar_A.Checked = true;
+            if (siswaRiwayat.GolDarah == "B") Goldar_B.Checked = true;
+            if (siswaRiwayat.GolDarah == "AB") Goldar_AB.Checked = true;
+            if (siswaRiwayat.GolDarah == "O") Golddar_O.Checked = true;
+
+            tx_Penyakit.Text = siswaRiwayat.RiwayatPenyakit;
+            tx_Kelainan.Text = siswaRiwayat.KelainanJasmani;
+            nu_TB.Value = siswaRiwayat.TinggiBdn;
+            nu_BB.Value = siswaRiwayat.BeratBdn;
+              
+            tx_Lulusan.Text = siswaRiwayat.LulusanDr;
+            date_Tglijazah.Value = siswaRiwayat.TglIjazah;
+            tx_NoIjazah.Text = siswaRiwayat.NoIjazah;
+            tx_LamaBelajar.Text = siswaRiwayat.LamaBljr;
+
+            tx_DariSekolah.Text = siswaRiwayat.PindahanDr;
+            tx_Alasan.Text = siswaRiwayat.AlasanPindah;
+            tx_diterimakelas.Text = siswaRiwayat.DiterimaTingkat;
+            tx_keahlian.Text = siswaRiwayat.KompKeahlian;
+            dtp_tglditerima.Value = siswaRiwayat.TglDiterima;
         }
         private void GetSiswaWali(int siswaId)
         {
-            // isi ini
-        }
+            var listWali = siswaWaliDal.ListData(siswaId);
+            if (listWali is null) return;
+
+            var ayah = listWali.FirstOrDefault(x => x.JenisWali == 0);
+            if (ayah is not null)
+            {
+                tx_NamaAyah.Text = ayah.Nama;
+                tx_TempatAyah.Text = ayah.TmpLahir;
+                date_LahirAyah.Value = ayah.TglLahir;
+                if (ayah.Kewarga == 0)
+                    rb_WNIayah.Checked = true;
+                else
+                    rb_Asingayah.Checked = true;
+                tx_PendidikanAyah.Text = ayah.Pendidikan;
+                tx_WorkAyah.Text = ayah.Pekerjaan;
+                nu_gajiAyah.Value = ayah.Penghasilan;
+                tx_NIKAyah.Text = ayah.NIK;
+                tx_NoKK.Text = ayah.NoKK;
+            }
+
+            var ibu = listWali.FirstOrDefault(x => x.JenisWali == 1);
+            if (ibu is not null)
+            {
+                tx_NamaIbu.Text = ibu.Nama;
+                tx_TempatIbu.Text = ibu.TmpLahir;
+                date_LahirIbu.Value = ibu.TglLahir;
+                if (ayah.Kewarga == 0)
+                    rb_WNIIbu.Checked = true;
+                else
+                    rb_AsingIbu.Checked = true;
+                tx_PendidikanIbu.Text = ibu.Pendidikan;
+                tx_WorkIbu.Text = ibu.Pekerjaan;
+                nu_gajiIbu.Value = ibu.Penghasilan;
+                tx_nikIbu.Text = ibu.NIK;
+                tx_noKKibu.Text = ibu.NoKK;
+            }
+
+            var wali = listWali.FirstOrDefault(x => x.JenisWali == 1);
+            if (wali is not null)
+            {
+                tx_NamaWali.Text = wali.Nama;
+                tx_TempatWali.Text = wali.TmpLahir;
+                date_LahirWali.Value = wali.TglLahir;
+                if (wali.Kewarga == 0)
+                    rb_WNIWali.Checked = true;
+                else
+                    rb_AsingWali.Checked = true;
+                tx_PendidikanWali.Text = wali.Pendidikan;
+                tx_pekerjaanWali.Text = wali.Pekerjaan;
+                nu_gajiWali.Value = wali.Penghasilan;
+                /*txNI.Text = wali.NIK;
+                NoKkWaliText.Text = wali.NoKK;*/
+            }
+        
+    }
         #endregion
 
         #region HELPER

@@ -9,12 +9,12 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
     public  class SiswaWaliModel
     {
         public int SiswaId { get; set; }
-        public string JenisWali { get; set; }
+        public int JenisWali { get; set; }
         public string Nama { get; set; }
         public string TmpLahir { get; set; }
         public DateTime TglLahir { get; set; }
         public string Agama { get; set; }
-        public string Kewarga { get; set; }
+        public int Kewarga { get; set; }
         public string Pendidikan { get; set; }
         public string Pekerjaan { get; set; }
         public decimal Penghasilan { get; set; }

@@ -118,11 +118,34 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
         }
+
+        public SiswaModel? GetData(int siswaId)
+        {
+            const string sql = @"
+                SELECT
+                    NamaLengkap, NamaPanggil,
+                    Gender,TmpLahir,TglLahir, Agama, Kewarganegaraan,
+                    NIK, AnakKe,JmlhSdrKandung, JmlhSdrTiri, JmlhSdrAngkat,
+                    YatimPiatu, Bahasa, Alamat,
+                    NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah
+                FROM
+                    Siswa
+                WHERE
+                    SiswaId = @SiswaId";
+
+            var dp = new DynamicParameters();
+            dp.Add("@SiswaId", siswaId, DbType.Int16);
+
+            using var conn = new SqlConnection(ConnStringHelper.Get());
+            return conn.QueryFirstOrDefault<SiswaModel>(sql, dp);
+        }
+
         public IEnumerable<SiswaModel> ListData()
         {
             const string sql = @"
                 SELECT
-                    Gender,TempLahir,TglLahir, Agama, Kewarganegaraan,
+                    SiswaId, NamaLengkap, NamaPanggil,
+                    Gender,TmpLahir,TglLahir, Agama, Kewarganegaraan,
                     NIK, AnakKe,JmlhSdrKandung, JmlhSdrTiri, JmlhSdrAngkat,
                     YatimPiatu, Bahasa, Alamat,
                     NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah
