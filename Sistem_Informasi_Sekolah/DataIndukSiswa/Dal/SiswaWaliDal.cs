@@ -39,7 +39,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 dp.Add("@TglLahir", item.TglLahir,System.Data.DbType.DateTime);
                 dp.Add("@Agama", item.Agama,System.Data.DbType.String);
                 dp.Add("@Kewarga", item.Kewarga,System.Data.DbType.String);
-                dp.Add("@Pendidikan", item.Kewarga,System.Data.DbType.String);
+                dp.Add("@Pendidikan", item.Pendidikan,System.Data.DbType.String);
                 dp.Add("@Pekerjaan", item.Pekerjaan, System.Data.DbType.String);
                 dp.Add("@Penghasilan", item.Penghasilan, System.Data.DbType.Decimal);
                 dp.Add("@Alamat", item.Alamat, System.Data.DbType.String);

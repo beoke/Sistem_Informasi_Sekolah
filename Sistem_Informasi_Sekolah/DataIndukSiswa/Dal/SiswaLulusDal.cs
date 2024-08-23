@@ -13,7 +13,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 {
     public class SiswaLulusDal
     {
-        public void Insert(IEnumerable<SiswaLulusModel> listLulus)
+        public void Insert(SiswaLulusModel listLulus)
         {
             const string sql = @"
             INSERT INTO SiswaLulus (
@@ -24,18 +24,39 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             @NamaPerusahaan, @Penghasilan)";
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            foreach(var item in listLulus)
             {
                 var dp = new DynamicParameters();
-                dp.Add("@SiswaId", item.SiswaId, System.Data.DbType.Int32);
-                dp.Add("@LanjutDi", item.LanjutDi, System.Data.DbType.String);
-                dp.Add("@TglMulaiKerja", item.TglMulaiKerja, System.Data.DbType.String);
-                dp.Add("@NamaPerusahaan", item.NamaPerusahaan, System.Data.DbType.String);  
-                dp.Add("Penghasilan", item.NamaPerusahaan,System.Data.DbType.Decimal);
+                dp.Add("@SiswaId", listLulus.SiswaId, System.Data.DbType.Int32);
+                dp.Add("@LanjutDi", listLulus.LanjutDi, System.Data.DbType.String);
+                dp.Add("@TglMulaiKerja", listLulus.TglMulaiKerja, System.Data.DbType.DateTime);
+                dp.Add("@NamaPerusahaan", listLulus.NamaPerusahaan, System.Data.DbType.String);  
+                dp.Add("Penghasilan", listLulus.Penghasilan,System.Data.DbType.Decimal);
 
                 conn.Execute(sql, dp);
 
             }
+        }
+        public void Update(SiswaLulusModel siswalulus)
+        {
+            const string sql = @"
+                UPDATE SiswaLulus
+                SET
+                    LanjutDi = @LanjutDi, 
+                    TglMulaiKerja = @TglMulaiKerja, 
+                    NamaPerusahaan = @NamaPerusahaan, 
+                    Penghasilan = @Penghasilan
+                WHERE
+                    SiswaId = @SiswaId";
+
+            var dp = new DynamicParameters();
+            dp.Add("@SiswaId", siswalulus.SiswaId, DbType.Int32);
+            dp.Add("@LanjutDi", siswalulus.LanjutDi, DbType.String);
+            dp.Add("@TglMulaiKerja", siswalulus.TglMulaiKerja, DbType.DateTime);
+            dp.Add("@NamaPerusahaan", siswalulus.NamaPerusahaan, DbType.String);
+            dp.Add("@Penghasilan", siswalulus.Penghasilan, DbType.Decimal);
+
+            var conn = new SqlConnection(ConnStringHelper.Get());
+            conn.Execute(sql, dp);
         }
         public void Delete(int SiswaId)
         {
@@ -52,7 +73,26 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             conn.Execute(sql, dp);
             
         }
-        public  IEnumerable<SiswaLulusModel>ListData(int SiswaId)
+        public SiswaLulusModel? Get(int SiswaId)
+        {
+            const string sql = @"
+            SELECT
+            SiswaId, LanjutDi, TglMulaiKerja,
+            NamaPerusahaan, Penghasilan
+            FROM
+                    SiswaLulus
+             WHERE
+                    SiswaId = @SiswaId";
+                
+
+            var dp = new DynamicParameters();
+            dp.Add("@SiswaId",SiswaId,DbType.Int32);
+
+            using var conn = new SqlConnection(ConnStringHelper.Get());
+            return conn.QueryFirstOrDefault<SiswaLulusModel> (sql, dp);
+        }
+
+        public IEnumerable<SiswaLulusModel> ListData(int SiswaId)
         {
             const string sql = @"
             SELECT
@@ -62,10 +102,10 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             SiswaId = @SiswaId";
 
             var dp = new DynamicParameters();
-            dp.Add("@SiswaId",SiswaId,DbType.Int32);
+            dp.Add("@SiswaId", SiswaId, DbType.Int32);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.Query<SiswaLulusModel> (sql, dp);
+            return conn.Query<SiswaLulusModel>(sql, dp);
         }
     }
 }

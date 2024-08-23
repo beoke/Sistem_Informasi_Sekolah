@@ -28,7 +28,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 dp.Add("@NoUrut", item.NoUrut);
                 dp.Add("@Tahun", item.Tahun);
                 dp.Add("@Kelas", item.Kelas);
-                dp.Add("@PenyediaBeasiswa", item.AsalBeasiswa);
+                dp.Add("@AsalBeasiswa", item.AsalBeasiswa);
 
                 conn.Execute(sql, dp);
             }
