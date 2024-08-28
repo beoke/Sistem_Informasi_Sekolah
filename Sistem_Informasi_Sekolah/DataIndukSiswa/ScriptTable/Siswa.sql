@@ -1,0 +1,24 @@
+﻿CREATE TABLE siswa (
+    SiswaId INT IDENTITY(1,1),
+    NamaLengkap VARCHAR(50) NOT NULL DEFAULT(''),
+    NamaPanggil VARCHAR(50) NOT NULL DEFAULT(''),
+    Gender INT NOT NULL DEFAULT(''),
+    TmpLahir VARCHAR(50) NOT NULL DEFAULT(''),
+    TglLahir DATETIME NOT NULL DEFAULT('3000-01-01'),
+    Agama VARCHAR(50)  NOT NULL DEFAULT(''),
+    Kewarganegaraan VARCHAR(50) NOT NULL DEFAULT(''),
+    NIK VARCHAR(20) NOT NULL DEFAULT(''),
+    AnakKe INT NOT NULL DEFAULT(''),
+    JmlhSdrKandung INT NOT NULL DEFAULT(''),
+    JmlhSdrTiri INT NOT NULL DEFAULT(''),
+    JmlhSdrAngkat INT NOT NULL DEFAULT(''),
+    YatimPiatu VARCHAR(50) NOT NULL DEFAULT(''),
+    Bahasa VARCHAR(50) NOT NULL DEFAULT(''),
+    Alamat VARCHAR(255) NOT NULL DEFAULT(''),
+    NoTelp VARCHAR(20) NOT NULL DEFAULT(''),
+    TngglDengan VARCHAR(50) NOT NULL DEFAULT(''),
+    JrkKeSekolah INT NOT NULL DEFAULT(''),
+    TransportSekolah VARCHAR(50) NOT NULL DEFAULT('')
+
+    CONSTRAINT PK_Siswa PRIMARY KEY CLUSTERED(SiswaId)
+);

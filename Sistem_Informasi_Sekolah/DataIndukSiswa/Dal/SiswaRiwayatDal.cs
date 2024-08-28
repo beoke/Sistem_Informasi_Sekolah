@@ -61,8 +61,6 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@AkhirTamatBljr", siswaRiwayat.AkhirTamatBljr, DbType.DateTime);
             dp.Add("@AkhirNoIjazah", siswaRiwayat.AkhirNoIjazah, DbType.String);
 
-
-
             var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
         }
@@ -123,7 +121,8 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@AlasanTInggal", siswaRiwayat.AlasanTinggal, DbType.String);
             dp.Add("@AkhirTamatBljr", siswaRiwayat.AkhirTamatBljr, DbType.DateTime);
             dp.Add("@AkhirNoIjazah", siswaRiwayat.AkhirNoIjazah, DbType.String);
-            var conn = new SqlConnection(ConnStringHelper.Get());
+
+            using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
         }
 

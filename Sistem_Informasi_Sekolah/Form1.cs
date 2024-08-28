@@ -21,6 +21,7 @@ namespace Sistem_Informasi_Sekolah
 
         private readonly BindingSource beasiswaBinding;
         private readonly BindingList<BeasiswaDto> beasiswaList;
+
         public Form1()
         {
             InitializeComponent();
@@ -150,11 +151,14 @@ namespace Sistem_Informasi_Sekolah
             if (Goldar_AB.Checked) goldar = "AB";
             if (Golddar_O.Checked) goldar = "O";
 
+            var siswaid = SiswaIDtxt.Text == string.Empty ? 0 :
+            int.Parse(SiswaIDtxt.Text);
             var siswaRiwayat = new SiswaRiwayatModel
             {
-                SiswaId = siswaId,
+                SiswaId = siswaid,
                 GolDarah = goldar,
                 RiwayatPenyakit = tx_Penyakit.Text,
+                KelainanJasmani = tx_Kelainan.Text,
                 TinggiBdn = (int)nu_TB.Value,
                 BeratBdn = (int)nu_BB.Value,
                 LulusanDr = tx_Lulusan.Text,
@@ -184,7 +188,6 @@ namespace Sistem_Informasi_Sekolah
         }
         private void SaveSiswaWali(int siswaId)
         {
-
             var ayah = new SiswaWaliModel
             {
                 //Ayah
@@ -202,6 +205,7 @@ namespace Sistem_Informasi_Sekolah
                 NoTelp = tx_NohpAyah.Text,
                 NoKK = tx_NoKK.Text,
                 NIK = tx_NIKAyah.Text,
+                TahunMeninggal = tx_MeninggalAyah.Text
             };
 
             var ibu = new SiswaWaliModel
@@ -223,7 +227,7 @@ namespace Sistem_Informasi_Sekolah
             var wali = new SiswaWaliModel
             {
                 SiswaId = siswaId,
-                JenisWali = 1,
+                JenisWali = 2,
                 Nama = tx_NamaWali.Text,
                 TmpLahir = tx_TempatWali.Text,
                 TglLahir = date_LahirWali.Value,
@@ -235,16 +239,22 @@ namespace Sistem_Informasi_Sekolah
                 Alamat = tx_AlamatWali.Text,
                 NoTelp = tx_NohpWali.Text
             };
-            var ListWali = new List<SiswaWaliModel>() 
+            var ListWali = new List<SiswaWaliModel>
             { 
-                ayah, ibu, wali 
+                ayah, ibu, wali
             };
 
             var dataDiDb = siswaWaliDal.ListData(siswaId);
-            if (dataDiDb is null)
-                siswaWaliDal.Insert(wali);
+            if (!dataDiDb.Any())
+            {
+                siswaWaliDal.Insert(ListWali);
+
+            }
             else
+            {
                 siswaWaliDal.Update(ListWali);
+
+            }
 
         }
         private void SaveSiswaBeasiswa(int siswaId) 
@@ -296,7 +306,6 @@ namespace Sistem_Informasi_Sekolah
             GetSiswaWali(siswaId);
             GetSiswaBeasiswa(siswaId);
         }
-
         private void GetSiswaPersonal(int siswaId)
         {
 

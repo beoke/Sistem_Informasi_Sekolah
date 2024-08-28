@@ -52,7 +52,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@TransportSekolah", siswa.TransportSekolah, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            var result = conn.QuerySingle<int>(sql, dp); // eror saat insert
+            var result = conn.QuerySingle<int>(sql, dp); 
             return result;
         }
         public void Update(SiswaModel siswa)
