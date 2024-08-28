@@ -22,12 +22,12 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     SiswaId, JenisWali, Nama, TmpLahir,
                     TglLahir, Agama, Kewarga, Pendidikan, 
                     Pekerjaan, Penghasilan, Alamat, NoKK,
-                    NoTelp, StatusHidup, NIK, TahunMeninggall)
+                    NoTelp, StatusHidup, NIK, TahunMeninggal)
             VALUES(
                     @SiswaId, @JenisWali, @Nama, @TmpLahir, 
                     @TglLahir, @Agama, @Kewarga, @Pendidikan,
                     @Pekerjaan, @Penghasilan, @Alamat, @NoKK,
-                    @NoTelp, @StatusHidup, @NIK, @TahunMeninggall)";
+                    @NoTelp, @StatusHidup, @NIK, @TahunMeninggal)";
             int cek = 0;
             using var conn = new SqlConnection(ConnStringHelper.Get());
             foreach (var Wali in Walis)

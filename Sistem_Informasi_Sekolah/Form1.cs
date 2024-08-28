@@ -205,6 +205,7 @@ namespace Sistem_Informasi_Sekolah
                 NoTelp = tx_NohpAyah.Text,
                 NoKK = tx_NoKK.Text,
                 NIK = tx_NIKAyah.Text,
+                StatusHidup = cb_HidupAyah.Text,
                 TahunMeninggal = tx_MeninggalAyah.Text
             };
 
@@ -222,6 +223,10 @@ namespace Sistem_Informasi_Sekolah
                 Penghasilan = (int)nu_gajiIbu.Value,
                 Alamat = tx_AlamatIbu.Text,
                 NoTelp = tx_noHpIBu.Text,
+                NoKK = tx_NoKKIbu.Text,
+                NIK = tx_NIKIbu.Text,
+                StatusHidup = cb_hidupIbu.Text,
+                TahunMeninggal = tx_MeninggalIbu.Text,
             };
 
             var wali = new SiswaWaliModel
@@ -237,7 +242,11 @@ namespace Sistem_Informasi_Sekolah
                 Pekerjaan = tx_pekerjaanWali.Text,
                 Penghasilan = (int)nu_gajiWali.Value,
                 Alamat = tx_AlamatWali.Text,
-                NoTelp = tx_NohpWali.Text
+                NoTelp = tx_NohpWali.Text,
+                NoKK = tx_noKKwali.Text,
+                NIK = tx_NikWali.Text,
+                StatusHidup = cb_hidupWali.Text,
+                TahunMeninggal = ""
             };
             var ListWali = new List<SiswaWaliModel>
             { 
@@ -416,7 +425,7 @@ namespace Sistem_Informasi_Sekolah
                 tx_NoKK.Text = ayah.NoKK;
                 tx_NohpAyah.Text = ayah.NoTelp;
                 cb_HidupAyah.Text = ayah.StatusHidup;
-                tx_MeninggalAyah.Text = ayah.TahunMeninggall;
+                tx_MeninggalAyah.Text = ayah.TahunMeninggal;
             }
 
             var ibu = listWali.FirstOrDefault(x => x.JenisWali == 1);
@@ -435,9 +444,9 @@ namespace Sistem_Informasi_Sekolah
                 tx_AlamatIbu.Text = ibu.Alamat;
                 tx_noHpIBu.Text = ibu.NoTelp;
                 cb_hidupIbu.Text = ibu.StatusHidup;
-                tx_MeninggalIbu.Text = ibu.TahunMeninggall;
-               /* tx_nikIbu.Text = ibu.NIK;
-                tx_noKKibu.Text = ibu.NoKK;*/
+                tx_MeninggalIbu.Text = ibu.TahunMeninggal;
+                tx_NoKKIbu.Text = ibu.NoKK;
+                tx_NIKIbu.Text = ibu.NIK;
             }
 
             var wali = listWali.FirstOrDefault(x => x.JenisWali == 2);
@@ -456,8 +465,8 @@ namespace Sistem_Informasi_Sekolah
                 tx_AlamatWali.Text = wali.Alamat;
                 tx_NohpWali.Text = wali.NoTelp;
                 cb_hidupWali.Text = wali.StatusHidup;
-                /*txNI.Text = wali.NIK;
-                NoKkWaliText.Text = wali.NoKK;*/
+                tx_NikWali.Text = wali.NIK;
+                tx_noKKwali.Text = wali.NoKK;
             }
         
     }
