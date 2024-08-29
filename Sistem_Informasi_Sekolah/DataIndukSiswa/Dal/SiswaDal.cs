@@ -21,14 +21,14 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     Gender,TmpLahir,TglLahir, Agama, Kewarganegaraan,
                     NIK, AnakKe,JmlhSdrKandung, JmlhSdrTiri, JmlhSdrAngkat,
                     YatimPiatu, Bahasa, Alamat,
-                    NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah)
+                    NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah, LokasiPhoto)
                  OUTPUT INSERTED.SiswaId
                 VALUES (
                     @NamaLengkap, @NamaPanggil,
                     @Gender, @TmpLahir, @TglLahir, @Agama, @Kewarganegaraan,
                     @NIK, @AnakKe, @JmlhSdrKandung, @JmlhSdrTiri, @JmlhSdrAngkat,
                     @YatimPiatu, @Bahasa, @Alamat,
-                    @NoTelp, @TngglDengan, @JrkKeSekolah, @TransportSekolah)";
+                    @NoTelp, @TngglDengan, @JrkKeSekolah, @TransportSekolah, @LokasiPhoto)";
 
             var dp = new DynamicParameters();
             dp.Add("@NamaLengkap", siswa.NamaLengkap, DbType.String);
@@ -50,6 +50,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@TngglDengan", siswa.TngglDengan, DbType.String);
             dp.Add("@JrkKeSekolah", siswa.JrkKeSekolah, DbType.Int16);
             dp.Add("@TransportSekolah", siswa.TransportSekolah, DbType.String);
+            dp.Add("@LokasiPhoto", siswa.LokasiPhoto, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             var result = conn.QuerySingle<int>(sql, dp); 
@@ -76,7 +77,9 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                       NoTelp=@NoTelp,
                       TngglDengan=@TngglDengan,
                       JrkKeSekolah=@JrkKeSekolah,
-                      TransportSekolah=@TransportSekolah
+                      TransportSekolah=@TransportSekolah,
+                      LokasiPhoto=@LokasiPhoto
+
                   WHERE 
                        SiswaId = @SiswaId";
 
@@ -101,6 +104,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@TngglDengan", siswa.TngglDengan, DbType.String);
             dp.Add("@JrkKeSekolah", siswa.JrkKeSekolah, DbType.Int16);
             dp.Add("@TransportSekolah", siswa.TransportSekolah, DbType.String);
+            dp.Add("@LokasiPhoto", siswa.LokasiPhoto, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
@@ -124,11 +128,14 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             const string sql = @"
                 SELECT
-                    NamaLengkap, NamaPanggil,
-                    Gender,TmpLahir,TglLahir, Agama, Kewarganegaraan,
-                    NIK, AnakKe,JmlhSdrKandung, JmlhSdrTiri, JmlhSdrAngkat,
+                    SiswaId,NamaLengkap, NamaPanggil,
+                    Gender,TmpLahir,TglLahir,
+                    Agama, Kewarganegaraan,
+                    NIK, AnakKe,JmlhSdrKandung, 
+                    JmlhSdrTiri, JmlhSdrAngkat,
                     YatimPiatu, Bahasa, Alamat,
-                    NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah
+                    NoTelp, TngglDengan,JrkKeSekolah,
+                    TransportSekolah, LokasiPhoto
                 FROM
                     Siswa
                 WHERE
@@ -149,7 +156,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     Gender,TmpLahir,TglLahir, Agama, Kewarganegaraan,
                     NIK, AnakKe,JmlhSdrKandung, JmlhSdrTiri, JmlhSdrAngkat,
                     YatimPiatu, Bahasa, Alamat,
-                    NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah
+                    NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah, LokasiPhoto
                 FROM
                     Siswa";
 

@@ -19,7 +19,9 @@
     NoTelp VARCHAR(20) NOT NULL DEFAULT(''),
     TngglDengan VARCHAR(50) NOT NULL DEFAULT(''),
     JrkKeSekolah INT NOT NULL DEFAULT(''),
-    TransportSekolah VARCHAR(50) NOT NULL DEFAULT('')
+    TransportSekolah VARCHAR(50) NOT NULL DEFAULT(''),
+
+    LokasiPhoto VARCHAR(255) NOT NULL DEFAULT(''),
 
     CONSTRAINT PK_Siswa PRIMARY KEY CLUSTERED(SiswaId)
 );

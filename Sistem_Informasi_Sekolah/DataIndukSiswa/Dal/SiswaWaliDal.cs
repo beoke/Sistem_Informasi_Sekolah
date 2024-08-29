@@ -54,7 +54,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 if (insert > 0) cek++;
             }
             if (cek >= 3)
-                MessageBox.Show("Data Berhasil Di Input");
+                MessageBox.Show($"Data Berhasil Di Input");
             else
                 MessageBox.Show("Data Gagal Di Input");
         }
@@ -81,7 +81,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                         NIK = @NIK,
                         TahunMeninggal = @TahunMeninggal
 
-                    WHERE SiswaId = @SiswaId";
+                    WHERE JenisWali = @JenisWali";
             int cek = 0;
             using var koneksi = new SqlConnection(ConnStringHelper.Get());
             foreach (var siswaWali in siswaWalis)

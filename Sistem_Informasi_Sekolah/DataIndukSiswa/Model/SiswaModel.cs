@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,5 +29,6 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
         public string TngglDengan { get; set; }
         public int JrkKeSekolah { get; set; }
         public string TransportSekolah { get; set; }
+        public string LokasiPhoto { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using Sistem_Informasi_Sekolah.DataIndukSiswa.Helpers;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
 using System.ComponentModel;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Security.Permissions;
 using System.Security.Policy;
 using System.Windows.Forms;
@@ -22,6 +23,7 @@ namespace Sistem_Informasi_Sekolah
         private readonly BindingSource beasiswaBinding;
         private readonly BindingList<BeasiswaDto> beasiswaList;
 
+        private string FotoLokasi = string.Empty;
         public Form1()
         {
             InitializeComponent();
@@ -91,7 +93,7 @@ namespace Sistem_Informasi_Sekolah
             dataGrid_beasiswa.DataSource = beasiswaBinding;
             dataGrid_beasiswa.Columns["No"].Width = 40;
             dataGrid_beasiswa.Columns["Tahun"].Width = 50;
-            dataGrid_beasiswa.Columns["Kelas"].Width  = 50;
+            dataGrid_beasiswa.Columns["Kelas"].Width = 50;
             dataGrid_beasiswa.Columns["AsalBeasiswa"].Width = 200;
         }
         #endregion
@@ -114,7 +116,7 @@ namespace Sistem_Informasi_Sekolah
                 SiswaId = siswaId,
                 NamaLengkap = tx_Nmlengkap.Text,
                 NamaPanggil = tx_NmPanggilan.Text,
-                Gender = rb_laki.Checked ? 1 : 0,
+                Gender = rb_laki.Checked ? 0 : 1,
                 TmpLahir = tx_TmpatLahir.Text,
                 TglLahir = date_TglLahir.Value,
                 Agama = cb_Agama.SelectedItem.ToString() ?? string.Empty,
@@ -135,11 +137,12 @@ namespace Sistem_Informasi_Sekolah
             if (siswa.SiswaId == 0)
             {
                 siswaId = siswaDal.Insert(siswa);
-                MessageBox.Show("Berhasil");
+                MessageBox.Show("Data Berhasil Di Tambahkan", "Insert", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 siswaDal.Update(siswa);
+                MessageBox.Show("Data Berhasil Di Update", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return siswaId;
         }
@@ -182,9 +185,14 @@ namespace Sistem_Informasi_Sekolah
             };
             var dataDiDb = siswaRiwayatDal.GetData(siswaId);
             if (dataDiDb is null)
+            {
                 siswaRiwayatDal.Insert(siswaRiwayat);
+            }
             else
+            {
                 siswaRiwayatDal.Update(siswaRiwayat);
+            }
+
         }
         private void SaveSiswaWali(int siswaId)
         {
@@ -249,7 +257,7 @@ namespace Sistem_Informasi_Sekolah
                 TahunMeninggal = ""
             };
             var ListWali = new List<SiswaWaliModel>
-            { 
+            {
                 ayah, ibu, wali
             };
 
@@ -257,16 +265,14 @@ namespace Sistem_Informasi_Sekolah
             if (!dataDiDb.Any())
             {
                 siswaWaliDal.Insert(ListWali);
-
             }
             else
             {
                 siswaWaliDal.Update(ListWali);
-
             }
 
         }
-        private void SaveSiswaBeasiswa(int siswaId) 
+        private void SaveSiswaBeasiswa(int siswaId)
         {
             var listBeasiswa = new List<SiswaBeasiswaModel>();
             siswaBeasiswaDal.Delete(siswaId);
@@ -296,7 +302,7 @@ namespace Sistem_Informasi_Sekolah
                 NamaPerusahaan = tx_perusahaan.Text,
                 Penghasilan = (int)nu_penghasilanLulus.Value,
             };
-            var dataDiDb = siswaLulusDal.Get (siswaId);
+            var dataDiDb = siswaLulusDal.Get(siswaId);
             if (dataDiDb is null)
                 siswaLulusDal.Insert(siswalulus);
             else
@@ -331,7 +337,7 @@ namespace Sistem_Informasi_Sekolah
 
             if (siswaPersonal.Gender == 0)
                 rb_laki.Checked = true;
-            else
+            else if (siswaPersonal.Gender == 1)
                 rb_perempuan.Checked = true;
 
             foreach (var item in cb_Agama.Items)
@@ -378,7 +384,7 @@ namespace Sistem_Informasi_Sekolah
             tx_Kelainan.Text = siswaRiwayat.KelainanJasmani;
             nu_TB.Value = siswaRiwayat.TinggiBdn;
             nu_BB.Value = siswaRiwayat.BeratBdn;
-              
+
             tx_Lulusan.Text = siswaRiwayat.LulusanDr;
             date_Tglijazah.Value = siswaRiwayat.TglIjazah;
             tx_NoIjazah.Text = siswaRiwayat.NoIjazah;
@@ -398,11 +404,11 @@ namespace Sistem_Informasi_Sekolah
 
             date_Tglmeninggalkan.Value = siswaRiwayat.TglTinggalSekolah;
             tx_Alasanmeninggalkan.Text = siswaRiwayat.AlasanTinggal;
-            
+
             dtp_tamatbelajar.Value = siswaRiwayat.AkhirTamatBljr;
             tx_IjazahNo.Text = siswaRiwayat.AkhirNoIjazah;
         }
-        private void GetSiswaWali(int siswaId) 
+        private void GetSiswaWali(int siswaId)
         {
             var listWali = siswaWaliDal.ListData(siswaId);
             if (listWali is null) return;
@@ -468,8 +474,8 @@ namespace Sistem_Informasi_Sekolah
                 tx_NikWali.Text = wali.NIK;
                 tx_noKKwali.Text = wali.NoKK;
             }
-        
-    }
+
+        }
         private void GetSiswaBeasiswa(int siswaId)
         {
             var listBea = siswaBeasiswaDal.ListData(siswaId)?.ToList();
@@ -586,6 +592,7 @@ namespace Sistem_Informasi_Sekolah
             ListSiswa_grid.Refresh();
         }
         #endregion
+
         #region BUTTON SAVE
         private void btn_SaveSiswa_Click(object sender, EventArgs e)
         {
@@ -650,5 +657,88 @@ namespace Sistem_Informasi_Sekolah
             public string AsalBeasiswa { get; set; }
         }
 
+        #region FOTO SISWA
+        private void ListSiswa_grid_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            var siswaId = ListSiswa_grid.Rows[e.RowIndex].Cells[0].Value.ToString();
+            var siswaName = ListSiswa_grid.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            lbl_siswaId.Text = siswaId;
+            lbl_SiswaName.Text = siswaName;
+
+            var siswa = siswaDal.GetData(Convert.ToInt32(siswaId));
+            FotoLokasi = siswa?.LokasiPhoto ?? string.Empty;
+            if (FotoLokasi != string.Empty)
+            {
+                SiswaFoto.Image = Image.FromFile(FotoLokasi);
+            }
+            else
+            {
+                SiswaFoto.Image = null;
+            }
+        }
+
+        private void ListSiswa_grid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (ListSiswa_grid.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = ListSiswa_grid.SelectedRows[0];
+
+                string siswaId = selectedRow.Cells[0].Value.ToString();
+                string siswaName = selectedRow.Cells[1].Value.ToString();
+
+                lbl_siswaId.Text = siswaId;
+                lbl_SiswaName.Text = siswaName;
+
+                var siswa = siswaDal.GetData(Convert.ToInt32(siswaId));
+                FotoLokasi = siswa?.LokasiPhoto ?? string.Empty;
+                if (FotoLokasi != string.Empty)
+                {
+                    SiswaFoto.Image = Image.FromFile(FotoLokasi);
+                }
+                else
+                {
+                    SiswaFoto.Image = null;
+                }
+            }
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            SiswaFoto.Image = null;
+            FotoLokasi = string.Empty;
+        }
+        private void BtnPilih_Click(object sender, EventArgs e)
+        {
+            var openfileDialog = new OpenFileDialog
+            {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif",
+                FilterIndex = 1,
+                Title = "Select a Foto"
+            };
+
+            if (openfileDialog.ShowDialog() == DialogResult.OK)
+            {
+                SiswaFoto.Image = System.Drawing.Image.FromFile(openfileDialog.FileName);
+                SiswaFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+                FotoLokasi = openfileDialog.FileName;
+
+                UpdateFotosiswa();
+            }
+        }
+
+        private void UpdateFotosiswa()
+        {
+            var siswa = siswaDal.GetData(Convert.ToInt32(lbl_siswaId.Text));
+            if (siswa is null)
+            {
+                SiswaFoto.Image = null;
+                FotoLokasi = string.Empty;
+                return;
+            }
+            siswa.LokasiPhoto = FotoLokasi;
+            siswaDal.Update(siswa);
+        }
+        #endregion 
     }
-}   
+}  
