@@ -31,10 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             SiswaTabControl = new TabControl();
             tabPage1 = new TabPage();
+            panel9 = new Panel();
             BtnPilih = new Button();
             btnHapus = new Button();
-            lbl_SiswaName = new Label();
-            lbl_siswaId = new Label();
             SiswaFoto = new PictureBox();
             NewButton = new Button();
             RefreshButton = new Button();
@@ -258,8 +257,14 @@
             tx_melanjutkan = new TextBox();
             label97 = new Label();
             label98 = new Label();
+            panel10 = new Panel();
+            label82 = new Label();
+            label80 = new Label();
+            lbl_SiswaName = new Label();
+            lbl_siswaId = new Label();
             SiswaTabControl.SuspendLayout();
             tabPage1.SuspendLayout();
+            panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SiswaFoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ListSiswa_grid).BeginInit();
             PersonalTabPage.SuspendLayout();
@@ -286,6 +291,7 @@
             tabPage5.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nu_penghasilanLulus).BeginInit();
+            panel10.SuspendLayout();
             SuspendLayout();
             // 
             // SiswaTabControl
@@ -306,11 +312,9 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(BtnPilih);
-            tabPage1.Controls.Add(btnHapus);
-            tabPage1.Controls.Add(lbl_SiswaName);
-            tabPage1.Controls.Add(lbl_siswaId);
-            tabPage1.Controls.Add(SiswaFoto);
+            tabPage1.BackColor = SystemColors.GradientActiveCaption;
+            tabPage1.Controls.Add(panel10);
+            tabPage1.Controls.Add(panel9);
             tabPage1.Controls.Add(NewButton);
             tabPage1.Controls.Add(RefreshButton);
             tabPage1.Controls.Add(ListSiswa_grid);
@@ -321,54 +325,44 @@
             tabPage1.Size = new Size(746, 572);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "List Data";
-            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.CornflowerBlue;
+            panel9.Controls.Add(BtnPilih);
+            panel9.Controls.Add(btnHapus);
+            panel9.Controls.Add(SiswaFoto);
+            panel9.Location = new Point(517, 81);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(221, 311);
+            panel9.TabIndex = 10;
             // 
             // BtnPilih
             // 
-            BtnPilih.Location = new Point(544, 365);
+            BtnPilih.Location = new Point(25, 283);
             BtnPilih.Name = "BtnPilih";
             BtnPilih.Size = new Size(75, 23);
-            BtnPilih.TabIndex = 7;
+            BtnPilih.TabIndex = 14;
             BtnPilih.Text = "Pilih Foto";
             BtnPilih.UseVisualStyleBackColor = true;
-            BtnPilih.Click += BtnPilih_Click;
             // 
             // btnHapus
             // 
-            btnHapus.Location = new Point(646, 365);
+            btnHapus.Location = new Point(127, 283);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(75, 23);
-            btnHapus.TabIndex = 6;
+            btnHapus.TabIndex = 13;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;
-            btnHapus.Click += btnHapus_Click;
-            // 
-            // lbl_SiswaName
-            // 
-            lbl_SiswaName.AutoSize = true;
-            lbl_SiswaName.Location = new Point(529, 44);
-            lbl_SiswaName.Name = "lbl_SiswaName";
-            lbl_SiswaName.Size = new Size(68, 18);
-            lbl_SiswaName.TabIndex = 5;
-            lbl_SiswaName.Text = "siswaName";
-            // 
-            // lbl_siswaId
-            // 
-            lbl_siswaId.AutoSize = true;
-            lbl_siswaId.Location = new Point(529, 13);
-            lbl_siswaId.Name = "lbl_siswaId";
-            lbl_siswaId.Size = new Size(49, 18);
-            lbl_siswaId.TabIndex = 4;
-            lbl_siswaId.Text = "SiswaId";
             // 
             // SiswaFoto
             // 
             SiswaFoto.BackgroundImage = (Image)resources.GetObject("SiswaFoto.BackgroundImage");
             SiswaFoto.BackgroundImageLayout = ImageLayout.Stretch;
-            SiswaFoto.Location = new Point(519, 85);
+            SiswaFoto.Location = new Point(0, 0);
             SiswaFoto.Name = "SiswaFoto";
             SiswaFoto.Size = new Size(221, 274);
-            SiswaFoto.TabIndex = 3;
+            SiswaFoto.TabIndex = 10;
             SiswaFoto.TabStop = false;
             // 
             // NewButton
@@ -394,12 +388,12 @@
             // ListSiswa_grid
             // 
             ListSiswa_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ListSiswa_grid.Location = new Point(8, 2);
+            ListSiswa_grid.Location = new Point(3, 2);
             ListSiswa_grid.Margin = new Padding(3, 2, 3, 2);
             ListSiswa_grid.Name = "ListSiswa_grid";
             ListSiswa_grid.RowHeadersWidth = 51;
             ListSiswa_grid.RowTemplate.Height = 29;
-            ListSiswa_grid.Size = new Size(503, 412);
+            ListSiswa_grid.Size = new Size(508, 412);
             ListSiswa_grid.TabIndex = 0;
             ListSiswa_grid.RowEnter += ListSiswa_grid_RowEnter;
             ListSiswa_grid.SelectionChanged += ListSiswa_grid_SelectionChanged;
@@ -407,6 +401,7 @@
             // 
             // PersonalTabPage
             // 
+            PersonalTabPage.BackColor = SystemColors.GradientActiveCaption;
             PersonalTabPage.Controls.Add(label51);
             PersonalTabPage.Controls.Add(panel2);
             PersonalTabPage.Controls.Add(panel1);
@@ -422,7 +417,6 @@
             PersonalTabPage.Size = new Size(746, 572);
             PersonalTabPage.TabIndex = 1;
             PersonalTabPage.Text = "Data Personal";
-            PersonalTabPage.UseVisualStyleBackColor = true;
             // 
             // label51
             // 
@@ -880,6 +874,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.BackColor = SystemColors.GradientActiveCaption;
             tabPage3.Controls.Add(panel4);
             tabPage3.Controls.Add(btn_SaveSiswaRiwayat);
             tabPage3.Controls.Add(panel3);
@@ -891,7 +886,6 @@
             tabPage3.Size = new Size(746, 572);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Kesehatan & Pendidikan";
-            tabPage3.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -1526,6 +1520,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.BackColor = SystemColors.GradientActiveCaption;
             tabPage4.Controls.Add(panel8);
             tabPage4.Controls.Add(btn_SaveSiswaWali);
             tabPage4.Controls.Add(panel5);
@@ -1538,7 +1533,6 @@
             tabPage4.Size = new Size(746, 572);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Data wali / Ortu";
-            tabPage4.UseVisualStyleBackColor = true;
             // 
             // panel8
             // 
@@ -2449,6 +2443,7 @@
             // 
             // tabPage5
             // 
+            tabPage5.BackColor = SystemColors.GradientActiveCaption;
             tabPage5.Controls.Add(panel7);
             tabPage5.Location = new Point(4, 27);
             tabPage5.Margin = new Padding(3, 2, 3, 2);
@@ -2456,7 +2451,6 @@
             tabPage5.Size = new Size(746, 572);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Ket setelah lulus";
-            tabPage5.UseVisualStyleBackColor = true;
             // 
             // panel7
             // 
@@ -2587,6 +2581,57 @@
             label98.TabIndex = 39;
             label98.Text = "a. Tanggal Mulai kerja : ";
             // 
+            // panel10
+            // 
+            panel10.Controls.Add(label82);
+            panel10.Controls.Add(label80);
+            panel10.Controls.Add(lbl_SiswaName);
+            panel10.Controls.Add(lbl_siswaId);
+            panel10.Location = new Point(517, 25);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(219, 50);
+            panel10.TabIndex = 11;
+            // 
+            // label82
+            // 
+            label82.AutoSize = true;
+            label82.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label82.Location = new Point(3, 24);
+            label82.Name = "label82";
+            label82.Size = new Size(53, 18);
+            label82.TabIndex = 20;
+            label82.Text = "Nama :";
+            // 
+            // label80
+            // 
+            label80.AutoSize = true;
+            label80.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label80.Location = new Point(3, 6);
+            label80.Name = "label80";
+            label80.Size = new Size(68, 18);
+            label80.TabIndex = 19;
+            label80.Text = "Id Siswa :";
+            // 
+            // lbl_SiswaName
+            // 
+            lbl_SiswaName.AutoSize = true;
+            lbl_SiswaName.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_SiswaName.Location = new Point(62, 24);
+            lbl_SiswaName.Name = "lbl_SiswaName";
+            lbl_SiswaName.Size = new Size(77, 18);
+            lbl_SiswaName.TabIndex = 18;
+            lbl_SiswaName.Text = "siswaName";
+            // 
+            // lbl_siswaId
+            // 
+            lbl_siswaId.AutoSize = true;
+            lbl_siswaId.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_siswaId.Location = new Point(77, 6);
+            lbl_siswaId.Name = "lbl_siswaId";
+            lbl_siswaId.Size = new Size(56, 18);
+            lbl_siswaId.TabIndex = 17;
+            lbl_siswaId.Text = "SiswaId";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -2599,7 +2644,7 @@
             Text = "Form1";
             SiswaTabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SiswaFoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)ListSiswa_grid).EndInit();
             PersonalTabPage.ResumeLayout(false);
@@ -2637,6 +2682,8 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nu_penghasilanLulus).EndInit();
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -2870,10 +2917,14 @@
         private TextBox tx_NikWali;
         private TextBox tx_noKKwali;
         private Label label78;
+        private Panel panel9;
         private Button BtnPilih;
         private Button btnHapus;
+        private PictureBox SiswaFoto;
+        private Panel panel10;
+        private Label label82;
+        private Label label80;
         private Label lbl_SiswaName;
         private Label lbl_siswaId;
-        private PictureBox SiswaFoto;
     }
 }

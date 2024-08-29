@@ -590,6 +590,9 @@ namespace Sistem_Informasi_Sekolah
                 .ToList();
             ListSiswa_grid.DataSource = dataSource;
             ListSiswa_grid.Refresh();
+
+            ListSiswa_grid.Columns["SiswaId"].Width = 50;
+            ListSiswa_grid.Columns["SiswaId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         #endregion
 
