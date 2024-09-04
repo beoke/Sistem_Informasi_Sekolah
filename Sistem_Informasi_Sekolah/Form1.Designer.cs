@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             SiswaTabControl = new TabControl();
             tabPage1 = new TabPage();
+            label88 = new Label();
+            panel10 = new Panel();
+            label82 = new Label();
+            label80 = new Label();
+            lbl_SiswaName = new Label();
+            lbl_siswaId = new Label();
             panel9 = new Panel();
             BtnPilih = new Button();
             btnHapus = new Button();
@@ -39,6 +45,7 @@
             RefreshButton = new Button();
             ListSiswa_grid = new DataGridView();
             PersonalTabPage = new TabPage();
+            label100 = new Label();
             label51 = new Label();
             panel2 = new Panel();
             jarakSklh_numeric = new NumericUpDown();
@@ -87,6 +94,7 @@
             label68 = new Label();
             label20 = new Label();
             tabPage3 = new TabPage();
+            label109 = new Label();
             panel4 = new Panel();
             dtp_tamatbelajar = new DateTimePicker();
             dataGrid_beasiswa = new DataGridView();
@@ -151,6 +159,7 @@
             label1 = new Label();
             label66 = new Label();
             tabPage4 = new TabPage();
+            label110 = new Label();
             panel8 = new Panel();
             tx_NIKIbu = new TextBox();
             cb_hidupIbu = new ComboBox();
@@ -244,6 +253,7 @@
             textBox76 = new TextBox();
             label108 = new Label();
             tabPage5 = new TabPage();
+            label111 = new Label();
             panel7 = new Panel();
             nu_penghasilanLulus = new NumericUpDown();
             btn_SaveLulus = new Button();
@@ -257,13 +267,9 @@
             tx_melanjutkan = new TextBox();
             label97 = new Label();
             label98 = new Label();
-            panel10 = new Panel();
-            label82 = new Label();
-            label80 = new Label();
-            lbl_SiswaName = new Label();
-            lbl_siswaId = new Label();
             SiswaTabControl.SuspendLayout();
             tabPage1.SuspendLayout();
+            panel10.SuspendLayout();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SiswaFoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ListSiswa_grid).BeginInit();
@@ -291,7 +297,6 @@
             tabPage5.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nu_penghasilanLulus).BeginInit();
-            panel10.SuspendLayout();
             SuspendLayout();
             // 
             // SiswaTabControl
@@ -307,12 +312,13 @@
             SiswaTabControl.Margin = new Padding(3, 2, 3, 2);
             SiswaTabControl.Name = "SiswaTabControl";
             SiswaTabControl.SelectedIndex = 0;
-            SiswaTabControl.Size = new Size(754, 603);
+            SiswaTabControl.Size = new Size(754, 638);
             SiswaTabControl.TabIndex = 0;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = SystemColors.GradientActiveCaption;
+            tabPage1.Controls.Add(label88);
             tabPage1.Controls.Add(panel10);
             tabPage1.Controls.Add(panel9);
             tabPage1.Controls.Add(NewButton);
@@ -322,17 +328,82 @@
             tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(746, 572);
+            tabPage1.Size = new Size(746, 607);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "List Data";
             // 
+            // label88
+            // 
+            label88.BackColor = Color.SkyBlue;
+            label88.Dock = DockStyle.Top;
+            label88.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label88.Location = new Point(3, 2);
+            label88.Name = "label88";
+            label88.Size = new Size(740, 36);
+            label88.TabIndex = 13;
+            label88.Text = "LIST DATA";
+            label88.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            panel10.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel10.Controls.Add(label82);
+            panel10.Controls.Add(label80);
+            panel10.Controls.Add(lbl_SiswaName);
+            panel10.Controls.Add(lbl_siswaId);
+            panel10.Location = new Point(519, 41);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(219, 50);
+            panel10.TabIndex = 11;
+            // 
+            // label82
+            // 
+            label82.AutoSize = true;
+            label82.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label82.Location = new Point(3, 24);
+            label82.Name = "label82";
+            label82.Size = new Size(53, 18);
+            label82.TabIndex = 20;
+            label82.Text = "Nama :";
+            // 
+            // label80
+            // 
+            label80.AutoSize = true;
+            label80.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label80.Location = new Point(3, 6);
+            label80.Name = "label80";
+            label80.Size = new Size(68, 18);
+            label80.TabIndex = 19;
+            label80.Text = "Id Siswa :";
+            // 
+            // lbl_SiswaName
+            // 
+            lbl_SiswaName.AutoSize = true;
+            lbl_SiswaName.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_SiswaName.Location = new Point(62, 24);
+            lbl_SiswaName.Name = "lbl_SiswaName";
+            lbl_SiswaName.Size = new Size(77, 18);
+            lbl_SiswaName.TabIndex = 18;
+            lbl_SiswaName.Text = "siswaName";
+            // 
+            // lbl_siswaId
+            // 
+            lbl_siswaId.AutoSize = true;
+            lbl_siswaId.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_siswaId.Location = new Point(77, 6);
+            lbl_siswaId.Name = "lbl_siswaId";
+            lbl_siswaId.Size = new Size(56, 18);
+            lbl_siswaId.TabIndex = 17;
+            lbl_siswaId.Text = "SiswaId";
+            // 
             // panel9
             // 
+            panel9.Anchor = AnchorStyles.Right;
             panel9.BackColor = Color.CornflowerBlue;
             panel9.Controls.Add(BtnPilih);
             panel9.Controls.Add(btnHapus);
             panel9.Controls.Add(SiswaFoto);
-            panel9.Location = new Point(517, 81);
+            panel9.Location = new Point(519, 97);
             panel9.Name = "panel9";
             panel9.Size = new Size(221, 311);
             panel9.TabIndex = 10;
@@ -367,7 +438,8 @@
             // 
             // NewButton
             // 
-            NewButton.Location = new Point(424, 421);
+            NewButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NewButton.Location = new Point(433, 458);
             NewButton.Name = "NewButton";
             NewButton.Size = new Size(75, 23);
             NewButton.TabIndex = 2;
@@ -377,7 +449,8 @@
             // 
             // RefreshButton
             // 
-            RefreshButton.Location = new Point(8, 421);
+            RefreshButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            RefreshButton.Location = new Point(8, 458);
             RefreshButton.Name = "RefreshButton";
             RefreshButton.Size = new Size(75, 23);
             RefreshButton.TabIndex = 1;
@@ -387,8 +460,9 @@
             // 
             // ListSiswa_grid
             // 
+            ListSiswa_grid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ListSiswa_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ListSiswa_grid.Location = new Point(3, 2);
+            ListSiswa_grid.Location = new Point(0, 41);
             ListSiswa_grid.Margin = new Padding(3, 2, 3, 2);
             ListSiswa_grid.Name = "ListSiswa_grid";
             ListSiswa_grid.RowHeadersWidth = 51;
@@ -402,6 +476,7 @@
             // PersonalTabPage
             // 
             PersonalTabPage.BackColor = SystemColors.GradientActiveCaption;
+            PersonalTabPage.Controls.Add(label100);
             PersonalTabPage.Controls.Add(label51);
             PersonalTabPage.Controls.Add(panel2);
             PersonalTabPage.Controls.Add(panel1);
@@ -414,14 +489,26 @@
             PersonalTabPage.Margin = new Padding(3, 2, 3, 2);
             PersonalTabPage.Name = "PersonalTabPage";
             PersonalTabPage.Padding = new Padding(3, 2, 3, 2);
-            PersonalTabPage.Size = new Size(746, 572);
+            PersonalTabPage.Size = new Size(746, 607);
             PersonalTabPage.TabIndex = 1;
             PersonalTabPage.Text = "Data Personal";
+            // 
+            // label100
+            // 
+            label100.BackColor = Color.SkyBlue;
+            label100.Dock = DockStyle.Top;
+            label100.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label100.Location = new Point(3, 2);
+            label100.Name = "label100";
+            label100.Size = new Size(740, 36);
+            label100.TabIndex = 46;
+            label100.Text = "DATA PERSONAL";
+            label100.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label51
             // 
             label51.AutoSize = true;
-            label51.Location = new Point(21, 4);
+            label51.Location = new Point(13, 51);
             label51.Name = "label51";
             label51.Size = new Size(56, 18);
             label51.TabIndex = 45;
@@ -429,6 +516,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ActiveBorder;
             panel2.Controls.Add(jarakSklh_numeric);
             panel2.Controls.Add(jmlSauAngkat_numeric);
@@ -449,22 +537,22 @@
             panel2.Controls.Add(tx_Bahasa);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label12);
-            panel2.Location = new Point(347, 53);
+            panel2.Location = new Point(362, 78);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(393, 444);
+            panel2.Size = new Size(376, 453);
             panel2.TabIndex = 2;
             // 
             // jarakSklh_numeric
             // 
-            jarakSklh_numeric.Location = new Point(34, 362);
+            jarakSklh_numeric.Location = new Point(81, 370);
             jarakSklh_numeric.Name = "jarakSklh_numeric";
             jarakSklh_numeric.Size = new Size(231, 25);
             jarakSklh_numeric.TabIndex = 46;
             // 
             // jmlSauAngkat_numeric
             // 
-            jmlSauAngkat_numeric.Location = new Point(29, 18);
+            jmlSauAngkat_numeric.Location = new Point(76, 26);
             jmlSauAngkat_numeric.Name = "jmlSauAngkat_numeric";
             jmlSauAngkat_numeric.Size = new Size(229, 25);
             jmlSauAngkat_numeric.TabIndex = 45;
@@ -472,7 +560,7 @@
             // cb_statustinggal
             // 
             cb_statustinggal.FormattingEnabled = true;
-            cb_statustinggal.Location = new Point(34, 318);
+            cb_statustinggal.Location = new Point(81, 326);
             cb_statustinggal.Name = "cb_statustinggal";
             cb_statustinggal.Size = new Size(229, 26);
             cb_statustinggal.TabIndex = 42;
@@ -480,7 +568,7 @@
             // cb_Yatim
             // 
             cb_Yatim.FormattingEnabled = true;
-            cb_Yatim.Location = new Point(30, 60);
+            cb_Yatim.Location = new Point(77, 68);
             cb_Yatim.Name = "cb_Yatim";
             cb_Yatim.Size = new Size(229, 26);
             cb_Yatim.TabIndex = 41;
@@ -489,7 +577,7 @@
             // 
             label85.AutoSize = true;
             label85.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label85.Location = new Point(32, 177);
+            label85.Location = new Point(79, 185);
             label85.Name = "label85";
             label85.Size = new Size(166, 15);
             label85.TabIndex = 39;
@@ -498,7 +586,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(29, 0);
+            label11.Location = new Point(76, 8);
             label11.Name = "label11";
             label11.Size = new Size(138, 18);
             label11.TabIndex = 22;
@@ -506,7 +594,7 @@
             // 
             // tx_Transportasi
             // 
-            tx_Transportasi.Location = new Point(34, 410);
+            tx_Transportasi.Location = new Point(81, 418);
             tx_Transportasi.Margin = new Padding(3, 2, 3, 2);
             tx_Transportasi.Name = "tx_Transportasi";
             tx_Transportasi.Size = new Size(231, 25);
@@ -515,7 +603,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(31, 390);
+            label19.Location = new Point(78, 398);
             label19.Name = "label19";
             label19.Size = new Size(143, 18);
             label19.TabIndex = 38;
@@ -524,7 +612,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(34, 346);
+            label18.Location = new Point(81, 354);
             label18.Name = "label18";
             label18.Size = new Size(142, 18);
             label18.TabIndex = 36;
@@ -533,7 +621,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(30, 302);
+            label17.Location = new Point(77, 310);
             label17.Name = "label17";
             label17.Size = new Size(95, 18);
             label17.TabIndex = 34;
@@ -541,7 +629,7 @@
             // 
             // tx_Alamat
             // 
-            tx_Alamat.Location = new Point(32, 211);
+            tx_Alamat.Location = new Point(79, 219);
             tx_Alamat.Margin = new Padding(3, 2, 3, 2);
             tx_Alamat.Multiline = true;
             tx_Alamat.Name = "tx_Alamat";
@@ -551,7 +639,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(32, 194);
+            label16.Location = new Point(79, 202);
             label16.Name = "label16";
             label16.Size = new Size(53, 18);
             label16.TabIndex = 32;
@@ -559,7 +647,7 @@
             // 
             // tx_Notelp
             // 
-            tx_Notelp.Location = new Point(30, 277);
+            tx_Notelp.Location = new Point(77, 285);
             tx_Notelp.Margin = new Padding(3, 2, 3, 2);
             tx_Notelp.Name = "tx_Notelp";
             tx_Notelp.Size = new Size(231, 25);
@@ -568,7 +656,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(30, 260);
+            label15.Location = new Point(77, 268);
             label15.Name = "label15";
             label15.Size = new Size(138, 18);
             label15.TabIndex = 30;
@@ -576,7 +664,7 @@
             // 
             // tx_NIK
             // 
-            tx_NIK.Location = new Point(29, 143);
+            tx_NIK.Location = new Point(76, 151);
             tx_NIK.Margin = new Padding(3, 2, 3, 2);
             tx_NIK.Name = "tx_NIK";
             tx_NIK.Size = new Size(231, 25);
@@ -585,7 +673,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(32, 126);
+            label14.Location = new Point(79, 134);
             label14.Name = "label14";
             label14.Size = new Size(70, 18);
             label14.TabIndex = 28;
@@ -593,7 +681,7 @@
             // 
             // tx_Bahasa
             // 
-            tx_Bahasa.Location = new Point(30, 101);
+            tx_Bahasa.Location = new Point(77, 109);
             tx_Bahasa.Margin = new Padding(3, 2, 3, 2);
             tx_Bahasa.Name = "tx_Bahasa";
             tx_Bahasa.Size = new Size(231, 25);
@@ -602,7 +690,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(28, 85);
+            label13.Location = new Point(75, 93);
             label13.Name = "label13";
             label13.Size = new Size(158, 18);
             label13.TabIndex = 26;
@@ -611,7 +699,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(30, 44);
+            label12.Location = new Point(77, 52);
             label12.Name = "label12";
             label12.Size = new Size(182, 18);
             label12.TabIndex = 24;
@@ -619,6 +707,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel1.BackColor = Color.DarkGray;
             panel1.Controls.Add(cb_warganegara);
             panel1.Controls.Add(jmlSauTiri_numeric);
@@ -641,37 +730,37 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(8, 53);
+            panel1.Location = new Point(5, 79);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(333, 444);
+            panel1.Size = new Size(351, 451);
             panel1.TabIndex = 1;
             // 
             // cb_warganegara
             // 
             cb_warganegara.FormattingEnabled = true;
-            cb_warganegara.Location = new Point(37, 267);
+            cb_warganegara.Location = new Point(61, 267);
             cb_warganegara.Name = "cb_warganegara";
             cb_warganegara.Size = new Size(230, 26);
             cb_warganegara.TabIndex = 43;
             // 
             // jmlSauTiri_numeric
             // 
-            jmlSauTiri_numeric.Location = new Point(37, 410);
+            jmlSauTiri_numeric.Location = new Point(61, 410);
             jmlSauTiri_numeric.Name = "jmlSauTiri_numeric";
             jmlSauTiri_numeric.Size = new Size(230, 25);
             jmlSauTiri_numeric.TabIndex = 42;
             // 
             // jmlsauKan_numeric
             // 
-            jmlsauKan_numeric.Location = new Point(36, 362);
+            jmlsauKan_numeric.Location = new Point(60, 362);
             jmlsauKan_numeric.Name = "jmlsauKan_numeric";
             jmlsauKan_numeric.Size = new Size(231, 25);
             jmlsauKan_numeric.TabIndex = 41;
             // 
             // anakke_numeric
             // 
-            anakke_numeric.Location = new Point(36, 318);
+            anakke_numeric.Location = new Point(60, 318);
             anakke_numeric.Name = "anakke_numeric";
             anakke_numeric.Size = new Size(230, 25);
             anakke_numeric.TabIndex = 40;
@@ -679,7 +768,7 @@
             // cb_Agama
             // 
             cb_Agama.FormattingEnabled = true;
-            cb_Agama.Location = new Point(35, 181);
+            cb_Agama.Location = new Point(59, 181);
             cb_Agama.Margin = new Padding(3, 2, 3, 2);
             cb_Agama.Name = "cb_Agama";
             cb_Agama.Size = new Size(230, 26);
@@ -689,7 +778,7 @@
             // 
             label84.AutoSize = true;
             label84.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label84.Location = new Point(8, 10);
+            label84.Location = new Point(32, 10);
             label84.Name = "label84";
             label84.Size = new Size(79, 15);
             label84.TabIndex = 23;
@@ -698,7 +787,7 @@
             // rb_perempuan
             // 
             rb_perempuan.AutoSize = true;
-            rb_perempuan.Location = new Point(174, 134);
+            rb_perempuan.Location = new Point(198, 134);
             rb_perempuan.Margin = new Padding(3, 2, 3, 2);
             rb_perempuan.Name = "rb_perempuan";
             rb_perempuan.Size = new Size(89, 22);
@@ -710,7 +799,7 @@
             // rb_laki
             // 
             rb_laki.AutoSize = true;
-            rb_laki.Location = new Point(49, 131);
+            rb_laki.Location = new Point(73, 131);
             rb_laki.Margin = new Padding(3, 2, 3, 2);
             rb_laki.Name = "rb_laki";
             rb_laki.Size = new Size(75, 22);
@@ -722,7 +811,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(37, 390);
+            label10.Location = new Point(61, 390);
             label10.Name = "label10";
             label10.Size = new Size(116, 18);
             label10.TabIndex = 20;
@@ -731,7 +820,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(35, 346);
+            label9.Location = new Point(59, 346);
             label9.Name = "label9";
             label9.Size = new Size(146, 18);
             label9.TabIndex = 18;
@@ -740,7 +829,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(36, 296);
+            label8.Location = new Point(60, 296);
             label8.Name = "label8";
             label8.Size = new Size(99, 18);
             label8.TabIndex = 16;
@@ -749,7 +838,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(35, 246);
+            label7.Location = new Point(59, 246);
             label7.Name = "label7";
             label7.Size = new Size(111, 18);
             label7.TabIndex = 14;
@@ -757,7 +846,7 @@
             // 
             // tx_TmpatLahir
             // 
-            tx_TmpatLahir.Location = new Point(35, 223);
+            tx_TmpatLahir.Location = new Point(59, 223);
             tx_TmpatLahir.Margin = new Padding(3, 2, 3, 2);
             tx_TmpatLahir.Name = "tx_TmpatLahir";
             tx_TmpatLahir.Size = new Size(115, 25);
@@ -766,7 +855,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(36, 156);
+            label6.Location = new Point(60, 156);
             label6.Name = "label6";
             label6.Size = new Size(52, 18);
             label6.TabIndex = 12;
@@ -776,7 +865,7 @@
             // 
             date_TglLahir.CustomFormat = "dd-MM-yyyy";
             date_TglLahir.Format = DateTimePickerFormat.Custom;
-            date_TglLahir.Location = new Point(156, 223);
+            date_TglLahir.Location = new Point(180, 223);
             date_TglLahir.Margin = new Padding(3, 2, 3, 2);
             date_TglLahir.Name = "date_TglLahir";
             date_TglLahir.Size = new Size(110, 25);
@@ -784,7 +873,7 @@
             // 
             // tx_Nmlengkap
             // 
-            tx_Nmlengkap.Location = new Point(30, 47);
+            tx_Nmlengkap.Location = new Point(54, 47);
             tx_Nmlengkap.Margin = new Padding(3, 2, 3, 2);
             tx_Nmlengkap.Name = "tx_Nmlengkap";
             tx_Nmlengkap.Size = new Size(237, 25);
@@ -793,7 +882,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(30, 30);
+            label5.Location = new Point(54, 30);
             label5.Name = "label5";
             label5.Size = new Size(99, 18);
             label5.TabIndex = 8;
@@ -801,7 +890,7 @@
             // 
             // tx_NmPanggilan
             // 
-            tx_NmPanggilan.Location = new Point(30, 89);
+            tx_NmPanggilan.Location = new Point(54, 89);
             tx_NmPanggilan.Margin = new Padding(3, 2, 3, 2);
             tx_NmPanggilan.Name = "tx_NmPanggilan";
             tx_NmPanggilan.Size = new Size(237, 25);
@@ -810,7 +899,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(30, 72);
+            label4.Location = new Point(54, 72);
             label4.Name = "label4";
             label4.Size = new Size(102, 18);
             label4.TabIndex = 6;
@@ -819,7 +908,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(35, 114);
+            label3.Location = new Point(59, 114);
             label3.Name = "label3";
             label3.Size = new Size(86, 18);
             label3.TabIndex = 4;
@@ -828,7 +917,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 206);
+            label2.Location = new Point(59, 206);
             label2.Name = "label2";
             label2.Size = new Size(135, 18);
             label2.TabIndex = 2;
@@ -837,14 +926,15 @@
             // SiswaIDtxt
             // 
             SiswaIDtxt.BorderStyle = BorderStyle.FixedSingle;
-            SiswaIDtxt.Location = new Point(20, 25);
+            SiswaIDtxt.Location = new Point(75, 49);
             SiswaIDtxt.Name = "SiswaIDtxt";
             SiswaIDtxt.Size = new Size(162, 25);
             SiswaIDtxt.TabIndex = 44;
             // 
             // btn_SaveSiswa
             // 
-            btn_SaveSiswa.Location = new Point(663, 499);
+            btn_SaveSiswa.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btn_SaveSiswa.Location = new Point(663, 536);
             btn_SaveSiswa.Name = "btn_SaveSiswa";
             btn_SaveSiswa.Size = new Size(75, 23);
             btn_SaveSiswa.TabIndex = 43;
@@ -854,9 +944,10 @@
             // 
             // label68
             // 
+            label68.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label68.AutoSize = true;
             label68.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label68.Location = new Point(32, 516);
+            label68.Location = new Point(37, 549);
             label68.Name = "label68";
             label68.Size = new Size(85, 15);
             label68.TabIndex = 39;
@@ -864,9 +955,10 @@
             // 
             // label20
             // 
+            label20.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label20.Location = new Point(30, 499);
+            label20.Location = new Point(35, 532);
             label20.Name = "label20";
             label20.Size = new Size(172, 15);
             label20.TabIndex = 22;
@@ -875,6 +967,7 @@
             // tabPage3
             // 
             tabPage3.BackColor = SystemColors.GradientActiveCaption;
+            tabPage3.Controls.Add(label109);
             tabPage3.Controls.Add(panel4);
             tabPage3.Controls.Add(btn_SaveSiswaRiwayat);
             tabPage3.Controls.Add(panel3);
@@ -883,9 +976,22 @@
             tabPage3.Location = new Point(4, 27);
             tabPage3.Margin = new Padding(3, 2, 3, 2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(746, 572);
+            tabPage3.Size = new Size(746, 607);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Kesehatan & Pendidikan";
+            tabPage3.Click += tabPage3_Click;
+            // 
+            // label109
+            // 
+            label109.BackColor = Color.SkyBlue;
+            label109.Dock = DockStyle.Top;
+            label109.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label109.Location = new Point(0, 0);
+            label109.Name = "label109";
+            label109.Size = new Size(746, 38);
+            label109.TabIndex = 72;
+            label109.Text = "KESEHATAN DAN PENDIDIKAN";
+            label109.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
@@ -913,17 +1019,17 @@
             panel4.Controls.Add(label37);
             panel4.Controls.Add(label38);
             panel4.Controls.Add(tx_Olahraga);
-            panel4.Location = new Point(377, 2);
+            panel4.Location = new Point(377, 40);
             panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(365, 504);
+            panel4.Size = new Size(365, 498);
             panel4.TabIndex = 3;
             // 
             // dtp_tamatbelajar
             // 
             dtp_tamatbelajar.CustomFormat = "yyyy";
             dtp_tamatbelajar.Format = DateTimePickerFormat.Custom;
-            dtp_tamatbelajar.Location = new Point(146, 428);
+            dtp_tamatbelajar.Location = new Point(148, 436);
             dtp_tamatbelajar.Margin = new Padding(3, 2, 3, 2);
             dtp_tamatbelajar.Name = "dtp_tamatbelajar";
             dtp_tamatbelajar.Size = new Size(196, 25);
@@ -932,7 +1038,7 @@
             // dataGrid_beasiswa
             // 
             dataGrid_beasiswa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGrid_beasiswa.Location = new Point(32, 205);
+            dataGrid_beasiswa.Location = new Point(34, 213);
             dataGrid_beasiswa.Margin = new Padding(3, 2, 3, 2);
             dataGrid_beasiswa.Name = "dataGrid_beasiswa";
             dataGrid_beasiswa.RowHeadersWidth = 51;
@@ -943,7 +1049,7 @@
             // label49
             // 
             label49.AutoSize = true;
-            label49.Location = new Point(21, 458);
+            label49.Location = new Point(23, 466);
             label49.Name = "label49";
             label49.Size = new Size(114, 18);
             label49.TabIndex = 63;
@@ -951,7 +1057,7 @@
             // 
             // tx_IjazahNo
             // 
-            tx_IjazahNo.Location = new Point(146, 458);
+            tx_IjazahNo.Location = new Point(148, 466);
             tx_IjazahNo.Margin = new Padding(3, 2, 3, 2);
             tx_IjazahNo.Name = "tx_IjazahNo";
             tx_IjazahNo.Size = new Size(199, 25);
@@ -960,7 +1066,7 @@
             // label48
             // 
             label48.AutoSize = true;
-            label48.Location = new Point(21, 428);
+            label48.Location = new Point(23, 436);
             label48.Name = "label48";
             label48.Size = new Size(100, 18);
             label48.TabIndex = 61;
@@ -969,7 +1075,7 @@
             // date_Tglmeninggalkan
             // 
             date_Tglmeninggalkan.CustomFormat = "";
-            date_Tglmeninggalkan.Location = new Point(148, 340);
+            date_Tglmeninggalkan.Location = new Point(150, 348);
             date_Tglmeninggalkan.Margin = new Padding(3, 2, 3, 2);
             date_Tglmeninggalkan.Name = "date_Tglmeninggalkan";
             date_Tglmeninggalkan.Size = new Size(194, 25);
@@ -978,7 +1084,7 @@
             // label46
             // 
             label46.AutoSize = true;
-            label46.Location = new Point(8, 338);
+            label46.Location = new Point(10, 346);
             label46.Name = "label46";
             label46.Size = new Size(142, 36);
             label46.TabIndex = 59;
@@ -988,7 +1094,7 @@
             // 
             label31.AutoSize = true;
             label31.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label31.Location = new Point(3, 409);
+            label31.Location = new Point(5, 417);
             label31.Name = "label31";
             label31.Size = new Size(110, 15);
             label31.TabIndex = 38;
@@ -996,7 +1102,7 @@
             // 
             // tx_Alasanmeninggalkan
             // 
-            tx_Alasanmeninggalkan.Location = new Point(146, 374);
+            tx_Alasanmeninggalkan.Location = new Point(148, 382);
             tx_Alasanmeninggalkan.Margin = new Padding(3, 2, 3, 2);
             tx_Alasanmeninggalkan.Multiline = true;
             tx_Alasanmeninggalkan.Name = "tx_Alasanmeninggalkan";
@@ -1007,7 +1113,7 @@
             // 
             label65.AutoSize = true;
             label65.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label65.Location = new Point(11, 6);
+            label65.Location = new Point(13, 14);
             label65.Name = "label65";
             label65.Size = new Size(111, 15);
             label65.TabIndex = 33;
@@ -1016,7 +1122,7 @@
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(15, 377);
+            label32.Location = new Point(17, 385);
             label32.Name = "label32";
             label32.Size = new Size(65, 18);
             label32.TabIndex = 36;
@@ -1026,7 +1132,7 @@
             // 
             label33.AutoSize = true;
             label33.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label33.Location = new Point(11, 312);
+            label33.Location = new Point(13, 320);
             label33.Name = "label33";
             label33.Size = new Size(136, 15);
             label33.TabIndex = 34;
@@ -1034,7 +1140,7 @@
             // 
             // tx_CitaCita
             // 
-            tx_CitaCita.Location = new Point(123, 154);
+            tx_CitaCita.Location = new Point(125, 162);
             tx_CitaCita.Margin = new Padding(3, 2, 3, 2);
             tx_CitaCita.Name = "tx_CitaCita";
             tx_CitaCita.Size = new Size(223, 25);
@@ -1043,7 +1149,7 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(28, 160);
+            label34.Location = new Point(30, 168);
             label34.Name = "label34";
             label34.Size = new Size(69, 18);
             label34.TabIndex = 32;
@@ -1052,7 +1158,7 @@
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(11, 185);
+            label35.Location = new Point(13, 193);
             label35.Name = "label35";
             label35.Size = new Size(120, 18);
             label35.TabIndex = 30;
@@ -1060,7 +1166,7 @@
             // 
             // tx_Hobi
             // 
-            tx_Hobi.Location = new Point(123, 125);
+            tx_Hobi.Location = new Point(125, 133);
             tx_Hobi.Margin = new Padding(3, 2, 3, 2);
             tx_Hobi.Name = "tx_Hobi";
             tx_Hobi.Size = new Size(221, 25);
@@ -1069,7 +1175,7 @@
             // label36
             // 
             label36.AutoSize = true;
-            label36.Location = new Point(21, 132);
+            label36.Location = new Point(23, 140);
             label36.Name = "label36";
             label36.Size = new Size(83, 18);
             label36.TabIndex = 28;
@@ -1077,7 +1183,7 @@
             // 
             // tx_Organisasi
             // 
-            tx_Organisasi.Location = new Point(123, 84);
+            tx_Organisasi.Location = new Point(125, 92);
             tx_Organisasi.Margin = new Padding(3, 2, 3, 2);
             tx_Organisasi.Multiline = true;
             tx_Organisasi.Name = "tx_Organisasi";
@@ -1086,7 +1192,7 @@
             // 
             // tx_Kesenian
             // 
-            tx_Kesenian.Location = new Point(123, 23);
+            tx_Kesenian.Location = new Point(125, 31);
             tx_Kesenian.Margin = new Padding(3, 2, 3, 2);
             tx_Kesenian.Name = "tx_Kesenian";
             tx_Kesenian.Size = new Size(223, 25);
@@ -1095,7 +1201,7 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(21, 21);
+            label30.Location = new Point(23, 29);
             label30.Name = "label30";
             label30.Size = new Size(62, 18);
             label30.TabIndex = 22;
@@ -1104,7 +1210,7 @@
             // label37
             // 
             label37.AutoSize = true;
-            label37.Location = new Point(15, 87);
+            label37.Location = new Point(17, 95);
             label37.Name = "label37";
             label37.Size = new Size(108, 36);
             label37.TabIndex = 26;
@@ -1113,7 +1219,7 @@
             // label38
             // 
             label38.AutoSize = true;
-            label38.Location = new Point(21, 58);
+            label38.Location = new Point(23, 66);
             label38.Name = "label38";
             label38.Size = new Size(63, 18);
             label38.TabIndex = 24;
@@ -1121,7 +1227,7 @@
             // 
             // tx_Olahraga
             // 
-            tx_Olahraga.Location = new Point(123, 55);
+            tx_Olahraga.Location = new Point(125, 63);
             tx_Olahraga.Margin = new Padding(3, 2, 3, 2);
             tx_Olahraga.Name = "tx_Olahraga";
             tx_Olahraga.Size = new Size(223, 25);
@@ -1129,7 +1235,7 @@
             // 
             // btn_SaveSiswaRiwayat
             // 
-            btn_SaveSiswaRiwayat.Location = new Point(643, 510);
+            btn_SaveSiswaRiwayat.Location = new Point(643, 542);
             btn_SaveSiswaRiwayat.Margin = new Padding(3, 2, 3, 2);
             btn_SaveSiswaRiwayat.Name = "btn_SaveSiswaRiwayat";
             btn_SaveSiswaRiwayat.Size = new Size(82, 22);
@@ -1176,16 +1282,16 @@
             panel3.Controls.Add(label28);
             panel3.Controls.Add(label29);
             panel3.Controls.Add(tx_LamaBelajar);
-            panel3.Location = new Point(3, 2);
+            panel3.Location = new Point(3, 40);
             panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(368, 504);
+            panel3.Size = new Size(368, 498);
             panel3.TabIndex = 2;
             // 
             // dtp_tglditerima
             // 
             dtp_tglditerima.CustomFormat = "";
-            dtp_tglditerima.Location = new Point(147, 420);
+            dtp_tglditerima.Location = new Point(152, 445);
             dtp_tglditerima.Margin = new Padding(3, 2, 3, 2);
             dtp_tglditerima.Name = "dtp_tglditerima";
             dtp_tglditerima.Size = new Size(198, 25);
@@ -1194,7 +1300,7 @@
             // label47
             // 
             label47.AutoSize = true;
-            label47.Location = new Point(24, 428);
+            label47.Location = new Point(29, 453);
             label47.Name = "label47";
             label47.Size = new Size(59, 18);
             label47.TabIndex = 51;
@@ -1203,7 +1309,7 @@
             // label43
             // 
             label43.AutoSize = true;
-            label43.Location = new Point(20, 392);
+            label43.Location = new Point(25, 417);
             label43.Name = "label43";
             label43.Size = new Size(128, 18);
             label43.TabIndex = 49;
@@ -1211,7 +1317,7 @@
             // 
             // tx_keahlian
             // 
-            tx_keahlian.Location = new Point(147, 389);
+            tx_keahlian.Location = new Point(152, 414);
             tx_keahlian.Margin = new Padding(3, 2, 3, 2);
             tx_keahlian.Name = "tx_keahlian";
             tx_keahlian.Size = new Size(198, 25);
@@ -1220,7 +1326,7 @@
             // label44
             // 
             label44.AutoSize = true;
-            label44.Location = new Point(20, 365);
+            label44.Location = new Point(25, 390);
             label44.Name = "label44";
             label44.Size = new Size(91, 18);
             label44.TabIndex = 48;
@@ -1228,7 +1334,7 @@
             // 
             // tx_diterimakelas
             // 
-            tx_diterimakelas.Location = new Point(147, 362);
+            tx_diterimakelas.Location = new Point(152, 387);
             tx_diterimakelas.Margin = new Padding(3, 2, 3, 2);
             tx_diterimakelas.Name = "tx_diterimakelas";
             tx_diterimakelas.Size = new Size(198, 25);
@@ -1238,7 +1344,7 @@
             // 
             label45.AutoSize = true;
             label45.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label45.Location = new Point(5, 340);
+            label45.Location = new Point(10, 365);
             label45.Name = "label45";
             label45.Size = new Size(141, 15);
             label45.TabIndex = 47;
@@ -1247,7 +1353,7 @@
             // Golddar_O
             // 
             Golddar_O.AutoSize = true;
-            Golddar_O.Location = new Point(304, 21);
+            Golddar_O.Location = new Point(298, 44);
             Golddar_O.Name = "Golddar_O";
             Golddar_O.Size = new Size(36, 22);
             Golddar_O.TabIndex = 42;
@@ -1258,7 +1364,7 @@
             // Goldar_AB
             // 
             Goldar_AB.AutoSize = true;
-            Goldar_AB.Location = new Point(255, 19);
+            Goldar_AB.Location = new Point(249, 42);
             Goldar_AB.Name = "Goldar_AB";
             Goldar_AB.Size = new Size(43, 22);
             Goldar_AB.TabIndex = 41;
@@ -1269,7 +1375,7 @@
             // Goldar_B
             // 
             Goldar_B.AutoSize = true;
-            Goldar_B.Location = new Point(204, 19);
+            Goldar_B.Location = new Point(209, 44);
             Goldar_B.Name = "Goldar_B";
             Goldar_B.Size = new Size(34, 22);
             Goldar_B.TabIndex = 40;
@@ -1280,7 +1386,7 @@
             // Goldar_A
             // 
             Goldar_A.AutoSize = true;
-            Goldar_A.Location = new Point(147, 19);
+            Goldar_A.Location = new Point(152, 44);
             Goldar_A.Name = "Goldar_A";
             Goldar_A.Size = new Size(35, 22);
             Goldar_A.TabIndex = 39;
@@ -1291,7 +1397,7 @@
             // label64
             // 
             label64.AutoSize = true;
-            label64.Location = new Point(27, 213);
+            label64.Location = new Point(32, 238);
             label64.Name = "label64";
             label64.Size = new Size(95, 18);
             label64.TabIndex = 37;
@@ -1307,7 +1413,7 @@
             // 
             // nu_TB
             // 
-            nu_TB.Location = new Point(147, 108);
+            nu_TB.Location = new Point(152, 133);
             nu_TB.Margin = new Padding(3, 2, 3, 2);
             nu_TB.Name = "nu_TB";
             nu_TB.Size = new Size(58, 25);
@@ -1317,7 +1423,7 @@
             // 
             label83.AutoSize = true;
             label83.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label83.Location = new Point(0, 0);
+            label83.Location = new Point(5, 25);
             label83.Name = "label83";
             label83.Size = new Size(139, 15);
             label83.TabIndex = 32;
@@ -1326,7 +1432,7 @@
             // date_Tglijazah
             // 
             date_Tglijazah.CustomFormat = "";
-            date_Tglijazah.Location = new Point(147, 185);
+            date_Tglijazah.Location = new Point(152, 210);
             date_Tglijazah.Margin = new Padding(3, 2, 3, 2);
             date_Tglijazah.Name = "date_Tglijazah";
             date_Tglijazah.Size = new Size(198, 25);
@@ -1335,7 +1441,7 @@
             // label81
             // 
             label81.AutoSize = true;
-            label81.Location = new Point(204, 111);
+            label81.Location = new Point(209, 136);
             label81.Name = "label81";
             label81.Size = new Size(104, 18);
             label81.TabIndex = 27;
@@ -1344,7 +1450,7 @@
             // label40
             // 
             label40.AutoSize = true;
-            label40.Location = new Point(24, 310);
+            label40.Location = new Point(29, 335);
             label40.Name = "label40";
             label40.Size = new Size(66, 18);
             label40.TabIndex = 25;
@@ -1352,7 +1458,7 @@
             // 
             // tx_Alasan
             // 
-            tx_Alasan.Location = new Point(147, 311);
+            tx_Alasan.Location = new Point(152, 336);
             tx_Alasan.Margin = new Padding(3, 2, 3, 2);
             tx_Alasan.Name = "tx_Alasan";
             tx_Alasan.Size = new Size(198, 25);
@@ -1361,7 +1467,7 @@
             // label39
             // 
             label39.AutoSize = true;
-            label39.Location = new Point(20, 284);
+            label39.Location = new Point(25, 309);
             label39.Name = "label39";
             label39.Size = new Size(94, 18);
             label39.TabIndex = 23;
@@ -1369,7 +1475,7 @@
             // 
             // tx_DariSekolah
             // 
-            tx_DariSekolah.Location = new Point(147, 284);
+            tx_DariSekolah.Location = new Point(152, 309);
             tx_DariSekolah.Margin = new Padding(3, 2, 3, 2);
             tx_DariSekolah.Name = "tx_DariSekolah";
             tx_DariSekolah.Size = new Size(198, 25);
@@ -1379,7 +1485,7 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label21.Location = new Point(5, 269);
+            label21.Location = new Point(10, 294);
             label21.Name = "label21";
             label21.Size = new Size(63, 15);
             label21.TabIndex = 20;
@@ -1388,7 +1494,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(15, 241);
+            label22.Location = new Point(20, 266);
             label22.Name = "label22";
             label22.Size = new Size(96, 18);
             label22.TabIndex = 18;
@@ -1396,7 +1502,7 @@
             // 
             // tx_NoIjazah
             // 
-            tx_NoIjazah.Location = new Point(147, 213);
+            tx_NoIjazah.Location = new Point(152, 238);
             tx_NoIjazah.Margin = new Padding(3, 2, 3, 2);
             tx_NoIjazah.Name = "tx_NoIjazah";
             tx_NoIjazah.Size = new Size(198, 25);
@@ -1405,7 +1511,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(15, 185);
+            label23.Location = new Point(20, 210);
             label23.Name = "label23";
             label23.Size = new Size(116, 18);
             label23.TabIndex = 16;
@@ -1413,7 +1519,7 @@
             // 
             // tx_Lulusan
             // 
-            tx_Lulusan.Location = new Point(147, 157);
+            tx_Lulusan.Location = new Point(152, 182);
             tx_Lulusan.Margin = new Padding(3, 2, 3, 2);
             tx_Lulusan.Name = "tx_Lulusan";
             tx_Lulusan.Size = new Size(198, 25);
@@ -1422,7 +1528,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(15, 157);
+            label24.Location = new Point(20, 182);
             label24.Name = "label24";
             label24.Size = new Size(87, 18);
             label24.TabIndex = 14;
@@ -1431,7 +1537,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(18, 109);
+            label25.Location = new Point(23, 134);
             label25.Name = "label25";
             label25.Size = new Size(112, 18);
             label25.TabIndex = 12;
@@ -1439,7 +1545,7 @@
             // 
             // tx_Kelainan
             // 
-            tx_Kelainan.Location = new Point(147, 76);
+            tx_Kelainan.Location = new Point(152, 101);
             tx_Kelainan.Margin = new Padding(3, 2, 3, 2);
             tx_Kelainan.Name = "tx_Kelainan";
             tx_Kelainan.Size = new Size(195, 25);
@@ -1448,7 +1554,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(20, 23);
+            label26.Location = new Point(25, 48);
             label26.Name = "label26";
             label26.Size = new Size(69, 18);
             label26.TabIndex = 8;
@@ -1456,7 +1562,7 @@
             // 
             // tx_Penyakit
             // 
-            tx_Penyakit.Location = new Point(147, 44);
+            tx_Penyakit.Location = new Point(152, 69);
             tx_Penyakit.Margin = new Padding(3, 2, 3, 2);
             tx_Penyakit.Name = "tx_Penyakit";
             tx_Penyakit.Size = new Size(195, 25);
@@ -1465,7 +1571,7 @@
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(17, 44);
+            label27.Location = new Point(22, 69);
             label27.Name = "label27";
             label27.Size = new Size(129, 36);
             label27.TabIndex = 6;
@@ -1474,7 +1580,7 @@
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(17, 81);
+            label28.Location = new Point(22, 106);
             label28.Name = "label28";
             label28.Size = new Size(101, 18);
             label28.TabIndex = 4;
@@ -1484,7 +1590,7 @@
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label29.Location = new Point(0, 138);
+            label29.Location = new Point(5, 163);
             label29.Name = "label29";
             label29.Size = new Size(142, 15);
             label29.TabIndex = 2;
@@ -1492,7 +1598,7 @@
             // 
             // tx_LamaBelajar
             // 
-            tx_LamaBelajar.Location = new Point(147, 241);
+            tx_LamaBelajar.Location = new Point(152, 266);
             tx_LamaBelajar.Margin = new Padding(3, 2, 3, 2);
             tx_LamaBelajar.Name = "tx_LamaBelajar";
             tx_LamaBelajar.Size = new Size(198, 25);
@@ -1502,7 +1608,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(8, 508);
+            label1.Location = new Point(8, 540);
             label1.Name = "label1";
             label1.Size = new Size(172, 15);
             label1.TabIndex = 22;
@@ -1512,7 +1618,7 @@
             // 
             label66.AutoSize = true;
             label66.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label66.Location = new Point(13, 523);
+            label66.Location = new Point(13, 555);
             label66.Name = "label66";
             label66.Size = new Size(85, 15);
             label66.TabIndex = 38;
@@ -1521,6 +1627,7 @@
             // tabPage4
             // 
             tabPage4.BackColor = SystemColors.GradientActiveCaption;
+            tabPage4.Controls.Add(label110);
             tabPage4.Controls.Add(panel8);
             tabPage4.Controls.Add(btn_SaveSiswaWali);
             tabPage4.Controls.Add(panel5);
@@ -1530,9 +1637,21 @@
             tabPage4.Location = new Point(4, 27);
             tabPage4.Margin = new Padding(3, 2, 3, 2);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(746, 572);
+            tabPage4.Size = new Size(746, 607);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Data wali / Ortu";
+            // 
+            // label110
+            // 
+            label110.BackColor = Color.SkyBlue;
+            label110.Dock = DockStyle.Top;
+            label110.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label110.Location = new Point(0, 0);
+            label110.Name = "label110";
+            label110.Size = new Size(746, 36);
+            label110.TabIndex = 118;
+            label110.Text = "DATA ORANG TUA";
+            label110.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel8
             // 
@@ -1565,7 +1684,7 @@
             panel8.Controls.Add(tx_AlamatIbu);
             panel8.Controls.Add(label70);
             panel8.Controls.Add(label69);
-            panel8.Location = new Point(243, 2);
+            panel8.Location = new Point(243, 41);
             panel8.Name = "panel8";
             panel8.Size = new Size(247, 532);
             panel8.TabIndex = 55;
@@ -1821,7 +1940,7 @@
             // 
             // btn_SaveSiswaWali
             // 
-            btn_SaveSiswaWali.Location = new Point(664, 543);
+            btn_SaveSiswaWali.Location = new Point(664, 582);
             btn_SaveSiswaWali.Margin = new Padding(3, 2, 3, 2);
             btn_SaveSiswaWali.Name = "btn_SaveSiswaWali";
             btn_SaveSiswaWali.Size = new Size(82, 22);
@@ -1863,7 +1982,7 @@
             panel5.Controls.Add(label63);
             panel5.Controls.Add(tx_TempatAyah);
             panel5.Controls.Add(label73);
-            panel5.Location = new Point(3, 2);
+            panel5.Location = new Point(3, 41);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(234, 531);
@@ -2138,7 +2257,7 @@
             // 
             label71.AutoSize = true;
             label71.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label71.Location = new Point(170, 535);
+            label71.Location = new Point(170, 574);
             label71.Name = "label71";
             label71.Size = new Size(85, 15);
             label71.TabIndex = 79;
@@ -2175,7 +2294,7 @@
             panel6.Controls.Add(label106);
             panel6.Controls.Add(button3);
             panel6.Controls.Add(textBox76);
-            panel6.Location = new Point(496, 2);
+            panel6.Location = new Point(496, 41);
             panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
             panel6.Size = new Size(247, 532);
@@ -2435,7 +2554,7 @@
             // 
             label108.AutoSize = true;
             label108.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label108.Location = new Point(1, 535);
+            label108.Location = new Point(1, 574);
             label108.Name = "label108";
             label108.Size = new Size(172, 15);
             label108.TabIndex = 69;
@@ -2444,13 +2563,26 @@
             // tabPage5
             // 
             tabPage5.BackColor = SystemColors.GradientActiveCaption;
+            tabPage5.Controls.Add(label111);
             tabPage5.Controls.Add(panel7);
             tabPage5.Location = new Point(4, 27);
             tabPage5.Margin = new Padding(3, 2, 3, 2);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(746, 572);
+            tabPage5.Size = new Size(746, 607);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Ket setelah lulus";
+            // 
+            // label111
+            // 
+            label111.BackColor = Color.SkyBlue;
+            label111.Dock = DockStyle.Top;
+            label111.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label111.Location = new Point(0, 0);
+            label111.Name = "label111";
+            label111.Size = new Size(746, 36);
+            label111.TabIndex = 13;
+            label111.Text = "DATA PERSONAL";
+            label111.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
@@ -2467,22 +2599,22 @@
             panel7.Controls.Add(tx_melanjutkan);
             panel7.Controls.Add(label97);
             panel7.Controls.Add(label98);
-            panel7.Location = new Point(7, 2);
+            panel7.Location = new Point(3, 38);
             panel7.Margin = new Padding(3, 2, 3, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(735, 239);
+            panel7.Size = new Size(743, 260);
             panel7.TabIndex = 0;
             // 
             // nu_penghasilanLulus
             // 
-            nu_penghasilanLulus.Location = new Point(133, 151);
+            nu_penghasilanLulus.Location = new Point(138, 177);
             nu_penghasilanLulus.Name = "nu_penghasilanLulus";
-            nu_penghasilanLulus.Size = new Size(216, 25);
+            nu_penghasilanLulus.Size = new Size(211, 25);
             nu_penghasilanLulus.TabIndex = 50;
             // 
             // btn_SaveLulus
             // 
-            btn_SaveLulus.Location = new Point(267, 192);
+            btn_SaveLulus.Location = new Point(267, 205);
             btn_SaveLulus.Margin = new Padding(3, 2, 3, 2);
             btn_SaveLulus.Name = "btn_SaveLulus";
             btn_SaveLulus.Size = new Size(82, 22);
@@ -2494,7 +2626,7 @@
             // label67
             // 
             label67.AutoSize = true;
-            label67.Location = new Point(113, 153);
+            label67.Location = new Point(113, 179);
             label67.Name = "label67";
             label67.Size = new Size(26, 18);
             label67.TabIndex = 49;
@@ -2503,7 +2635,7 @@
             // date_mulaikerja
             // 
             date_mulaikerja.Format = DateTimePickerFormat.Short;
-            date_mulaikerja.Location = new Point(158, 80);
+            date_mulaikerja.Location = new Point(158, 106);
             date_mulaikerja.Margin = new Padding(3, 2, 3, 2);
             date_mulaikerja.Name = "date_mulaikerja";
             date_mulaikerja.Size = new Size(191, 25);
@@ -2513,7 +2645,7 @@
             // 
             label99.AutoSize = true;
             label99.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label99.Location = new Point(8, 58);
+            label99.Location = new Point(3, 91);
             label99.Name = "label99";
             label99.Size = new Size(56, 15);
             label99.TabIndex = 47;
@@ -2522,7 +2654,7 @@
             // label94
             // 
             label94.AutoSize = true;
-            label94.Location = new Point(19, 150);
+            label94.Location = new Point(19, 176);
             label94.Name = "label94";
             label94.Size = new Size(89, 18);
             label94.TabIndex = 46;
@@ -2531,7 +2663,7 @@
             // label95
             // 
             label95.AutoSize = true;
-            label95.Location = new Point(19, 106);
+            label95.Location = new Point(19, 132);
             label95.Name = "label95";
             label95.Size = new Size(203, 18);
             label95.TabIndex = 45;
@@ -2539,7 +2671,7 @@
             // 
             // tx_perusahaan
             // 
-            tx_perusahaan.Location = new Point(24, 123);
+            tx_perusahaan.Location = new Point(24, 149);
             tx_perusahaan.Margin = new Padding(3, 2, 3, 2);
             tx_perusahaan.Name = "tx_perusahaan";
             tx_perusahaan.Size = new Size(326, 25);
@@ -2548,7 +2680,7 @@
             // label96
             // 
             label96.AutoSize = true;
-            label96.Location = new Point(16, 19);
+            label96.Location = new Point(19, 40);
             label96.Name = "label96";
             label96.Size = new Size(161, 18);
             label96.TabIndex = 41;
@@ -2556,7 +2688,7 @@
             // 
             // tx_melanjutkan
             // 
-            tx_melanjutkan.Location = new Point(19, 36);
+            tx_melanjutkan.Location = new Point(22, 57);
             tx_melanjutkan.Margin = new Padding(3, 2, 3, 2);
             tx_melanjutkan.Name = "tx_melanjutkan";
             tx_melanjutkan.Size = new Size(330, 25);
@@ -2566,7 +2698,7 @@
             // 
             label97.AutoSize = true;
             label97.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label97.Location = new Point(3, 0);
+            label97.Location = new Point(3, 13);
             label97.Name = "label97";
             label97.Size = new Size(228, 15);
             label97.TabIndex = 40;
@@ -2575,75 +2707,27 @@
             // label98
             // 
             label98.AutoSize = true;
-            label98.Location = new Point(19, 80);
+            label98.Location = new Point(19, 106);
             label98.Name = "label98";
             label98.Size = new Size(136, 18);
             label98.TabIndex = 39;
             label98.Text = "a. Tanggal Mulai kerja : ";
             // 
-            // panel10
-            // 
-            panel10.Controls.Add(label82);
-            panel10.Controls.Add(label80);
-            panel10.Controls.Add(lbl_SiswaName);
-            panel10.Controls.Add(lbl_siswaId);
-            panel10.Location = new Point(517, 25);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(219, 50);
-            panel10.TabIndex = 11;
-            // 
-            // label82
-            // 
-            label82.AutoSize = true;
-            label82.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label82.Location = new Point(3, 24);
-            label82.Name = "label82";
-            label82.Size = new Size(53, 18);
-            label82.TabIndex = 20;
-            label82.Text = "Nama :";
-            // 
-            // label80
-            // 
-            label80.AutoSize = true;
-            label80.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label80.Location = new Point(3, 6);
-            label80.Name = "label80";
-            label80.Size = new Size(68, 18);
-            label80.TabIndex = 19;
-            label80.Text = "Id Siswa :";
-            // 
-            // lbl_SiswaName
-            // 
-            lbl_SiswaName.AutoSize = true;
-            lbl_SiswaName.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_SiswaName.Location = new Point(62, 24);
-            lbl_SiswaName.Name = "lbl_SiswaName";
-            lbl_SiswaName.Size = new Size(77, 18);
-            lbl_SiswaName.TabIndex = 18;
-            lbl_SiswaName.Text = "siswaName";
-            // 
-            // lbl_siswaId
-            // 
-            lbl_siswaId.AutoSize = true;
-            lbl_siswaId.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_siswaId.Location = new Point(77, 6);
-            lbl_siswaId.Name = "lbl_siswaId";
-            lbl_siswaId.Size = new Size(56, 18);
-            lbl_siswaId.TabIndex = 17;
-            lbl_siswaId.Text = "SiswaId";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(754, 603);
+            ClientSize = new Size(754, 638);
             Controls.Add(SiswaTabControl);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             SiswaTabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
             panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SiswaFoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)ListSiswa_grid).EndInit();
@@ -2682,8 +2766,6 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nu_penghasilanLulus).EndInit();
-            panel10.ResumeLayout(false);
-            panel10.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -2926,5 +3008,10 @@
         private Label label80;
         private Label lbl_SiswaName;
         private Label lbl_siswaId;
+        private Label label88;
+        private Label label100;
+        private Label label109;
+        private Label label110;
+        private Label label111;
     }
 }

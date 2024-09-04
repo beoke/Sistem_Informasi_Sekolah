@@ -1,6 +1,6 @@
 ﻿namespace Sistem_Informasi_Sekolah
 {
-    partial class Mapel
+    partial class Jurusan
     {
         /// <summary>
         /// Required designer variable.
@@ -29,48 +29,48 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            tx_MapelName = new TextBox();
-            tx_MapelID = new TextBox();
+            tx_JurusanNama = new TextBox();
+            tx_JurusanID = new TextBox();
             label3 = new Label();
             label2 = new Label();
-            btn_deleteMapel4 = new Button();
-            btn_SaveMapel = new Button();
+            btn_DeleteJurusan = new Button();
+            btn_SaveJurusan = new Button();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            GridJurusan = new DataGridView();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GridJurusan).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Controls.Add(tx_MapelName);
-            panel1.Controls.Add(tx_MapelID);
+            panel1.Controls.Add(tx_JurusanNama);
+            panel1.Controls.Add(tx_JurusanID);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(btn_deleteMapel4);
-            panel1.Controls.Add(btn_SaveMapel);
+            panel1.Controls.Add(btn_DeleteJurusan);
+            panel1.Controls.Add(btn_SaveJurusan);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(GridJurusan);
             panel1.Font = new Font("Sylfaen", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            panel1.Location = new Point(7, 10);
+            panel1.Location = new Point(9, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(716, 400);
-            panel1.TabIndex = 1;
+            panel1.TabIndex = 0;
             // 
-            // tx_MapelName
+            // tx_JurusanNama
             // 
-            tx_MapelName.Location = new Point(486, 150);
-            tx_MapelName.Name = "tx_MapelName";
-            tx_MapelName.Size = new Size(193, 29);
-            tx_MapelName.TabIndex = 7;
+            tx_JurusanNama.Location = new Point(486, 150);
+            tx_JurusanNama.Name = "tx_JurusanNama";
+            tx_JurusanNama.Size = new Size(193, 29);
+            tx_JurusanNama.TabIndex = 7;
             // 
-            // tx_MapelID
+            // tx_JurusanID
             // 
-            tx_MapelID.Location = new Point(486, 93);
-            tx_MapelID.Name = "tx_MapelID";
-            tx_MapelID.Size = new Size(193, 29);
-            tx_MapelID.TabIndex = 6;
+            tx_JurusanID.Location = new Point(486, 93);
+            tx_JurusanID.Name = "tx_JurusanID";
+            tx_JurusanID.Size = new Size(193, 29);
+            tx_JurusanID.TabIndex = 6;
             // 
             // label3
             // 
@@ -90,24 +90,24 @@
             label2.TabIndex = 4;
             label2.Text = "ID";
             // 
-            // btn_deleteMapel4
+            // btn_DeleteJurusan
             // 
-            btn_deleteMapel4.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_deleteMapel4.Location = new Point(517, 236);
-            btn_deleteMapel4.Name = "btn_deleteMapel4";
-            btn_deleteMapel4.Size = new Size(81, 33);
-            btn_deleteMapel4.TabIndex = 3;
-            btn_deleteMapel4.Text = "Delete";
-            btn_deleteMapel4.UseVisualStyleBackColor = true;
+            btn_DeleteJurusan.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_DeleteJurusan.Location = new Point(517, 236);
+            btn_DeleteJurusan.Name = "btn_DeleteJurusan";
+            btn_DeleteJurusan.Size = new Size(81, 33);
+            btn_DeleteJurusan.TabIndex = 3;
+            btn_DeleteJurusan.Text = "Delete";
+            btn_DeleteJurusan.UseVisualStyleBackColor = true;
             // 
-            // btn_SaveMapel
+            // btn_SaveJurusan
             // 
-            btn_SaveMapel.Location = new Point(604, 236);
-            btn_SaveMapel.Name = "btn_SaveMapel";
-            btn_SaveMapel.Size = new Size(75, 33);
-            btn_SaveMapel.TabIndex = 2;
-            btn_SaveMapel.Text = "Save";
-            btn_SaveMapel.UseVisualStyleBackColor = true;
+            btn_SaveJurusan.Location = new Point(604, 236);
+            btn_SaveJurusan.Name = "btn_SaveJurusan";
+            btn_SaveJurusan.Size = new Size(75, 33);
+            btn_SaveJurusan.TabIndex = 2;
+            btn_SaveJurusan.Text = "Save";
+            btn_SaveJurusan.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -117,42 +117,42 @@
             label1.Name = "label1";
             label1.Size = new Size(716, 32);
             label1.TabIndex = 1;
-            label1.Text = "MAPEL";
+            label1.Text = "JURUSAN";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // GridJurusan
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 35);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(443, 362);
-            dataGridView1.TabIndex = 0;
+            GridJurusan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridJurusan.Location = new Point(3, 35);
+            GridJurusan.Name = "GridJurusan";
+            GridJurusan.RowTemplate.Height = 25;
+            GridJurusan.Size = new Size(443, 362);
+            GridJurusan.TabIndex = 0;
             // 
-            // Mapel
+            // Jurusan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(731, 421);
             Controls.Add(panel1);
-            Name = "Mapel";
-            Text = "Mapel";
+            Name = "Jurusan";
+            Text = "Jurusan";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GridJurusan).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private TextBox tx_MapelName;
-        private TextBox tx_MapelID;
+        private TextBox tx_JurusanNama;
+        private TextBox tx_JurusanID;
         private Label label3;
         private Label label2;
-        private Button btn_deleteMapel4;
-        private Button btn_SaveMapel;
+        private Button btn_DeleteJurusan;
+        private Button btn_SaveJurusan;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView GridJurusan;
     }
 }

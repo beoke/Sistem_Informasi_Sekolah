@@ -622,15 +622,12 @@ namespace Sistem_Informasi_Sekolah
         }
         private void NewButton_Click(object sender, EventArgs e)
         {
-            //  jika masih ada data baru, konfirmasikan ke user
+            var result = MessageBox.Show("Buat data baru??", "Konfirmasi", MessageBoxButtons.YesNoCancel);
+            if (result != DialogResult.Yes)
+                return;
             var siswaId = SiswaIDtxt.Text;
             var siswaName = tx_Nmlengkap.Text;
-            if (siswaId == string.Empty && siswaName != string.Empty)
-            {
-                var result = MessageBox.Show("Buat data baru??", "Konfirmasi", MessageBoxButtons.YesNoCancel);
-                if (result != DialogResult.Yes)
-                    return;
-            }
+
 
             ClearInput();
             SiswaTabControl.SelectedTab = PersonalTabPage;
@@ -742,6 +739,11 @@ namespace Sistem_Informasi_Sekolah
             siswa.LokasiPhoto = FotoLokasi;
             siswaDal.Update(siswa);
         }
-        #endregion 
+        #endregion
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }  
