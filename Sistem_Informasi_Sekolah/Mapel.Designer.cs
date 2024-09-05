@@ -36,9 +36,9 @@
             btn_deleteMapel4 = new Button();
             btn_SaveMapel = new Button();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            GridMapel = new DataGridView();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GridMapel).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -51,7 +51,7 @@
             panel1.Controls.Add(btn_deleteMapel4);
             panel1.Controls.Add(btn_SaveMapel);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(GridMapel);
             panel1.Font = new Font("Sylfaen", 12F, FontStyle.Regular, GraphicsUnit.Point);
             panel1.Location = new Point(7, 10);
             panel1.Name = "panel1";
@@ -69,6 +69,7 @@
             // 
             tx_MapelID.Location = new Point(486, 93);
             tx_MapelID.Name = "tx_MapelID";
+            tx_MapelID.ReadOnly = true;
             tx_MapelID.Size = new Size(193, 29);
             tx_MapelID.TabIndex = 6;
             // 
@@ -120,14 +121,14 @@
             label1.Text = "MAPEL";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // GridMapel
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 35);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(443, 362);
-            dataGridView1.TabIndex = 0;
+            GridMapel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridMapel.Location = new Point(3, 35);
+            GridMapel.Name = "GridMapel";
+            GridMapel.RowTemplate.Height = 25;
+            GridMapel.Size = new Size(443, 362);
+            GridMapel.TabIndex = 0;
             // 
             // Mapel
             // 
@@ -139,7 +140,7 @@
             Text = "Mapel";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GridMapel).EndInit();
             ResumeLayout(false);
         }
 
@@ -153,6 +154,6 @@
         private Button btn_deleteMapel4;
         private Button btn_SaveMapel;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView GridMapel;
     }
 }

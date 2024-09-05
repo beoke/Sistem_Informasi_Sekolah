@@ -8,6 +8,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
 {
     public class MapelModel
     {
-
+        public int MapelId { get; set; }
+        public string NamaMapel { get; set; }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using Sistem_Informasi_Sekolah.DataIndukSiswa.Dal;
+using Sistem_Informasi_Sekolah.DataIndukSiswa.Helpers;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +25,7 @@ namespace Sistem_Informasi_Sekolah
             jurusanDal = new JurusanDal();
 
             controlGrid();
+            controlEvent();
         }
         #region PENGATURAN GRID
         private void controlGrid()
@@ -60,6 +64,24 @@ namespace Sistem_Informasi_Sekolah
             GridJurusan.Columns["NamaJurusan"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
         #endregion
+
+        #region PENGATURAN EVENT
+        private void controlEvent()
+        {
+            btn_SaveJurusan.Click += Btn_SaveJurusan_Click;
+            btn_DeleteJurusan.Click += Btn_DeleteJurusan_Click;
+        }
+
+        private void Btn_DeleteJurusan_Click(object? sender, EventArgs e)
+        {
+            DeleteJurusan();
+        }
+
+        private void Btn_SaveJurusan_Click(object? sender, EventArgs e)
+        {
+            SaveJurusan();
+        }
+        #endregion
         private int SaveJurusan()
         {
             var id = tx_JurusanID.Text == string.Empty ? 0 :
@@ -79,6 +101,38 @@ namespace Sistem_Informasi_Sekolah
                 jurusanDal.Update(jurusan);
                 MessageBox.Show("Data Berhasil Di Update", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            return id;
+        }
+
+        private int DeleteJurusan()
+        {
+            int id = tx_JurusanID.Text == string.Empty ? 0 : int.Parse(tx_JurusanID.Text);
+
+            // Check if ID is valid
+            if (id == 0 || string.IsNullOrEmpty(tx_JurusanNama.Text))
+            {
+                MessageBox.Show("Silahkan pilih Id atau Nama Jurusan yang ingin di hapus", "Validasi Eror", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return 0;
+            }
+
+            try
+            {
+                var rowsAffected = jurusanDal.Delete(id);
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Catatan berhasil dihapus.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Catatan tidak ditemukan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             return id;
         }
     }

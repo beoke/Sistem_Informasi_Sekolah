@@ -44,7 +44,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             conn.Execute(sql,dp);
         }
 
-        public void Delete (int id)
+        public int Delete (int id)
         {
             const string sql = @"
                    DELETE FROM 
@@ -55,7 +55,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add(@"Id", id,DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            conn.Execute(sql,dp);
+           return conn.Execute(sql,dp);
         }
 
         public JurusanModel? GetData(int Id)
