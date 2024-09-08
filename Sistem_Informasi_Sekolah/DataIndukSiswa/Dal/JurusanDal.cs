@@ -13,78 +13,78 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 {
     public class JurusanDal
     {
-        public int Insert(JurusanModel jurusan)
-        {
-            const string sql = @"
-            INSERT INTO Jurusan(
-            NamaJurusan)
-            OUTPUT INTERESTED Id
-            VALUES (
-            @NamaJurusan)";
+            public int Insert(JurusanModel jurusan)
+            {
+                const string sql = @"
+                INSERT INTO Jurusan(
+                NamaJurusan)
+            
+                VALUES (
+                @NamaJurusan)";
 
-            var dp = new DynamicParameters();
-            dp.Add("NamaJurusan", jurusan.NamaJurusan, DbType.String);
+                var dp = new DynamicParameters();
+                dp.Add("NamaJurusan", jurusan.NamaJurusan, DbType.String);
 
-            using var conn = new SqlConnection(ConnStringHelper.Get());
-            var result = conn.QuerySingle<int>(sql,dp);
-            return result;
-        }
+                using var conn = new SqlConnection(ConnStringHelper.Get());
+                var result = conn.Execute(sql,dp);
+                return result;
+            }
 
-        public void Update(JurusanModel jurusan)
-        {
-            const string sql = @"UPDATE Jurusan SET
-                    NamaJurusan=@NamaJurusan
-                    WHERE 
-                    Id = @Id ";
-            var dp = new DynamicParameters();
-            dp.Add("@Id", jurusan.Id,DbType.Int16);
-            dp.Add("@NamaJurusan", jurusan,DbType.String);
+            public void Update(JurusanModel jurusan)
+            {
+                const string sql = @"UPDATE Jurusan SET
+                        NamaJurusan=@NamaJurusan
+                        WHERE 
+                        Id = @Id ";
+                var dp = new DynamicParameters();
+                dp.Add("@Id", jurusan.Id,DbType.Int16);
+                dp.Add("@NamaJurusan", jurusan.NamaJurusan,DbType.String);
 
-            using var conn = new SqlConnection(ConnStringHelper.Get());
-            conn.Execute(sql,dp);
-        }
+                using var conn = new SqlConnection(ConnStringHelper.Get());
+                conn.Execute(sql,dp);
+            }
 
-        public int Delete (int id)
-        {
-            const string sql = @"
-                   DELETE FROM 
-                      Jurusan
-                    WHERE 
-                       Id = @id ";
-            var dp = new DynamicParameters();
-            dp.Add(@"Id", id,DbType.Int16);
+            public int Delete (int id)
+            {
+                const string sql = @"
+                       DELETE FROM 
+                          Jurusan
+                        WHERE 
+                           Id = @id ";
+                var dp = new DynamicParameters();
+                dp.Add(@"Id", id,DbType.Int16);
 
-            using var conn = new SqlConnection(ConnStringHelper.Get());
-           return conn.Execute(sql,dp);
-        }
+                using var conn = new SqlConnection(ConnStringHelper.Get());
+               return conn.Execute(sql,dp);
+            }
 
-        public JurusanModel? GetData(int Id)
-        {
-            const string sql= @"
-                SELECT 
-                    Id, NamaJurusan
-                FROM
-                    Jurusan
-                WHERE
-                    Id = @id";
+            public JurusanModel? GetData(int Id)
+            {
+                const string sql= @"
+                    SELECT 
+                        Id, NamaJurusan
+                    FROM
+                        Jurusan
+                    WHERE
+                        Id = @id";
 
-            var dp = new DynamicParameters();
-            dp.Add("@Id", Id, DbType.Int16);
+                var dp = new DynamicParameters();
+                dp.Add("@Id", Id, DbType.Int16);
 
-            using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QueryFirstOrDefault<JurusanModel>(sql, dp);
-        }
-        public IEnumerable<JurusanModel> Listjurusan()
-        {
-            const string sql = @"
-                SELECT 
-                    Id, NamaJurusan
-                FROM
-                    Jurusan";
-            var dp = new DynamicParameters();
+                using var conn = new SqlConnection(ConnStringHelper.Get());
+                return conn.QueryFirstOrDefault<JurusanModel>(sql, dp);
+            }
+            public IEnumerable<JurusanModel> Listjurusan()
+            {
+                const string sql = @"
+                    SELECT 
+                        Id, NamaJurusan
+                    FROM
+                        Jurusan";
+                var dp = new DynamicParameters();
 
-            using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.Query<JurusanModel>(sql, dp);
-        }
+                using var conn = new SqlConnection(ConnStringHelper.Get());
+                return conn.Query<JurusanModel>(sql, dp);
+            }
     }
 }

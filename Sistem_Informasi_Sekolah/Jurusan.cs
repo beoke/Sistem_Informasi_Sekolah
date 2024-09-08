@@ -72,20 +72,29 @@ namespace Sistem_Informasi_Sekolah
             btn_DeleteJurusan.Click += Btn_DeleteJurusan_Click;
         }
 
+
         private void Btn_DeleteJurusan_Click(object? sender, EventArgs e)
         {
             DeleteJurusan();
+            RefreshData();
         }
 
         private void Btn_SaveJurusan_Click(object? sender, EventArgs e)
         {
             SaveJurusan();
+            RefreshData();
         }
         #endregion
         private int SaveJurusan()
         {
             var id = tx_JurusanID.Text == string.Empty ? 0 :
             int.Parse( tx_JurusanID.Text );
+            string namaJurusan = tx_JurusanNama.Text;
+            if (namaJurusan == string.Empty)
+            {
+                MessageBox.Show("Data Harus di isikan", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return -1;
+            }
             var jurusan = new JurusanModel
             {
                 Id = id,
@@ -134,6 +143,13 @@ namespace Sistem_Informasi_Sekolah
             }
 
             return id;
+        }
+        
+        private void RefreshData()
+        {
+            GridJurusan.DataSource = jurusanDal.Listjurusan();
+            tx_JurusanID.Text = string.Empty;
+            tx_JurusanNama.Text = string.Empty;
         }
     }
 }

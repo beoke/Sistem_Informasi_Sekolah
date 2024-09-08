@@ -34,6 +34,7 @@
             dataMapelToolStripMenuItem = new ToolStripMenuItem();
             dataJurusanToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
+            dataKelasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             // 
             // formToolStripMenuItem
             // 
-            formToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIdukToolStripMenuItem, dataMapelToolStripMenuItem, dataJurusanToolStripMenuItem });
+            formToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIdukToolStripMenuItem, dataMapelToolStripMenuItem, dataJurusanToolStripMenuItem, dataKelasToolStripMenuItem });
             formToolStripMenuItem.Name = "formToolStripMenuItem";
             formToolStripMenuItem.Size = new Size(47, 20);
             formToolStripMenuItem.Text = "Form";
@@ -56,19 +57,19 @@
             // dataIdukToolStripMenuItem
             // 
             dataIdukToolStripMenuItem.Name = "dataIdukToolStripMenuItem";
-            dataIdukToolStripMenuItem.Size = new Size(141, 22);
+            dataIdukToolStripMenuItem.Size = new Size(180, 22);
             dataIdukToolStripMenuItem.Text = "Data Iduk";
             // 
             // dataMapelToolStripMenuItem
             // 
             dataMapelToolStripMenuItem.Name = "dataMapelToolStripMenuItem";
-            dataMapelToolStripMenuItem.Size = new Size(141, 22);
+            dataMapelToolStripMenuItem.Size = new Size(180, 22);
             dataMapelToolStripMenuItem.Text = "Data Mapel";
             // 
             // dataJurusanToolStripMenuItem
             // 
             dataJurusanToolStripMenuItem.Name = "dataJurusanToolStripMenuItem";
-            dataJurusanToolStripMenuItem.Size = new Size(141, 22);
+            dataJurusanToolStripMenuItem.Size = new Size(180, 22);
             dataJurusanToolStripMenuItem.Text = "Data Jurusan";
             // 
             // panel1
@@ -78,6 +79,12 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(764, 647);
             panel1.TabIndex = 1;
+            // 
+            // dataKelasToolStripMenuItem
+            // 
+            dataKelasToolStripMenuItem.Name = "dataKelasToolStripMenuItem";
+            dataKelasToolStripMenuItem.Size = new Size(180, 22);
+            dataKelasToolStripMenuItem.Text = "Data Kelas";
             // 
             // Home
             // 
@@ -104,5 +111,6 @@
         private Panel panel1;
         private ToolStripMenuItem dataMapelToolStripMenuItem;
         private ToolStripMenuItem dataJurusanToolStripMenuItem;
+        private ToolStripMenuItem dataKelasToolStripMenuItem;
     }
 }

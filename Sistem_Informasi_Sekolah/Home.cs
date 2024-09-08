@@ -19,7 +19,10 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dataIdukToolStripMenuItem.Click += new EventHandler(dataIndukToolStripMenuItem_Click);
             dataMapelToolStripMenuItem.Click += new EventHandler(dataMapelToolStripMenuItem_Click);
             dataJurusanToolStripMenuItem.Click += new EventHandler(dataJurusanToolStripMenuItem_Click);
+            dataKelasToolStripMenuItem.Click += DataKelasToolStripMenuItem_Click;
         }
+
+
         private void dataIndukToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadDataInduk();
@@ -32,6 +35,10 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         private void dataJurusanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadDataJurusan();
+        }
+        private void DataKelasToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            LoadDataKelas();
         }
         
         private void LoadDataInduk()
@@ -75,6 +82,19 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             panel1.Controls.Add(jurusan);
 
             jurusan.Show();
+        }
+        private void LoadDataKelas()
+        {
+            KelasForm kelas = new KelasForm();
+
+            kelas.TopLevel = false;
+            kelas.FormBorderStyle = FormBorderStyle.None;
+            kelas.Dock = DockStyle.Fill;
+
+            panel1.Controls.Clear();
+            panel1.Controls.Add(kelas);
+
+            kelas.Show();
         }
     }
 }

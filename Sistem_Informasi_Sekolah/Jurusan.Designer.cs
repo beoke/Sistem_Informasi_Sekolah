@@ -93,7 +93,7 @@
             // btn_DeleteJurusan
             // 
             btn_DeleteJurusan.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_DeleteJurusan.Location = new Point(517, 236);
+            btn_DeleteJurusan.Location = new Point(517, 353);
             btn_DeleteJurusan.Name = "btn_DeleteJurusan";
             btn_DeleteJurusan.Size = new Size(81, 33);
             btn_DeleteJurusan.TabIndex = 3;
@@ -102,7 +102,7 @@
             // 
             // btn_SaveJurusan
             // 
-            btn_SaveJurusan.Location = new Point(604, 236);
+            btn_SaveJurusan.Location = new Point(604, 353);
             btn_SaveJurusan.Name = "btn_SaveJurusan";
             btn_SaveJurusan.Size = new Size(75, 33);
             btn_SaveJurusan.TabIndex = 2;

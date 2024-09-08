@@ -60,23 +60,22 @@
             // 
             // tx_MapelName
             // 
-            tx_MapelName.Location = new Point(486, 150);
+            tx_MapelName.Location = new Point(483, 150);
             tx_MapelName.Name = "tx_MapelName";
-            tx_MapelName.Size = new Size(193, 29);
+            tx_MapelName.Size = new Size(201, 29);
             tx_MapelName.TabIndex = 7;
             // 
             // tx_MapelID
             // 
-            tx_MapelID.Location = new Point(486, 93);
+            tx_MapelID.Location = new Point(483, 93);
             tx_MapelID.Name = "tx_MapelID";
-            tx_MapelID.ReadOnly = true;
-            tx_MapelID.Size = new Size(193, 29);
+            tx_MapelID.Size = new Size(201, 29);
             tx_MapelID.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(486, 125);
+            label3.Location = new Point(483, 125);
             label3.Name = "label3";
             label3.Size = new Size(49, 22);
             label3.TabIndex = 5;
@@ -85,7 +84,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(486, 68);
+            label2.Location = new Point(483, 68);
             label2.Name = "label2";
             label2.Size = new Size(27, 22);
             label2.TabIndex = 4;
@@ -94,7 +93,7 @@
             // btn_deleteMapel4
             // 
             btn_deleteMapel4.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_deleteMapel4.Location = new Point(517, 236);
+            btn_deleteMapel4.Location = new Point(522, 343);
             btn_deleteMapel4.Name = "btn_deleteMapel4";
             btn_deleteMapel4.Size = new Size(81, 33);
             btn_deleteMapel4.TabIndex = 3;
@@ -103,7 +102,7 @@
             // 
             // btn_SaveMapel
             // 
-            btn_SaveMapel.Location = new Point(604, 236);
+            btn_SaveMapel.Location = new Point(609, 343);
             btn_SaveMapel.Name = "btn_SaveMapel";
             btn_SaveMapel.Size = new Size(75, 33);
             btn_SaveMapel.TabIndex = 2;

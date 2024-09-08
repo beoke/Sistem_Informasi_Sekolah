@@ -16,9 +16,9 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         public int Insert(MapelModel mapel)
         {
             const string sql = @"
-            INSERT INTO mapel(
+            INSERT INTO Mapel(
             NamaMapel)
-            OUTPUT INTERESTED MapelId
+            
             VALUES (
             @NamaMapel)";
 
@@ -26,7 +26,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("NamaMapel", mapel.NamaMapel, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            var result = conn.QuerySingle<int>(sql, dp);
+            var result = conn.Execute(sql, dp);
             return result;
         }
 
@@ -45,7 +45,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         }
 
 
-        public void Delete(int id)
+        public int Delete(int id)
         {
             const string sql = @"
                    DELETE FROM 
@@ -56,7 +56,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add(@"MapelId", id, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            conn.Execute(sql, dp);
+            return  conn.Execute(sql, dp);
         }
 
         public MapelModel? GetData(int Id)
