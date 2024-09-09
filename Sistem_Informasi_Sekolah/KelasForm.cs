@@ -1,9 +1,12 @@
-﻿using Sistem_Informasi_Sekolah.DataIndukSiswa.Dal;
+﻿using Dapper;
+using Sistem_Informasi_Sekolah.DataIndukSiswa.Dal;
+using Sistem_Informasi_Sekolah.DataIndukSiswa.Helpers;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,11 +18,13 @@ namespace Sistem_Informasi_Sekolah
     public partial class KelasForm : Form
     {
         private readonly KelasDal kelasDal;
+        private readonly JurusanDal jurusanDal;
         public KelasForm()
         {
             InitializeComponent();
 
             kelasDal = new KelasDal();
+            jurusanDal = new JurusanDal();
 
             initCombo();
             controlGrid();
@@ -27,8 +32,9 @@ namespace Sistem_Informasi_Sekolah
         }
         private void initCombo()
         {
-            List<string> jurusan = new List<string>() { "RPL", "TKJ", "DKV", "AKL", "BD", "BR", "PERBANKAN" };
-            cb_KelasJurusan.DataSource = jurusan;
+            cb_KelasJurusan.DataSource = jurusanDal.Listjurusan();
+            cb_KelasJurusan.DisplayMember = "NamaJurusan";
+            cb_KelasJurusan.ValueMember = "JurusanId";
         }
         #region PENGATURAN GRID
         private void controlGrid()
@@ -67,7 +73,7 @@ namespace Sistem_Informasi_Sekolah
 
             foreach (var item in cb_KelasJurusan.Items)
             {
-                if (item.ToString() == kelas.JurusanNama)
+                if (item.ToString() == kelas.JurusanId.ToString())
                 {
                     cb_KelasJurusan.SelectedItem = item;
                     break;
@@ -81,7 +87,7 @@ namespace Sistem_Informasi_Sekolah
             GridKelas.Columns["KelasId"].Width = 70;
             GridKelas.Columns["KelasNama"].Width = 200;
             GridKelas.Columns["Kelastingkat"].Width = 150;
-            GridKelas.Columns["JurusanNama"].Visible = false;
+            GridKelas.Columns["JurusanId"].Visible = false;
 
 
             // Mengatur alignment kolom
@@ -128,14 +134,17 @@ namespace Sistem_Informasi_Sekolah
             else if (rb_11.Checked) tingkat = 11;
             else if (rb_12.Checked) tingkat = 12;
 
-            var KelasId = string.IsNullOrEmpty(tx_KelasId.Text) ? 0 : int.Parse(tx_KelasId.Text);
+            var isi = cb_KelasJurusan.Text;
 
+
+            var KelasId = string.IsNullOrEmpty(tx_KelasId.Text) ? 0 : int.Parse(tx_KelasId.Text);
+            var namaKelas = $"{tingkat} {isi}";
             var kelas = new KelasModel
             {
                 KelasId = KelasId,
-                KelasNama = tx_NamaKelas.Text,
+                KelasNama = namaKelas,
                 KelasTingkat = tingkat,
-                JurusanNama = cb_KelasJurusan.Text,
+                JurusanId = cb_KelasJurusan.SelectedIndex,
             };
 
             var datadiDb = kelasDal.GetData(KelasId);

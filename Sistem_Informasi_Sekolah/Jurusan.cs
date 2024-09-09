@@ -26,6 +26,7 @@ namespace Sistem_Informasi_Sekolah
 
             controlGrid();
             controlEvent();
+
         }
         #region PENGATURAN GRID
         private void controlGrid()
@@ -37,7 +38,7 @@ namespace Sistem_Informasi_Sekolah
 
         private void GridJurusan_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            var siswajurusan = GridJurusan.CurrentRow.Cells["Id"].Value.ToString();
+            var siswajurusan = GridJurusan.CurrentRow.Cells["JurusanId"].Value.ToString();
             if (siswajurusan is null)
                 return;
             var Id = Convert.ToInt32(siswajurusan);
@@ -58,9 +59,9 @@ namespace Sistem_Informasi_Sekolah
 
         private void adjustGridColumnSize()
         {
-            GridJurusan.Columns["Id"].Width = 50;
+            GridJurusan.Columns["JurusanId"].Width = 50;
             GridJurusan.Columns["NamaJurusan"].Width = 150; 
-            GridJurusan.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            GridJurusan.Columns["JurusanId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             GridJurusan.Columns["NamaJurusan"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
         #endregion
@@ -97,10 +98,10 @@ namespace Sistem_Informasi_Sekolah
             }
             var jurusan = new JurusanModel
             {
-                Id = id,
+                JurusanId = id,
                 NamaJurusan = tx_JurusanNama.Text,
             };
-            if(jurusan.Id == 0)
+            if(jurusan.JurusanId == 0)
             {
                 id =jurusanDal.Insert(jurusan);
                 MessageBox.Show("Berhasil Menambahkan", "Insert", MessageBoxButtons.OK, MessageBoxIcon.Information);

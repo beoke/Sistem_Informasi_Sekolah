@@ -35,9 +35,9 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                 const string sql = @"UPDATE Jurusan SET
                         NamaJurusan=@NamaJurusan
                         WHERE 
-                        Id = @Id ";
+                        JurusanId = @JurusanId ";
                 var dp = new DynamicParameters();
-                dp.Add("@Id", jurusan.Id,DbType.Int16);
+                dp.Add("@JurusanId", jurusan.JurusanId,DbType.Int16);
                 dp.Add("@NamaJurusan", jurusan.NamaJurusan,DbType.String);
 
                 using var conn = new SqlConnection(ConnStringHelper.Get());
@@ -50,7 +50,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                        DELETE FROM 
                           Jurusan
                         WHERE 
-                           Id = @id ";
+                           JurusanId = @jurusanid ";
                 var dp = new DynamicParameters();
                 dp.Add(@"Id", id,DbType.Int16);
 
@@ -62,14 +62,14 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             {
                 const string sql= @"
                     SELECT 
-                        Id, NamaJurusan
+                        JurusanId, NamaJurusan
                     FROM
                         Jurusan
                     WHERE
-                        Id = @id";
+                        JurusanId = @jurusanid";
 
                 var dp = new DynamicParameters();
-                dp.Add("@Id", Id, DbType.Int16);
+                dp.Add("@JurusanId", Id, DbType.Int16);
 
                 using var conn = new SqlConnection(ConnStringHelper.Get());
                 return conn.QueryFirstOrDefault<JurusanModel>(sql, dp);
@@ -78,7 +78,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             {
                 const string sql = @"
                     SELECT 
-                        Id, NamaJurusan
+                        JurusanId, NamaJurusan
                     FROM
                         Jurusan";
                 var dp = new DynamicParameters();

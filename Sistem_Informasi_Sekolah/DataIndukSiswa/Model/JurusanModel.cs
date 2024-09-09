@@ -8,7 +8,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
 {
     public class JurusanModel
     {
-        public int Id { get; set; }
+        public int JurusanId { get; set; }
         public string NamaJurusan { get; set; }
     }
 }

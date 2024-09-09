@@ -11,7 +11,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Model
         public int KelasId { get; set; }
         public string KelasNama { get; set; }
         public int KelasTingkat { get; set; }
-        public string JurusanNama { get; set; }
+        public int JurusanId { get; set; }
     }
 
 }
