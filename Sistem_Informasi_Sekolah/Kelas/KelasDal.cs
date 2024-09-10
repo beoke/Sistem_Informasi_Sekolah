@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Helpers;
-using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
+namespace Sistem_Informasi_Sekolah
 {
     public class KelasDal
     {
 
-       
+
         public int Insert(KelasModel kelas)
         {
             const string sql = @"
@@ -59,26 +58,29 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                    DELETE FROM 
                       Kelass
                     WHERE 
-                       KelasId = @Kelasid ";
+                       KelasID = @KelasiD ";
             var dp = new DynamicParameters();
-            dp.Add(@"KelasId", id, DbType.Int16);
+            dp.Add(@"KelasID", id, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             return conn.Execute(sql, dp);
         }
 
-        public KelasModel GetData(int kelasId)
+        public KelasModel? GetData(int kelasId)
         {
             const string sql = @"
              SELECT 
-                KelasId, KelasNama, KelasTingkat, JurusanId
+                KelasID, KelasNama, KelasTingkat, JurusanId
              FROM
                 Kelass
              WHERE 
-                KelasId = @kelasid";
+                KelasID = @kelasiD";
+
+            var dp = new DynamicParameters();
+            dp.Add("@KelasID", kelasId, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QuerySingleOrDefault<KelasModel>(sql, new { KelasId = kelasId });
+            return conn.QuerySingleOrDefault<KelasModel>(sql, dp);
         }
 
         public IEnumerable<KelasModel> Listjurusan()

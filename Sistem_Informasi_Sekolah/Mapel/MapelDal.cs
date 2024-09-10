@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Sistem_Informasi_Sekolah.DataIndukSiswa.Helpers;
-using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
+namespace Sistem_Informasi_Sekolah
 {
     public class MapelDal
     {
@@ -56,7 +55,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add(@"MapelId", id, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return  conn.Execute(sql, dp);
+            return conn.Execute(sql, dp);
         }
 
         public MapelModel? GetData(int Id)

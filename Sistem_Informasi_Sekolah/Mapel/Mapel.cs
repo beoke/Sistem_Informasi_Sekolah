@@ -1,5 +1,4 @@
-﻿using Sistem_Informasi_Sekolah.DataIndukSiswa.Dal;
-using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
+﻿using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

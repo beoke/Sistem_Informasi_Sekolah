@@ -36,7 +36,6 @@
             rb_11 = new RadioButton();
             rb_12 = new RadioButton();
             label4 = new Label();
-            tx_NamaKelas = new TextBox();
             tx_KelasId = new TextBox();
             label3 = new Label();
             label2 = new Label();
@@ -44,6 +43,7 @@
             btn_SaveKelas = new Button();
             label1 = new Label();
             GridKelas = new DataGridView();
+            cb_kelas = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridKelas).BeginInit();
             SuspendLayout();
@@ -51,6 +51,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(cb_kelas);
             panel1.Controls.Add(cb_KelasJurusan);
             panel1.Controls.Add(btn_newKelas);
             panel1.Controls.Add(label5);
@@ -58,7 +59,6 @@
             panel1.Controls.Add(rb_11);
             panel1.Controls.Add(rb_12);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(tx_NamaKelas);
             panel1.Controls.Add(tx_KelasId);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -75,7 +75,7 @@
             // cb_KelasJurusan
             // 
             cb_KelasJurusan.FormattingEnabled = true;
-            cb_KelasJurusan.Location = new Point(491, 252);
+            cb_KelasJurusan.Location = new Point(491, 185);
             cb_KelasJurusan.Name = "cb_KelasJurusan";
             cb_KelasJurusan.Size = new Size(224, 30);
             cb_KelasJurusan.TabIndex = 15;
@@ -83,7 +83,7 @@
             // btn_newKelas
             // 
             btn_newKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_newKelas.Location = new Point(503, 350);
+            btn_newKelas.Location = new Point(497, 327);
             btn_newKelas.Name = "btn_newKelas";
             btn_newKelas.Size = new Size(67, 33);
             btn_newKelas.TabIndex = 14;
@@ -93,7 +93,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(491, 171);
+            label5.Location = new Point(491, 104);
             label5.Name = "label5";
             label5.Size = new Size(61, 22);
             label5.TabIndex = 13;
@@ -102,7 +102,7 @@
             // rb_10
             // 
             rb_10.AutoSize = true;
-            rb_10.Location = new Point(496, 196);
+            rb_10.Location = new Point(496, 129);
             rb_10.Name = "rb_10";
             rb_10.Size = new Size(44, 26);
             rb_10.TabIndex = 12;
@@ -113,7 +113,7 @@
             // rb_11
             // 
             rb_11.AutoSize = true;
-            rb_11.Location = new Point(555, 196);
+            rb_11.Location = new Point(555, 129);
             rb_11.Name = "rb_11";
             rb_11.Size = new Size(44, 26);
             rb_11.TabIndex = 11;
@@ -124,7 +124,7 @@
             // rb_12
             // 
             rb_12.AutoSize = true;
-            rb_12.Location = new Point(617, 196);
+            rb_12.Location = new Point(617, 129);
             rb_12.Name = "rb_12";
             rb_12.Size = new Size(44, 26);
             rb_12.TabIndex = 10;
@@ -135,18 +135,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(491, 227);
+            label4.Location = new Point(491, 160);
             label4.Name = "label4";
             label4.Size = new Size(58, 22);
             label4.TabIndex = 8;
             label4.Text = "Jurusan";
-            // 
-            // tx_NamaKelas
-            // 
-            tx_NamaKelas.Location = new Point(491, 129);
-            tx_NamaKelas.Name = "tx_NamaKelas";
-            tx_NamaKelas.Size = new Size(227, 29);
-            tx_NamaKelas.TabIndex = 7;
             // 
             // tx_KelasId
             // 
@@ -159,11 +152,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(491, 104);
+            label3.Location = new Point(491, 218);
             label3.Name = "label3";
-            label3.Size = new Size(89, 22);
+            label3.Size = new Size(46, 22);
             label3.TabIndex = 5;
-            label3.Text = "Nama Kelas";
+            label3.Text = "Kelas";
             // 
             // label2
             // 
@@ -177,7 +170,7 @@
             // btn_deleteKelas
             // 
             btn_deleteKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_deleteKelas.Location = new Point(578, 350);
+            btn_deleteKelas.Location = new Point(572, 327);
             btn_deleteKelas.Name = "btn_deleteKelas";
             btn_deleteKelas.Size = new Size(67, 33);
             btn_deleteKelas.TabIndex = 3;
@@ -186,7 +179,7 @@
             // 
             // btn_SaveKelas
             // 
-            btn_SaveKelas.Location = new Point(651, 350);
+            btn_SaveKelas.Location = new Point(645, 327);
             btn_SaveKelas.Name = "btn_SaveKelas";
             btn_SaveKelas.Size = new Size(67, 33);
             btn_SaveKelas.TabIndex = 2;
@@ -213,6 +206,14 @@
             GridKelas.Size = new Size(464, 362);
             GridKelas.TabIndex = 0;
             // 
+            // cb_kelas
+            // 
+            cb_kelas.FormattingEnabled = true;
+            cb_kelas.Location = new Point(491, 255);
+            cb_kelas.Name = "cb_kelas";
+            cb_kelas.Size = new Size(224, 30);
+            cb_kelas.TabIndex = 16;
+            // 
             // KelasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -236,7 +237,6 @@
         private RadioButton rb_11;
         private RadioButton rb_12;
         private Label label4;
-        private TextBox tx_NamaKelas;
         private TextBox tx_KelasId;
         private Label label3;
         private Label label2;
@@ -245,5 +245,6 @@
         private Label label1;
         private DataGridView GridKelas;
         private ComboBox cb_KelasJurusan;
+        private ComboBox cb_kelas;
     }
 }
