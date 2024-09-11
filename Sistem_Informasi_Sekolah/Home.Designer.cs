@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             menuStrip1 = new MenuStrip();
             formToolStripMenuItem = new ToolStripMenuItem();
             dataIdukToolStripMenuItem = new ToolStripMenuItem();
             dataMapelToolStripMenuItem = new ToolStripMenuItem();
             dataJurusanToolStripMenuItem = new ToolStripMenuItem();
-            panel1 = new Panel();
             dataKelasToolStripMenuItem = new ToolStripMenuItem();
+            panel1 = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,48 +44,54 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { formToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(764, 24);
+            menuStrip1.Size = new Size(764, 40);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // formToolStripMenuItem
             // 
+            formToolStripMenuItem.BackgroundImageLayout = ImageLayout.Stretch;
             formToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIdukToolStripMenuItem, dataMapelToolStripMenuItem, dataJurusanToolStripMenuItem, dataKelasToolStripMenuItem });
+            formToolStripMenuItem.Image = (Image)resources.GetObject("formToolStripMenuItem.Image");
+            formToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             formToolStripMenuItem.Name = "formToolStripMenuItem";
-            formToolStripMenuItem.Size = new Size(47, 20);
+            formToolStripMenuItem.Size = new Size(79, 36);
             formToolStripMenuItem.Text = "Form";
+            formToolStripMenuItem.TextAlign = ContentAlignment.MiddleRight;
             // 
             // dataIdukToolStripMenuItem
             // 
+            dataIdukToolStripMenuItem.Image = (Image)resources.GetObject("dataIdukToolStripMenuItem.Image");
+            dataIdukToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             dataIdukToolStripMenuItem.Name = "dataIdukToolStripMenuItem";
-            dataIdukToolStripMenuItem.Size = new Size(180, 22);
+            dataIdukToolStripMenuItem.Size = new Size(196, 38);
             dataIdukToolStripMenuItem.Text = "Data Iduk";
             // 
             // dataMapelToolStripMenuItem
             // 
             dataMapelToolStripMenuItem.Name = "dataMapelToolStripMenuItem";
-            dataMapelToolStripMenuItem.Size = new Size(180, 22);
+            dataMapelToolStripMenuItem.Size = new Size(196, 38);
             dataMapelToolStripMenuItem.Text = "Data Mapel";
             // 
             // dataJurusanToolStripMenuItem
             // 
             dataJurusanToolStripMenuItem.Name = "dataJurusanToolStripMenuItem";
-            dataJurusanToolStripMenuItem.Size = new Size(180, 22);
+            dataJurusanToolStripMenuItem.Size = new Size(196, 38);
             dataJurusanToolStripMenuItem.Text = "Data Jurusan";
-            // 
-            // panel1
-            // 
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 24);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(764, 647);
-            panel1.TabIndex = 1;
             // 
             // dataKelasToolStripMenuItem
             // 
             dataKelasToolStripMenuItem.Name = "dataKelasToolStripMenuItem";
-            dataKelasToolStripMenuItem.Size = new Size(180, 22);
+            dataKelasToolStripMenuItem.Size = new Size(196, 38);
             dataKelasToolStripMenuItem.Text = "Data Kelas";
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 40);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(764, 631);
+            panel1.TabIndex = 1;
             // 
             // Home
             // 

@@ -200,7 +200,6 @@ namespace Sistem_Informasi_Sekolah
             rb_10.Checked = false;
             rb_11.Checked = false;
             rb_12.Checked = false;
-           
         }
 
         private void GetListData(int KelasId)
