@@ -16,13 +16,15 @@ namespace Sistem_Informasi_Sekolah
         {
             const string sql = @"
                 INSERT INTO Jurusan(
-                NamaJurusan)
-            
+                    JurusanName, Code)
+                OUTPUT INSERTED.JurusanId
                 VALUES (
-                @NamaJurusan)";
+                    @JurusanName, @Code)";
 
             var dp = new DynamicParameters();
-            dp.Add("NamaJurusan", jurusan.NamaJurusan, DbType.String);
+            dp.Add("JurusanId", jurusan.JurusanId, DbType.String);
+            dp.Add("JurusanName", jurusan.JurusanName, DbType.String);
+            dp.Add("Code", jurusan.Code, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             var result = conn.Execute(sql, dp);
@@ -31,13 +33,16 @@ namespace Sistem_Informasi_Sekolah
 
         public void Update(JurusanModel jurusan)
         {
-            const string sql = @"UPDATE Jurusan SET
-                        NamaJurusan=@NamaJurusan
-                        WHERE 
-                        JurusanId = @JurusanId ";
+            const string sql = @"
+             UPDATE Jurusan SET
+                JurusanName=@JurusanName,
+                Code = @Code
+                WHERE 
+                JurusanId = @JurusanId ";
             var dp = new DynamicParameters();
             dp.Add("@JurusanId", jurusan.JurusanId, DbType.Int16);
-            dp.Add("@NamaJurusan", jurusan.NamaJurusan, DbType.String);
+            dp.Add("@JurusanName", jurusan.JurusanName, DbType.String);
+            dp.Add("@Code", jurusan.Code, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
@@ -46,12 +51,12 @@ namespace Sistem_Informasi_Sekolah
         public int Delete(int id)
         {
             const string sql = @"
-                       DELETE FROM 
-                          Jurusan
-                        WHERE 
-                           JurusanId = @jurusanid ";
+            DELETE FROM 
+                Jurusan
+            WHERE 
+                JurusanId = @Jurusanid ";
             var dp = new DynamicParameters();
-            dp.Add(@"Id", id, DbType.Int16);
+            dp.Add(@"JurusanId", id, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             return conn.Execute(sql, dp);
@@ -60,12 +65,12 @@ namespace Sistem_Informasi_Sekolah
         public JurusanModel? GetData(int Id)
         {
             const string sql = @"
-                    SELECT 
-                        JurusanId, NamaJurusan
-                    FROM
-                        Jurusan
-                    WHERE
-                        JurusanId = @jurusanid";
+            SELECT 
+                JurusanId, JurusanName, Code
+            FROM
+                Jurusan
+            WHERE
+                JurusanId = @JurusanId";
 
             var dp = new DynamicParameters();
             dp.Add("@JurusanId", Id, DbType.Int16);
@@ -77,13 +82,12 @@ namespace Sistem_Informasi_Sekolah
         {
             const string sql = @"
                     SELECT 
-                        JurusanId, NamaJurusan
+                        JurusanId, JrusanName,Code
                     FROM
                         Jurusan";
-            var dp = new DynamicParameters();
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.Query<JurusanModel>(sql, dp);
+            return conn.Query<JurusanModel>(sql);
         }
     }
 }

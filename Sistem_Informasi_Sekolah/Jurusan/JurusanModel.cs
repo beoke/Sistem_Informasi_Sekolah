@@ -9,6 +9,7 @@ namespace Sistem_Informasi_Sekolah
     public class JurusanModel
     {
         public int JurusanId { get; set; }
-        public string NamaJurusan { get; set; }
+        public string JurusanName { get; set; }
+        public string Code {get; set; }
     }
 }

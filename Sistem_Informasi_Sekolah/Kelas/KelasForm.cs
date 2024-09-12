@@ -16,39 +16,48 @@ namespace Sistem_Informasi_Sekolah
 {
     public partial class KelasForm : Form
     {
-        private readonly KelasDal kelasDal;
-        private readonly JurusanDal jurusanDal;
+        private readonly KelasDal _kelasDal;
+        private readonly JurusanDal _jurusanDal;
         int kelasTingkat = 0;
         public KelasForm()
         {
 
-            jurusanDal = new JurusanDal();
-            kelasDal = new KelasDal();
-
             InitializeComponent();
-            LoadData();
-            InitCombo();
-            InitialEvent();
+
+            _kelasDal = new KelasDal();
+            _jurusanDal = new JurusanDal();
+
+            InitComboBox();
+            RegisterControlEvent();
+            RefreshListData();
+        }
+        private void RefreshListData()
+        {
+            var listKelas = _kelasDal.ListData();
+            var datasource = listKelas
+                .Select(x => new
+                {
+                    Id = x.KelasId,
+                    Name = x.KelasName,
+                }).ToList();
+            GridKelas.DataSource = datasource;
         }
 
         #region CUSTOM COMBO RADIO
-        private void InitCombo()
+        private void RegisterControlEvent()
         {
-            var dataJurusan = jurusanDal.Listjurusan();
-            cb_KelasJurusan.DataSource = dataJurusan;
-            cb_KelasJurusan.DisplayMember = "NamaJurusan";
-            cb_KelasJurusan.ValueMember = "JurusanId";
+            NewButton.Click += NewButton_Click;
+            SaveButton.Click += SaveButton_Click;
+            DeleteButton.Click += DeletButton_Click;
 
-            string jurusanName = string.Empty;
-            if (cb_KelasJurusan.SelectedItem != null)
-            {
-                jurusanName = ((dynamic)cb_KelasJurusan.SelectedItem).NamaJurusan;
-            }
+            Tingkat10Radio.Click += TingkatRadio_Click;
+            Tingkat11Radio.Click += TingkatRadio_Click;
+            Tingkat12Radio.Click += TingkatRadio_Click;
 
-            List<string> kelas = new List<string> { "", "1", "2", "3", "4", "5" };
-            List<string> kelasNama = kelas.Select(k => $"{kelasTingkat} {jurusanName} {k}").ToList();
+            JurusanComboBox.SelectedValueChanged += JurusanComboBox_SelectedValueChanged;
+            FlagText.Validated += FlagText_Validated;
 
-            cb_kelas.DataSource = kelasNama;
+            ListDataGrid.RowEnter += ListDataGrid_RowEnter;
         }
 
         private void RefreshComboRadio()
@@ -59,10 +68,7 @@ namespace Sistem_Informasi_Sekolah
                 jurusanName = ((dynamic)cb_KelasJurusan.SelectedItem).NamaJurusan;
             }
 
-            List<string> kelas = new List<string> { "", "1", "2", "3", "4", "5" };
-            List<string> kelasNama = kelas.Select(k => $"{kelasTingkat} {jurusanName} {k}").ToList();
-
-            cb_kelas.DataSource = kelasNama;
+            tx_KelasName.Text = GridKelas.CurrentRow.Cells[1].Value.ToString();
         }
 
         #endregion
@@ -142,12 +148,12 @@ namespace Sistem_Informasi_Sekolah
         {
             var kelasInsert = new KelasModel()
             {
-                KelasNama = cb_kelas.Text,
+                KelasNama = tx_KelasName.Text,
                 KelasTingkat = kelasTingkat,
                 JurusanId = Convert.ToInt16(cb_KelasJurusan.SelectedValue)
             };
 
-            var kelasName = cb_kelas.Text;
+            var kelasName = tx_KelasName.Text;
 
             if (tx_KelasId.Text == string.Empty)
             {
@@ -162,7 +168,7 @@ namespace Sistem_Informasi_Sekolah
                     var kelasUpdate = new KelasModel()
                     {
                         KelasId = Convert.ToInt16(tx_KelasId.Text),
-                        KelasNama = cb_kelas.Text,
+                        KelasNama = tx_KelasName.Text,
                         KelasTingkat = kelasTingkat,
                         JurusanId = Convert.ToInt16(cb_KelasJurusan.SelectedValue)
                     };
@@ -193,8 +199,7 @@ namespace Sistem_Informasi_Sekolah
         private void ClearData()
         {
             tx_KelasId.Text = string.Empty;
-            cb_kelas.Text = string.Empty;
-            cb_kelas.SelectedIndex = -1;
+            tx_KelasName.Text= string.Empty;
             cb_KelasJurusan.SelectedIndex = -1;
 
             rb_10.Checked = false;

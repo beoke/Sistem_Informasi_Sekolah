@@ -9,9 +9,13 @@ namespace Sistem_Informasi_Sekolah
     public class KelasModel
     {
         public int KelasId { get; set; }
-        public string KelasNama { get; set; }
-        public int KelasTingkat { get; set; }
+        public string KelasName { get; set; }
+        public int Tingkat { get; set; }
+        public int Flag { get; set; }
+
         public int JurusanId { get; set; }
+        public string JurusanName { get;set; }
+        public string Code { get; set; }
     }
 
 }

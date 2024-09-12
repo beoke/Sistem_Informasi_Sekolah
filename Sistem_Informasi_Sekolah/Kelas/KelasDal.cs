@@ -17,64 +17,70 @@ namespace Sistem_Informasi_Sekolah
         public int Insert(KelasModel kelas)
         {
             const string sql = @"
-                INSERT INTO Kelass(
-                KelasNama, KelasTingkat, JurusanId)
+                INSERT INTO Kelas(
+                    KelasName, Tingkat, JurusanId, Flag)
+                OUTPUT INSERTED.KelasId
                 VALUES (
-                @kelasnama, @kelastingkat, @jurusanid)";
+                    @KelasName, @Tingkat, @JurusanId, @Flag)";
 
             var dp = new DynamicParameters();
-            dp.Add("KelasNama", kelas.KelasNama, DbType.String);
-            dp.Add("KelasTingkat", kelas.KelasTingkat, DbType.Int16);
+            dp.Add("KelasName", kelas.KelasName, DbType.String);
+            dp.Add("Tingkat", kelas.Tingkat, DbType.String);
             dp.Add("JurusanId", kelas.JurusanId, DbType.String);
+            dp.Add("Flag", kelas.Flag, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             var result = conn.Execute(sql, dp);
             return result;
         }
-        public int Update(KelasModel kelas)
+        public void Update(KelasModel kelas)
         {
             const string sql = @"
-            UPDATE Kelass
-            SET 
-                KelasNama = @kelasnama,
-                KelasTingkat = @kelastingkat,
-                JurusanId = @jurusanId
-            WHERE
-                KelasId = @kelasid";
+                UPDATE Kelas
+                SET KelasName = @KelasName, 
+                    Tingkat = @Tingkat,
+                    JurusanId = @JurusanId,
+                    Flag = @Flag
+                WHERE KelasId = @KelasId";
 
             var dp = new DynamicParameters();
             dp.Add("KelasId", kelas.KelasId, DbType.Int32);
-            dp.Add("KelasNama", kelas.KelasNama, DbType.String);
-            dp.Add("KelasTingkat", kelas.KelasTingkat, DbType.Int16);
+            dp.Add("KelasName", kelas.KelasName, DbType.String);
+            dp.Add("Tingkat", kelas.Tingkat, DbType.Int16);
             dp.Add("JurusanId", kelas.JurusanId, DbType.String);
+            dp.Add("Flag", kelas.Flag, DbType.String);
+
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            var result = conn.Execute(sql, dp);
-            return result;
+            conn.Execute(sql, dp);
+           
         }
 
-        public int Delete(int id)
+        public void Delete(int id)
         {
             const string sql = @"
                    DELETE FROM 
-                      Kelass
+                      Kelas
                     WHERE 
-                       KelasID = @KelasiD ";
+                       KelasId = @Kelasid ";
             var dp = new DynamicParameters();
-            dp.Add(@"KelasID", id, DbType.Int16);
+            dp.Add(@"KelasId", id, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.Execute(sql, dp);
+            conn.Execute(sql, dp);
         }
 
         public KelasModel? GetData(int kelasId)
         {
             const string sql = @"
-             SELECT 
-                KelasID, KelasNama, KelasTingkat, JurusanId
-             FROM
-                Kelass
-             WHERE 
-                KelasID = @kelasiD";
+            SELECT 
+                aa.KelasId, aa.KelasName, aa.Tingkat, aa.JurusanId, aa.Flag,
+                ISNULL(bb.JurusanName, '') AS JurusanName,
+                ISNULL(bb.Code, '') AS Code
+            FROM 
+                Kelas aa
+                LEFT JOIN Jurusan bb ON aa.JurusanId = bb.JurusanId
+            WHERE 
+                aa.KelasId = @KelasId";
 
             var dp = new DynamicParameters();
             dp.Add("@KelasID", kelasId, DbType.Int16);
@@ -83,17 +89,19 @@ namespace Sistem_Informasi_Sekolah
             return conn.QuerySingleOrDefault<KelasModel>(sql, dp);
         }
 
-        public IEnumerable<KelasModel> Listjurusan()
+        public IEnumerable<KelasModel> ListData()
         {
             const string sql = @"
-                SELECT 
-                    KelasID, KelasNama, KelasTingkat, JurusanId
-                FROM
-                    Kelass";
-            var dp = new DynamicParameters();
-
+            SELECT 
+                aa.KelasId, aa.KelasName, aa.Tingkat, aa.JurusanId, aa.Flag,
+                ISNULL(bb.JurusanName, '') AS JurusanName,
+                ISNULL(bb.Code, '') AS Code
+            FROM 
+                Kelas aa
+                LEFT JOIN Jurusan bb ON aa.JurusanId = bb.JurusanId";
+ 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.Query<KelasModel>(sql, dp);
+            return conn.Query<KelasModel>(sql);
         }
     }
 }
