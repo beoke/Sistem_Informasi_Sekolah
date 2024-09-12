@@ -22,9 +22,9 @@ namespace Sistem_Informasi_Sekolah
                     @JurusanName, @Code)";
 
             var dp = new DynamicParameters();
-            dp.Add("JurusanId", jurusan.JurusanId, DbType.String);
-            dp.Add("JurusanName", jurusan.JurusanName, DbType.String);
-            dp.Add("Code", jurusan.Code, DbType.String);
+            dp.Add("@JurusanId", jurusan.JurusanId, DbType.String);
+            dp.Add("@JurusanName", jurusan.JurusanName, DbType.String);
+            dp.Add("@Code", jurusan.Code, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             var result = conn.Execute(sql, dp);
@@ -82,7 +82,7 @@ namespace Sistem_Informasi_Sekolah
         {
             const string sql = @"
                     SELECT 
-                        JurusanId, JrusanName,Code
+                        JurusanId, JurusanName,Code
                     FROM
                         Jurusan";
 

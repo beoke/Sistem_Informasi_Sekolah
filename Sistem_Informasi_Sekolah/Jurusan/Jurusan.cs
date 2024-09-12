@@ -65,15 +65,10 @@ namespace Sistem_Informasi_Sekolah
             ClearInput();
         }
 
-        private void Btn_new_Click(object? sender, EventArgs e)
-        {
-            ClearInput();
-        }
-
         private int SaveJurusan()
         {
-            var jurusanId = tx_JurusanID.Text == string.Empty ? 0
-                : int.Parse(tx_JurusanID.Text);
+            var jurusanId = tx_JurusanID.Text == string.Empty ? 0 : 
+                int.Parse(tx_JurusanID.Text);
             var jurusan = new JurusanModel
             {
                 JurusanId = jurusanId,
@@ -88,6 +83,11 @@ namespace Sistem_Informasi_Sekolah
 
             return jurusanId;
         }
+        private void Btn_new_Click(object? sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
 
         private void ClearInput()
         {

@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,7 @@ namespace Sistem_Informasi_Sekolah
             InitComboBox();
             RegisterControlEvent();
             RefreshListData();
+            LoadData();
         }
         private void RefreshListData()
         {
@@ -46,185 +48,164 @@ namespace Sistem_Informasi_Sekolah
         #region CUSTOM COMBO RADIO
         private void RegisterControlEvent()
         {
-            NewButton.Click += NewButton_Click;
-            SaveButton.Click += SaveButton_Click;
-            DeleteButton.Click += DeletButton_Click;
+            btn_newKelas.Click += Btn_newKelas_Click1; 
+            btn_SaveKelas.Click += Btn_SaveKelas_Click1;
+            btn_deleteKelas.Click += Btn_deleteKelas_Click1; ;
 
-            Tingkat10Radio.Click += TingkatRadio_Click;
-            Tingkat11Radio.Click += TingkatRadio_Click;
-            Tingkat12Radio.Click += TingkatRadio_Click;
+            rb_10.Click += Rb_10_Click; 
+            rb_11.Click += Rb_11_Click; 
+            rb_12.Click += Rb_12_Click;
 
-            JurusanComboBox.SelectedValueChanged += JurusanComboBox_SelectedValueChanged;
-            FlagText.Validated += FlagText_Validated;
+            cb_KelasJurusan.SelectedValueChanged += Cb_KelasJurusan_SelectedValueChanged; ;
+            FlagText.Validated += FlagText_Validated; 
 
-            ListDataGrid.RowEnter += ListDataGrid_RowEnter;
+            GridKelas.RowEnter += GridKelas_RowEnter; 
         }
 
-        private void RefreshComboRadio()
+        private void GridKelas_RowEnter(object? sender, DataGridViewCellEventArgs e)
         {
-            string jurusanName = string.Empty;
-            if (cb_KelasJurusan.SelectedItem != null)
+            var kelasid = Convert.ToInt16(GridKelas.Rows[e.RowIndex].Cells[0].Value);
+            var kelas = _kelasDal.GetData(kelasid);
+            if(kelas is null)
             {
-                jurusanName = ((dynamic)cb_KelasJurusan.SelectedItem).NamaJurusan;
+                ClearInput();
+                return;
             }
+            tx_KelasId.Text = kelasid.ToString();
+            tx_KelasName.Text = kelas?.KelasName?? string.Empty;
+            cb_KelasJurusan.SelectedValue = kelas?.JurusanId ?? 1;
+            FlagText.Text = kelas?.Flag ?? string.Empty;
 
-            tx_KelasName.Text = GridKelas.CurrentRow.Cells[1].Value.ToString();
+            if (kelas?.Tingkat == 10)rb_10.Checked = true;
+            else if (kelas?.Tingkat == 11)rb_11.Checked = true;
+            else if(kelas?.Tingkat == 12)rb_12.Checked = true;
         }
 
-        #endregion
-
-
-        #region EVENT
-        private void InitialEvent()
+        private void FlagText_Validated(object? sender, EventArgs e)
         {
-            btn_SaveKelas.Click += Btn_SaveKelas_Click; 
-            btn_newKelas.Click += Btn_newKelas_Click;
-            btn_deleteKelas.Click += Btn_deleteKelas_Click;
-            GridKelas.DoubleClick += GridKelas_DoubleClick;
-            cb_KelasJurusan.SelectedIndexChanged += Cb_KelasJurusan_SelectedIndexChanged;
-
-            List<RadioButton> radioTingkat = new List<RadioButton>
-            {
-                rb_10,
-                rb_11,
-                rb_12
-            };
-            foreach (var radio in radioTingkat)
-                radio.CheckedChanged += Radio_CheckedChanged;
+            SetKelasName();
         }
 
-        private void GridKelas_DoubleClick(object? sender, EventArgs e)
+        private void Cb_KelasJurusan_SelectedValueChanged(object? sender, EventArgs e)
         {
-             var kelasStr = GridKelas.CurrentRow.Cells["KelasId"].Value.ToString();
-             GetListData(Convert.ToInt32(kelasStr));
+            SetKelasName();
         }
 
-        private void Cb_KelasJurusan_SelectedIndexChanged(object? sender, EventArgs e)
+        private void Rb_12_Click(object? sender, EventArgs e)
         {
-            RefreshComboRadio();
+            SetKelasName();
         }
 
-        private void Btn_deleteKelas_Click(object? sender, EventArgs e)
+        private void Rb_11_Click(object? sender, EventArgs e)
         {
-            var kelasName = GridKelas.CurrentRow.Cells[1].Value;
+            SetKelasName();
+        }
+
+        private void Rb_10_Click(object? sender, EventArgs e)
+        {
+            SetKelasName();
+        }
+
+        private void Btn_deleteKelas_Click1(object? sender, EventArgs e)
+        {
+            delete();
+        }
+        private void delete()
+        {
             var kelasClick = Convert.ToInt32(GridKelas.CurrentRow.Cells[0].Value);
-
-            if (MessageBox.Show($"Apakah anda ingin menghapus data \" {kelasName} \" ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (MessageBox.Show($"Apakah anda ingin menghapus data", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                kelasDal.Delete(kelasClick);
+                _kelasDal.Delete(kelasClick);
+                ClearInput();
                 LoadData();
-                ClearData();
-            }
+              }
             else
                 return;
-            
         }
-
-        private void Btn_newKelas_Click(object? sender, EventArgs e)
-        {
-            if (MessageBox.Show("Tambahkan data baru ?", "Pertanyaan", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                ClearData();
-            }
-        }
-
-        private void Btn_SaveKelas_Click(object? sender, EventArgs e)
-        {
-            SaveData();
-            LoadData();
-            ClearData();
-        }
-
-        private void Radio_CheckedChanged(object? sender, EventArgs e)
-        {
-            if (rb_10.Checked) kelasTingkat = 10;
-            if (rb_11.Checked) kelasTingkat = 11;
-            if (rb_12.Checked) kelasTingkat = 12;
-            RefreshComboRadio();
-        }
-        #endregion
-
-        private void SaveData()
-        {
-            var kelasInsert = new KelasModel()
-            {
-                KelasNama = tx_KelasName.Text,
-                KelasTingkat = kelasTingkat,
-                JurusanId = Convert.ToInt16(cb_KelasJurusan.SelectedValue)
-            };
-
-            var kelasName = tx_KelasName.Text;
-
-            if (tx_KelasId.Text == string.Empty)
-            {
-                if (MessageBox.Show($"Tambahkan data \" {kelasName} \" ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                    kelasDal.Insert(kelasInsert);
-            }
-
-            if (tx_KelasId.Text != string.Empty)
-            {
-                if (MessageBox.Show("Update data ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    var kelasUpdate = new KelasModel()
-                    {
-                        KelasId = Convert.ToInt16(tx_KelasId.Text),
-                        KelasNama = tx_KelasName.Text,
-                        KelasTingkat = kelasTingkat,
-                        JurusanId = Convert.ToInt16(cb_KelasJurusan.SelectedValue)
-                    };
-                    kelasDal.Update(kelasUpdate);
-                }
-            }
-        }
-
         private void LoadData()
         {
-            GridKelas.DataSource = kelasDal.Listjurusan();
+            GridKelas.DataSource = _kelasDal.ListData();
             CustomGrid();
         }
-
         private void CustomGrid()
         {
-            GridKelas.Columns["KelasID"].HeaderText = "Id Kelas";
-            GridKelas.Columns["KelasNama"].HeaderText = "Nama Kelas";
-            GridKelas.Columns["KelasTingkat"].HeaderText = "Tingkat";
+            GridKelas.Columns["KelasId"].HeaderText = "Id Kelas";
+            GridKelas.Columns["KelasName"].HeaderText = "Nama Kelas";
+            GridKelas.Columns["Code"].HeaderText = "Kode Kelas";
 
+            GridKelas.Columns["Tingkat"].Visible = false;
+            GridKelas.Columns["Flag"].Visible = false;
             GridKelas.Columns["JurusanId"].Visible = false;
+            GridKelas.Columns["JurusanName"].Visible = false;
 
-            GridKelas.Columns["KelasID"].Width = 100;
-            GridKelas.Columns["KelasNama"].Width = 200;
-            GridKelas.Columns["KelasTingkat"].Width = 100;
+            GridKelas.Columns["KelasId"].Width = 70;
+            GridKelas.Columns["KelasName"].Width = 200;
+            GridKelas.Columns["Code"].Width = 150;
+        }
+        private void Btn_SaveKelas_Click1(object? sender, EventArgs e)
+        {
+
+            var kelasId = SaveKelas();
+            RefreshListData();
+            ClearInput();
+            LoadData();
+        }
+        private int SaveKelas()
+        {
+            var kelasId = tx_KelasId.Text == string.Empty ? 0
+                : int.Parse(tx_KelasId.Text);
+            var kelas = new KelasModel
+            {
+                KelasId = kelasId,
+                KelasName = tx_KelasName.Text,
+                JurusanId = Convert.ToInt16(cb_KelasJurusan.SelectedValue),
+                Flag = FlagText.Text,
+                Tingkat = rb_10.Checked ? 10
+                    : rb_11.Checked ? 11
+                    : 12
+            };
+            if (kelas.KelasId == 0)
+                kelasId = _kelasDal.Insert(kelas);
+            else
+                _kelasDal.Update(kelas);
+            return kelasId;
+        }
+        private void SetKelasName()
+        {
+            var tingkat = rb_10.Checked ? 10
+                : rb_11.Checked ? 11
+                : 12;
+
+            var jurusanId = Convert.ToInt16(cb_KelasJurusan.SelectedValue);
+            var jurusan = _jurusanDal.GetData(jurusanId)
+                ?? new JurusanModel { Code = "X" };
+            var jurusanCode = jurusan.Code;
+            var flag = FlagText.Text;
+            tx_KelasName.Text = $"Kelas {tingkat} {jurusanCode}-{flag}";
         }
 
-        private void ClearData()
+        private void Btn_newKelas_Click1(object? sender, EventArgs e)
         {
-            tx_KelasId.Text = string.Empty;
-            tx_KelasName.Text= string.Empty;
-            cb_KelasJurusan.SelectedIndex = -1;
-
+            ClearInput();
+        }
+        private void ClearInput()
+        {
+            tx_KelasId.Clear();
+            tx_KelasName.Clear();
+            FlagText.Clear();
+            cb_KelasJurusan.SelectedIndex = 0;
             rb_10.Checked = false;
             rb_11.Checked = false;
             rb_12.Checked = false;
         }
-
-        private void GetListData(int KelasId)
+        private void InitComboBox()
         {
-            var getKelas = kelasDal.GetData(KelasId);
-
-            if (getKelas == null)
-                MessageBox.Show("Data tidak ditemukan");
-
-            tx_KelasId.Text = KelasId.ToString();
-
-            if (getKelas.KelasTingkat == 10)
-                rb_10.Checked = true;
-            if (getKelas.KelasTingkat == 11)
-                rb_11.Checked = true;
-            if (getKelas.KelasTingkat == 12)
-                rb_12.Checked = true;
-
-            cb_KelasJurusan.SelectedValue = getKelas.JurusanId;
+            var listJurusan = _jurusanDal.Listjurusan();
+            cb_KelasJurusan.DataSource = listJurusan;
+            cb_KelasJurusan.ValueMember = "JurusanId";
+            cb_KelasJurusan.DisplayMember = "JurusanName";
         }
 
+        #endregion
     }
 }

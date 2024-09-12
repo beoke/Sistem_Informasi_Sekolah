@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            FlagText = new MaskedTextBox();
+            label6 = new Label();
             tx_KelasName = new TextBox();
             cb_KelasJurusan = new ComboBox();
             btn_newKelas = new Button();
@@ -44,8 +46,6 @@
             btn_SaveKelas = new Button();
             label1 = new Label();
             GridKelas = new DataGridView();
-            label6 = new Label();
-            FlagText = new MaskedTextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridKelas).BeginInit();
             SuspendLayout();
@@ -76,19 +76,36 @@
             panel1.Size = new Size(730, 397);
             panel1.TabIndex = 2;
             // 
+            // FlagText
+            // 
+            FlagText.Location = new Point(493, 301);
+            FlagText.Name = "FlagText";
+            FlagText.Size = new Size(65, 29);
+            FlagText.TabIndex = 18;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(492, 273);
+            label6.Name = "label6";
+            label6.Size = new Size(39, 22);
+            label6.TabIndex = 17;
+            label6.Text = "Flag";
+            // 
             // tx_KelasName
             // 
             tx_KelasName.Location = new Point(491, 129);
             tx_KelasName.Name = "tx_KelasName";
+            tx_KelasName.ReadOnly = true;
             tx_KelasName.Size = new Size(217, 29);
             tx_KelasName.TabIndex = 16;
             // 
             // cb_KelasJurusan
             // 
             cb_KelasJurusan.FormattingEnabled = true;
-            cb_KelasJurusan.Location = new Point(488, 240);
+            cb_KelasJurusan.Location = new Point(493, 240);
             cb_KelasJurusan.Name = "cb_KelasJurusan";
-            cb_KelasJurusan.Size = new Size(224, 30);
+            cb_KelasJurusan.Size = new Size(219, 30);
             cb_KelasJurusan.TabIndex = 15;
             // 
             // btn_newKelas
@@ -216,22 +233,6 @@
             GridKelas.RowTemplate.Height = 25;
             GridKelas.Size = new Size(464, 362);
             GridKelas.TabIndex = 0;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(492, 273);
-            label6.Name = "label6";
-            label6.Size = new Size(39, 22);
-            label6.TabIndex = 17;
-            label6.Text = "Flag";
-            // 
-            // FlagText
-            // 
-            FlagText.Location = new Point(493, 301);
-            FlagText.Name = "FlagText";
-            FlagText.Size = new Size(65, 29);
-            FlagText.TabIndex = 18;
             // 
             // KelasForm
             // 
