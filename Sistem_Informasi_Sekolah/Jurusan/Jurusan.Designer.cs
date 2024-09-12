@@ -31,6 +31,7 @@
             panel1 = new Panel();
             btn_new = new Button();
             panel2 = new Panel();
+            CodeText = new MaskedTextBox();
             label4 = new Label();
             tx_JurusanNama = new TextBox();
             tx_JurusanID = new TextBox();
@@ -40,7 +41,6 @@
             GridJurusan = new DataGridView();
             btn_SaveJurusan = new Button();
             btn_DeleteJurusan = new Button();
-            CodeText = new MaskedTextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridJurusan).BeginInit();
@@ -58,7 +58,7 @@
             panel1.Font = new Font("Sylfaen", 12F, FontStyle.Regular, GraphicsUnit.Point);
             panel1.Location = new Point(9, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(692, 400);
+            panel1.Size = new Size(700, 400);
             panel1.TabIndex = 0;
             // 
             // btn_new
@@ -84,6 +84,13 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(237, 272);
             panel2.TabIndex = 2;
+            // 
+            // CodeText
+            // 
+            CodeText.Location = new Point(17, 177);
+            CodeText.Name = "CodeText";
+            CodeText.Size = new Size(71, 29);
+            CodeText.TabIndex = 17;
             // 
             // label4
             // 
@@ -132,7 +139,7 @@
             label1.Dock = DockStyle.Top;
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(692, 32);
+            label1.Size = new Size(700, 32);
             label1.TabIndex = 1;
             label1.Text = "JURUSAN";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -165,18 +172,11 @@
             btn_DeleteJurusan.Text = "Delete";
             btn_DeleteJurusan.UseVisualStyleBackColor = true;
             // 
-            // CodeText
-            // 
-            CodeText.Location = new Point(17, 177);
-            CodeText.Name = "CodeText";
-            CodeText.Size = new Size(71, 29);
-            CodeText.TabIndex = 17;
-            // 
             // Jurusan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(699, 421);
+            ClientSize = new Size(714, 421);
             Controls.Add(panel1);
             Name = "Jurusan";
             Text = "Jurusan";

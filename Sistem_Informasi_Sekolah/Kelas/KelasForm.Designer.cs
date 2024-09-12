@@ -29,11 +29,16 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btn_newKelas = new Button();
+            btn_deleteKelas = new Button();
+            btn_SaveKelas = new Button();
+            label1 = new Label();
+            GridKelas = new DataGridView();
+            panel2 = new Panel();
             FlagText = new MaskedTextBox();
             label6 = new Label();
             tx_KelasName = new TextBox();
             cb_KelasJurusan = new ComboBox();
-            btn_newKelas = new Button();
             label5 = new Label();
             rb_10 = new RadioButton();
             rb_11 = new RadioButton();
@@ -42,30 +47,16 @@
             tx_KelasId = new TextBox();
             label3 = new Label();
             label2 = new Label();
-            btn_deleteKelas = new Button();
-            btn_SaveKelas = new Button();
-            label1 = new Label();
-            GridKelas = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridKelas).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Controls.Add(FlagText);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(tx_KelasName);
-            panel1.Controls.Add(cb_KelasJurusan);
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(btn_newKelas);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(rb_10);
-            panel1.Controls.Add(rb_11);
-            panel1.Controls.Add(rb_12);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(tx_KelasId);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
             panel1.Controls.Add(btn_deleteKelas);
             panel1.Controls.Add(btn_SaveKelas);
             panel1.Controls.Add(label1);
@@ -73,40 +64,8 @@
             panel1.Font = new Font("Sylfaen", 12F, FontStyle.Regular, GraphicsUnit.Point);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(730, 397);
+            panel1.Size = new Size(739, 397);
             panel1.TabIndex = 2;
-            // 
-            // FlagText
-            // 
-            FlagText.Location = new Point(493, 301);
-            FlagText.Name = "FlagText";
-            FlagText.Size = new Size(65, 29);
-            FlagText.TabIndex = 18;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(492, 273);
-            label6.Name = "label6";
-            label6.Size = new Size(39, 22);
-            label6.TabIndex = 17;
-            label6.Text = "Flag";
-            // 
-            // tx_KelasName
-            // 
-            tx_KelasName.Location = new Point(491, 129);
-            tx_KelasName.Name = "tx_KelasName";
-            tx_KelasName.ReadOnly = true;
-            tx_KelasName.Size = new Size(217, 29);
-            tx_KelasName.TabIndex = 16;
-            // 
-            // cb_KelasJurusan
-            // 
-            cb_KelasJurusan.FormattingEnabled = true;
-            cb_KelasJurusan.Location = new Point(493, 240);
-            cb_KelasJurusan.Name = "cb_KelasJurusan";
-            cb_KelasJurusan.Size = new Size(219, 30);
-            cb_KelasJurusan.TabIndex = 15;
             // 
             // btn_newKelas
             // 
@@ -117,83 +76,6 @@
             btn_newKelas.TabIndex = 14;
             btn_newKelas.Text = "New";
             btn_newKelas.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(491, 161);
-            label5.Name = "label5";
-            label5.Size = new Size(61, 22);
-            label5.TabIndex = 13;
-            label5.Text = "Tingkat";
-            // 
-            // rb_10
-            // 
-            rb_10.AutoSize = true;
-            rb_10.Location = new Point(491, 186);
-            rb_10.Name = "rb_10";
-            rb_10.Size = new Size(44, 26);
-            rb_10.TabIndex = 12;
-            rb_10.TabStop = true;
-            rb_10.Text = "10";
-            rb_10.UseVisualStyleBackColor = true;
-            // 
-            // rb_11
-            // 
-            rb_11.AutoSize = true;
-            rb_11.Location = new Point(541, 186);
-            rb_11.Name = "rb_11";
-            rb_11.Size = new Size(44, 26);
-            rb_11.TabIndex = 11;
-            rb_11.TabStop = true;
-            rb_11.Text = "11";
-            rb_11.UseVisualStyleBackColor = true;
-            // 
-            // rb_12
-            // 
-            rb_12.AutoSize = true;
-            rb_12.Location = new Point(595, 186);
-            rb_12.Name = "rb_12";
-            rb_12.Size = new Size(44, 26);
-            rb_12.TabIndex = 10;
-            rb_12.TabStop = true;
-            rb_12.Text = "12";
-            rb_12.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(491, 215);
-            label4.Name = "label4";
-            label4.Size = new Size(58, 22);
-            label4.TabIndex = 8;
-            label4.Text = "Jurusan";
-            // 
-            // tx_KelasId
-            // 
-            tx_KelasId.Location = new Point(491, 72);
-            tx_KelasId.Name = "tx_KelasId";
-            tx_KelasId.ReadOnly = true;
-            tx_KelasId.Size = new Size(221, 29);
-            tx_KelasId.TabIndex = 6;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(491, 104);
-            label3.Name = "label3";
-            label3.Size = new Size(46, 22);
-            label3.TabIndex = 5;
-            label3.Text = "Kelas";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(491, 47);
-            label2.Name = "label2";
-            label2.Size = new Size(67, 22);
-            label2.TabIndex = 4;
-            label2.Text = "Kelas ID";
             // 
             // btn_deleteKelas
             // 
@@ -220,7 +102,7 @@
             label1.Dock = DockStyle.Top;
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(730, 32);
+            label1.Size = new Size(739, 32);
             label1.TabIndex = 1;
             label1.Text = "KELAS";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -234,17 +116,147 @@
             GridKelas.Size = new Size(464, 362);
             GridKelas.TabIndex = 0;
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.SkyBlue;
+            panel2.Controls.Add(FlagText);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(tx_KelasName);
+            panel2.Controls.Add(cb_KelasJurusan);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(rb_10);
+            panel2.Controls.Add(rb_11);
+            panel2.Controls.Add(rb_12);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(tx_KelasId);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label2);
+            panel2.Location = new Point(482, 45);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(245, 299);
+            panel2.TabIndex = 15;
+            // 
+            // FlagText
+            // 
+            FlagText.Location = new Point(14, 260);
+            FlagText.Name = "FlagText";
+            FlagText.Size = new Size(65, 29);
+            FlagText.TabIndex = 30;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(13, 232);
+            label6.Name = "label6";
+            label6.Size = new Size(39, 22);
+            label6.TabIndex = 29;
+            label6.Text = "Flag";
+            // 
+            // tx_KelasName
+            // 
+            tx_KelasName.Location = new Point(12, 88);
+            tx_KelasName.Name = "tx_KelasName";
+            tx_KelasName.ReadOnly = true;
+            tx_KelasName.Size = new Size(217, 29);
+            tx_KelasName.TabIndex = 28;
+            // 
+            // cb_KelasJurusan
+            // 
+            cb_KelasJurusan.FormattingEnabled = true;
+            cb_KelasJurusan.Location = new Point(14, 199);
+            cb_KelasJurusan.Name = "cb_KelasJurusan";
+            cb_KelasJurusan.Size = new Size(219, 30);
+            cb_KelasJurusan.TabIndex = 27;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(12, 120);
+            label5.Name = "label5";
+            label5.Size = new Size(61, 22);
+            label5.TabIndex = 26;
+            label5.Text = "Tingkat";
+            // 
+            // rb_10
+            // 
+            rb_10.AutoSize = true;
+            rb_10.Location = new Point(12, 145);
+            rb_10.Name = "rb_10";
+            rb_10.Size = new Size(44, 26);
+            rb_10.TabIndex = 25;
+            rb_10.TabStop = true;
+            rb_10.Text = "10";
+            rb_10.UseVisualStyleBackColor = true;
+            // 
+            // rb_11
+            // 
+            rb_11.AutoSize = true;
+            rb_11.Location = new Point(62, 145);
+            rb_11.Name = "rb_11";
+            rb_11.Size = new Size(44, 26);
+            rb_11.TabIndex = 24;
+            rb_11.TabStop = true;
+            rb_11.Text = "11";
+            rb_11.UseVisualStyleBackColor = true;
+            // 
+            // rb_12
+            // 
+            rb_12.AutoSize = true;
+            rb_12.Location = new Point(116, 145);
+            rb_12.Name = "rb_12";
+            rb_12.Size = new Size(44, 26);
+            rb_12.TabIndex = 23;
+            rb_12.TabStop = true;
+            rb_12.Text = "12";
+            rb_12.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 174);
+            label4.Name = "label4";
+            label4.Size = new Size(58, 22);
+            label4.TabIndex = 22;
+            label4.Text = "Jurusan";
+            // 
+            // tx_KelasId
+            // 
+            tx_KelasId.Location = new Point(12, 31);
+            tx_KelasId.Name = "tx_KelasId";
+            tx_KelasId.ReadOnly = true;
+            tx_KelasId.Size = new Size(221, 29);
+            tx_KelasId.TabIndex = 21;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 63);
+            label3.Name = "label3";
+            label3.Size = new Size(46, 22);
+            label3.TabIndex = 20;
+            label3.Text = "Kelas";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 22);
+            label2.TabIndex = 19;
+            label2.Text = "Kelas ID";
+            // 
             // KelasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(754, 421);
+            ClientSize = new Size(763, 421);
             Controls.Add(panel1);
             Name = "KelasForm";
             Text = "KelasForm";
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridKelas).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -252,6 +264,15 @@
 
         private Panel panel1;
         private Button btn_newKelas;
+        private Button btn_deleteKelas;
+        private Button btn_SaveKelas;
+        private Label label1;
+        private DataGridView GridKelas;
+        private Panel panel2;
+        private MaskedTextBox FlagText;
+        private Label label6;
+        private TextBox tx_KelasName;
+        private ComboBox cb_KelasJurusan;
         private Label label5;
         private RadioButton rb_10;
         private RadioButton rb_11;
@@ -260,13 +281,5 @@
         private TextBox tx_KelasId;
         private Label label3;
         private Label label2;
-        private Button btn_deleteKelas;
-        private Button btn_SaveKelas;
-        private Label label1;
-        private DataGridView GridKelas;
-        private ComboBox cb_KelasJurusan;
-        private TextBox tx_KelasName;
-        private Label label6;
-        private MaskedTextBox FlagText;
     }
 }

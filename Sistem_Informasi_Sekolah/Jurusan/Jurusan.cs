@@ -26,6 +26,7 @@ namespace Sistem_Informasi_Sekolah
             InitMaskeditTextBox();
             RegisterControlEvent();
             RefreshListData();
+            CustomGrid();
         }
 
         private void InitMaskeditTextBox()
@@ -63,6 +64,7 @@ namespace Sistem_Informasi_Sekolah
             tx_JurusanID.Text = jurusanId.ToString();
             RefreshListData();
             ClearInput();
+            CustomGrid();
         }
 
         private int SaveJurusan()
@@ -107,7 +109,14 @@ namespace Sistem_Informasi_Sekolah
                 }).ToList();
             GridJurusan.DataSource = listData;
             GridJurusan.AutoResizeColumns();
+            CustomGrid();
             //ListDataGrid.Refresh();
+        }
+        private void CustomGrid()
+        {
+            GridJurusan.Columns["JurusanId"].Width = 70;
+            GridJurusan.Columns["JurusanName"].Width = 230;
+            GridJurusan.Columns["Code"].Width = 100;
         }
         /* #region PENGATURAN GRID
          private void controlGrid()
