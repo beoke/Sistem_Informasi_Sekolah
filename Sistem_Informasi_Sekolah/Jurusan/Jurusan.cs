@@ -23,15 +23,15 @@ namespace Sistem_Informasi_Sekolah
 
             _jurusanDal = new JurusanDal();
 
-            InitMaskeditTextBox();
+            InitMaskeditTextBox(); // panggil metode untuk mengatur mask pada CodeText
             RegisterControlEvent();
             RefreshListData();
             CustomGrid();
         }
 
         private void InitMaskeditTextBox()
-        {
-            CodeText.Mask = "???";
+        { 
+            CodeText.Mask = "???"; // Mengatur mask agar CodeText hanya menerima tiga karakter alfabet
         }
 
         private void RegisterControlEvent()
@@ -69,9 +69,10 @@ namespace Sistem_Informasi_Sekolah
 
         private int SaveJurusan()
         {
-            var jurusanId = tx_JurusanID.Text == string.Empty ? 0 : 
-                int.Parse(tx_JurusanID.Text);
-            var jurusan = new JurusanModel
+            // Mengecek apakah tx_JurusanID kosong. Jika kosong, jurusanId diatur ke 0. Jika tidak, parse teks ke integer.
+            var jurusanId = tx_JurusanID.Text == string.Empty ? 0 :  int.Parse(tx_JurusanID.Text);
+            // Membuat objek JurusanModel dengan data dari form
+            var jurusan = new JurusanModel  
             {
                 JurusanId = jurusanId,
                 JurusanName = tx_JurusanNama.Text,
