@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistem_Informasi_Sekolah.Guru;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,29 +18,42 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             InitializeComponent();
             dataIdukToolStripMenuItem.Click += new EventHandler(dataIndukToolStripMenuItem_Click);
-            dataMapelToolStripMenuItem.Click += new EventHandler(dataMapelToolStripMenuItem_Click);
-            dataJurusanToolStripMenuItem.Click += new EventHandler(dataJurusanToolStripMenuItem_Click);
-            dataKelasToolStripMenuItem.Click += DataKelasToolStripMenuItem_Click;
+            /* dataMapelToolStripMenuItem.Click += new EventHandler(dataMapelToolStripMenuItem_Click);
+             dataJurusanToolStripMenuItem.Click += new EventHandler(dataJurusanToolStripMenuItem_Click);
+             dataKelasToolStripMenuItem.Click += DataKelasToolStripMenuItem_Click;*/
+            MapelTool.Click += MapelTool_Click;
+            JurusanTool.Click += JurusanTool_Click;
+            KelasTool.Click += KelasTool_Click;
+            GuruTool.Click += GuruTool_Click;
+
         }
 
+        private void GuruTool_Click(object? sender, EventArgs e)
+        {
+            LoadDataGuru();
+        }
+
+        private void KelasTool_Click(object? sender, EventArgs e)
+        {
+            LoadDataKelas();
+        }
+
+        private void JurusanTool_Click(object? sender, EventArgs e)
+        {
+            LoadDataJurusan();
+        }
+
+        private void MapelTool_Click(object? sender, EventArgs e)
+        {
+            LoadDataMapel();
+        }
 
         private void dataIndukToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadDataInduk();
             
         }
-        private void dataMapelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadDataMapel();
-        }    
-        private void dataJurusanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadDataJurusan();
-        }
-        private void DataKelasToolStripMenuItem_Click(object? sender, EventArgs e)
-        {
-            LoadDataKelas();
-        }
+
         
         private void LoadDataInduk()
         {
@@ -95,6 +109,20 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             panel1.Controls.Add(kelas);
 
             kelas.Show();
+        }
+
+        private void LoadDataGuru()
+        {
+            formGuru guru = new formGuru();
+
+            guru.TopLevel = false;
+            guru.FormBorderStyle = FormBorderStyle.None;
+            guru.Dock = DockStyle.Fill;
+
+            panel1.Controls.Clear();
+            panel1.Controls.Add(guru);
+
+            guru.Show();
         }
     }
 }

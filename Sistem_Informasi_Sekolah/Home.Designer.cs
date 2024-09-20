@@ -32,16 +32,18 @@
             menuStrip1 = new MenuStrip();
             formToolStripMenuItem = new ToolStripMenuItem();
             dataIdukToolStripMenuItem = new ToolStripMenuItem();
-            dataMapelToolStripMenuItem = new ToolStripMenuItem();
-            dataJurusanToolStripMenuItem = new ToolStripMenuItem();
-            dataKelasToolStripMenuItem = new ToolStripMenuItem();
+            pengajaranToolStripMenuItem = new ToolStripMenuItem();
+            MapelTool = new ToolStripMenuItem();
+            JurusanTool = new ToolStripMenuItem();
+            KelasTool = new ToolStripMenuItem();
+            GuruTool = new ToolStripMenuItem();
             panel1 = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { formToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { formToolStripMenuItem, pengajaranToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(764, 40);
@@ -51,12 +53,12 @@
             // formToolStripMenuItem
             // 
             formToolStripMenuItem.BackgroundImageLayout = ImageLayout.Stretch;
-            formToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIdukToolStripMenuItem, dataMapelToolStripMenuItem, dataJurusanToolStripMenuItem, dataKelasToolStripMenuItem });
+            formToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIdukToolStripMenuItem });
             formToolStripMenuItem.Image = (Image)resources.GetObject("formToolStripMenuItem.Image");
             formToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             formToolStripMenuItem.Name = "formToolStripMenuItem";
-            formToolStripMenuItem.Size = new Size(79, 36);
-            formToolStripMenuItem.Text = "Form";
+            formToolStripMenuItem.Size = new Size(105, 36);
+            formToolStripMenuItem.Text = "Kesiswaan";
             formToolStripMenuItem.TextAlign = ContentAlignment.MiddleRight;
             // 
             // dataIdukToolStripMenuItem
@@ -67,23 +69,36 @@
             dataIdukToolStripMenuItem.Size = new Size(196, 38);
             dataIdukToolStripMenuItem.Text = "Data Iduk";
             // 
-            // dataMapelToolStripMenuItem
+            // pengajaranToolStripMenuItem
             // 
-            dataMapelToolStripMenuItem.Name = "dataMapelToolStripMenuItem";
-            dataMapelToolStripMenuItem.Size = new Size(196, 38);
-            dataMapelToolStripMenuItem.Text = "Data Mapel";
+            pengajaranToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MapelTool, JurusanTool, KelasTool, GuruTool });
+            pengajaranToolStripMenuItem.Name = "pengajaranToolStripMenuItem";
+            pengajaranToolStripMenuItem.Size = new Size(78, 36);
+            pengajaranToolStripMenuItem.Text = "Pengajaran";
             // 
-            // dataJurusanToolStripMenuItem
+            // MapelTool
             // 
-            dataJurusanToolStripMenuItem.Name = "dataJurusanToolStripMenuItem";
-            dataJurusanToolStripMenuItem.Size = new Size(196, 38);
-            dataJurusanToolStripMenuItem.Text = "Data Jurusan";
+            MapelTool.Name = "MapelTool";
+            MapelTool.Size = new Size(180, 22);
+            MapelTool.Text = "Data Mapel";
             // 
-            // dataKelasToolStripMenuItem
+            // JurusanTool
             // 
-            dataKelasToolStripMenuItem.Name = "dataKelasToolStripMenuItem";
-            dataKelasToolStripMenuItem.Size = new Size(196, 38);
-            dataKelasToolStripMenuItem.Text = "Data Kelas";
+            JurusanTool.Name = "JurusanTool";
+            JurusanTool.Size = new Size(180, 22);
+            JurusanTool.Text = "Data Jurusan";
+            // 
+            // KelasTool
+            // 
+            KelasTool.Name = "KelasTool";
+            KelasTool.Size = new Size(180, 22);
+            KelasTool.Text = "Data Kelas";
+            // 
+            // GuruTool
+            // 
+            GuruTool.Name = "GuruTool";
+            GuruTool.Size = new Size(180, 22);
+            GuruTool.Text = "Data Guru";
             // 
             // panel1
             // 
@@ -116,8 +131,10 @@
         private ToolStripMenuItem formToolStripMenuItem;
         private ToolStripMenuItem dataIdukToolStripMenuItem;
         private Panel panel1;
-        private ToolStripMenuItem dataMapelToolStripMenuItem;
-        private ToolStripMenuItem dataJurusanToolStripMenuItem;
-        private ToolStripMenuItem dataKelasToolStripMenuItem;
+        private ToolStripMenuItem pengajaranToolStripMenuItem;
+        private ToolStripMenuItem MapelTool;
+        private ToolStripMenuItem JurusanTool;
+        private ToolStripMenuItem KelasTool;
+        private ToolStripMenuItem GuruTool;
     }
 }

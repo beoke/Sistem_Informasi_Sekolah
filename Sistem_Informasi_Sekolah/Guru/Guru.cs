@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sistem_Informasi_Sekolah.Guru
 {
-    public partial class Guru : Form
+    public partial class formGuru : Form
     {
-        public Guru()
+        public formGuru()
         {
             InitializeComponent();
         }
