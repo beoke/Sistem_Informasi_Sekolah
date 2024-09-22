@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            S3_radio = new RadioButton();
-            S2_radio = new RadioButton();
-            S1_radio = new RadioButton();
-            D3_radio = new RadioButton();
+            GuruSearch_Text = new TextBox();
+            label9 = new Label();
             GuruKota_text = new TextBox();
             GuruInstansi_text = new TextBox();
             GuruLulus_text = new TextBox();
@@ -54,9 +52,8 @@
             label2 = new Label();
             label1 = new Label();
             DataGuru_Grid = new DataGridView();
-            label9 = new Label();
-            GuruSearch_Text = new TextBox();
             label10 = new Label();
+            TINgkatPendidikan_Combo = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Picture_Guru).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DataMapel_Grid).BeginInit();
@@ -66,12 +63,9 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveBorder;
+            panel1.Controls.Add(TINgkatPendidikan_Combo);
             panel1.Controls.Add(GuruSearch_Text);
             panel1.Controls.Add(label9);
-            panel1.Controls.Add(S3_radio);
-            panel1.Controls.Add(S2_radio);
-            panel1.Controls.Add(S1_radio);
-            panel1.Controls.Add(D3_radio);
             panel1.Controls.Add(GuruKota_text);
             panel1.Controls.Add(GuruInstansi_text);
             panel1.Controls.Add(GuruLulus_text);
@@ -99,49 +93,21 @@
             panel1.Size = new Size(745, 509);
             panel1.TabIndex = 1;
             // 
-            // S3_radio
+            // GuruSearch_Text
             // 
-            S3_radio.AutoSize = true;
-            S3_radio.Location = new Point(431, 179);
-            S3_radio.Name = "S3_radio";
-            S3_radio.Size = new Size(38, 17);
-            S3_radio.TabIndex = 23;
-            S3_radio.TabStop = true;
-            S3_radio.Text = "S3";
-            S3_radio.UseVisualStyleBackColor = true;
+            GuruSearch_Text.Location = new Point(16, 35);
+            GuruSearch_Text.Name = "GuruSearch_Text";
+            GuruSearch_Text.Size = new Size(240, 20);
+            GuruSearch_Text.TabIndex = 25;
             // 
-            // S2_radio
+            // label9
             // 
-            S2_radio.AutoSize = true;
-            S2_radio.Location = new Point(376, 179);
-            S2_radio.Name = "S2_radio";
-            S2_radio.Size = new Size(38, 17);
-            S2_radio.TabIndex = 22;
-            S2_radio.TabStop = true;
-            S2_radio.Text = "S2";
-            S2_radio.UseVisualStyleBackColor = true;
-            // 
-            // S1_radio
-            // 
-            S1_radio.AutoSize = true;
-            S1_radio.Location = new Point(337, 179);
-            S1_radio.Name = "S1_radio";
-            S1_radio.Size = new Size(38, 17);
-            S1_radio.TabIndex = 21;
-            S1_radio.TabStop = true;
-            S1_radio.Text = "S1";
-            S1_radio.UseVisualStyleBackColor = true;
-            // 
-            // D3_radio
-            // 
-            D3_radio.AutoSize = true;
-            D3_radio.Location = new Point(292, 179);
-            D3_radio.Name = "D3_radio";
-            D3_radio.Size = new Size(39, 17);
-            D3_radio.TabIndex = 20;
-            D3_radio.TabStop = true;
-            D3_radio.Text = "D3";
-            D3_radio.UseVisualStyleBackColor = true;
+            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(16, 9);
+            label9.Name = "label9";
+            label9.Size = new Size(51, 23);
+            label9.TabIndex = 24;
+            label9.Text = "Search";
             // 
             // GuruKota_text
             // 
@@ -317,22 +283,6 @@
             DataGuru_Grid.Size = new Size(240, 391);
             DataGuru_Grid.TabIndex = 0;
             // 
-            // label9
-            // 
-            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(16, 9);
-            label9.Name = "label9";
-            label9.Size = new Size(51, 23);
-            label9.TabIndex = 24;
-            label9.Text = "Search";
-            // 
-            // GuruSearch_Text
-            // 
-            GuruSearch_Text.Location = new Point(16, 35);
-            GuruSearch_Text.Name = "GuruSearch_Text";
-            GuruSearch_Text.Size = new Size(240, 20);
-            GuruSearch_Text.TabIndex = 25;
-            // 
             // label10
             // 
             label10.BackColor = SystemColors.ActiveCaption;
@@ -344,6 +294,14 @@
             label10.TabIndex = 2;
             label10.Text = "Guru";
             label10.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // TINgkatPendidikan_Combo
+            // 
+            TINgkatPendidikan_Combo.FormattingEnabled = true;
+            TINgkatPendidikan_Combo.Location = new Point(295, 185);
+            TINgkatPendidikan_Combo.Name = "TINgkatPendidikan_Combo";
+            TINgkatPendidikan_Combo.Size = new Size(200, 21);
+            TINgkatPendidikan_Combo.TabIndex = 26;
             // 
             // formGuru
             // 
@@ -379,10 +337,6 @@
         private Label label2;
         private Label label1;
         private DataGridView DataGuru_Grid;
-        private RadioButton S3_radio;
-        private RadioButton S2_radio;
-        private RadioButton S1_radio;
-        private RadioButton D3_radio;
         private TextBox GuruKota_text;
         private TextBox GuruInstansi_text;
         private TextBox GuruLulus_text;
@@ -393,5 +347,6 @@
         private TextBox GuruSearch_Text;
         private Label label9;
         private Label label10;
+        private ComboBox TINgkatPendidikan_Combo;
     }
 }
