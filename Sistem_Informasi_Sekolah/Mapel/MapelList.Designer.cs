@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "MapelList";
+            ListDataGrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)ListDataGrid).BeginInit();
+            SuspendLayout();
+            // 
+            // ListDataGrid
+            // 
+            ListDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ListDataGrid.Location = new Point(0, 0);
+            ListDataGrid.Name = "ListDataGrid";
+            ListDataGrid.RowTemplate.Height = 25;
+            ListDataGrid.Size = new Size(309, 381);
+            ListDataGrid.TabIndex = 0;
+            // 
+            // MapelList
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(309, 381);
+            Controls.Add(ListDataGrid);
+            Name = "MapelList";
+            Text = "MapelList";
+            ((System.ComponentModel.ISupportInitialize)ListDataGrid).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView ListDataGrid;
     }
 }

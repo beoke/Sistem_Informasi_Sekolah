@@ -114,7 +114,7 @@ namespace Sistem_Informasi_Sekolah.Guru
                 if (mapelListForm.ShowDialog() == DialogResult.OK)
                 {
                     var mapelId = mapelListForm.MapelId;
-                    var mapelName = mapelListForm.MapelName;
+                    var mapelName = mapelListForm.NamaMapel;
                    
 
                     DataMapel_Grid.BeginEdit(true);
