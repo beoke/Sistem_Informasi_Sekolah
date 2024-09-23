@@ -25,6 +25,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
             dp.Add("@GuruName", model.GuruName,DbType.String);
             dp.Add("@TglLahir", model.TglLahir,DbType.DateTime);
             dp.Add("@JurusanPendidikan", model.JurusanPendidikan,DbType.String);
+            dp.Add("@TingkatPendidikan", model.TingkatPendidikan, DbType.String);
             dp.Add("@TahunLulus", model.TahunLulus,DbType.String);
             dp.Add("@IntansiPendidikan", model.InstansiPendidikan,DbType.String);
             dp.Add("@KotaPendidikan", model.KotaPendidikan,DbType.String);

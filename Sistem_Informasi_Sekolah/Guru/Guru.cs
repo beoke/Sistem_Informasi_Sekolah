@@ -81,8 +81,32 @@ namespace Sistem_Informasi_Sekolah.Guru
             delete_button.Click += Delete_button_Click;
 
             DataGuru_Grid.RowEnter += DataGuru_Grid_RowEnter;
-            DataMapel_Grid.KeyDown += DataMapel_Grid_KeyDown;
+            DataMapel_Grid.KeyDown += DataMapel_Grid_KeyDown1; ;
             DataMapel_Grid.CellValidated += DataMapel_Grid_CellValidated;
+        }
+
+        private void DataMapel_Grid_KeyDown1(object? sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.F1)
+            {
+                // Dapatkan baris saat ini
+                DataGridViewRow currentRow = DataMapel_Grid.CurrentRow;
+
+                // Inisialisasi form MapelList
+                using var mapelListForm = new MapelList();
+                if (mapelListForm.ShowDialog() == DialogResult.OK)
+                {
+                    var mapelId = mapelListForm.MapelId;
+                    var mapelName = mapelListForm.MapelName;
+
+                    DataMapel_Grid.BeginEdit(true);
+                    currentRow.Cells["Id"].Value = mapelId;
+                    currentRow.Cells["Mapel"].Value = mapelName;
+                    DataMapel_Grid.EndEdit(DataGridViewDataErrorContexts.Commit);
+
+                }
+            }
         }
 
         private void DataMapel_Grid_CellValidated(object? sender, DataGridViewCellEventArgs e)
@@ -101,28 +125,6 @@ namespace Sistem_Informasi_Sekolah.Guru
                     _listMapel[e.RowIndex].Id = mapel.MapelId;
                     _listMapel[e.RowIndex].Mapel = mapel.NamaMapel;
                     break;
-            }
-        }
-
-        private void DataMapel_Grid_KeyDown(object? sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                DataGridViewRow currentRow = DataMapel_Grid.CurrentRow;
-
-                using var mapelListForm = new MapelList();  
-                if (mapelListForm.ShowDialog() == DialogResult.OK)
-                {
-                    var mapelId = mapelListForm.MapelId;
-                    var mapelName = mapelListForm.NamaMapel;
-                   
-
-                    DataMapel_Grid.BeginEdit(true);
-                    currentRow.Cells["Id"].Value = mapelId;
-                    currentRow.Cells["Mapel"].Value = mapelName;
-                    DataMapel_Grid.EndEdit(DataGridViewDataErrorContexts.Commit);
-
-                }
             }
         }
 

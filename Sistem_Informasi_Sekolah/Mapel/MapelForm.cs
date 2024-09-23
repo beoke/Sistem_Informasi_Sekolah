@@ -1,21 +1,21 @@
-﻿using Sistem_Informasi_Sekolah.DataIndukSiswa.Model;
+﻿using Sistem_Informasi_Sekolah.Guru;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistem_Informasi_Sekolah
+namespace Sistem_Informasi_Sekolah.Mapel
 {
-    public partial class Mapel : Form
+    
+    public partial class MapelForm : Form
     {
         private readonly MapelDal mapelDal;
-        public Mapel()
+        public MapelForm()
         {
             InitializeComponent();
 
@@ -23,8 +23,8 @@ namespace Sistem_Informasi_Sekolah
 
             controlGrid();
             controlEvent();
-           
         }
+
         #region PENGATURAN GRID
         private void controlGrid()
         {
@@ -88,9 +88,9 @@ namespace Sistem_Informasi_Sekolah
             var id = tx_MapelID.Text == string.Empty ? 0 :
             int.Parse(tx_MapelID.Text);
             string namaMapel = tx_MapelName.Text;
-            if(namaMapel == string.Empty)
+            if (namaMapel == string.Empty)
             {
-                MessageBox.Show("Data Harus di isikan","Warning", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Data Harus di isikan", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return -1;
             }
             var mapel = new MapelModel
@@ -144,11 +144,11 @@ namespace Sistem_Informasi_Sekolah
         }
         private void RefreshData()
         {
-            GridMapel.DataSource =mapelDal.ListMapel();
+            GridMapel.DataSource = mapelDal.ListMapel();
             tx_MapelID.Text = string.Empty;
             tx_MapelName.Text = string.Empty;
         }
-        
+
         #endregion
     }
 }

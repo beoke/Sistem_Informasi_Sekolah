@@ -1,6 +1,6 @@
-﻿namespace Sistem_Informasi_Sekolah
+﻿namespace Sistem_Informasi_Sekolah.Mapel
 {
-    partial class Mapel
+    partial class MapelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,7 @@
             panel1.Location = new Point(7, 10);
             panel1.Name = "panel1";
             panel1.Size = new Size(716, 400);
-            panel1.TabIndex = 1;
+            panel1.TabIndex = 2;
             // 
             // tx_MapelName
             // 
@@ -129,14 +129,14 @@
             GridMapel.Size = new Size(443, 362);
             GridMapel.TabIndex = 0;
             // 
-            // Mapel
+            // MapelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(731, 421);
             Controls.Add(panel1);
-            Name = "Mapel";
-            Text = "Mapel";
+            Name = "MapelForm";
+            Text = "MapelForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridMapel).EndInit();

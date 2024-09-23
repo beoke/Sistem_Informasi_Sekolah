@@ -1,4 +1,5 @@
 ﻿using Sistem_Informasi_Sekolah.Guru;
+using Sistem_Informasi_Sekolah.Mapel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,7 +74,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         }
         private void LoadDataMapel()
         {
-            Mapel mapel = new Mapel();
+            MapelForm mapel = new MapelForm();
             
             mapel.TopLevel = false;
             mapel.FormBorderStyle = FormBorderStyle.None;
