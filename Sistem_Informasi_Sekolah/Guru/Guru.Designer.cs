@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            TINgkatPendidikan_Combo = new ComboBox();
             GuruSearch_Text = new TextBox();
             label9 = new Label();
             GuruKota_text = new TextBox();
             GuruInstansi_text = new TextBox();
             GuruLulus_text = new TextBox();
             GuruJurusan_text = new TextBox();
-            GuruLahir_text = new TextBox();
             GuruNama_text = new TextBox();
             GuruId_text = new TextBox();
             Picture_Guru = new PictureBox();
@@ -53,7 +53,7 @@
             label1 = new Label();
             DataGuru_Grid = new DataGridView();
             label10 = new Label();
-            TINgkatPendidikan_Combo = new ComboBox();
+            GuruLahir_Date = new DateTimePicker();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Picture_Guru).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DataMapel_Grid).BeginInit();
@@ -63,6 +63,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveBorder;
+            panel1.Controls.Add(GuruLahir_Date);
             panel1.Controls.Add(TINgkatPendidikan_Combo);
             panel1.Controls.Add(GuruSearch_Text);
             panel1.Controls.Add(label9);
@@ -70,7 +71,6 @@
             panel1.Controls.Add(GuruInstansi_text);
             panel1.Controls.Add(GuruLulus_text);
             panel1.Controls.Add(GuruJurusan_text);
-            panel1.Controls.Add(GuruLahir_text);
             panel1.Controls.Add(GuruNama_text);
             panel1.Controls.Add(GuruId_text);
             panel1.Controls.Add(Picture_Guru);
@@ -92,6 +92,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(745, 509);
             panel1.TabIndex = 1;
+            // 
+            // TINgkatPendidikan_Combo
+            // 
+            TINgkatPendidikan_Combo.FormattingEnabled = true;
+            TINgkatPendidikan_Combo.Location = new Point(295, 185);
+            TINgkatPendidikan_Combo.Name = "TINgkatPendidikan_Combo";
+            TINgkatPendidikan_Combo.Size = new Size(200, 21);
+            TINgkatPendidikan_Combo.TabIndex = 26;
             // 
             // GuruSearch_Text
             // 
@@ -136,13 +144,6 @@
             GuruJurusan_text.Name = "GuruJurusan_text";
             GuruJurusan_text.Size = new Size(203, 20);
             GuruJurusan_text.TabIndex = 16;
-            // 
-            // GuruLahir_text
-            // 
-            GuruLahir_text.Location = new Point(292, 135);
-            GuruLahir_text.Name = "GuruLahir_text";
-            GuruLahir_text.Size = new Size(203, 20);
-            GuruLahir_text.TabIndex = 15;
             // 
             // GuruNama_text
             // 
@@ -295,13 +296,12 @@
             label10.Text = "Guru";
             label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // TINgkatPendidikan_Combo
+            // GuruLahir_Date
             // 
-            TINgkatPendidikan_Combo.FormattingEnabled = true;
-            TINgkatPendidikan_Combo.Location = new Point(295, 185);
-            TINgkatPendidikan_Combo.Name = "TINgkatPendidikan_Combo";
-            TINgkatPendidikan_Combo.Size = new Size(200, 21);
-            TINgkatPendidikan_Combo.TabIndex = 26;
+            GuruLahir_Date.Location = new Point(295, 132);
+            GuruLahir_Date.Name = "GuruLahir_Date";
+            GuruLahir_Date.Size = new Size(200, 20);
+            GuruLahir_Date.TabIndex = 27;
             // 
             // formGuru
             // 
@@ -341,12 +341,12 @@
         private TextBox GuruInstansi_text;
         private TextBox GuruLulus_text;
         private TextBox GuruJurusan_text;
-        private TextBox GuruLahir_text;
         private TextBox GuruNama_text;
         private TextBox GuruId_text;
         private TextBox GuruSearch_Text;
         private Label label9;
         private Label label10;
         private ComboBox TINgkatPendidikan_Combo;
+        private DateTimePicker GuruLahir_Date;
     }
 }
