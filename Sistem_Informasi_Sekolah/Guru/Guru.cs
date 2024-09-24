@@ -107,6 +107,19 @@ namespace Sistem_Informasi_Sekolah.Guru
 
                 }
             }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                // Simpan data dari baris saat ini
+                if (DataMapel_Grid.CurrentRow != null)
+                {
+                    DataMapel_Grid.EndEdit(); // Simpan perubahan
+
+                    // Tambahkan baris baru
+                    int newRowIndex = DataMapel_Grid.Rows.Add();
+                    DataMapel_Grid.CurrentCell = DataMapel_Grid.Rows[newRowIndex].Cells[0]; // Fokus ke sel pertama
+                    DataMapel_Grid.BeginEdit(true); // Mulai edit
+                }
+            }
         }
 
         private void DataMapel_Grid_CellValidated(object? sender, DataGridViewCellEventArgs e)
