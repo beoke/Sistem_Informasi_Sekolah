@@ -83,6 +83,30 @@ namespace Sistem_Informasi_Sekolah.Guru
             DataGuru_Grid.RowEnter += DataGuru_Grid_RowEnter;
             DataMapel_Grid.KeyDown += DataMapel_Grid_KeyDown1; ;
             DataMapel_Grid.CellValidated += DataMapel_Grid_CellValidated;
+            DataMapel_Grid.DataBindingComplete += DataMapel_Grid_DataBindingComplete;
+        }
+
+        private void DataMapel_Grid_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Memastikan ada setidaknya satu baris di DataGridView
+            if (DataMapel_Grid.Rows.Count == 0)
+            {
+                AddNewRow();
+            }
+        }
+
+        private void AddNewRow()
+        {
+            // Tambahkan baris baru
+            DataGridViewRow newRow = new DataGridViewRow();
+            newRow.CreateCells(DataMapel_Grid);
+            newRow.Cells["id"].Value = "";
+            newRow.Cells["Mapel"].Value = "";
+
+            DataMapel_Grid.Rows.Add(newRow);
+            DataMapel_Grid.CurrentCell = newRow.Cells[0];
+            DataMapel_Grid.BeginEdit(true);
+
         }
 
         private void DataMapel_Grid_KeyDown1(object? sender, KeyEventArgs e)
@@ -105,19 +129,6 @@ namespace Sistem_Informasi_Sekolah.Guru
                     currentRow.Cells["Mapel"].Value = mapelName;
                     DataMapel_Grid.EndEdit(DataGridViewDataErrorContexts.Commit);
 
-                }
-            }
-            else if (e.KeyCode == Keys.Enter)
-            {
-                // Simpan data dari baris saat ini
-                if (DataMapel_Grid.CurrentRow != null)
-                {
-                    DataMapel_Grid.EndEdit(); // Simpan perubahan
-
-                    // Tambahkan baris baru
-                    int newRowIndex = DataMapel_Grid.Rows.Add();
-                    DataMapel_Grid.CurrentCell = DataMapel_Grid.Rows[newRowIndex].Cells[0]; // Fokus ke sel pertama
-                    DataMapel_Grid.BeginEdit(true); // Mulai edit
                 }
             }
         }
