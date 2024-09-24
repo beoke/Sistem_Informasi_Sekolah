@@ -27,7 +27,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
             dp.Add("@JurusanPendidikan", model.JurusanPendidikan,DbType.String);
             dp.Add("@TingkatPendidikan", model.TingkatPendidikan, DbType.String);
             dp.Add("@TahunLulus", model.TahunLulus,DbType.String);
-            dp.Add("@IntansiPendidikan", model.InstansiPendidikan,DbType.String);
+            dp.Add("@InstansiPendidikan", model.InstansiPendidikan,DbType.String);
             dp.Add("@KotaPendidikan", model.KotaPendidikan,DbType.String);
 
             using var con = new SqlConnection(ConnStringHelper.Get());
@@ -50,11 +50,13 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
             WHERE
                 GuruId = @GuruId";
             var dp = new DynamicParameters();
+            dp.Add(@"GuruId", model.GuruId,DbType.Int64);
             dp.Add("@GuruName", model.GuruName, DbType.String);
             dp.Add("@TglLahir", model.TglLahir, DbType.DateTime);
             dp.Add("@JurusanPendidikan", model.JurusanPendidikan, DbType.String);
+            dp.Add("@TingkatPendidikan", model.TingkatPendidikan, DbType.String);
             dp.Add("@TahunLulus", model.TahunLulus, DbType.String);
-            dp.Add("@IntansiPendidikan", model.InstansiPendidikan, DbType.String);
+            dp.Add("@InstansiPendidikan", model.InstansiPendidikan, DbType.String);
             dp.Add("@KotaPendidikan", model.KotaPendidikan, DbType.String);
                
             using var conn = new SqlConnection(ConnStringHelper.Get());

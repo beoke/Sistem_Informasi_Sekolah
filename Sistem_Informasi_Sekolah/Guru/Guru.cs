@@ -81,12 +81,12 @@ namespace Sistem_Informasi_Sekolah.Guru
             delete_button.Click += Delete_button_Click;
 
             DataGuru_Grid.RowEnter += DataGuru_Grid_RowEnter;
-            DataMapel_Grid.KeyDown += DataMapel_Grid_KeyDown1; ;
+            DataMapel_Grid.KeyDown += DataMapel_Grid_KeyDown; 
             DataMapel_Grid.CellValidated += DataMapel_Grid_CellValidated;
             DataMapel_Grid.DataBindingComplete += DataMapel_Grid_DataBindingComplete;
         }
 
-        private void DataMapel_Grid_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)
+        private void DataMapel_Grid_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)                 // untuk membuat baris baru
         {
             // Memastikan ada setidaknya satu baris di DataGridView
             if (DataMapel_Grid.Rows.Count == 0)
@@ -109,15 +109,13 @@ namespace Sistem_Informasi_Sekolah.Guru
 
         }
 
-        private void DataMapel_Grid_KeyDown1(object? sender, KeyEventArgs e)
+        private void DataMapel_Grid_KeyDown(object? sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.F1)
             {
-                // Dapatkan baris saat ini
                 DataGridViewRow currentRow = DataMapel_Grid.CurrentRow;
 
-                // Inisialisasi form MapelList
                 using var mapelListForm = new MapelList();
                 if (mapelListForm.ShowDialog() == DialogResult.OK)
                 {
@@ -129,6 +127,7 @@ namespace Sistem_Informasi_Sekolah.Guru
                     currentRow.Cells["Mapel"].Value = mapelName;
                     DataMapel_Grid.EndEdit(DataGridViewDataErrorContexts.Commit);
 
+                    _listMapelBinding.ResetBindings(true); // untuk mereset tampilan binding
                 }
             }
         }
@@ -181,7 +180,7 @@ namespace Sistem_Informasi_Sekolah.Guru
             listMapel.ForEach(x => _listMapel.Add(new MapelDto
             {
                 Id = x.MapelId,
-                Mapel = x.MapelName
+                Mapel = x.NamaMapel,
             }));
         }
 
@@ -203,8 +202,7 @@ namespace Sistem_Informasi_Sekolah.Guru
         }
         private int SaveGuru()
         {
-            var guruId = GuruId_text.Text == string.Empty ? 0
-                : int.Parse(GuruId_text.Text);
+            var guruId = GuruId_text.Text == string.Empty ? 0 : int.Parse(GuruId_text.Text);
 
             var guru = new GuruModel
             {
@@ -224,8 +222,11 @@ namespace Sistem_Informasi_Sekolah.Guru
                 }).ToList()
             };
 
-            if (guru.GuruId == 0)
-                guru.GuruId = _guruDal.Insert(guru);
+            if (guruId == 0)
+            {
+                _guruDal.Insert(guru);
+            }
+               
             else
                 _guruDal.Update(guru);
 

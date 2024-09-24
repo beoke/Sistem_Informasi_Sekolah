@@ -11,6 +11,6 @@ namespace Sistem_Informasi_Sekolah.Guru.Model
     {
         public int GuruId { get; set; }
         public int MapelId { get; set; }
-        public string MapelName { get; set; }
+        public string NamaMapel { get; set; }
     }
 }

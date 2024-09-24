@@ -18,7 +18,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
                 INSERT INTO GuruMapel
                     (GuruId, MapelId)
                 VALUES
-                    (GuruId, MapelId)";
+                    (@GuruId, @MapelId)";
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             foreach (var item in listMapel)
@@ -34,7 +34,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
         public void Delete(int guruId)
         {
             const string sql = @"
-                DELETE FROM Guru
+                DELETE FROM GuruMapel
                 WHERE GuruId = @GuruId";
 
             var dp = new DynamicParameters();
@@ -49,7 +49,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
             const string sql = @"
                 SELECT 
                     aa.GuruId, aa.MapelId,
-                    ISNULL(bb.MapelName, '') AS MapelName
+                    ISNULL(bb.NamaMapel, '') AS NamaMapel
                 FROM 
                     GuruMapel aa
                     LEFT JOIN Mapel bb ON aa.MapelId = bb.MapelId
