@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            GuruLahir_Date = new DateTimePicker();
             TINgkatPendidikan_Combo = new ComboBox();
             GuruSearch_Text = new TextBox();
             label9 = new Label();
@@ -53,7 +54,6 @@
             label1 = new Label();
             DataGuru_Grid = new DataGridView();
             label10 = new Label();
-            GuruLahir_Date = new DateTimePicker();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Picture_Guru).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DataMapel_Grid).BeginInit();
@@ -92,6 +92,13 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(745, 509);
             panel1.TabIndex = 1;
+            // 
+            // GuruLahir_Date
+            // 
+            GuruLahir_Date.Location = new Point(295, 132);
+            GuruLahir_Date.Name = "GuruLahir_Date";
+            GuruLahir_Date.Size = new Size(200, 20);
+            GuruLahir_Date.TabIndex = 27;
             // 
             // TINgkatPendidikan_Combo
             // 
@@ -161,9 +168,11 @@
             // 
             // Picture_Guru
             // 
-            Picture_Guru.Location = new Point(527, 35);
+            Picture_Guru.BackColor = SystemColors.ButtonFace;
+            Picture_Guru.ErrorImage = null;
+            Picture_Guru.Location = new Point(534, 35);
             Picture_Guru.Name = "Picture_Guru";
-            Picture_Guru.Size = new Size(193, 159);
+            Picture_Guru.Size = new Size(186, 159);
             Picture_Guru.TabIndex = 12;
             Picture_Guru.TabStop = false;
             // 
@@ -295,13 +304,6 @@
             label10.TabIndex = 2;
             label10.Text = "Guru";
             label10.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // GuruLahir_Date
-            // 
-            GuruLahir_Date.Location = new Point(295, 132);
-            GuruLahir_Date.Name = "GuruLahir_Date";
-            GuruLahir_Date.Size = new Size(200, 20);
-            GuruLahir_Date.TabIndex = 27;
             // 
             // formGuru
             // 

@@ -66,7 +66,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
         {
             const string sql = @"
             DELETE FROM Guru
-            WHERE GuruId @GuruId";
+            WHERE GuruId = @GuruId";
 
             var dp = new DynamicParameters();
             dp.Add("@GuruId", guruId, DbType.Int32);

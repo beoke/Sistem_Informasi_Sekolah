@@ -12,7 +12,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
 {
     public class GuruMapelDal
     {
-        public void Insert(IEnumerable<GuruMapelModel> listMapel)
+        public void Insert(IEnumerable<GuruMapelModel> listMapel, int id)
         {
             const string sql = @"
                 INSERT INTO GuruMapel
@@ -24,7 +24,7 @@ namespace Sistem_Informasi_Sekolah.Guru.Dal
             foreach (var item in listMapel)
             {
                 var dp = new DynamicParameters();
-                dp.Add("@GuruId", item.GuruId);
+                dp.Add("@GuruId", id);
                 dp.Add("@MapelId", item.MapelId);
 
                 conn.Execute(sql, dp);

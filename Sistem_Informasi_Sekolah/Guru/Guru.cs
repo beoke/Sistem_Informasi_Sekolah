@@ -83,10 +83,10 @@ namespace Sistem_Informasi_Sekolah.Guru
             DataGuru_Grid.RowEnter += DataGuru_Grid_RowEnter;
             DataMapel_Grid.KeyDown += DataMapel_Grid_KeyDown; 
             DataMapel_Grid.CellValidated += DataMapel_Grid_CellValidated;
-            DataMapel_Grid.DataBindingComplete += DataMapel_Grid_DataBindingComplete;
+           // DataMapel_Grid.DataBindingComplete += DataMapel_Grid_DataBindingComplete;
         }
 
-        private void DataMapel_Grid_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)                 // untuk membuat baris baru
+     /*   private void DataMapel_Grid_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)                 // untuk membuat baris baru
         {
             // Memastikan ada setidaknya satu baris di DataGridView
             if (DataMapel_Grid.Rows.Count == 0)
@@ -107,7 +107,7 @@ namespace Sistem_Informasi_Sekolah.Guru
             DataMapel_Grid.CurrentCell = newRow.Cells[0];
             DataMapel_Grid.BeginEdit(true);
 
-        }
+        }*/
 
         private void DataMapel_Grid_KeyDown(object? sender, KeyEventArgs e)
         {
@@ -186,7 +186,17 @@ namespace Sistem_Informasi_Sekolah.Guru
 
         private void Delete_button_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Clickdelete();
+        }
+        private void Clickdelete()
+        {
+            var DeleteClick = Convert.ToInt16(DataGuru_Grid.CurrentRow.Cells[0].Value);
+            if(MessageBox.Show("Apakah ingin menghapus data tersebut?.","Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                _guruDal.Delete(DeleteClick);
+                ClearInput();
+                RefreshListData();
+            }
         }
 
         private void Save_button_Click(object? sender, EventArgs e)
@@ -224,14 +234,14 @@ namespace Sistem_Informasi_Sekolah.Guru
 
             if (guruId == 0)
             {
-                _guruDal.Insert(guru);
+               guru.GuruId = _guruDal.Insert(guru);
             }
                
             else
                 _guruDal.Update(guru);
 
             _guruMapelDal.Delete(guru.GuruId);
-            _guruMapelDal.Insert(guru.ListMapel);
+            _guruMapelDal.Insert(guru.ListMapel,guru.GuruId);
 
             return guruId;
         }
