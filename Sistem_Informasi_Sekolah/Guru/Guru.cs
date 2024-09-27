@@ -174,8 +174,7 @@ namespace Sistem_Informasi_Sekolah.Guru
             GuruInstansi_text.Text = guru.InstansiPendidikan;
             GuruKota_text.Text = guru.KotaPendidikan;
 
-            var listMapel = _guruMapelDal.ListData(guruId)?.ToList()
-                ?? new List<GuruMapelModel>();
+            var listMapel = _guruMapelDal.ListData(guruId)?.ToList() ?? new List<GuruMapelModel>();
             _listMapel.Clear();
             listMapel.ForEach(x => _listMapel.Add(new MapelDto
             {
