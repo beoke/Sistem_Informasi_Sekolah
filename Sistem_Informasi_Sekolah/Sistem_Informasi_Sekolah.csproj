@@ -28,9 +28,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Jadwal Pelajaran\Dal\" />
-    <Folder Include="Jadwal Pelajaran\Model\" />
-  </ItemGroup>
-
 </Project>

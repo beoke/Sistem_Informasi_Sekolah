@@ -16,11 +16,15 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         {
             InitializeComponent();
 
-            AuranEvent();
+            InitMaskEdit();
         }
-        private void AturanEvemt()
+        private void InitMaskEdit()
         {
-
+            JamMulai_mask.Text = "00:00";
+            JamSelesai_mask.Text = "00:00";
+            Mapel_combo.SelectedIndex = 0;
+            Guru_combo.SelectedIndex = 0;
+            times
         }
 
     }
