@@ -38,6 +38,7 @@
             KelasTool = new ToolStripMenuItem();
             GuruTool = new ToolStripMenuItem();
             panel1 = new Panel();
+            Jadwal_tool = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,12 +67,12 @@
             dataIdukToolStripMenuItem.Image = (Image)resources.GetObject("dataIdukToolStripMenuItem.Image");
             dataIdukToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             dataIdukToolStripMenuItem.Name = "dataIdukToolStripMenuItem";
-            dataIdukToolStripMenuItem.Size = new Size(196, 38);
+            dataIdukToolStripMenuItem.Size = new Size(140, 38);
             dataIdukToolStripMenuItem.Text = "Data Iduk";
             // 
             // pengajaranToolStripMenuItem
             // 
-            pengajaranToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MapelTool, JurusanTool, KelasTool, GuruTool });
+            pengajaranToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MapelTool, JurusanTool, KelasTool, GuruTool, Jadwal_tool });
             pengajaranToolStripMenuItem.Name = "pengajaranToolStripMenuItem";
             pengajaranToolStripMenuItem.Size = new Size(78, 36);
             pengajaranToolStripMenuItem.Text = "Pengajaran";
@@ -108,6 +109,12 @@
             panel1.Size = new Size(764, 631);
             panel1.TabIndex = 1;
             // 
+            // Jadwal_tool
+            // 
+            Jadwal_tool.Name = "Jadwal_tool";
+            Jadwal_tool.Size = new Size(180, 22);
+            Jadwal_tool.Text = "Jadwal";
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -136,5 +143,6 @@
         private ToolStripMenuItem JurusanTool;
         private ToolStripMenuItem KelasTool;
         private ToolStripMenuItem GuruTool;
+        private ToolStripMenuItem Jadwal_tool;
     }
 }

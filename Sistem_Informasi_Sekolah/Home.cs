@@ -1,4 +1,5 @@
 ﻿using Sistem_Informasi_Sekolah.Guru;
+using Sistem_Informasi_Sekolah.Jadwal_Pelajaran;
 using Sistem_Informasi_Sekolah.Mapel;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,13 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             JurusanTool.Click += JurusanTool_Click;
             KelasTool.Click += KelasTool_Click;
             GuruTool.Click += GuruTool_Click;
+            Jadwal_tool.Click += Jadwal_tool_Click;
 
+        }
+
+        private void Jadwal_tool_Click(object? sender, EventArgs e)
+        {
+            loadDataJadwal();
         }
 
         private void GuruTool_Click(object? sender, EventArgs e)
@@ -124,6 +131,19 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             panel1.Controls.Add(guru);
 
             guru.Show();
+        }
+
+        private void loadDataJadwal()
+        {
+            Form_JadwalPelajaran jadwal = new Form_JadwalPelajaran();
+            jadwal.TopLevel = false;
+            jadwal.FormBorderStyle = FormBorderStyle.None;
+            jadwal.Dock = DockStyle.Fill;
+
+            panel1.Controls.Clear();
+            panel1.Controls.Add(jadwal);
+
+            jadwal.Show();
         }
     }
 }
