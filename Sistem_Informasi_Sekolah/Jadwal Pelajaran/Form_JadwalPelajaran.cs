@@ -15,8 +15,13 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         public Form_JadwalPelajaran()
         {
             InitializeComponent();
-        }
 
+            AuranEvent();
+        }
+        private void AturanEvemt()
+        {
+
+        }
 
     }
 }
