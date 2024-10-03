@@ -85,19 +85,19 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
         {
             const string sql = @"
             SELECT 
-                aa. SELECT 
-                    aa.TimeslotMapelId, aa.KelasId, aa.Hari, aa.JenisJadwal, 
-                    aa.JamMulai, aa.JamSelesai,
-                    aa.MapelId, aa.GuruId, aa.Keterangan,
-                    ISNULL(bb.KelasName, '') AS KelasName,
-                    ISNULL(cc.MapelName, '') AS MapelName,  
-                    ISNULL(dd.GuruName, '') AS GuruName
-                FROM TimeslotMapel aa
-                    LEFT JOIN Kelas bb ON aa.KelasId = bb.KelasId
-                    LEFT JOIN Mapel cc ON aa.MapelId = cc.MapelId       
-                    LEFT JOIN Guru dd ON aa.GuruId = dd.GuruId
-                WHERE 
-                    aa.TimeslotMapelId = @TimeslotMapelId";
+            aa. SELECT 
+                aa.TimeslotMapelId, aa.KelasId, aa.Hari, aa.JenisJadwal, 
+                aa.JamMulai, aa.JamSelesai,
+                aa.MapelId, aa.GuruId, aa.Keterangan,
+                ISNULL(bb.KelasName, '') AS KelasName,
+                ISNULL(cc.MapelName, '') AS MapelName,  
+                ISNULL(dd.GuruName, '') AS GuruName
+            FROM TimeslotMapel aa
+                LEFT JOIN Kelas bb ON aa.KelasId = bb.KelasId
+                LEFT JOIN Mapel cc ON aa.MapelId = cc.MapelId       
+                LEFT JOIN Guru dd ON aa.GuruId = dd.GuruId
+            WHERE 
+                aa.TimeslotMapelId = @TimeslotMapelId";
 
             var dp = new DynamicParameters();
             dp.Add("@TimeslotMapelId", Id, DbType.Int16);
@@ -106,9 +106,28 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
             return conn.QuerySingle<PetaWaktuModel>(sql, dp);
         }
 
-        public IEnumerable<PetaWaktuModel>ListData(int KelasID)
+        public IEnumerable<PetaWaktuModel> ListData(int KelasID)
         {
+            const string sql = @" 
+            SELECT 
+                a.TimeslotMapelId, a.KelasId, a.Hari, a.JenisJadwal, 
+                a.JamMulai, a.JamSelesai,
+                a.MapelId, a.GuruId, a.Keterangan,
+                ISNULL(b.KelasName, '') AS KelasName,
+                ISNULL(c.MapelName, '') AS MapelName,  
+                ISNULL(d.GuruName, '') AS GuruName
+            FROM TimeslotMapel aa
+                LEFT JOIN Kelas b ON a.KelasId = b.KelasId
+                LEFT JOIN Mapel c ON a.MapelId = c.MapelId       
+                LEFT JOIN Guru d ON a.GuruId = d.GuruId
+            WHERE 
+                aa.KelasId= @KelasId";
 
+            var dp = new DynamicParameters();
+            dp.Add("@KelasId", KelasID, DbType.Int16);
+
+            using var conn = new SqlConnection(ConnStringHelper.Get());
+            return conn.Query<PetaWaktuModel>(sql,dp);
         }
     }
 }
