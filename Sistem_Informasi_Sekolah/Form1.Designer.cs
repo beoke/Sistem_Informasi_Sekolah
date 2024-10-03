@@ -334,7 +334,7 @@
             // 
             // label88
             // 
-            label88.BackColor = Color.SkyBlue;
+            label88.BackColor = Color.SteelBlue;
             label88.Dock = DockStyle.Top;
             label88.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label88.Location = new Point(3, 2);
@@ -405,12 +405,12 @@
             panel9.Controls.Add(SiswaFoto);
             panel9.Location = new Point(519, 97);
             panel9.Name = "panel9";
-            panel9.Size = new Size(221, 311);
+            panel9.Size = new Size(221, 306);
             panel9.TabIndex = 10;
             // 
             // BtnPilih
             // 
-            BtnPilih.Location = new Point(25, 283);
+            BtnPilih.Location = new Point(25, 263);
             BtnPilih.Name = "BtnPilih";
             BtnPilih.Size = new Size(75, 23);
             BtnPilih.TabIndex = 14;
@@ -419,7 +419,7 @@
             // 
             // btnHapus
             // 
-            btnHapus.Location = new Point(127, 283);
+            btnHapus.Location = new Point(127, 263);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(75, 23);
             btnHapus.TabIndex = 13;
@@ -432,7 +432,7 @@
             SiswaFoto.BackgroundImageLayout = ImageLayout.Stretch;
             SiswaFoto.Location = new Point(0, 0);
             SiswaFoto.Name = "SiswaFoto";
-            SiswaFoto.Size = new Size(221, 274);
+            SiswaFoto.Size = new Size(221, 257);
             SiswaFoto.TabIndex = 10;
             SiswaFoto.TabStop = false;
             // 
@@ -495,7 +495,7 @@
             // 
             // label100
             // 
-            label100.BackColor = Color.SkyBlue;
+            label100.BackColor = Color.SteelBlue;
             label100.Dock = DockStyle.Top;
             label100.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label100.Location = new Point(3, 2);
@@ -517,7 +517,7 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            panel2.BackColor = SystemColors.ActiveBorder;
+            panel2.BackColor = SystemColors.ActiveCaption;
             panel2.Controls.Add(jarakSklh_numeric);
             panel2.Controls.Add(jmlSauAngkat_numeric);
             panel2.Controls.Add(cb_statustinggal);
@@ -708,7 +708,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            panel1.BackColor = Color.DarkGray;
+            panel1.BackColor = SystemColors.ActiveCaption;
             panel1.Controls.Add(cb_warganegara);
             panel1.Controls.Add(jmlSauTiri_numeric);
             panel1.Controls.Add(jmlsauKan_numeric);
@@ -983,7 +983,7 @@
             // 
             // label109
             // 
-            label109.BackColor = Color.SkyBlue;
+            label109.BackColor = Color.SteelBlue;
             label109.Dock = DockStyle.Top;
             label109.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label109.Location = new Point(0, 0);
@@ -995,7 +995,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.ActiveBorder;
+            panel4.BackColor = SystemColors.ActiveCaption;
             panel4.Controls.Add(dtp_tamatbelajar);
             panel4.Controls.Add(dataGrid_beasiswa);
             panel4.Controls.Add(label49);
@@ -1246,7 +1246,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.DarkGray;
+            panel3.BackColor = SystemColors.ActiveCaption;
             panel3.Controls.Add(dtp_tglditerima);
             panel3.Controls.Add(label47);
             panel3.Controls.Add(label43);
@@ -1643,7 +1643,7 @@
             // 
             // label110
             // 
-            label110.BackColor = Color.SkyBlue;
+            label110.BackColor = Color.SteelBlue;
             label110.Dock = DockStyle.Top;
             label110.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label110.Location = new Point(0, 0);
@@ -1655,7 +1655,7 @@
             // 
             // panel8
             // 
-            panel8.BackColor = Color.DarkGray;
+            panel8.BackColor = SystemColors.ActiveCaption;
             panel8.Controls.Add(tx_NIKIbu);
             panel8.Controls.Add(cb_hidupIbu);
             panel8.Controls.Add(tx_NoKKIbu);
@@ -1951,7 +1951,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.DarkGray;
+            panel5.BackColor = SystemColors.ActiveCaption;
             panel5.Controls.Add(cb_HidupAyah);
             panel5.Controls.Add(nu_gajiAyah);
             panel5.Controls.Add(tx_MeninggalAyah);
@@ -1985,7 +1985,7 @@
             panel5.Location = new Point(3, 41);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(234, 531);
+            panel5.Size = new Size(236, 531);
             panel5.TabIndex = 54;
             // 
             // cb_HidupAyah
@@ -2265,7 +2265,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = Color.DarkGray;
+            panel6.BackColor = SystemColors.ActiveCaption;
             panel6.Controls.Add(tx_NikWali);
             panel6.Controls.Add(cb_hidupWali);
             panel6.Controls.Add(tx_noKKwali);
@@ -2574,7 +2574,7 @@
             // 
             // label111
             // 
-            label111.BackColor = Color.SkyBlue;
+            label111.BackColor = Color.SteelBlue;
             label111.Dock = DockStyle.Top;
             label111.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label111.Location = new Point(0, 0);
@@ -2586,7 +2586,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = SystemColors.ActiveBorder;
+            panel7.BackColor = SystemColors.ActiveCaption;
             panel7.Controls.Add(nu_penghasilanLulus);
             panel7.Controls.Add(btn_SaveLulus);
             panel7.Controls.Add(label67);
@@ -2614,10 +2614,10 @@
             // 
             // btn_SaveLulus
             // 
-            btn_SaveLulus.Location = new Point(267, 205);
+            btn_SaveLulus.Location = new Point(267, 207);
             btn_SaveLulus.Margin = new Padding(3, 2, 3, 2);
             btn_SaveLulus.Name = "btn_SaveLulus";
-            btn_SaveLulus.Size = new Size(82, 22);
+            btn_SaveLulus.Size = new Size(82, 24);
             btn_SaveLulus.TabIndex = 5;
             btn_SaveLulus.Text = "Save";
             btn_SaveLulus.UseVisualStyleBackColor = true;
@@ -2680,7 +2680,7 @@
             // label96
             // 
             label96.AutoSize = true;
-            label96.Location = new Point(19, 40);
+            label96.Location = new Point(19, 28);
             label96.Name = "label96";
             label96.Size = new Size(161, 18);
             label96.TabIndex = 41;
@@ -2688,7 +2688,7 @@
             // 
             // tx_melanjutkan
             // 
-            tx_melanjutkan.Location = new Point(22, 57);
+            tx_melanjutkan.Location = new Point(20, 48);
             tx_melanjutkan.Margin = new Padding(3, 2, 3, 2);
             tx_melanjutkan.Name = "tx_melanjutkan";
             tx_melanjutkan.Size = new Size(330, 25);

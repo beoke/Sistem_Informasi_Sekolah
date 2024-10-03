@@ -20,9 +20,6 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         {
             InitializeComponent();
             dataIdukToolStripMenuItem.Click += new EventHandler(dataIndukToolStripMenuItem_Click);
-            /* dataMapelToolStripMenuItem.Click += new EventHandler(dataMapelToolStripMenuItem_Click);
-             dataJurusanToolStripMenuItem.Click += new EventHandler(dataJurusanToolStripMenuItem_Click);
-             dataKelasToolStripMenuItem.Click += DataKelasToolStripMenuItem_Click;*/
             MapelTool.Click += MapelTool_Click;
             JurusanTool.Click += JurusanTool_Click;
             KelasTool.Click += KelasTool_Click;
@@ -30,11 +27,13 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             Jadwal_tool.Click += Jadwal_tool_Click;
 
         }
-
         private void Jadwal_tool_Click(object? sender, EventArgs e)
         {
             loadDataJadwal();
         }
+
+        #region Run Load 
+
 
         private void GuruTool_Click(object? sender, EventArgs e)
         {
@@ -62,7 +61,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             
         }
 
-        
+        #endregion
         private void LoadDataInduk()
         {
             // membuat instance dari Form1
@@ -79,6 +78,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             // tampilkan Form1
             form1.Show();
         }
+        #region Load Data
         private void LoadDataMapel()
         {
             MapelForm mapel = new MapelForm();
@@ -118,7 +118,6 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 
             kelas.Show();
         }
-
         private void LoadDataGuru()
         {
             formGuru guru = new formGuru();
@@ -132,7 +131,6 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 
             guru.Show();
         }
-
         private void loadDataJadwal()
         {
             Form_JadwalPelajaran jadwal = new Form_JadwalPelajaran();
@@ -145,5 +143,6 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 
             jadwal.Show();
         }
+        #endregion 
     }
 }

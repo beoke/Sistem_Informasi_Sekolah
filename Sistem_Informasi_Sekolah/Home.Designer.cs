@@ -37,8 +37,8 @@
             JurusanTool = new ToolStripMenuItem();
             KelasTool = new ToolStripMenuItem();
             GuruTool = new ToolStripMenuItem();
-            panel1 = new Panel();
             Jadwal_tool = new ToolStripMenuItem();
+            panel1 = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,39 +67,57 @@
             dataIdukToolStripMenuItem.Image = (Image)resources.GetObject("dataIdukToolStripMenuItem.Image");
             dataIdukToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             dataIdukToolStripMenuItem.Name = "dataIdukToolStripMenuItem";
-            dataIdukToolStripMenuItem.Size = new Size(140, 38);
+            dataIdukToolStripMenuItem.Size = new Size(196, 38);
             dataIdukToolStripMenuItem.Text = "Data Iduk";
             // 
             // pengajaranToolStripMenuItem
             // 
             pengajaranToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MapelTool, JurusanTool, KelasTool, GuruTool, Jadwal_tool });
+            pengajaranToolStripMenuItem.Image = (Image)resources.GetObject("pengajaranToolStripMenuItem.Image");
+            pengajaranToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             pengajaranToolStripMenuItem.Name = "pengajaranToolStripMenuItem";
-            pengajaranToolStripMenuItem.Size = new Size(78, 36);
+            pengajaranToolStripMenuItem.Size = new Size(110, 36);
             pengajaranToolStripMenuItem.Text = "Pengajaran";
             // 
             // MapelTool
             // 
+            MapelTool.Image = (Image)resources.GetObject("MapelTool.Image");
+            MapelTool.ImageScaling = ToolStripItemImageScaling.None;
             MapelTool.Name = "MapelTool";
-            MapelTool.Size = new Size(180, 22);
-            MapelTool.Text = "Data Mapel";
+            MapelTool.Size = new Size(196, 38);
+            MapelTool.Text = "Mapel";
             // 
             // JurusanTool
             // 
+            JurusanTool.Image = (Image)resources.GetObject("JurusanTool.Image");
+            JurusanTool.ImageScaling = ToolStripItemImageScaling.None;
             JurusanTool.Name = "JurusanTool";
-            JurusanTool.Size = new Size(180, 22);
-            JurusanTool.Text = "Data Jurusan";
+            JurusanTool.Size = new Size(196, 38);
+            JurusanTool.Text = "Jurusan";
             // 
             // KelasTool
             // 
+            KelasTool.Image = (Image)resources.GetObject("KelasTool.Image");
+            KelasTool.ImageScaling = ToolStripItemImageScaling.None;
             KelasTool.Name = "KelasTool";
-            KelasTool.Size = new Size(180, 22);
-            KelasTool.Text = "Data Kelas";
+            KelasTool.Size = new Size(196, 38);
+            KelasTool.Text = "Kelas";
             // 
             // GuruTool
             // 
+            GuruTool.Image = (Image)resources.GetObject("GuruTool.Image");
+            GuruTool.ImageScaling = ToolStripItemImageScaling.None;
             GuruTool.Name = "GuruTool";
-            GuruTool.Size = new Size(180, 22);
-            GuruTool.Text = "Data Guru";
+            GuruTool.Size = new Size(196, 38);
+            GuruTool.Text = "Guru";
+            // 
+            // Jadwal_tool
+            // 
+            Jadwal_tool.Image = (Image)resources.GetObject("Jadwal_tool.Image");
+            Jadwal_tool.ImageScaling = ToolStripItemImageScaling.None;
+            Jadwal_tool.Name = "Jadwal_tool";
+            Jadwal_tool.Size = new Size(196, 38);
+            Jadwal_tool.Text = "Jadwal";
             // 
             // panel1
             // 
@@ -108,12 +126,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(764, 631);
             panel1.TabIndex = 1;
-            // 
-            // Jadwal_tool
-            // 
-            Jadwal_tool.Name = "Jadwal_tool";
-            Jadwal_tool.Size = new Size(180, 22);
-            Jadwal_tool.Text = "Jadwal";
             // 
             // Home
             // 
