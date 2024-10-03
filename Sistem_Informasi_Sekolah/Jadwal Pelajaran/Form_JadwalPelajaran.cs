@@ -1,6 +1,7 @@
 ﻿using Sistem_Informasi_Sekolah.Guru.Dal;
 using Sistem_Informasi_Sekolah.Guru.Model;
 using Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal;
+using Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,118 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
 
             InitMaskEdit();
             InitCombo();
+            RegisterEvent();
+            RefreshGrid();
         }
+        private void RegisterEvent()
+        {
+            New_button.Click += New_button_Click;
+            Save_button.Click += Save_button_Click;
+            Delete_button.Click += Delete_button_Click;
+            KelasNama_combo.SelectedIndexChanged += KelasNama_combo_SelectedIndexChanged;
+        }
+
+        private void KelasNama_combo_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+           RefreshGrid();
+        }
+
+        private void Delete_button_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Save_button_Click(object? sender, EventArgs e)
+        {
+            SavePetaWaktu();
+            RefreshGrid();
+            CleanForm();
+            JamMulai_mask.Focus();
+        }
+
+        private void New_button_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void RefreshGrid()
+        {
+            RefreshGridUmum();
+            RefreshGridKhusus();
+        }
+        private void RefreshGridUmum()
+        {
+            var kelas = Convert.ToInt16(KelasNama_combo.SelectedValue.ToString());
+            var petaWaktu = _petaWaktudal.ListData(kelas)
+                ?? new List<PetaWaktuModel>();
+            var listUmum = petaWaktu
+                .Where(x => x.JenisJadwal == "Mapel Umum")
+                .OrderBy(x => x.Hari)
+                .ThenBy(x => x.JamMulai)
+                .Select(x => new PetaWakttuDto
+                {
+                    Hari = x.Hari,
+                    Timeslot = $"{x.JamMulai}-{x.JamSelesai}",
+                    Mapel = $"{x.NamaMapel}{x.Keterangan}",
+                    Guru = x.GuruName,
+                }).ToList();
+            MapelKhusus_grid.DataSource = listUmum;
+        }
+        private void RefreshGridKhusus()
+        {
+            var kelas = Convert.ToInt16(KelasNama_combo.SelectedValue.ToString());
+            var petaWaktu = _petaWaktudal.ListData(kelas)
+                ?? new List<PetaWaktuModel>();
+            var listUmum = petaWaktu
+                .Where(x => x.JenisJadwal == "Mapel Khusus")
+                .OrderBy(x => x.Hari)
+                .ThenBy(x => x.JamMulai)
+                .Select(x => new PetaWakttuDto
+                {
+                    Hari = x.Hari,
+                    Timeslot = $"{x.JamMulai}-{x.JamSelesai}",
+                    Mapel = $"{x.NamaMapel}{x.Keterangan}",
+                    Guru = x.GuruName,
+                }).ToList();
+            MapelUmum_grid.DataSource = listUmum;
+        }
+
+
+        private void CleanForm()
+        {
+            JamMulai_mask.Text = "00:00";
+            JamSelesai_mask.Text = "00:00";
+            Mapel_combo.SelectedIndex = 0;
+            Guru_combo.SelectedIndex = 0;
+            TimeslotIdLabel.Text = string.Empty;
+        }
+
+        private int SavePetaWaktu()
+        {
+            var  timeslotId = TimeslotIdLabel.Text == string.Empty ? 0:
+                Convert.ToInt32(TimeslotIdLabel.Text);
+
+            var timeslot = new PetaWaktuModel
+            {
+                TimeslotMapelId = timeslotId,
+                KelasId = Convert.ToInt32(KelasNama_combo.SelectedValue),
+                Hari = Hari_combo.Text,
+                JenisJadwal = JenisJadwal_combo.Text,
+                JamMulai = JamMulai_mask.Text,
+                JamSelesai = JamMulai_mask.Text,
+                MapelId = Convert.ToInt32(Mapel_combo.SelectedValue),
+                GuruId = Convert.ToInt32(Guru_combo.SelectedValue),
+                Keterangan = Keterangan_text.Text,
+            };
+
+            if (timeslot.TimeslotMapelId == 0)
+                timeslotId = _petaWaktudal.Insert(timeslot);
+            else
+                _petaWaktudal.Update(timeslot);
+
+            TimeslotIdLabel.Text =timeslotId.ToString();
+            return timeslotId;
+        }
+
         private void InitCombo()
         {
             var listKelas = _kelasDal.ListData() ?? new List<KelasModel>();
@@ -68,12 +180,19 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         }
         private void InitMaskEdit()
         {
-            JamMulai_mask.Text = "00:00";
-            JamSelesai_mask.Text = "00:00";
-            Mapel_combo.SelectedIndex = 0;
-            Guru_combo.SelectedIndex = 0;
-            TimeslotIdLabel.Text = string.Empty;
+            JamMulai_mask.Mask = "00:00";
+            JamMulai_mask.Font = new Font("Cosolas", 10);
+            JamSelesai_mask.Mask = "00:00";
+            JamSelesai_mask.Font = new Font("Consolas", 10);
         }
 
     }
 }
+public class PetaWakttuDto
+{
+    public string Hari { get; set; }
+    public string Timeslot { get; set; }
+    public string Mapel { get; set; }
+    public string Guru { get; set; }
+}
+
