@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
 {
@@ -41,6 +42,71 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
         }
 
         public void Update (PetaWaktuModel timeslot)
+        {
+            const string sql = @" 
+            UPDATE TImeslotMapel
+            SET 
+               Kelasid = @KelasId,
+               Hari = @Hari,
+               JenisJadwal = @JenisJadwal,
+               JamMulai = @JamMulai,
+               JamSelesai = @JamSelesai,
+               MapelId = @MapelId,
+               GuruId = @GuruId
+            WHERE TimeslotMapelId = @TimeslotMapelId";
+
+            var dp = new DynamicParameters();
+            dp.Add("@KelasId", timeslot.KelasId, DbType.Int16);
+            dp.Add("@Hari",timeslot.Hari,DbType.String);
+            dp.Add("@JenisJadwal", timeslot.JenisJadwal,DbType.String);
+            dp.Add("@JamMulai", timeslot.JenisJadwal,DbType.String);
+            dp.Add("@JamSelesai", timeslot.JamSelesai, DbType.String);
+            dp.Add("@MapelId", timeslot.MapelId, DbType.Int16);
+            dp.Add("@GuruId", timeslot.GuruId, DbType.Int16);
+
+            using var con = new SqlConnection (ConnStringHelper.Get());
+            con.Execute(sql, dp);
+        }
+
+        public void Delete (int id)
+        {
+            const string sql = @"
+            DELETE FROM TimeslotMapel
+            WHERE TimeslotMapelId = @TimeslotMapelId";
+
+            var dp = new DynamicParameters();
+            dp.Add("@TimeslotMapelId", id, DbType.Int16);
+
+            using var con = new SqlConnection(ConnStringHelper.Get());
+            con.Execute(sql, dp);
+        }
+
+        public PetaWaktuModel GetData(int Id)
+        {
+            const string sql = @"
+            SELECT 
+                aa. SELECT 
+                    aa.TimeslotMapelId, aa.KelasId, aa.Hari, aa.JenisJadwal, 
+                    aa.JamMulai, aa.JamSelesai,
+                    aa.MapelId, aa.GuruId, aa.Keterangan,
+                    ISNULL(bb.KelasName, '') AS KelasName,
+                    ISNULL(cc.MapelName, '') AS MapelName,  
+                    ISNULL(dd.GuruName, '') AS GuruName
+                FROM TimeslotMapel aa
+                    LEFT JOIN Kelas bb ON aa.KelasId = bb.KelasId
+                    LEFT JOIN Mapel cc ON aa.MapelId = cc.MapelId       
+                    LEFT JOIN Guru dd ON aa.GuruId = dd.GuruId
+                WHERE 
+                    aa.TimeslotMapelId = @TimeslotMapelId";
+
+            var dp = new DynamicParameters();
+            dp.Add("@TimeslotMapelId", Id, DbType.Int16);
+
+            using var conn = new SqlConnection(ConnStringHelper.Get());
+            return conn.QuerySingle<PetaWaktuModel>(sql, dp);
+        }
+
+        public IEnumerable<PetaWaktuModel>ListData(int KelasID)
         {
 
         }
