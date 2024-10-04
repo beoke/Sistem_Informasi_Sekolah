@@ -19,11 +19,11 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
         {
             const string sql = @"
             INSERT INTO TimeslotMapel(
-                KelasId, Hari, JenisJadwal, JamMulai, Jam selesai 
+                KelasId, Hari, JenisJadwal, JamMulai, JamSelesai, 
                 MapelId, GuruId, Keterangan)
-            OUTPUT INSERTED.TimeslotMapel
+            OUTPUT INSERTED.TimeslotMapelId
             VALUES( 
-                @KelasId, @Hari, @JenisMapel, @JamMulai, @JamSelesai,
+                @KelasId, @Hari, @JenisJadwal, @JamMulai, @JamSelesai,
                 @MapelId, @GuruId, @Keterangan)";
 
             var dp = new DynamicParameters();

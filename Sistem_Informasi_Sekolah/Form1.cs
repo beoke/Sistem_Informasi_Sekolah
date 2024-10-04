@@ -43,6 +43,7 @@ namespace Sistem_Informasi_Sekolah
             initCombo();
             initGrid();
             RefreshListData();
+            buttonFoto();
         }
 
         private void ListSiswa_grid_DoubleClick_1(object sender, EventArgs e)
@@ -703,7 +704,13 @@ namespace Sistem_Informasi_Sekolah
             }
         }
 
-        private void btnHapus_Click(object sender, EventArgs e)
+        private void buttonFoto()
+        {
+            btnHapus.Click += btnHapus_Click;
+            BtnPilih.Click += BtnPilih_Click;
+        }
+
+        private void btnHapus_Click(object? sender, EventArgs e)
         {
             SiswaFoto.Image = null;
             FotoLokasi = string.Empty;

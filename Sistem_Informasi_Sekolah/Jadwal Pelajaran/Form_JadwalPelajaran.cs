@@ -186,7 +186,7 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         private void InitMaskEdit()
         {
             JamMulai_mask.Mask = "00:00";
-            JamMulai_mask.Font = new Font("Cosolas", 10);
+            JamMulai_mask.Font = new Font("Consolas", 10);
             JamSelesai_mask.Mask = "00:00";
             JamSelesai_mask.Font = new Font("Consolas", 10);
         }
