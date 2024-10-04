@@ -62,7 +62,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ActiveBorder;
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.Controls.Add(GuruLahir_Date);
             panel1.Controls.Add(TINgkatPendidikan_Combo);
             panel1.Controls.Add(GuruSearch_Text);
@@ -95,17 +95,17 @@
             // 
             // GuruLahir_Date
             // 
-            GuruLahir_Date.Location = new Point(295, 132);
+            GuruLahir_Date.Location = new Point(292, 132);
             GuruLahir_Date.Name = "GuruLahir_Date";
-            GuruLahir_Date.Size = new Size(200, 20);
+            GuruLahir_Date.Size = new Size(203, 20);
             GuruLahir_Date.TabIndex = 27;
             // 
             // TINgkatPendidikan_Combo
             // 
             TINgkatPendidikan_Combo.FormattingEnabled = true;
-            TINgkatPendidikan_Combo.Location = new Point(295, 185);
+            TINgkatPendidikan_Combo.Location = new Point(292, 185);
             TINgkatPendidikan_Combo.Name = "TINgkatPendidikan_Combo";
-            TINgkatPendidikan_Combo.Size = new Size(200, 21);
+            TINgkatPendidikan_Combo.Size = new Size(203, 21);
             TINgkatPendidikan_Combo.TabIndex = 26;
             // 
             // GuruSearch_Text

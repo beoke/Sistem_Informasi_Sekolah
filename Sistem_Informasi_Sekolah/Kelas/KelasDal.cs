@@ -12,8 +12,6 @@ namespace Sistem_Informasi_Sekolah
 {
     public class KelasDal
     {
-
-
         public int Insert(KelasModel kelas)
         {
             const string sql = @"

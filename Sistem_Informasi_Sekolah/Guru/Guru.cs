@@ -83,31 +83,7 @@ namespace Sistem_Informasi_Sekolah.Guru
             DataGuru_Grid.RowEnter += DataGuru_Grid_RowEnter;
             DataMapel_Grid.KeyDown += DataMapel_Grid_KeyDown; 
             DataMapel_Grid.CellValidated += DataMapel_Grid_CellValidated;
-           // DataMapel_Grid.DataBindingComplete += DataMapel_Grid_DataBindingComplete;
         }
-
-     /*   private void DataMapel_Grid_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)                 // untuk membuat baris baru
-        {
-            // Memastikan ada setidaknya satu baris di DataGridView
-            if (DataMapel_Grid.Rows.Count == 0)
-            {
-                AddNewRow();
-            }
-        }
-
-        private void AddNewRow()
-        {
-            // Tambahkan baris baru
-            DataGridViewRow newRow = new DataGridViewRow();
-            newRow.CreateCells(DataMapel_Grid);
-            newRow.Cells["id"].Value = "";
-            newRow.Cells["Mapel"].Value = "";
-
-            DataMapel_Grid.Rows.Add(newRow);
-            DataMapel_Grid.CurrentCell = newRow.Cells[0];
-            DataMapel_Grid.BeginEdit(true);
-
-        }*/
 
         private void DataMapel_Grid_KeyDown(object? sender, KeyEventArgs e)
         {

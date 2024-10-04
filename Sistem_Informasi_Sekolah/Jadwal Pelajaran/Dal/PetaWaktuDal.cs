@@ -109,19 +109,19 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
         public IEnumerable<PetaWaktuModel> ListData(int KelasID)
         {
             const string sql = @" 
-            SELECT 
-                a.TimeslotMapelId, a.KelasId, a.Hari, a.JenisJadwal, 
-                a.JamMulai, a.JamSelesai,
-                a.MapelId, a.GuruId, a.Keterangan,
-                ISNULL(b.KelasName, '') AS KelasName,
-                ISNULL(c.MapelName, '') AS MapelName,  
-                ISNULL(d.GuruName, '') AS GuruName
-            FROM TimeslotMapel aa
-                LEFT JOIN Kelas b ON a.KelasId = b.KelasId
-                LEFT JOIN Mapel c ON a.MapelId = c.MapelId       
-                LEFT JOIN Guru d ON a.GuruId = d.GuruId
-            WHERE 
-                aa.KelasId= @KelasId";
+          SELECT 
+            aa.TimeslotMapelId, aa.KelasId, aa.Hari, aa.JenisJadwal, 
+            aa.JamMulai, aa.JamSelesai,
+            aa.MapelId, aa.GuruId, aa.Keterangan,
+            ISNULL(b.KelasName, '') AS KelasName,
+            ISNULL(c.NamaMapel, '') AS NamaMapel,  
+            ISNULL(d.GuruName, '') AS GuruName
+          FROM TimeslotMapel aa
+            LEFT JOIN Kelas b ON aa.KelasId = b.KelasId
+            LEFT JOIN Mapel c ON aa.MapelId = c.MapelId       
+            LEFT JOIN Guru d ON aa.GuruId = d.GuruId
+          WHERE 
+            aa.KelasId = @KelasId";
 
             var dp = new DynamicParameters();
             dp.Add("@KelasId", KelasID, DbType.Int16);

@@ -307,7 +307,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.GradientActiveCaption;
+            panel4.BackColor = SystemColors.GradientInactiveCaption;
             panel4.Controls.Add(TimeslotIdLabel);
             panel4.Controls.Add(JamSelesai_mask);
             panel4.Controls.Add(JamMulai_mask);

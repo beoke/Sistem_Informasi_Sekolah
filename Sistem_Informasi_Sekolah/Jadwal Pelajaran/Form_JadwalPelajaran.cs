@@ -25,6 +25,10 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         public Form_JadwalPelajaran()
         {
             InitializeComponent();
+            _petaWaktudal = new PetaWaktuDal();
+            _kelasDal = new KelasDal();
+            _mapelDal = new MapelDal();
+            _guruDal = new GuruDal();
 
             InitMaskEdit();
             InitCombo();
@@ -152,9 +156,10 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
             {
                 new GuruModel {GuruId = -1, GuruName = "--Pilih Guru--" }
             };
+            listGuru.AddRange(_guruDal.ListData()?.ToList() ?? new List<GuruModel>());
             Guru_combo.Items.Clear();
             Guru_combo.DataSource = listGuru;
-            Guru_combo.ValueMember = "KelasId";
+            Guru_combo.ValueMember = "GuruId";
             Guru_combo.DisplayMember = "GuruName";
 
             var listMapel = new List<MapelModel>
