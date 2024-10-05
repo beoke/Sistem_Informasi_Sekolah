@@ -68,12 +68,11 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         private void RefreshGrid()
         {
             RefreshGridUmum();
-            
             RefreshGridKhusus();
         }
         private void RefreshGridUmum()
         {
-            /* var kelas = Convert.ToInt16(KelasNama_combo.SelectedValue.ToString());
+             var kelas = Convert.ToInt16(KelasNama_combo.SelectedValue.ToString());
              var petaWaktu = _petaWaktudal.ListData(kelas)
                  ?? new List<PetaWaktuModel>();
              var listUmum = petaWaktu
@@ -84,76 +83,17 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
                  {
                      Hari = x.Hari,
                      Timeslot = $"{x.JamMulai}-{x.JamSelesai}",
-                     Mapel = x.NamaMapel,  *//*$"{x.NamaMapel}{x.Keterangan}"*//*
+                     Mapel = x.NamaMapel,  /*$"{x.NamaMapel}{x.Keterangan}"*/
                      Guru = x.GuruName,
                      Keterangan = x.Keterangan,
                  }).ToList();
-             MapelUmum_grid.DataSource = listUmum;*/
-
-            // Ambil nilai kelas yang dipilih
-            var kelas = Convert.ToInt16(KelasNama_combo.SelectedValue);
-
-            // Ambil daftar data peta waktu dari database berdasarkan kelas
-            var petaWaktuList = _petaWaktudal.ListData(kelas) ?? new List<PetaWaktuModel>();
-
-            // Filter data yang berjenis "Mapel Umum", urutkan, dan format sesuai kebutuhan
-            var listUmum = petaWaktuList
-                .Where(x => x.JenisJadwal == "Mapel Umum")
-                .OrderBy(x => x.Hari)
-                .ThenBy(x => x.JamMulai)
-                .Select(x => new PetaWakttuDto
-                {
-                    Hari = x.Hari,
-                    Timeslot = $"{x.JamMulai}-{x.JamSelesai}",
-                    Mapel = x.NamaMapel,  // MapelName adalah nama mapel yang diambil dari database
-                    Guru = x.GuruName,    // GuruName adalah nama guru yang diambil dari database
-                    Keterangan = x.Keterangan
-                }).ToList();
-
-            // Tampilkan hasil filter di DataGridView
-            MapelUmum_grid.DataSource = listUmum;
+             MapelUmum_grid.DataSource = listUmum;
         }
 
-    /*    private void RefreshGridUmum()
+        private void setelanGrid()
         {
-            if (KelasNama_combo.SelectedValue == null)
-            {
-                MessageBox.Show("Silakan pilih kelas terlebih dahulu.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
-            var kelas = Convert.ToInt16(KelasNama_combo.SelectedValue.ToString());
-
-            var petaWaktu = _petaWaktudal.ListData(kelas);
-
-            if (petaWaktu == null || !petaWaktu.Any())
-            {
-                MessageBox.Show("Tidak ada data yang ditemukan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            var listUmum = petaWaktu
-                .Where(x => x.JenisJadwal == "Mapel Umum")
-                .OrderBy(x => x.Hari)
-                .ThenBy(x => x.JamMulai)
-                .Select(x => new PetaWakttuDto
-                {
-                    Hari = x.Hari,
-                    Timeslot = $"{x.JamMulai}-{x.JamSelesai}",
-                    Mapel = x.NamaMapel, 
-                    Guru = x.GuruName,    
-                    Keterangan = x.Keterangan,
-                }).ToList();
-
-            MapelUmum_grid.DataSource = listUmum;
-            MapelUmum_grid.Refresh();
-
-            foreach (var item in listUmum)
-            {
-                Console.WriteLine($"Hari: {item.Hari}, Timeslot: {item.Timeslot}, Mapel: {item.Mapel}, Guru: {item.Guru}");
-            }
-        }*/
-
+        }
         private void RefreshGridKhusus()
         {
             var kelas = Convert.ToInt16(KelasNama_combo.SelectedValue.ToString());
@@ -214,11 +154,8 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
 
         private void InitCombo()
         {
-            var listKelas = new List<KelasModel>
-            {
-                new KelasModel { KelasId = -1, KelasName = "--Pilih Kelas--" }
-            };
-            listKelas .AddRange(_kelasDal.ListData() ?? new List<KelasModel>());
+
+            var listKelas = _kelasDal.ListData() ?? new List<KelasModel>();
             KelasNama_combo.Items.Clear();
             KelasNama_combo.DataSource = listKelas;
             KelasNama_combo.ValueMember = "KelasId";
