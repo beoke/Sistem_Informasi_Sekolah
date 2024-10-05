@@ -3,7 +3,7 @@
 	KelasId INT NOT NULL DEFAULT (0),
 
 	Hari VARCHAR (6) NOT NULL DEFAULT (''),
-	JenisJadwal VARCHAR (6) NOT NULL DEFAULT (''),
+	JenisJadwal VARCHAR (15) NOT NULL DEFAULT (''),
 	JamMulai VARCHAR (6) NOT NULL DEFAULT (''),
 	JamSelesai VARCHAR (6) not null DEFAULT (''),
 
