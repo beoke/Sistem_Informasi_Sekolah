@@ -153,6 +153,7 @@
             // 
             // KelasNama_combo
             // 
+            KelasNama_combo.DropDownStyle = ComboBoxStyle.DropDownList;
             KelasNama_combo.FormattingEnabled = true;
             KelasNama_combo.Location = new Point(13, 32);
             KelasNama_combo.Name = "KelasNama_combo";

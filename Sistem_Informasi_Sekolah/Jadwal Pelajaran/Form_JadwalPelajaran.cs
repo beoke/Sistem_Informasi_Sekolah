@@ -301,12 +301,15 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
 
         private void InitCombo()
         {
+            KelasNama_combo.MaxDropDownItems = 5; // Membatasi 5 item
+            KelasNama_combo.IntegralHeight = false; // Mematikan pengaturan tinggi otomatis
+            KelasNama_combo.DropDownHeight = KelasNama_combo.ItemHeight * 5; // Atur tinggi dropdown berdasarkan 5 item
 
             var listKelas = _kelasDal.ListData() ?? new List<KelasModel>();
-            KelasNama_combo.Items.Clear();
             KelasNama_combo.DataSource = listKelas;
             KelasNama_combo.ValueMember = "KelasId";
             KelasNama_combo.DisplayMember = "KelasName";
+
 
             var listGuru = new List<GuruModel>
             {
@@ -317,6 +320,7 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
             Guru_combo.DataSource = listGuru;
             Guru_combo.ValueMember = "GuruId";
             Guru_combo.DisplayMember = "GuruName";
+            Guru_combo.MaxDropDownItems= 4;
 
             var listMapel = new List<MapelModel>
             {
