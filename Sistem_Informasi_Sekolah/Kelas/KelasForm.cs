@@ -48,37 +48,50 @@ namespace Sistem_Informasi_Sekolah
         #region CUSTOM COMBO RADIO
         private void RegisterControlEvent()
         {
-            btn_newKelas.Click += Btn_newKelas_Click1; 
+            btn_newKelas.Click += Btn_newKelas_Click1;
             btn_SaveKelas.Click += Btn_SaveKelas_Click1;
             btn_deleteKelas.Click += Btn_deleteKelas_Click1; ;
 
-            rb_10.Click += Rb_10_Click; 
-            rb_11.Click += Rb_11_Click; 
+            rb_10.Click += Rb_10_Click;
+            rb_11.Click += Rb_11_Click;
             rb_12.Click += Rb_12_Click;
 
             cb_KelasJurusan.SelectedValueChanged += Cb_KelasJurusan_SelectedValueChanged; ;
-            FlagText.Validated += FlagText_Validated; 
+            FlagText.Validated += FlagText_Validated;
 
-            GridKelas.RowEnter += GridKelas_RowEnter; 
+            GridKelas.RowEnter += GridKelas_RowEnter;
         }
 
         private void GridKelas_RowEnter(object? sender, DataGridViewCellEventArgs e)
         {
             var kelasid = Convert.ToInt16(GridKelas.Rows[e.RowIndex].Cells[0].Value);
             var kelas = _kelasDal.GetData(kelasid);
-            if(kelas is null)
+            if (kelas is null)
             {
                 ClearInput();
                 return;
             }
             tx_KelasId.Text = kelasid.ToString();
-            tx_KelasName.Text = kelas?.KelasName?? string.Empty;
+            tx_KelasName.Text = kelas?.KelasName ?? string.Empty;
             cb_KelasJurusan.SelectedValue = kelas?.JurusanId ?? 1;
             FlagText.Text = kelas?.Flag ?? string.Empty;
 
-            if (kelas?.Tingkat == 10)rb_10.Checked = true;
-            else if (kelas?.Tingkat == 11)rb_11.Checked = true;
-            else if(kelas?.Tingkat == 12)rb_12.Checked = true;
+            if (kelas?.Tingkat == 10) rb_10.Checked = true;
+            else if (kelas?.Tingkat == 11) rb_11.Checked = true;
+            else if (kelas?.Tingkat == 12) rb_12.Checked = true;
+        }
+
+        private void LoadKelasData()
+        {
+            try
+            {
+                var kelasList = _kelasDal.ListData(); // Method ini mengambil data dari database
+                GridKelas.DataSource = kelasList; // Bind data ke GridKelas
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Gagal memuat data kelas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FlagText_Validated(object? sender, EventArgs e)
@@ -118,7 +131,7 @@ namespace Sistem_Informasi_Sekolah
                 _kelasDal.Delete(kelasClick);
                 ClearInput();
                 LoadData();
-              }
+            }
             else
                 return;
         }
@@ -207,5 +220,11 @@ namespace Sistem_Informasi_Sekolah
         }
 
         #endregion
+
+
+        private void KelasForm_Load(object sender, EventArgs e)
+        {
+            LoadKelasData(); // masih ada bug
+        }
     }
 }

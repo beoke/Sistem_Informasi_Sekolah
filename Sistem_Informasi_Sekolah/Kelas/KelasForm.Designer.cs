@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btn_newKelas = new Button();
-            btn_deleteKelas = new Button();
-            btn_SaveKelas = new Button();
-            label1 = new Label();
-            GridKelas = new DataGridView();
             panel2 = new Panel();
             FlagText = new MaskedTextBox();
             label6 = new Label();
@@ -47,9 +42,14 @@
             tx_KelasId = new TextBox();
             label3 = new Label();
             label2 = new Label();
+            btn_newKelas = new Button();
+            btn_deleteKelas = new Button();
+            btn_SaveKelas = new Button();
+            label1 = new Label();
+            GridKelas = new DataGridView();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)GridKelas).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)GridKelas).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -66,55 +66,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(739, 397);
             panel1.TabIndex = 2;
-            // 
-            // btn_newKelas
-            // 
-            btn_newKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_newKelas.Location = new Point(491, 350);
-            btn_newKelas.Name = "btn_newKelas";
-            btn_newKelas.Size = new Size(67, 33);
-            btn_newKelas.TabIndex = 14;
-            btn_newKelas.Text = "New";
-            btn_newKelas.UseVisualStyleBackColor = true;
-            // 
-            // btn_deleteKelas
-            // 
-            btn_deleteKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_deleteKelas.Location = new Point(572, 350);
-            btn_deleteKelas.Name = "btn_deleteKelas";
-            btn_deleteKelas.Size = new Size(67, 33);
-            btn_deleteKelas.TabIndex = 3;
-            btn_deleteKelas.Text = "Delete";
-            btn_deleteKelas.UseVisualStyleBackColor = true;
-            // 
-            // btn_SaveKelas
-            // 
-            btn_SaveKelas.Location = new Point(645, 350);
-            btn_SaveKelas.Name = "btn_SaveKelas";
-            btn_SaveKelas.Size = new Size(67, 33);
-            btn_SaveKelas.TabIndex = 2;
-            btn_SaveKelas.Text = "Save";
-            btn_SaveKelas.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.BackColor = Color.SkyBlue;
-            label1.Dock = DockStyle.Top;
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(739, 32);
-            label1.TabIndex = 1;
-            label1.Text = "KELAS";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // GridKelas
-            // 
-            GridKelas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridKelas.Location = new Point(3, 35);
-            GridKelas.Name = "GridKelas";
-            GridKelas.RowTemplate.Height = 25;
-            GridKelas.Size = new Size(464, 362);
-            GridKelas.TabIndex = 0;
             // 
             // panel2
             // 
@@ -245,6 +196,55 @@
             label2.TabIndex = 19;
             label2.Text = "Kelas ID";
             // 
+            // btn_newKelas
+            // 
+            btn_newKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_newKelas.Location = new Point(491, 350);
+            btn_newKelas.Name = "btn_newKelas";
+            btn_newKelas.Size = new Size(67, 33);
+            btn_newKelas.TabIndex = 14;
+            btn_newKelas.Text = "New";
+            btn_newKelas.UseVisualStyleBackColor = true;
+            // 
+            // btn_deleteKelas
+            // 
+            btn_deleteKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_deleteKelas.Location = new Point(572, 350);
+            btn_deleteKelas.Name = "btn_deleteKelas";
+            btn_deleteKelas.Size = new Size(67, 33);
+            btn_deleteKelas.TabIndex = 3;
+            btn_deleteKelas.Text = "Delete";
+            btn_deleteKelas.UseVisualStyleBackColor = true;
+            // 
+            // btn_SaveKelas
+            // 
+            btn_SaveKelas.Location = new Point(645, 350);
+            btn_SaveKelas.Name = "btn_SaveKelas";
+            btn_SaveKelas.Size = new Size(67, 33);
+            btn_SaveKelas.TabIndex = 2;
+            btn_SaveKelas.Text = "Save";
+            btn_SaveKelas.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.SkyBlue;
+            label1.Dock = DockStyle.Top;
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(739, 32);
+            label1.TabIndex = 1;
+            label1.Text = "KELAS";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // GridKelas
+            // 
+            GridKelas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridKelas.Location = new Point(3, 35);
+            GridKelas.Name = "GridKelas";
+            GridKelas.RowTemplate.Height = 25;
+            GridKelas.Size = new Size(464, 362);
+            GridKelas.TabIndex = 0;
+            // 
             // KelasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -253,10 +253,11 @@
             Controls.Add(panel1);
             Name = "KelasForm";
             Text = "KelasForm";
+            Load += KelasForm_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)GridKelas).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)GridKelas).EndInit();
             ResumeLayout(false);
         }
 
