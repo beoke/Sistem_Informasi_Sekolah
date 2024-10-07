@@ -135,10 +135,18 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
                         r1.Height += r2.Height;
                     }
 
+                    StringFormat sf = new StringFormat()
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center,
+                    };
+
                     // Menggambar cell yang digabungkan
                     e.Graphics.FillRectangle(new SolidBrush(MapelUmum_grid.DefaultCellStyle.BackColor), r1);
-                    e.Graphics.DrawRectangle(Pens.Black, r1);
-                    e.Graphics.DrawString(currentHariValue, MapelUmum_grid.DefaultCellStyle.Font, Brushes.Black, r1);
+                    e.Graphics.DrawRectangle(Pens.LightGray, r1); // menggahnti warna border 
+                    e.Graphics.DrawString(currentHariValue, MapelUmum_grid.DefaultCellStyle.Font, Brushes.Black, r1, sf);
+
+                    
 
                     // Lewati baris yang telah digabungkan
                     rowIndex += rowSpan;

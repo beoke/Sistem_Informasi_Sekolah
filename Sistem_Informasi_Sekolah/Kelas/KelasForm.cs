@@ -52,12 +52,12 @@ namespace Sistem_Informasi_Sekolah
             btn_SaveKelas.Click += Btn_SaveKelas_Click1;
             btn_deleteKelas.Click += Btn_deleteKelas_Click1; ;
 
-            rb_10.Click += Rb_10_Click;
-            rb_11.Click += Rb_11_Click;
-            rb_12.Click += Rb_12_Click;
+            rb_10.CheckedChanged += Rb_10_Click;
+            rb_11.CheckedChanged += Rb_11_Click;
+            rb_12.CheckedChanged += Rb_12_Click;
 
             cb_KelasJurusan.SelectedValueChanged += Cb_KelasJurusan_SelectedValueChanged; ;
-            FlagText.Validated += FlagText_Validated;
+            FlagText.TextChanged += FlagText_Validated;
 
             GridKelas.RowEnter += GridKelas_RowEnter;
         }
@@ -72,7 +72,6 @@ namespace Sistem_Informasi_Sekolah
                 return;
             }
             tx_KelasId.Text = kelasid.ToString();
-            tx_KelasName.Text = kelas?.KelasName ?? string.Empty;
             cb_KelasJurusan.SelectedValue = kelas?.JurusanId ?? 1;
             FlagText.Text = kelas?.Flag ?? string.Empty;
 
@@ -186,8 +185,7 @@ namespace Sistem_Informasi_Sekolah
         private void SetKelasName()
         {
             var tingkat = rb_10.Checked ? 10
-                : rb_11.Checked ? 11
-                : 12;
+                : rb_11.Checked ? 11 : rb_12.Checked ? 12 : 0;
 
             var jurusanId = Convert.ToInt16(cb_KelasJurusan.SelectedValue);
             var jurusan = _jurusanDal.GetData(jurusanId)

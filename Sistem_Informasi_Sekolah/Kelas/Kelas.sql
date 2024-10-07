@@ -7,3 +7,4 @@
 	
 	CONSTRAINT PK_Kelas PRIMARY KEY CLUSTERED(KelasId)
 )
+select * from kelas;
