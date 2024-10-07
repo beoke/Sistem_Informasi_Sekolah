@@ -41,7 +41,89 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
             Save_button.Click += Save_button_Click;
             Delete_button.Click += Delete_button_Click;
             KelasNama_combo.SelectedIndexChanged += KelasNama_combo_SelectedIndexChanged;
+
+            MapelKhusus_grid.CellClick += MapelKhusus_grid_CellClick;
+            MapelUmum_grid.CellClick += MapelUmum_grid_CellClick;
         }
+
+        private void MapelUmum_grid_CellClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            // Pastikan bahwa indeks baris valid
+            if (e.RowIndex >= 0)
+            {
+                // Cek apakah kolom yang diinginkan ada
+                if (MapelUmum_grid.Columns.Contains("TimeslotMapelId"))
+                {
+                    // Mengambil ID dari kolom yang sesuai
+                    int selectJadwal = Convert.ToInt32(MapelUmum_grid.Rows[e.RowIndex].Cells["TimeslotMapelId"].Value);
+
+                    // Mengambil data berdasarkan ID dari database
+                    var petaWaktu = _petaWaktudal.GetData(selectJadwal); // Pastikan GetData mengembalikan null jika tidak ditemukan
+
+                    // Memastikan data tidak null
+                    if (petaWaktu != null)
+                    {
+                        TimeslotIdLabel.Text = petaWaktu.TimeslotMapelId.ToString();
+                        // Mengisi ComboBox dan TextBox
+                        Hari_combo.Text = petaWaktu.Hari;
+                        KelasNama_combo.SelectedValue = petaWaktu.KelasId;
+                        Mapel_combo.SelectedValue = petaWaktu.MapelId;
+                        Guru_combo.SelectedValue = petaWaktu.GuruId;
+                        Keterangan_text.Text = petaWaktu.Keterangan;
+                        JamMulai_mask.Text = petaWaktu.JamMulai; // Pastikan format waktu benar
+                        JamSelesai_mask.Text = petaWaktu.JamSelesai; // Pastikan format waktu benar
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data tidak ditemukan untuk ID yang dipilih.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kolom 'TimeslotMapelId' tidak ditemukan di DataGridView.");
+                }
+            }
+        }
+        private void MapelKhusus_grid_CellClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            // Pastikan bahwa indeks baris valid
+            if (e.RowIndex >= 0)
+            {
+                // Cek apakah kolom yang diinginkan ada
+                if (MapelKhusus_grid.Columns.Contains("TimeslotMapelId"))
+                {
+                    // Mengambil ID dari kolom yang sesuai
+                    int selectJadwal = Convert.ToInt32(MapelKhusus_grid.Rows[e.RowIndex].Cells["TimeslotMapelId"].Value);
+
+                    // Mengambil data berdasarkan ID dari database
+                    var petaWaktu = _petaWaktudal.GetData(selectJadwal); // Pastikan GetData mengembalikan null jika tidak ditemukan
+
+                    // Memastikan data tidak null
+                    if (petaWaktu != null)
+                    {
+                        TimeslotIdLabel.Text = petaWaktu.TimeslotMapelId.ToString();
+                        // Mengisi ComboBox dan TextBox
+                        Hari_combo.Text = petaWaktu.Hari;
+                        KelasNama_combo.SelectedValue = petaWaktu.KelasId;
+                        Mapel_combo.SelectedValue = petaWaktu.MapelId;
+                        Guru_combo.SelectedValue = petaWaktu.GuruId;
+                        Keterangan_text.Text = petaWaktu.Keterangan;
+                        JamMulai_mask.Text = petaWaktu.JamMulai; // Pastikan format waktu benar
+                        JamSelesai_mask.Text = petaWaktu.JamSelesai; // Pastikan format waktu benar
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data tidak ditemukan untuk ID yang dipilih.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kolom 'TimeslotMapelId' tidak ditemukan di DataGridView.");
+                }
+            }
+        }
+
+
 
         private void KelasNama_combo_SelectedIndexChanged(object? sender, EventArgs e)
         {
@@ -50,7 +132,21 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
 
         private void Delete_button_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (TimeslotIdLabel.Text != string.Empty)
+            {
+                var confirmResult = MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    _petaWaktudal.Delete(int.Parse(TimeslotIdLabel.Text));
+                    RefreshGrid(); 
+                    MessageBox.Show("Data berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Silakan pilih baris yang ingin dihapus.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void Save_button_Click(object? sender, EventArgs e)
@@ -63,7 +159,7 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
 
         private void New_button_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanForm();
         }
 
         #region GRID
@@ -71,6 +167,7 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         {
             RefreshGridUmum();
             RefreshGridKhusus();
+            
         }
         private void RefreshGridUmum()
         {
@@ -89,8 +186,11 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
                      Mapel = x.NamaMapel,  /*$"{x.NamaMapel}{x.Keterangan}"*/
                      Guru = x.GuruName,
                      Keterangan = x.Keterangan,
+                     TimeslotMapelId = x.TimeslotMapelId,
+                     
                  }).ToList();
-             MapelUmum_grid.DataSource = listUmum;
+            MapelUmum_grid.DataSource = listUmum;
+            MapelUmum_grid.Columns["TimeslotMapelId"].Visible = false;
             setelanGridUmum();
         }
 
@@ -195,8 +295,10 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
                     Mapel = x.NamaMapel,  /* $"{x.NamaMapel}{x.Keterangan}"*/
                     Guru = x.GuruName,
                     Keterangan = x.Keterangan,
+                    TimeslotMapelId = x.TimeslotMapelId,
                 }).ToList();
             MapelKhusus_grid.DataSource = listUmum;
+            MapelKhusus_grid.Columns["TimeslotMapelId"].Visible = false; 
             stelanGridkhusus();
         }
 
@@ -268,9 +370,11 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
                 }
             }
         }
-        #endregion
 
-        private void CleanForm()
+           #endregion
+
+
+            private void CleanForm()
         {
             JamMulai_mask.Text = "__:__";
             JamSelesai_mask.Text = "__:__";
@@ -368,5 +472,6 @@ public class PetaWakttuDto
     public string Mapel { get; set; }
     public string Guru { get; set; }
     public string Keterangan {  get; set; }
+    public int TimeslotMapelId {  get; set; }
 }
 

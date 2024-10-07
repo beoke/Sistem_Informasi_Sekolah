@@ -105,7 +105,6 @@
             MapelUmum_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MapelUmum_grid.Location = new Point(6, 6);
             MapelUmum_grid.Name = "MapelUmum_grid";
-            MapelUmum_grid.ReadOnly = true;
             MapelUmum_grid.RowTemplate.Height = 25;
             MapelUmum_grid.Size = new Size(666, 443);
             MapelUmum_grid.TabIndex = 0;

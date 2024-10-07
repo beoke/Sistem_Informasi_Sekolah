@@ -52,17 +52,21 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
                JamMulai = @JamMulai,
                JamSelesai = @JamSelesai,
                MapelId = @MapelId,
-               GuruId = @GuruId
+               GuruId = @GuruId,
+               Keterangan = @Keterangan
             WHERE TimeslotMapelId = @TimeslotMapelId";
 
             var dp = new DynamicParameters();
+            dp.Add("@TimeslotMapelId", timeslot.TimeslotMapelId, DbType.Int32);
             dp.Add("@KelasId", timeslot.KelasId, DbType.Int16);
             dp.Add("@Hari",timeslot.Hari,DbType.String);
             dp.Add("@JenisJadwal", timeslot.JenisJadwal,DbType.String);
-            dp.Add("@JamMulai", timeslot.JenisJadwal,DbType.String);
+            dp.Add("@JamMulai", timeslot.JamMulai,DbType.String);
             dp.Add("@JamSelesai", timeslot.JamSelesai, DbType.String);
             dp.Add("@MapelId", timeslot.MapelId, DbType.Int16);
             dp.Add("@GuruId", timeslot.GuruId, DbType.Int16);
+            dp.Add("@Keterangan", timeslot.Keterangan, DbType.String);
+
 
             using var con = new SqlConnection (ConnStringHelper.Get());
             con.Execute(sql, dp);
@@ -85,12 +89,11 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran.Dal
         {
             const string sql = @"
             SELECT 
-            aa. SELECT 
                 aa.TimeslotMapelId, aa.KelasId, aa.Hari, aa.JenisJadwal, 
                 aa.JamMulai, aa.JamSelesai,
                 aa.MapelId, aa.GuruId, aa.Keterangan,
                 ISNULL(bb.KelasName, '') AS KelasName,
-                ISNULL(cc.MapelName, '') AS MapelName,  
+                ISNULL(cc.NamaMapel, '') AS NamaMapel,  
                 ISNULL(dd.GuruName, '') AS GuruName
             FROM TimeslotMapel aa
                 LEFT JOIN Kelas bb ON aa.KelasId = bb.KelasId
