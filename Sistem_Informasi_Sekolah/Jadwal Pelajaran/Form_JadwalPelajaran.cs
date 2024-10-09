@@ -86,30 +86,24 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
         }
         private void MapelKhusus_grid_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
-            // Pastikan bahwa indeks baris valid
             if (e.RowIndex >= 0)
             {
-                // Cek apakah kolom yang diinginkan ada
                 if (MapelKhusus_grid.Columns.Contains("TimeslotMapelId"))
                 {
-                    // Mengambil ID dari kolom yang sesuai
                     int selectJadwal = Convert.ToInt32(MapelKhusus_grid.Rows[e.RowIndex].Cells["TimeslotMapelId"].Value);
 
-                    // Mengambil data berdasarkan ID dari database
-                    var petaWaktu = _petaWaktudal.GetData(selectJadwal); // Pastikan GetData mengembalikan null jika tidak ditemukan
+                    var petaWaktu = _petaWaktudal.GetData(selectJadwal); 
 
-                    // Memastikan data tidak null
                     if (petaWaktu != null)
                     {
                         TimeslotIdLabel.Text = petaWaktu.TimeslotMapelId.ToString();
-                        // Mengisi ComboBox dan TextBox
                         Hari_combo.Text = petaWaktu.Hari;
                         KelasNama_combo.SelectedValue = petaWaktu.KelasId;
                         Mapel_combo.SelectedValue = petaWaktu.MapelId;
                         Guru_combo.SelectedValue = petaWaktu.GuruId;
                         Keterangan_text.Text = petaWaktu.Keterangan;
-                        JamMulai_mask.Text = petaWaktu.JamMulai; // Pastikan format waktu benar
-                        JamSelesai_mask.Text = petaWaktu.JamSelesai; // Pastikan format waktu benar
+                        JamMulai_mask.Text = petaWaktu.JamMulai; 
+                        JamSelesai_mask.Text = petaWaktu.JamSelesai; 
                     }
                     else
                     {
@@ -286,7 +280,7 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
                 ?? new List<PetaWaktuModel>();
             var listUmum = petaWaktu
                 .Where(x => x.JenisJadwal == "Mapel Khusus")
-                .OrderBy(x => x.Hari)
+                .OrderBy(x => _listHari.IndexOf(x.Hari))
                 .ThenBy(x => x.JamMulai)
                 .Select(x => new PetaWakttuDto
                 {
@@ -339,10 +333,15 @@ namespace Sistem_Informasi_Sekolah.Jadwal_Pelajaran
                         Rectangle r2 = MapelKhusus_grid.GetCellDisplayRectangle(0, rowIndex + i, true);
                         r1.Height += r2.Height;
                     }
+                    StringFormat sf = new StringFormat()
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center,
+                    };
 
                     e.Graphics.FillRectangle(new SolidBrush(MapelKhusus_grid.DefaultCellStyle.BackColor), r1);
-                    e.Graphics.DrawRectangle(Pens.Black, r1);
-                    e.Graphics.DrawString(currentHariValue, MapelKhusus_grid.DefaultCellStyle.Font, Brushes.Black, r1);
+                    e.Graphics.DrawRectangle(Pens.LightGray, r1); 
+                    e.Graphics.DrawString(currentHariValue, MapelKhusus_grid.DefaultCellStyle.Font, Brushes.Black, r1, sf);
 
                     rowIndex += rowSpan;
                 }
