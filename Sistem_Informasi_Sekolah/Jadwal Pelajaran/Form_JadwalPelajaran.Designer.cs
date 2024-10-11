@@ -69,7 +69,7 @@
             // 
             // label2
             // 
-            label2.BackColor = SystemColors.ActiveCaption;
+            label2.BackColor = Color.SkyBlue;
             label2.Dock = DockStyle.Top;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(0, 0);
@@ -375,7 +375,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightBlue;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(971, 546);
             Controls.Add(panel4);
             Controls.Add(tabControl1);

@@ -56,15 +56,15 @@
             panel1.Controls.Add(btn_SaveJurusan);
             panel1.Controls.Add(btn_DeleteJurusan);
             panel1.Font = new Font("Sylfaen", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            panel1.Location = new Point(9, 12);
+            panel1.Location = new Point(-3, -1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(700, 400);
+            panel1.Size = new Size(717, 422);
             panel1.TabIndex = 0;
             // 
             // btn_new
             // 
             btn_new.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_new.Location = new Point(452, 318);
+            btn_new.Location = new Point(468, 322);
             btn_new.Name = "btn_new";
             btn_new.Size = new Size(77, 33);
             btn_new.TabIndex = 12;
@@ -80,7 +80,7 @@
             panel2.Controls.Add(tx_JurusanID);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(452, 40);
+            panel2.Location = new Point(468, 44);
             panel2.Name = "panel2";
             panel2.Size = new Size(237, 272);
             panel2.TabIndex = 2;
@@ -137,9 +137,10 @@
             // 
             label1.BackColor = Color.SkyBlue;
             label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Sylfaen", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(700, 32);
+            label1.Size = new Size(717, 32);
             label1.TabIndex = 1;
             label1.Text = "JURUSAN";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -147,15 +148,15 @@
             // GridJurusan
             // 
             GridJurusan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridJurusan.Location = new Point(3, 35);
+            GridJurusan.Location = new Point(15, 35);
             GridJurusan.Name = "GridJurusan";
             GridJurusan.RowTemplate.Height = 25;
-            GridJurusan.Size = new Size(443, 362);
+            GridJurusan.Size = new Size(443, 375);
             GridJurusan.TabIndex = 0;
             // 
             // btn_SaveJurusan
             // 
-            btn_SaveJurusan.Location = new Point(535, 318);
+            btn_SaveJurusan.Location = new Point(551, 322);
             btn_SaveJurusan.Name = "btn_SaveJurusan";
             btn_SaveJurusan.Size = new Size(78, 33);
             btn_SaveJurusan.TabIndex = 10;
@@ -165,7 +166,7 @@
             // btn_DeleteJurusan
             // 
             btn_DeleteJurusan.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_DeleteJurusan.Location = new Point(619, 318);
+            btn_DeleteJurusan.Location = new Point(635, 322);
             btn_DeleteJurusan.Name = "btn_DeleteJurusan";
             btn_DeleteJurusan.Size = new Size(70, 33);
             btn_DeleteJurusan.TabIndex = 11;

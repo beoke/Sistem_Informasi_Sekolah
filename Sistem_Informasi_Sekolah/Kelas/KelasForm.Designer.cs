@@ -62,9 +62,9 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(GridKelas);
             panel1.Font = new Font("Sylfaen", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(-3, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(739, 397);
+            panel1.Size = new Size(767, 420);
             panel1.TabIndex = 2;
             // 
             // panel2
@@ -82,7 +82,7 @@
             panel2.Controls.Add(tx_KelasId);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(482, 45);
+            panel2.Location = new Point(509, 45);
             panel2.Name = "panel2";
             panel2.Size = new Size(245, 299);
             panel2.TabIndex = 15;
@@ -190,7 +190,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 6);
+            label2.Location = new Point(14, 6);
             label2.Name = "label2";
             label2.Size = new Size(67, 22);
             label2.TabIndex = 19;
@@ -199,7 +199,7 @@
             // btn_newKelas
             // 
             btn_newKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_newKelas.Location = new Point(491, 350);
+            btn_newKelas.Location = new Point(518, 350);
             btn_newKelas.Name = "btn_newKelas";
             btn_newKelas.Size = new Size(67, 33);
             btn_newKelas.TabIndex = 14;
@@ -209,7 +209,7 @@
             // btn_deleteKelas
             // 
             btn_deleteKelas.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_deleteKelas.Location = new Point(572, 350);
+            btn_deleteKelas.Location = new Point(599, 350);
             btn_deleteKelas.Name = "btn_deleteKelas";
             btn_deleteKelas.Size = new Size(67, 33);
             btn_deleteKelas.TabIndex = 3;
@@ -218,7 +218,7 @@
             // 
             // btn_SaveKelas
             // 
-            btn_SaveKelas.Location = new Point(645, 350);
+            btn_SaveKelas.Location = new Point(672, 350);
             btn_SaveKelas.Name = "btn_SaveKelas";
             btn_SaveKelas.Size = new Size(67, 33);
             btn_SaveKelas.TabIndex = 2;
@@ -229,9 +229,10 @@
             // 
             label1.BackColor = Color.SkyBlue;
             label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Sylfaen", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(739, 32);
+            label1.Size = new Size(767, 32);
             label1.TabIndex = 1;
             label1.Text = "KELAS";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -239,10 +240,10 @@
             // GridKelas
             // 
             GridKelas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridKelas.Location = new Point(3, 35);
+            GridKelas.Location = new Point(12, 45);
             GridKelas.Name = "GridKelas";
             GridKelas.RowTemplate.Height = 25;
-            GridKelas.Size = new Size(464, 362);
+            GridKelas.Size = new Size(491, 362);
             GridKelas.TabIndex = 0;
             // 
             // KelasForm

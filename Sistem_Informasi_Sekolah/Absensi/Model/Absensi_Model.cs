@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistem_Informasi_Sekolah.Absensi
 {
-    internal class Absensi_Model
+    public class Absensi_Model
     {
     }
 }

@@ -62,7 +62,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.GradientActiveCaption;
+            panel1.BackColor = SystemColors.ActiveCaption;
             panel1.Controls.Add(GuruLahir_Date);
             panel1.Controls.Add(TINgkatPendidikan_Combo);
             panel1.Controls.Add(GuruSearch_Text);
@@ -88,9 +88,9 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(DataGuru_Grid);
             panel1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            panel1.Location = new Point(12, 37);
+            panel1.Location = new Point(0, 37);
             panel1.Name = "panel1";
-            panel1.Size = new Size(745, 509);
+            panel1.Size = new Size(764, 522);
             panel1.TabIndex = 1;
             // 
             // GuruLahir_Date
@@ -295,9 +295,9 @@
             // 
             // label10
             // 
-            label10.BackColor = SystemColors.ActiveCaption;
+            label10.BackColor = Color.SkyBlue;
             label10.Dock = DockStyle.Top;
-            label10.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label10.Location = new Point(0, 0);
             label10.Name = "label10";
             label10.Size = new Size(764, 34);
