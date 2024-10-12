@@ -224,5 +224,6 @@ namespace Sistem_Informasi_Sekolah
         {
             LoadKelasData(); // masih ada bug
         }
+
     }
 }

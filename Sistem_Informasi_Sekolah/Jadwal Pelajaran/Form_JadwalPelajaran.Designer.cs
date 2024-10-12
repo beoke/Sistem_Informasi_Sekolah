@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             label2 = new Label();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            MapelUmum_grid = new DataGridView();
-            tabPage2 = new TabPage();
-            MapelKhusus_grid = new DataGridView();
             label3 = new Label();
             panel3 = new Panel();
             KelasNama_combo = new ComboBox();
@@ -57,14 +52,19 @@
             JamMulai_mask = new MaskedTextBox();
             Keterangan_text = new TextBox();
             label1 = new Label();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            MapelUmum_grid = new DataGridView();
+            tabPage2 = new TabPage();
+            MapelKhusus_grid = new DataGridView();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
+            panel4.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MapelUmum_grid).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MapelKhusus_grid).BeginInit();
-            panel3.SuspendLayout();
-            panel2.SuspendLayout();
-            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -78,57 +78,6 @@
             label2.TabIndex = 7;
             label2.Text = "Jadwal Pelajaran";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(12, 48);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(686, 486);
-            tabControl1.TabIndex = 8;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Controls.Add(MapelUmum_grid);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(678, 458);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Jadwal Mapel Umum";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // MapelUmum_grid
-            // 
-            MapelUmum_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MapelUmum_grid.Location = new Point(6, 6);
-            MapelUmum_grid.Name = "MapelUmum_grid";
-            MapelUmum_grid.RowTemplate.Height = 25;
-            MapelUmum_grid.Size = new Size(666, 443);
-            MapelUmum_grid.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(MapelKhusus_grid);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(678, 458);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Jadwal Mapel Khusus";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // MapelKhusus_grid
-            // 
-            MapelKhusus_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MapelKhusus_grid.Location = new Point(6, 6);
-            MapelKhusus_grid.Name = "MapelKhusus_grid";
-            MapelKhusus_grid.ReadOnly = true;
-            MapelKhusus_grid.RowTemplate.Height = 25;
-            MapelKhusus_grid.Size = new Size(666, 443);
-            MapelKhusus_grid.TabIndex = 0;
             // 
             // label3
             // 
@@ -145,7 +94,7 @@
             panel3.BackColor = SystemColors.GradientInactiveCaption;
             panel3.Controls.Add(KelasNama_combo);
             panel3.Controls.Add(label3);
-            panel3.Location = new Point(707, 72);
+            panel3.Location = new Point(12, 70);
             panel3.Name = "panel3";
             panel3.Size = new Size(246, 72);
             panel3.TabIndex = 3;
@@ -208,7 +157,7 @@
             panel2.Controls.Add(label5);
             panel2.Controls.Add(Hari_combo);
             panel2.Controls.Add(JenisJadwal_combo);
-            panel2.Location = new Point(707, 150);
+            panel2.Location = new Point(12, 148);
             panel2.Name = "panel2";
             panel2.Size = new Size(246, 123);
             panel2.TabIndex = 4;
@@ -324,7 +273,7 @@
             panel4.Controls.Add(Guru_combo);
             panel4.Controls.Add(New_button);
             panel4.Controls.Add(Mapel_combo);
-            panel4.Location = new Point(707, 279);
+            panel4.Location = new Point(12, 277);
             panel4.Name = "panel4";
             panel4.Size = new Size(246, 255);
             panel4.TabIndex = 5;
@@ -371,38 +320,86 @@
             label1.TabIndex = 18;
             label1.Text = "Keterangan";
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(273, 48);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(686, 486);
+            tabControl1.TabIndex = 9;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(MapelUmum_grid);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(678, 458);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Jadwal Mapel Umum";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // MapelUmum_grid
+            // 
+            MapelUmum_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MapelUmum_grid.Location = new Point(6, 6);
+            MapelUmum_grid.Name = "MapelUmum_grid";
+            MapelUmum_grid.RowTemplate.Height = 25;
+            MapelUmum_grid.Size = new Size(666, 443);
+            MapelUmum_grid.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(MapelKhusus_grid);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(678, 458);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Jadwal Mapel Khusus";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // MapelKhusus_grid
+            // 
+            MapelKhusus_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MapelKhusus_grid.Location = new Point(6, 6);
+            MapelKhusus_grid.Name = "MapelKhusus_grid";
+            MapelKhusus_grid.ReadOnly = true;
+            MapelKhusus_grid.RowTemplate.Height = 25;
+            MapelKhusus_grid.Size = new Size(666, 443);
+            MapelKhusus_grid.TabIndex = 0;
+            // 
             // Form_JadwalPelajaran
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(971, 546);
-            Controls.Add(panel4);
             Controls.Add(tabControl1);
+            Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(label2);
             Name = "Form_JadwalPelajaran";
             Text = "Form_JadwalPelajaran";
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)MapelUmum_grid).EndInit();
-            tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)MapelKhusus_grid).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)MapelUmum_grid).EndInit();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)MapelKhusus_grid).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private Label label2;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
         private Label label3;
         private Panel panel3;
         private ComboBox JenisJadwal_combo;
@@ -425,8 +422,11 @@
         private MaskedTextBox JamMulai_mask;
         private TextBox Keterangan_text;
         private Label label1;
-        private DataGridView MapelUmum_grid;
-        private DataGridView MapelKhusus_grid;
         private Label TimeslotIdLabel;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private DataGridView MapelUmum_grid;
+        private TabPage tabPage2;
+        private DataGridView MapelKhusus_grid;
     }
 }
