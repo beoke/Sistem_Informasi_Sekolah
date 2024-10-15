@@ -334,7 +334,7 @@
             // 
             // label88
             // 
-            label88.BackColor = Color.SkyBlue;
+            label88.BackColor = Color.SteelBlue;
             label88.Dock = DockStyle.Top;
             label88.Font = new Font("Sylfaen", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label88.Location = new Point(3, 2);

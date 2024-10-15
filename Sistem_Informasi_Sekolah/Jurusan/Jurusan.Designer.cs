@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            GridJurusan = new DataGridView();
             btn_new = new Button();
             panel2 = new Panel();
             CodeText = new MaskedTextBox();
@@ -40,10 +41,9 @@
             label1 = new Label();
             btn_SaveJurusan = new Button();
             btn_DeleteJurusan = new Button();
-            GridJurusan = new DataGridView();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridJurusan).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -60,6 +60,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(717, 422);
             panel1.TabIndex = 0;
+            // 
+            // GridJurusan
+            // 
+            GridJurusan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridJurusan.Location = new Point(271, 44);
+            GridJurusan.Name = "GridJurusan";
+            GridJurusan.RowTemplate.Height = 25;
+            GridJurusan.Size = new Size(443, 375);
+            GridJurusan.TabIndex = 13;
             // 
             // btn_new
             // 
@@ -80,7 +89,7 @@
             panel2.Controls.Add(tx_JurusanID);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(15, 51);
+            panel2.Location = new Point(15, 44);
             panel2.Name = "panel2";
             panel2.Size = new Size(237, 272);
             panel2.TabIndex = 2;
@@ -164,15 +173,6 @@
             btn_DeleteJurusan.Text = "Delete";
             btn_DeleteJurusan.UseVisualStyleBackColor = true;
             // 
-            // GridJurusan
-            // 
-            GridJurusan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridJurusan.Location = new Point(271, 44);
-            GridJurusan.Name = "GridJurusan";
-            GridJurusan.RowTemplate.Height = 25;
-            GridJurusan.Size = new Size(443, 375);
-            GridJurusan.TabIndex = 13;
-            // 
             // Jurusan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -182,9 +182,9 @@
             Name = "Jurusan";
             Text = "Jurusan";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)GridJurusan).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)GridJurusan).EndInit();
             ResumeLayout(false);
         }
 

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            tx_MapelName = new TextBox();
+            GridMapel = new DataGridView();
+            panel2 = new Panel();
             tx_MapelID = new TextBox();
+            tx_MapelName = new TextBox();
+            btn_SaveMapel = new Button();
+            btn_deleteMapel4 = new Button();
             label3 = new Label();
             label2 = new Label();
-            btn_deleteMapel4 = new Button();
-            btn_SaveMapel = new Button();
             label1 = new Label();
-            panel2 = new Panel();
-            GridMapel = new DataGridView();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridMapel).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -55,12 +55,28 @@
             panel1.Size = new Size(716, 400);
             panel1.TabIndex = 2;
             // 
-            // tx_MapelName
+            // GridMapel
             // 
-            tx_MapelName.Location = new Point(13, 95);
-            tx_MapelName.Name = "tx_MapelName";
-            tx_MapelName.Size = new Size(201, 29);
-            tx_MapelName.TabIndex = 7;
+            GridMapel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridMapel.Location = new Point(269, 35);
+            GridMapel.Name = "GridMapel";
+            GridMapel.RowTemplate.Height = 25;
+            GridMapel.Size = new Size(443, 362);
+            GridMapel.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.SkyBlue;
+            panel2.Controls.Add(tx_MapelID);
+            panel2.Controls.Add(tx_MapelName);
+            panel2.Controls.Add(btn_SaveMapel);
+            panel2.Controls.Add(btn_deleteMapel4);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label2);
+            panel2.Location = new Point(19, 35);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(225, 296);
+            panel2.TabIndex = 8;
             // 
             // tx_MapelID
             // 
@@ -68,6 +84,32 @@
             tx_MapelID.Name = "tx_MapelID";
             tx_MapelID.Size = new Size(201, 29);
             tx_MapelID.TabIndex = 6;
+            // 
+            // tx_MapelName
+            // 
+            tx_MapelName.Location = new Point(13, 95);
+            tx_MapelName.Name = "tx_MapelName";
+            tx_MapelName.Size = new Size(201, 29);
+            tx_MapelName.TabIndex = 7;
+            // 
+            // btn_SaveMapel
+            // 
+            btn_SaveMapel.Location = new Point(129, 248);
+            btn_SaveMapel.Name = "btn_SaveMapel";
+            btn_SaveMapel.Size = new Size(75, 33);
+            btn_SaveMapel.TabIndex = 2;
+            btn_SaveMapel.Text = "Save";
+            btn_SaveMapel.UseVisualStyleBackColor = true;
+            // 
+            // btn_deleteMapel4
+            // 
+            btn_deleteMapel4.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_deleteMapel4.Location = new Point(42, 248);
+            btn_deleteMapel4.Name = "btn_deleteMapel4";
+            btn_deleteMapel4.Size = new Size(81, 33);
+            btn_deleteMapel4.TabIndex = 3;
+            btn_deleteMapel4.Text = "Delete";
+            btn_deleteMapel4.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -87,25 +129,6 @@
             label2.TabIndex = 4;
             label2.Text = "ID";
             // 
-            // btn_deleteMapel4
-            // 
-            btn_deleteMapel4.Font = new Font("Sylfaen", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_deleteMapel4.Location = new Point(42, 248);
-            btn_deleteMapel4.Name = "btn_deleteMapel4";
-            btn_deleteMapel4.Size = new Size(81, 33);
-            btn_deleteMapel4.TabIndex = 3;
-            btn_deleteMapel4.Text = "Delete";
-            btn_deleteMapel4.UseVisualStyleBackColor = true;
-            // 
-            // btn_SaveMapel
-            // 
-            btn_SaveMapel.Location = new Point(129, 248);
-            btn_SaveMapel.Name = "btn_SaveMapel";
-            btn_SaveMapel.Size = new Size(75, 33);
-            btn_SaveMapel.TabIndex = 2;
-            btn_SaveMapel.Text = "Save";
-            btn_SaveMapel.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             label1.BackColor = Color.SkyBlue;
@@ -117,29 +140,6 @@
             label1.Text = "MAPEL";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel2
-            // 
-            panel2.BackColor = Color.SkyBlue;
-            panel2.Controls.Add(tx_MapelID);
-            panel2.Controls.Add(tx_MapelName);
-            panel2.Controls.Add(btn_SaveMapel);
-            panel2.Controls.Add(btn_deleteMapel4);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
-            panel2.Location = new Point(18, 47);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(225, 296);
-            panel2.TabIndex = 8;
-            // 
-            // GridMapel
-            // 
-            GridMapel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridMapel.Location = new Point(269, 35);
-            GridMapel.Name = "GridMapel";
-            GridMapel.RowTemplate.Height = 25;
-            GridMapel.Size = new Size(443, 362);
-            GridMapel.TabIndex = 9;
-            // 
             // MapelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -149,9 +149,9 @@
             Name = "MapelForm";
             Text = "MapelForm";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)GridMapel).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)GridMapel).EndInit();
             ResumeLayout(false);
         }
 

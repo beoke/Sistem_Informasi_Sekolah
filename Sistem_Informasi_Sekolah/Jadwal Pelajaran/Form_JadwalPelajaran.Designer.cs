@@ -91,7 +91,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.GradientInactiveCaption;
+            panel3.BackColor = Color.SkyBlue;
             panel3.Controls.Add(KelasNama_combo);
             panel3.Controls.Add(label3);
             panel3.Location = new Point(12, 70);
@@ -152,7 +152,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.GradientInactiveCaption;
+            panel2.BackColor = Color.SkyBlue;
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(Hari_combo);
@@ -258,7 +258,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.GradientInactiveCaption;
+            panel4.BackColor = Color.SkyBlue;
             panel4.Controls.Add(TimeslotIdLabel);
             panel4.Controls.Add(JamSelesai_mask);
             panel4.Controls.Add(JamMulai_mask);

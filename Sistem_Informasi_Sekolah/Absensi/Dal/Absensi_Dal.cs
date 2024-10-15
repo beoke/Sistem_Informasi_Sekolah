@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sistem_Informasi_Sekolah.Absensi
 {
-    internal class Absensi_Dal
+    public class Absensi_Dal
     {
+
     }
 }

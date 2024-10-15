@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            GridKelas = new DataGridView();
             panel2 = new Panel();
             FlagText = new MaskedTextBox();
             label6 = new Label();
@@ -46,10 +47,9 @@
             btn_deleteKelas = new Button();
             btn_SaveKelas = new Button();
             label1 = new Label();
-            GridKelas = new DataGridView();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridKelas).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -67,6 +67,15 @@
             panel1.Size = new Size(767, 420);
             panel1.TabIndex = 2;
             // 
+            // GridKelas
+            // 
+            GridKelas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridKelas.Location = new Point(266, 47);
+            GridKelas.Name = "GridKelas";
+            GridKelas.RowTemplate.Height = 25;
+            GridKelas.Size = new Size(491, 362);
+            GridKelas.TabIndex = 31;
+            // 
             // panel2
             // 
             panel2.BackColor = Color.SkyBlue;
@@ -82,7 +91,7 @@
             panel2.Controls.Add(tx_KelasId);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(15, 54);
+            panel2.Location = new Point(15, 47);
             panel2.Name = "panel2";
             panel2.Size = new Size(245, 299);
             panel2.TabIndex = 15;
@@ -237,15 +246,6 @@
             label1.Text = "KELAS";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // GridKelas
-            // 
-            GridKelas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridKelas.Location = new Point(266, 47);
-            GridKelas.Name = "GridKelas";
-            GridKelas.RowTemplate.Height = 25;
-            GridKelas.Size = new Size(491, 362);
-            GridKelas.TabIndex = 31;
-            // 
             // KelasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -256,9 +256,9 @@
             Text = "KelasForm";
             Load += KelasForm_Load;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)GridKelas).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)GridKelas).EndInit();
             ResumeLayout(false);
         }
 

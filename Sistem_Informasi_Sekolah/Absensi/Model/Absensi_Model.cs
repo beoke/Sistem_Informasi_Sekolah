@@ -16,8 +16,8 @@ namespace Sistem_Informasi_Sekolah.Absensi
         public int GuruId { get; set; }
         public string GuruName { get; set; }
 
-        public int keteranagan {  get; set; }
-        public string Alasan {  get; set; }
+        public int kehadiran {  get; set; }
+        public string keterangan {  get; set; }
 
     }
 }
