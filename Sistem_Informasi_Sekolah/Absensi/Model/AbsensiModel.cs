@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sistem_Informasi_Sekolah.Absensi
+namespace Sistem_Informasi_Sekolah.Absensi.Model
 {
-    public class Absensi_Dal
+    public class AbsensiModel
     {
-
     }
 }
