@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistem_Informasi_Sekolah.Kelas_Siswa.Model
 {
-    public class KelasSiswaDetilModel
+    public class KelasSiswaDetailModel
     {
         public int KelasId { get; set; }
         public string KelasName { get; set; }

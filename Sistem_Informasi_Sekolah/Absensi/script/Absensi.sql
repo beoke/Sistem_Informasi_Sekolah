@@ -1,11 +1,12 @@
-﻿create table Absensi (
-AbsensiId INT PRIMARY KEY IDENTITY (1,0),
-Tanggal DATE,
-KelasId INT,
-MapelId INT,
-GuruId INT,
+﻿CREATE TABLE Absensi (
+    AbsensiId INT IDENTITY(1,1) PRIMARY KEY,
+    Tgl DATETIME NOT NULL DEFAULT('2024-01-01'),
+    Jam TIME NOT NULL DEFAULT('00:00'),
+    KelasId INT NOT NULL DEFAULT(0),
+    MapelId INT NOT NULL DEFAULT(0),
+    GuruId INT NOT NULL DEFAULT(0),
 
-FOREIGN KEY (KelasId) REFERENCES Kelas(KelasId),
-FOREIGN KEY (MapelId) REFERENCES Mapel(MapelId),
-FOREIGN KEY (GuruId) REFERENCES Guru(GuruId),
+    FOREIGN KEY (KelasId) REFERENCES Kelas(KelasId),
+    FOREIGN KEY (MapelId) REFERENCES Mapel(MapelId),
+    FOREIGN KEY (GuruId) REFERENCES Guru(GuruId)
 );
