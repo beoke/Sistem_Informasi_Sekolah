@@ -1,7 +1,9 @@
-﻿    CREATE TABLE KelasSiswaDetail (
-        KelasId INT NOT NULL,
-        SiswaId INT NOT NULL,
-        PRIMARY KEY (KelasId, SiswaId),
-        FOREIGN KEY (KelasId) REFERENCES Kelas(KelasId),
-        FOREIGN KEY (SiswaId) REFERENCES Siswa(SiswaId)
-    );
+﻿CREATE TABLE KelasSiswaDetail(
+    KelasId INT NOT NULL CONSTRAINT DF_KelasSiswaDetail_KelasId DEFAULT(0),
+    SiswaId INT NOT NULL CONSTRAINT DF_KelasSiswaDetail_SiswaId DEFAULT(0)
+) 
+GO
+
+CREATE CLUSTERED INDEX CX_KelasSiswaDetail_KelasId
+    ON KelasSiswaDetail(KelasId)
+GO

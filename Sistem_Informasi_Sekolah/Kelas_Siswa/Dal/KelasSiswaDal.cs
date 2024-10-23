@@ -18,15 +18,15 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa.Dal
         {
             const string sql = @"
             INSERT INTO KelasSiswa(
-                KelasId, SiswaId, SiswaName)
+                KelasId, TahunAjaran, WaliKelasId)
             OUTPUT inserted.SiswaId
             VALUES (
-                @KelasId, @SiswaId, @SiswaName)";
+                @KelasId, @TahunAjaran, @WaliKelasId)";
 
             var dp = new DynamicParameters();
             dp.Add("@KelasId", model.KelasId, DbType.Int32);
-            dp.Add("@SiswaId", model.SiswaId, DbType.Int32);
-            dp.Add("@SiswaName", model.SiswaName, DbType.String);
+            dp.Add("@TahunAjaran", model.TahunAjaran, DbType.String);
+            dp.Add("@WaliKelasId", model.WaliKelasId, DbType.Int32);
 
             using var con = new SqlConnection(ConnStringHelper.Get());
             var result = con.QuerySingle<int>(sql, dp);
@@ -38,35 +38,72 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa.Dal
             const string sql = @"
             UPDATE KelasSiswa
             SET 
-                KelasId = @KelasId, 
-                SiswaName = @SiswaName
+                TahunAjaran = @TahunAjaran, 
+                WaliKelasId = @WaliKelasId
             WHERE 
-                SiswaId = @SiswaId";
+                KelasId = @KelasId";
 
             var dp = new DynamicParameters();
             dp.Add("@KelasId", model.KelasId, DbType.Int32);
-            dp.Add("@SiswaName", model.SiswaName, DbType.String);
-            dp.Add("@SiswaId", model.SiswaId, DbType.Int32);
+            dp.Add("@TahunAjaran", model.TahunAjaran, DbType.String);
+            dp.Add("@WaliKelasId", model.WaliKelasId, DbType.Int32);
 
             using var con = new SqlConnection(ConnStringHelper.Get());
             con.Execute(sql, dp);
         }
 
-        public KelasSiswaModel GetData(int siswaId)
+        public void Delete(int kelasid)
+        {
+            const string sql = @"
+             DELETE FROM
+                KelasSiswa
+             WHERE 
+                KelasId = @KelasId";
+
+            var dp = new DynamicParameters();
+            dp.Add("@KelasId", kelasid, DbType.String);
+
+            using var con = new SqlConnection(ConnStringHelper.Get());
+            var result = con.Execute(sql, dp);
+        }
+
+        public KelasSiswaModel GetData(int kelasId)
         {
             const string sql = @"
             SELECT
-                KelasId, SiswaId, SiswaName
+                aa.KelasId, aa.TahunAjaran, aa.WaliKelasId,
+                ISNULL(bb.KelasName, '') KelasName,
+                ISNULL(cc.GuruName, '') WaliKelasName
             FROM
-                KelasSiswa
+                KelasSiswa aa
+                LEFT JOIN Kelas bb ON aa.KelasId = bb.KelasId
+                LEFT JOIN Guru cc ON aa.WaliKelasId = cc.GuruId
             WHERE
-                SiswaId = @SiswaId";
+                aa.KelasId = @KelasId";
 
             var dp = new DynamicParameters();
-            dp.Add("@SiswaId", siswaId, DbType.Int32);
+            dp.Add("@KelasId", kelasId, DbType.Int32);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QuerySingle<KelasSiswaModel>(sql, dp);
+            var result = conn.Query<KelasSiswaModel>(sql, dp).FirstOrDefault();
+            return result;
+        }
+
+        public IEnumerable<KelasSiswaModel> ListData()
+        {
+            const string sql = @"
+            SELECT
+                aa.KelasId, aa.TahunAjaran, aa.WaliKelasId,
+                ISNULL(bb.KelasName, '') KelasId,
+                ISNULL(cc.GuruName, '') WaliKelasName
+            FROM
+                KelasSiswa aa
+                LEFT JOIN Kelas bb ON aa.KelasId = bb.KelasId
+                LEFT JOIN Guru cc ON aa.WaliKelasId = cc.GuruId";
+
+            using var conn = new SqlConnection(ConnStringHelper.Get());
+            var result = conn.Query<KelasSiswaModel>(sql);
+            return result;
         }
 
     }

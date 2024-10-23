@@ -1,8 +1,8 @@
-﻿CREATE TABLE KelasSiswa (
-    KelasId INT PRIMARY KEY IDENTITY(1,1),
-    TahunAjaran VARCHAR(20),
-    WaliKelasId INT,
-    FOREIGN KEY (WaliKelasId) REFERENCES Guru(GuruId),
-    KelasId_FK INT,
-    FOREIGN KEY (KelasId_FK) REFERENCES Kelas(KelasId)
-);
+﻿﻿CREATE TABLE KelasSiswa(
+	KelasId INT NOT NULL CONSTRAINT DF_KelasSiswa_KelasId DEFAULT(0),
+	TahunAjaran VARCHAR(20) NOT NULL CONSTRAINT DF_KelasSiswa_TahunAjaran DEFAULT(''),
+	WaliKelasId INT NOT NULL CONSTRAINT DF_KelasSiswa_SiswaId DEFAULT(0),
+
+	CONSTRAINT PK_KelasSiswa PRIMARY KEY CLUSTERED(KelasId)
+)
+GO

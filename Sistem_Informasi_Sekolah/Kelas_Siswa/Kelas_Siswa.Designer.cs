@@ -36,10 +36,13 @@
             label2 = new Label();
             label1 = new Label();
             label4 = new Label();
-            dataGridView1 = new DataGridView();
+            Allsiswa_grid = new DataGridView();
             Save_button = new Button();
+            KelasSiswa_grid = new DataGridView();
+            search_text = new TextBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Allsiswa_grid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)KelasSiswa_grid).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -118,14 +121,14 @@
             label4.Text = "KELAS SISWA";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // Allsiswa_grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(236, 55);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(542, 352);
-            dataGridView1.TabIndex = 3;
+            Allsiswa_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Allsiswa_grid.Location = new Point(236, 92);
+            Allsiswa_grid.Name = "Allsiswa_grid";
+            Allsiswa_grid.RowTemplate.Height = 25;
+            Allsiswa_grid.Size = new Size(267, 315);
+            Allsiswa_grid.TabIndex = 3;
             // 
             // Save_button
             // 
@@ -136,22 +139,42 @@
             Save_button.Text = "Save";
             Save_button.UseVisualStyleBackColor = true;
             // 
+            // KelasSiswa_grid
+            // 
+            KelasSiswa_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            KelasSiswa_grid.Location = new Point(509, 92);
+            KelasSiswa_grid.Name = "KelasSiswa_grid";
+            KelasSiswa_grid.RowTemplate.Height = 25;
+            KelasSiswa_grid.Size = new Size(269, 315);
+            KelasSiswa_grid.TabIndex = 5;
+            // 
+            // search_text
+            // 
+            search_text.Location = new Point(236, 58);
+            search_text.Name = "search_text";
+            search_text.Size = new Size(261, 23);
+            search_text.TabIndex = 6;
+            // 
             // Kelas_Siswa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(search_text);
+            Controls.Add(KelasSiswa_grid);
             Controls.Add(Save_button);
-            Controls.Add(dataGridView1);
+            Controls.Add(Allsiswa_grid);
             Controls.Add(label4);
             Controls.Add(panel1);
             Name = "Kelas_Siswa";
             Text = "Kelas_Siswa";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Allsiswa_grid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)KelasSiswa_grid).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -164,7 +187,9 @@
         private ComboBox WaliKelas_combo;
         private ComboBox Kelas_Combo;
         private Label label4;
-        private DataGridView dataGridView1;
+        private DataGridView Allsiswa_grid;
         private Button Save_button;
+        private DataGridView KelasSiswa_grid;
+        private TextBox search_text;
     }
 }
