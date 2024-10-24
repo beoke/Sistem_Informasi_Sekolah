@@ -1,5 +1,7 @@
-﻿using Sistem_Informasi_Sekolah.Guru;
+﻿using Sistem_Informasi_Sekolah.Absensi;
+using Sistem_Informasi_Sekolah.Guru;
 using Sistem_Informasi_Sekolah.Jadwal_Pelajaran;
+using Sistem_Informasi_Sekolah.Kelas_Siswa;
 using Sistem_Informasi_Sekolah.Mapel;
 using System;
 using System.Collections.Generic;
@@ -25,8 +27,11 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             KelasTool.Click += KelasTool_Click;
             GuruTool.Click += GuruTool_Click;
             Jadwal_tool.Click += Jadwal_tool_Click;
+            KelasSiswaTool.Click += KelasSiswaTool_Click;
 
         }
+
+
         private void Jadwal_tool_Click(object? sender, EventArgs e)
         {
             loadDataJadwal();
@@ -34,6 +39,10 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
 
         #region Run Load 
 
+        private void KelasSiswaTool_Click(object? sender, EventArgs e)
+        {
+            LoadDataKelasSiswa();
+        }
 
         private void GuruTool_Click(object? sender, EventArgs e)
         {
@@ -62,6 +71,20 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
         }
 
         #endregion
+        private void LoadDataKelasSiswa()
+        {
+
+            Kelas_Siswaa kelsiswa = new Kelas_Siswaa();
+
+            kelsiswa.TopLevel = false;
+            kelsiswa.FormBorderStyle = FormBorderStyle.None;
+            kelsiswa.Dock = DockStyle.Fill;
+
+            panel1.Controls.Clear();
+            panel1.Controls.Add(kelsiswa);
+
+            kelsiswa.Show();
+        }
         private void LoadDataInduk()
         {
             // membuat instance dari Form1

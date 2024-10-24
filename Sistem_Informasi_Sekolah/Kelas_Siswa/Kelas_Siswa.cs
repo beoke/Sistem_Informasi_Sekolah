@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sistem_Informasi_Sekolah.Kelas_Siswa
 {
-    public partial class Kelas_Siswa : Form
+    public partial class Kelas_Siswaa : Form
     {
-        public Kelas_Siswa()
+        public Kelas_Siswaa()
         {
             InitializeComponent();
         }

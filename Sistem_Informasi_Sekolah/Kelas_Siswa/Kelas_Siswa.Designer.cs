@@ -1,6 +1,6 @@
 ﻿namespace Sistem_Informasi_Sekolah.Kelas_Siswa
 {
-    partial class Kelas_Siswa
+    partial class Kelas_Siswaa
     {
         /// <summary>
         /// Required designer variable.
@@ -155,7 +155,7 @@
             search_text.Size = new Size(261, 23);
             search_text.TabIndex = 6;
             // 
-            // Kelas_Siswa
+            // Kelas_Siswaa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -167,7 +167,7 @@
             Controls.Add(Allsiswa_grid);
             Controls.Add(label4);
             Controls.Add(panel1);
-            Name = "Kelas_Siswa";
+            Name = "Kelas_Siswaa";
             Text = "Kelas_Siswa";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -32,6 +32,7 @@
             menuStrip1 = new MenuStrip();
             formToolStripMenuItem = new ToolStripMenuItem();
             dataIdukToolStripMenuItem = new ToolStripMenuItem();
+            KelasSiswaTool = new ToolStripMenuItem();
             pengajaranToolStripMenuItem = new ToolStripMenuItem();
             MapelTool = new ToolStripMenuItem();
             JurusanTool = new ToolStripMenuItem();
@@ -54,7 +55,7 @@
             // formToolStripMenuItem
             // 
             formToolStripMenuItem.BackgroundImageLayout = ImageLayout.Stretch;
-            formToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIdukToolStripMenuItem });
+            formToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIdukToolStripMenuItem, KelasSiswaTool });
             formToolStripMenuItem.Image = (Image)resources.GetObject("formToolStripMenuItem.Image");
             formToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             formToolStripMenuItem.Name = "formToolStripMenuItem";
@@ -67,8 +68,14 @@
             dataIdukToolStripMenuItem.Image = (Image)resources.GetObject("dataIdukToolStripMenuItem.Image");
             dataIdukToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             dataIdukToolStripMenuItem.Name = "dataIdukToolStripMenuItem";
-            dataIdukToolStripMenuItem.Size = new Size(140, 38);
+            dataIdukToolStripMenuItem.Size = new Size(196, 38);
             dataIdukToolStripMenuItem.Text = "Data Iduk";
+            // 
+            // KelasSiswaTool
+            // 
+            KelasSiswaTool.Name = "KelasSiswaTool";
+            KelasSiswaTool.Size = new Size(196, 38);
+            KelasSiswaTool.Text = "Kelas Siswa";
             // 
             // pengajaranToolStripMenuItem
             // 
@@ -156,5 +163,6 @@
         private ToolStripMenuItem KelasTool;
         private ToolStripMenuItem GuruTool;
         private ToolStripMenuItem Jadwal_tool;
+        private ToolStripMenuItem KelasSiswaTool;
     }
 }
