@@ -9,11 +9,7 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa.Model
     public class KelasSiswaDetailModel
     {
         public int KelasId { get; set; }
-        public string KelasName { get; set; }
-        public string TahunAjaran {  get; set; }
-        public int WaliKelasId { get; set; }
-        public string WaliKelasName { get; set; }
-
-        public List<KelasSiswaModel> ListSiswa {  get; set; }
+        public int SiswaId { get; set; }
+        public string SiswaName { get; set; }
     }
 }
