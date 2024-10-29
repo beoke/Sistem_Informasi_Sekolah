@@ -578,7 +578,7 @@ namespace Sistem_Informasi_Sekolah
         }
         private void RefreshListData()
         {
-            var listData = siswaDal.ListData() ?? new List<SiswaModel>();
+            var listData = siswaDal.ListData(string.Empty, new {}) ?? new List<SiswaModel>();
             var dataSource = listData
                 .Select(x => new ListSiswaDto
                 {

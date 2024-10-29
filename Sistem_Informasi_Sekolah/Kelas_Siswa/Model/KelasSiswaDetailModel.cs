@@ -12,6 +12,5 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa.Model
         public int SiswaId { get; set; }
         public string SiswaName { get; set; }
 
-        public string TahunAjaran {  get; set; }
     }
 }

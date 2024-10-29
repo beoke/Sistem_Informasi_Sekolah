@@ -148,9 +148,9 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             return conn.QueryFirstOrDefault<SiswaModel>(sql, dp);
         }
 
-        public IEnumerable<SiswaModel> ListData()
+        public IEnumerable<SiswaModel> ListData(string kondisi, object param)
         {
-            const string sql = @"
+            string sql = $@"
                 SELECT
                     SiswaId, NamaLengkap, NamaPanggil,
                     Gender,TmpLahir,TglLahir, Agama, Kewarganegaraan,
@@ -158,12 +158,10 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
                     YatimPiatu, Bahasa, Alamat,
                     NoTelp, TngglDengan,JrkKeSekolah,TransportSekolah, LokasiPhoto
                 FROM
-                    Siswa";
-
-            var dp = new DynamicParameters();
+                    Siswa {kondisi}";
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.Query<SiswaModel>(sql, dp);
+            return conn.Query<SiswaModel>(sql, param);
         }
     }
 }

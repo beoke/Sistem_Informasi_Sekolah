@@ -52,10 +52,21 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
             Allsiswa_grid.CellDoubleClick += Allsiswa_grid_CellDoubleClick;
             KelasSiswa_grid.CellDoubleClick += KelasSiswa_grid_CellDoubleClick;
             Save_button.Click += Save_button_Click;
+            search_text.TextChanged += Search_text_TextChanged;
+        }
+
+        private void Search_text_TextChanged(object? sender, EventArgs e)
+        {
+            LoadKelas();
         }
 
         private void Save_button_Click(object? sender, EventArgs e)
         {
+            var kelasId = (int)Kelas_Combo.SelectedValue;
+            var kelasSiswa = kelasSiswaDal_.GetData(kelasId);
+            if (kelasSiswa is null)
+                CreateNewKelasSiswa();
+
             if (kelasSiswaList_.Count == 0)
             {
                 MessageBox.Show("Tidak ada siswa yang ditambahkan ke kelas. Silakan tambahkan siswa sebelum menyimpan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -67,19 +78,16 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
                 MessageBox.Show("Tahun ajaran harus diisi sebelum menyimpan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            var kelasId = (int)Kelas_Combo.SelectedValue;
    
             foreach (var siswa in kelasSiswaList_)
             {
-                var newDetil = new KelasSiswaDetailModel
+                var newDetail = new KelasSiswaDetailModel
                 {
                     KelasId = kelasId,
-                    SiswaId = siswa.SiswaId,
-                    TahunAjaran = TahunAjaran_text.Text
+                    SiswaId = siswa.SiswaId
                 };
 
-                kelasSiswaDetailDal_.Insert(newDetil);
+                kelasSiswaDetailDal_.Insert(newDetail);
             }
 
             KelasSiswa_grid.Refresh();
@@ -105,15 +113,10 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
             var grid = sender as DataGridView;
             if (grid == null || e.RowIndex < 0) return;
 
-            var kelasId = (int)Kelas_Combo.SelectedValue;
-            var kelasSiswa = kelasSiswaDal_.GetData(kelasId);
-            if (kelasSiswa is null)
-                CreateNewKelasSiswa();
 
             var siswaId = (int)grid.CurrentRow.Cells["SiswaId"].Value;
             var siswaName = grid.CurrentRow.Cells["SiswaName"].Value.ToString();
 
-            // Hanya tambahkan siswa ke daftar sementara
             var siswaDto = new SiswaDto(siswaId, siswaName ?? string.Empty);
 
             kelasSiswaList_.Add(siswaDto);
@@ -121,7 +124,6 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
             var removedItem = allSiswaList_.FirstOrDefault(x => x.SiswaId == siswaId);
             allSiswaList_.Remove(removedItem);
             Allsiswa_grid.Refresh();
-
         }
 
         private void CreateNewKelasSiswa()
@@ -130,7 +132,7 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
             {
                 KelasId = (int)Kelas_Combo.SelectedValue,
                 TahunAjaran = TahunAjaran_text.Text,
-                WaliKelasId = (int)WaliKelas_combo.SelectedIndex
+                WaliKelasId = (int)WaliKelas_combo.SelectedValue
             };
             kelasSiswaDal_.Insert(newKelasSiswa);
         }
@@ -147,6 +149,7 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
                 ClearForm();
                 return;
             }
+            
 
             var selectedKelasId = (int)Kelas_Combo.SelectedValue;
             var kelasSiswa = kelasSiswaDal_.GetData(selectedKelasId);
@@ -184,7 +187,9 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
 
         private void ListAvailableSiswa()
         {
-            var allSiswa = siswaDal_.ListData()?.ToList()
+            string filter = search_text.Text;
+
+            var allSiswa = siswaDal_.ListData("WHERE NamaLengkap LIKE '%'+@NamaLengkap+'%'", new {NamaLengkap=filter})?.ToList()
                 ?? new();
             var siswaInKelas = kelasSiswaDetailDal_.ListData()?.ToList()
                 ?? new();
