@@ -50,7 +50,41 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
             Kelas_Combo.SelectedIndexChanged += Kelas_Combo_SelectedIndexChanged; ;
 
             Allsiswa_grid.CellDoubleClick += Allsiswa_grid_CellDoubleClick;
-            KelasSiswa_grid.CellDoubleClick += KelasSiswa_grid_CellDoubleClick; ;
+            KelasSiswa_grid.CellDoubleClick += KelasSiswa_grid_CellDoubleClick;
+            Save_button.Click += Save_button_Click;
+        }
+
+        private void Save_button_Click(object? sender, EventArgs e)
+        {
+            if (kelasSiswaList_.Count == 0)
+            {
+                MessageBox.Show("Tidak ada siswa yang ditambahkan ke kelas. Silakan tambahkan siswa sebelum menyimpan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TahunAjaran_text.Text))
+            {
+                MessageBox.Show("Tahun ajaran harus diisi sebelum menyimpan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var kelasId = (int)Kelas_Combo.SelectedValue;
+   
+            foreach (var siswa in kelasSiswaList_)
+            {
+                var newDetil = new KelasSiswaDetailModel
+                {
+                    KelasId = kelasId,
+                    SiswaId = siswa.SiswaId,
+                    TahunAjaran = TahunAjaran_text.Text
+                };
+
+                kelasSiswaDetailDal_.Insert(newDetil);
+            }
+
+            KelasSiswa_grid.Refresh();
+            ListAvailableSiswa();
+            MessageBox.Show("Data berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void KelasSiswa_grid_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -69,6 +103,8 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
         private void Allsiswa_grid_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             var grid = sender as DataGridView;
+            if (grid == null || e.RowIndex < 0) return;
+
             var kelasId = (int)Kelas_Combo.SelectedValue;
             var kelasSiswa = kelasSiswaDal_.GetData(kelasId);
             if (kelasSiswa is null)
@@ -76,15 +112,16 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa
 
             var siswaId = (int)grid.CurrentRow.Cells["SiswaId"].Value;
             var siswaName = grid.CurrentRow.Cells["SiswaName"].Value.ToString();
-            var newDetil = new KelasSiswaDetailModel
-            {
-                KelasId = kelasId,
-                SiswaId = siswaId
-            };
-            kelasSiswaDetailDal_.Insert(newDetil);
-            kelasSiswaList_.Add(new SiswaDto(siswaId, siswaName ?? string.Empty));
-            KelasSiswa_grid.Refresh();
-            ListAvailableSiswa();
+
+            // Hanya tambahkan siswa ke daftar sementara
+            var siswaDto = new SiswaDto(siswaId, siswaName ?? string.Empty);
+
+            kelasSiswaList_.Add(siswaDto);
+
+            var removedItem = allSiswaList_.FirstOrDefault(x => x.SiswaId == siswaId);
+            allSiswaList_.Remove(removedItem);
+            Allsiswa_grid.Refresh();
+
         }
 
         private void CreateNewKelasSiswa()

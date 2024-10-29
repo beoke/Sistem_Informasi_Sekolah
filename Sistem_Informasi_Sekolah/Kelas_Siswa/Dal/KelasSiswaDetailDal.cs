@@ -44,7 +44,7 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa.Dal
         {
             const string sql = @"
             DELETE FROM 
-                KelasSiswaDetil
+                KelasSiswaDetail
             WHERE 
                 KelasId = @KelasId
                 AND SiswaId = @SiswaId ";
@@ -65,7 +65,7 @@ namespace Sistem_Informasi_Sekolah.Kelas_Siswa.Dal
                 aa.KelasId, aa.SiswaId, 
                 ISNULL(bb.NamaLengkap, '') SiswaName
             FROM 
-                KelasSiswaDetil aa
+                KelasSiswaDetail aa
                 LEFT JOIN Siswa bb ON aa.SiswaId = bb.SiswaId
             WHERE 
                 aa.KelasId = @KelasId";
