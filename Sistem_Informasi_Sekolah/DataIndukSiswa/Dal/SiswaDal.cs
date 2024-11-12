@@ -104,7 +104,7 @@ namespace Sistem_Informasi_Sekolah.DataIndukSiswa.Dal
             dp.Add("@TngglDengan", siswa.TngglDengan, DbType.String);
             dp.Add("@JrkKeSekolah", siswa.JrkKeSekolah, DbType.Int16);
             dp.Add("@TransportSekolah", siswa.TransportSekolah, DbType.String);
-            dp.Add("@LokasiPhoto", siswa.LokasiPhoto, DbType.String);
+            dp.Add("@LokasiPhoto", siswa?.LokasiPhoto??string.Empty, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);

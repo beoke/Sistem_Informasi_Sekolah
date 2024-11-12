@@ -14,76 +14,50 @@ namespace Sistem_Informasi_Sekolah.Absensi.Dal
 {
     public class AbsensiDal
     {
-        public int Insert (AbsensiModel insert)
+        public int Insert(AbsensiModel absen)
         {
             const string sql = @"
-                INSERT INTO Absensi(
-                    Tgl,Jam, KelasId, KelasName, MapelId, MapelName, GuruId, GuruName)
-                OUTPUT inserted.AbsensiId
-                VALUES (
-                    @Tgl, @Jam, @KelasId, @KelasName, @MapelId, @MapelName, @GuruId, @GuruName)";
+                    INSERT INTO Absensi
+                        (Tanggal, Jam, 
+                        KelasId, MapelId, GuruId)
 
-            var dp = new DynamicParameters();
-            dp.Add(@"Tgl", insert.Tgl,DbType.DateTime);
-            dp.Add("@Jam", insert.Jam, DbType.Time);
-            dp.Add("@KelasId", insert.KelasId, DbType.Int32);
-            dp.Add("@KelasName", insert.KelasName, DbType.String);
-            dp.Add("@MapelId", insert.MapelId, DbType.Int32);
-            dp.Add("@MapelName", insert.MapelName, DbType.String);
-            dp.Add("@GuruId", insert.GuruId, DbType.Int32);
-            dp.Add("@GuruName", insert.GuruName, DbType.String);
+                        OUTPUT INSERTED.AbsensiId
+                    VALUES
+                        (@Tanggal, @Jam, 
+                        @KelasId, @MapelId, @GuruId)";
 
-            using var con = new SqlConnection(ConnStringHelper.Get());
-            var result = con.QuerySingle<int>(sql,dp);
-            return result;
+            var Dp = new DynamicParameters();
+            Dp.Add("@Tgl", absen.Tgl.Date.ToString("dd-MM-yyyy"), DbType.DateTime);
+            Dp.Add("@Jam", absen.Jam, DbType.String);
+            Dp.Add("@KelasId", absen.KelasId, DbType.Int32);
+            Dp.Add("@MapelId", absen.MapelId, DbType.Int32);
+            Dp.Add("@GuruId", absen.GuruId, DbType.Int32);
 
+            using var Conn = new SqlConnection(ConnStringHelper.Get());
+            return Conn.QuerySingle<int>(sql, Dp);
         }
 
-        public void Update (AbsensiModel update)
+
+        public int GetAbsensiId(AbsensiModel absen)
         {
             const string sql = @"
-        UPDATE Absensi 
-        SET 
-            Tgl = @Tgl,
-            Jam = @Jam,
-            KelasId = @KelasId,
-            KelasName = @KelasName,
-            MapelId = @MapelId,
-            MapelName = @MapelName,
-            GuruId = @GuruId,
-            GuruName = @GuruName
-        WHERE AbsensiId = @AbsensiId"; 
-
-            var dp = new DynamicParameters();
-            dp.Add("@Tgl", update.Tgl, DbType.DateTime);
-            dp.Add("@Jam", update.Jam, DbType.Time);
-            dp.Add("@KelasId", update.KelasId, DbType.Int32);
-            dp.Add("@KelasName", update.KelasName, DbType.String);
-            dp.Add("@MapelId", update.MapelId, DbType.Int32);
-            dp.Add("@MapelName", update.MapelName, DbType.String);
-            dp.Add("@GuruId", update.GuruId, DbType.Int32);
-            dp.Add("@GuruName", update.GuruName, DbType.String);
-
-            using var con = new SqlConnection(ConnStringHelper.Get());
-            con.Execute(sql, dp); 
-        }
-
-        public AbsensiModel GetData(int absensiId)
-        {
-            const string sql = @"
-        SELECT
-            AbsensiId, Tgl, Jam, KelasId, KelasName, MapelId, MapelName, GuruId, GuruName
-        FROM
+        SELECT 
+            AbsensiId
+        FROM 
             Absensi
-        WHERE
-            AbsensiId = @AbsensiId";
+        WHERE 
+            KelasId = @KelasId AND Tanggal = @Tanggal AND
+            Jam = @Jam AND MapelId = @MapelId AND GuruId = @GuruId";
 
-            var dp = new DynamicParameters();
-            dp.Add("@AbsensiId", absensiId, DbType.Int32);
-                    
-            using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QuerySingle<AbsensiModel>(sql, dp);
+            var Dp = new DynamicParameters();
+            Dp.Add("@KelasId", absen.KelasId, DbType.Int32);
+            Dp.Add("@Tgl", absen.Tgl.Date.ToString("dd-MM-yyyy"), DbType.DateTime);
+            Dp.Add("@Jam", absen.Jam, DbType.String);
+            Dp.Add("@MapelId", absen.MapelId, DbType.Int32);
+            Dp.Add("@GuruId", absen.GuruId, DbType.Int32);
+
+            using var Conn = new SqlConnection(ConnStringHelper.Get());
+            return Conn.QueryFirstOrDefault<int>(sql, Dp);
         }
-
     }
 }
